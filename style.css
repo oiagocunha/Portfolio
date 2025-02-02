@@ -1,0 +1,175 @@
+/* ESTILO GERAL */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    .poppins-thin {
+        font-family: "Poppins", serif;
+        font-weight: 100;
+        font-style: normal;
+    }
+
+    .poppins-extralight {
+        font-family: "Poppins", serif;
+        font-weight: 200;
+        font-style: normal;
+    }
+
+    .poppins-light {
+        font-family: "Poppins", serif;
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    .poppins-regular {
+        font-family: "Poppins", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .poppins-medium {
+        font-family: "Poppins", serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    .poppins-semibold {
+        font-family: "Poppins", serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .poppins-bold {
+        font-family: "Poppins", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    .poppins-extrabold {
+        font-family: "Poppins", serif;
+        font-weight: 800;
+        font-style: normal;
+    }
+
+    .poppins-black {
+        font-family: "Poppins", serif;
+        font-weight: 900;
+        font-style: normal;
+    }
+
+    .poppins-thin-italic {
+        font-family: "Poppins", serif;
+        font-weight: 100;
+        font-style: italic;
+    }
+
+    .poppins-extralight-italic {
+        font-family: "Poppins", serif;
+        font-weight: 200;
+        font-style: italic;
+    }
+
+    .poppins-light-italic {
+        font-family: "Poppins", serif;
+        font-weight: 300;
+        font-style: italic;
+    }
+
+    .poppins-regular-italic {
+        font-family: "Poppins", serif;
+        font-weight: 400;
+        font-style: italic;
+    }
+
+    .poppins-medium-italic {
+        font-family: "Poppins", serif;
+        font-weight: 500;
+        font-style: italic;
+    }
+
+    .poppins-semibold-italic {
+        font-family: "Poppins", serif;
+        font-weight: 600;
+        font-style: italic;
+    }
+
+    .poppins-bold-italic {
+        font-family: "Poppins", serif;
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    .poppins-extrabold-italic {
+        font-family: "Poppins", serif;
+        font-weight: 800;
+        font-style: italic;
+    }
+
+    .poppins-black-italic {
+        font-family: "Poppins", serif;
+        font-weight: 900;
+        font-style: italic;
+    }
+
+}
+
+body {
+    background-color: black;
+    height: 100dvh;
+
+}
+
+.interface {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* ESTILO DO HEADER */
+
+header {
+    padding: 40px 4%;
+}
+
+header>.interface {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a {
+    color: #5c5c5c;
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+}
+
+header a:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+header nav ul {
+    list-style-type: none;
+
+}
+
+header nav ul li {
+    display: inline-block;
+    padding: 0 40px;
+}
+
+header .btn-contato button{
+    padding: 10px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #8E44AD;
+    border: 0;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+header .btn-contato button:hover {
+    box-shadow: 0px 0px 9px #7d23a3;
+}
