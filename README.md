@@ -18,7 +18,7 @@ Este portfólio foi criado com o intuito de ser uma representação digital do m
 
 Este projeto é construído com as seguintes tecnologias:
 
-- **Frontend**: HTML5, CSS3, JavaScript, React, Bootstrap, React-Bootstrap, PrimeReact
+- **Frontend**: HTML5, CSS3, JavaScript, React, Bootstrap, React-Bootstrap.
 - **Backend**: Node.js
 - **Outras Ferramentas**: Git, GitHub, VS Code
 
