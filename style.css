@@ -288,6 +288,11 @@ section.portfolio {
     transition: .5s;
 }
 
+.overlay a {
+    text-decoration: none;
+    color: #fff;
+}
+
 
 /* ESTILO DO FORMULÁRIO DE CONTATO */
 
