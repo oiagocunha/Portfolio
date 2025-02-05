@@ -35,13 +35,13 @@
                     <li><a href="#">Sobre</a></li>
                     <li><a href="#">Projetos</a></li>
                 </ul>
-            </nav>
+            </nav> <!-- menu-desktop -->
 
             <div class="btn-contato">
                 <a href="#">
                     <button>Contato</button>
                 </a>
-            </div>
+            </div> <!-- btn-contato -->
         </div> <!-- interface -->
     </header>
 
@@ -121,19 +121,60 @@
             <div class="interface">
                 <h2 class="titulo">MEU <span>PORTIFÓLIO.</span></h2>
                 <div class="flex">
-                    <div class="img-port" style="background-image: url('images/Projeto1.png');"> 
+                    <div class="img-port" style="background-image: url(images/Site-de-receita.jpg);">
+                        <div class="overlay">Site de Receitas</div> <!-- overlay -->
                     </div> <!-- portfolio -->
-                    <div class="img-port">
+                    <div class="img-port" style="background-image: url(images/Site-de-receita.jpg);">
+                        <div class="overlay">Site de Receitas</div> <!-- overlay -->
                     </div> <!-- portfolio -->
-                    <div class="img-port">
+                    <div class="img-port" style="background-image: url(images/Site-de-receita.jpg);">
+                        <div class="overlay">Site de Receitas</div> <!-- overlay -->
                     </div> <!-- portfolio -->
                 </div> <!-- flex -->
             </div> <!-- interface -->
         </section> <!-- portfolio -->
+
+        <section class="formulario">
+            <div class="interface">
+                <h2 class="titulo">ENTRE EM <span>CONTATO.</span></h2>
+
+                <form action="envia.php" method="post">
+                    <input type="text" name="nome" placeholder="Seu Nome:" required>
+                    <input type="text" name="email" placeholder="Seu Email:" required>
+                    <input type="text" name="telefone" placeholder="Seu Celular:">
+                    <textarea name="mensagem" placeholder="Sua Mensagem:" required></textarea>
+                    <div class="btn-enviar">
+                        <input type="submit" value="ENVIAR">
+                    </div>
+                </form>
+            </div>
+        </section> <!-- formulario -->
     </main>
 
     <footer>
+        <div class="interface">
+            <div class="line-footer">
+                <div class="flex">
+                    <div class="logo-footer">
+                        <a href="#">
+                            <img src="images/Logo.png" alt="Logo do site Iago Cunha">
+                        </a>
+                    </div> <!-- logo -->
+                    <div class="btn-social">
+                        <a href="https://www.instagram.com/oiagocunha/"><button><i
+                                    class="bi bi-instagram"></i></button></a>
+                        <a href="https://www.linkedin.com/in/oiagocunha/"><button><i
+                                    class="bi bi-linkedin"></i></button></a>
+                        <a href="https://github.com/oiagocunha"><button><i class="bi bi-github"></i></button></a>
+                    </div> <!--btn-social -->
+                </div> <!-- flex -->
+            </div> <!-- line-footer -->
 
+            <div class="line-footer borda">
+                <p><i class="bi bi-envelope-fill"></i><a href="mailto:dev.iagocunha@gmail.com">dev.iagocunha@gmail.com</a></p>
+            </div> <!-- line-footer -->
+
+        </div> <!-- interface -->
     </footer>
 </body>
 
