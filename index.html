@@ -138,11 +138,11 @@
             <div class="interface">
                 <h2 class="titulo">ENTRE EM <span>CONTATO.</span></h2>
 
-                <form action="envia.php">
-                    <input type="text" name="nome" placeholder="Seu Nome:" required>
-                    <input type="text" name="email" placeholder="Seu Email:" required>
-                    <input type="text" name="telefone" placeholder="Seu Celular:">
-                    <textarea name="mensagem" placeholder="Sua Mensagem:" required></textarea>
+                <form id="contact-form">
+                    <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
+                    <input type="tel" id="telefone" name="telefone" placeholder="Telefone" required>
+                    <textarea id="mensagem" name="mensagem" placeholder="Mensagem" required></textarea>
                     <div class="btn-enviar">
                         <input type="submit" value="ENVIAR">
                     </div>
