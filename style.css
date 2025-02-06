@@ -311,7 +311,7 @@ section.portfolio {
 }
 
 .portfolio .flex {
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 60px;
 }
 
