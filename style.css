@@ -742,15 +742,7 @@ footer .flex {
 }
 
 @media (min-width: 1020px) {
-    .btn-abrir-menu {
-        display: none;
-    }
-
-    .menu-mobile {
-        display: none;
-    }
-
-    .overlay-menu {
+    .btn-abrir-menu, .menu-mobile, .overlay-menu{
         display: none;
     }
 }
