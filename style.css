@@ -311,7 +311,7 @@ section.portfolio {
 }
 
 .portfolio .flex {
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 60px;
 }
 
@@ -467,7 +467,7 @@ footer .flex {
     }
 
     header>.interface {
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
     .topo-do-site .txt-topo-site h1 {
@@ -643,6 +643,10 @@ footer .flex {
     h2.titulo {
         font-size: 34px;
         line-height: 30px;
+    }
+
+    header>.interface {
+        justify-content: space-between;
     }
 
     .menu-desktop,
