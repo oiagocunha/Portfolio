@@ -10,6 +10,7 @@ Este portfólio apresenta minhas especialidades, projetos e informações de con
 
 - HTML5
 - CSS3
+- JavaScript
 - Bootstrap Icons
 - Google Fonts
 
@@ -17,7 +18,26 @@ Este portfólio apresenta minhas especialidades, projetos e informações de con
 
 - `index.html`: Página principal do portfólio.
 - `style.css`: Arquivo de estilos para o site.
+- `menu.js`: Arquivo JavaScript para o menu interativo.
 - `images/`: Pasta contendo as imagens utilizadas no site.
+
+## Funcionalidades
+
+- **Responsividade**: O site é totalmente responsivo e se adapta a diferentes tamanhos de tela.
+- **Menu Interativo**: Menu mobile interativo com animações.
+- **Formulário de Contato**: Formulário funcional para envio de mensagens.
+
+## Como Usar
+
+1. Clone o repositório:
+    ```sh
+    git clone https://github.com/oiagocunha/portfolio.git
+    ```
+2. Navegue até o diretório do projeto:
+    ```sh
+    cd portfolio
+    ```
+3. Abra o arquivo `index.html` no seu navegador preferido.
 
 ## Link do Site
 
