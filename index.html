@@ -16,6 +16,9 @@
     <!--  FIM DO BOOTSTRAP ICONS  -->
     <link rel="icon" href="images/Logo.png">
     <link rel="stylesheet" href="style.css">
+
+    <script src="menu.js" defer></script>
+
     <title>Portifólio Iago Cunha</title>
 </head>
 
@@ -30,23 +33,47 @@
 
             <nav class="menu-desktop">
                 <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Especialidades</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Projetos</a></li>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#especialidades">Especialidades</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#portfolio">Projetos</a></li>
                 </ul>
             </nav> <!-- menu-desktop -->
 
             <div class="btn-contato">
-                <a href="#">
+                <a href="#contato">
                     <button>Contato</button>
                 </a>
             </div> <!-- btn-contato -->
+
+            <div class="btn-abrir-menu" id="btn-abrir-menu">
+                <i class="bi bi-list"></i>
+            </div>
+
+            <div class="menu-mobile" id="menu-mobile">
+                <div class="btn-fechar">
+                    <i class="bi bi-x-lg"></i>
+                </div> <!-- btn-fechar -->
+
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#especialidades">Especialidades</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#portfolio">Projetos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </nav>
+
+            </div> <!-- menu-mobile -->
+
+            <div class="overlay-menu" id="overlay-menu"></div>
+
         </div> <!-- interface -->
     </header>
 
     <main>
-        <section class="topo-do-site">
+        <section class="topo-do-site" id="inicio">
             <div class="interface">
                 <div class="flex">
                     <div class="txt-topo-site">
@@ -54,7 +81,7 @@
                         <p>Criando soluções digitais que fazem a diferença. Transformo ideias em experiências
                             interativas incríveis.</p>
                         <div class="btn-contato">
-                            <a href="#">
+                            <a href="#contato">
                                 <button>Entre em contato</button>
                             </a>
                         </div> <!-- btn-contato -->
@@ -67,7 +94,7 @@
             </div> <!-- interface -->
         </section> <!-- topo-do-site -->
 
-        <section class="especialidades">
+        <section class="especialidades"  id="especialidades">
             <div class="interface">
                 <h2 class="titulo">MINHAS <span>ESPECIALIDADES.</span></h2>
                 <div class="flex">
@@ -92,7 +119,7 @@
             </div> <!-- interface -->
         </section> <!-- especialidades -->
 
-        <section class="sobre">
+        <section class="sobre" id="sobre">
             <div class="interface">
                 <div class="flex">
                     <div class="sobre-img">
@@ -117,7 +144,7 @@
                 </div> <!-- interface -->
         </section> <!-- sobre -->
 
-        <section class="portfolio">
+        <section class="portfolio" id="portfolio">
             <div class="interface">
                 <h2 class="titulo">MEU <span>PORTIFÓLIO.</span></h2>
                 <div class="flex">
@@ -135,7 +162,7 @@
             </div> <!-- interface -->
         </section> <!-- portfolio -->
 
-        <section class="formulario">
+        <section class="formulario" id="contato">
             <div class="interface">
                 <h2 class="titulo">ENTRE EM <span>CONTATO.</span></h2>
 
