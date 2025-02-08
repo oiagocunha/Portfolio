@@ -454,13 +454,9 @@ footer .flex {
 
 @media (max-width: 420px) {
 
-    /* CLASSES GERAIS */
     .flex {
         flex-direction: column;
-
     }
-
-    /* CABEÇALHO */
 
     header {
         padding: 20px 8%;
@@ -470,17 +466,17 @@ footer .flex {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        position: fixed; /* Adiciona a posição fixa */
-        top: 0; /* Fixa no topo da página */
-        width: 85%; /* Garante que a largura seja 100% */
-        background-color: black; /* Adiciona um fundo para melhor visualização */
-        z-index: 1000; /* Garante que o header fique acima de outros elementos */
+        position: fixed;
+        top: 0;
+        width: 85%;
+        background-color: black;
+        z-index: 1000;
     }
 
     .topo-do-site .txt-topo-site h1 {
-        font-size: 28px;
+        font-size: 36px;
         font-weight: 700;
-        line-height: 30px;
+        line-height: 40px;
     }
 
     .menu-desktop,
@@ -488,15 +484,13 @@ footer .flex {
         display: none;
     }
 
-    /* TOPO DO SITE */
     .topo-do-site {
         padding: 20px 8%;
-
     }
 
     .especialidades .interface h2.titulo {
-        font-size: 26px;
-        line-height: 30px;
+        font-size: 32px;
+        line-height: 36px;
     }
 
     .topo-do-site .flex {
@@ -510,17 +504,18 @@ footer .flex {
     }
 
     .topo-do-site .img-topo-site img {
-        width: 75%;       
+        width: 75%;
     }
 
+    .topo-do-site p {
+        font-size: 18px;
+        line-height: 24px;
+    }
 
-    /* ESPECIALIDADES */
     section.especialidades {
         padding: 40px 8%;
     }
 
-
-    /* SOBRE MIM */
     section.sobre {
         padding: 40px 8%;
     }
@@ -539,25 +534,23 @@ footer .flex {
     }
 
     .sobre .interface .sobre-txt h2 {
-        font-size: 26px;
-        line-height: 30px;
+        font-size: 32px;
+        line-height: 36px;
         text-align: center;
     }
 
     .sobre .interface .sobre-txt p {
-        font-size: 16px;
+        font-size: 18px;
+        line-height: 24px;
     }
 
     .btn-social {
         text-align: center;
     }
 
-
-    /* PORTFÓLIO */
-
     .portfolio .interface .titulo {
-        font-size: 26px;
-        line-height: 30px;
+        font-size: 32px;
+        line-height: 36px;
     }
 
     section.portfolio {
@@ -576,12 +569,9 @@ footer .flex {
         gap: 40px;
     }
 
-
-    /* ESTILO DO FORMULÁRIO DE CONTATO */
-    
     .formulario .interface .titulo {
-        font-size: 26px;
-        line-height: 30px;
+        font-size: 32px;
+        line-height: 36px;
     }
 
     section.formulario {
@@ -608,7 +598,6 @@ footer .flex {
         border-radius: 15px;
         color: #fff;
         font-size: 18px;
-
     }
 
     form input::placeholder,
@@ -635,8 +624,6 @@ footer .flex {
         transition: .2s;
     }
 
-    /* FOOTER */
-
     footer .flex {
         flex-direction: column;
         gap: 20px;
@@ -647,32 +634,26 @@ footer .flex {
     }
 }
 
-
-/* RESPONSIVIDADE DO SITE */
-
 @media (max-width: 1020px) {
 
-    /* CLASSES GERAIS */
     .flex {
         flex-direction: column;
     }
 
-    /* CABEÇALHO */
-
     h2.titulo {
-        font-size: 28px; /* Ajustado para uma melhor hierarquia */
-        line-height: 32px;
+        font-size: 32px;
+        line-height: 36px;
     }
 
     header>.interface {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        position: fixed; /* Adiciona a posição fixa */
-        top: 0; /* Fixa no topo da página */
-        width: 85%; /* Garante que a largura seja 100% */
-        background-color: black; /* Adiciona um fundo para melhor visualização */
-        z-index: 1000; /* Garante que o header fique acima de outros elementos */
+        position: fixed;
+        top: 0;
+        width: 85%;
+        background-color: black;
+        z-index: 1000;
     }
 
     .menu-desktop,
@@ -680,41 +661,38 @@ footer .flex {
         display: none;
     }
 
-    /* TOPO DO SITE */
     .topo-do-site {
         padding: 20px 8%;
     }
 
     .topo-do-site h1 {
-        font-size: 28px; /* Ajustado para uma melhor hierarquia */
-        line-height: 32px;
+        font-size: 36px;
+        line-height: 40px;
     }
 
     .topo-do-site p {
-        font-size: 14px; /* Ajustado para uma melhor hierarquia */
-        line-height: 20px;
+        font-size: 18px;
+        line-height: 24px;
     }
 
     .topo-do-site .flex {
         flex-direction: column-reverse;
         gap: 40px;
     }
-    
+
     .topo-do-site .img-topo-site {
         display: flex;
         justify-content: center;
     }
 
     .topo-do-site .img-topo-site img {
-        width: 75%;       
+        width: 75%;
     }
 
-    /* ESPECIALIDADES */
     section.especialidades {
         padding: 40px 8%;
     }
 
-    /* SOBRE MIM */
     section.sobre {
         padding: 40px 8%;
     }
@@ -733,16 +711,20 @@ footer .flex {
     }
 
     .sobre .sobre-txt h2 {
-        font-size: 28px; /* Ajustado para uma melhor hierarquia */
-        line-height: 32px;
+        font-size: 32px;
+        line-height: 36px;
         text-align: center;
+    }
+
+    .sobre .sobre-txt p {
+        font-size: 18px;
+        line-height: 24px;
     }
 
     .btn-social {
         text-align: center;
     }
 
-    /* PORTFÓLIO */
     section.portfolio {
         padding: 40px 8%;
     }
@@ -758,7 +740,6 @@ footer .flex {
         gap: 60px;
     }
 
-    /* FOOTER */
     footer {
         margin: 0 auto;
         box-shadow: 0 0 20px 10px #ffffff1d;
@@ -775,7 +756,7 @@ footer .flex {
 }
 
 @media (min-width: 1020px) {
-    .btn-abrir-menu, .menu-mobile, .overlay-menu{
+    .btn-abrir-menu, .menu-mobile, .overlay-menu {
         display: none;
     }
 }
