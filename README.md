@@ -13,12 +13,16 @@ Este portfólio apresenta minhas especialidades, projetos e informações de con
 - JavaScript
 - Bootstrap Icons
 - Google Fonts
+- Swiper
 
 ## Estrutura do Projeto
 
 - `index.html`: Página principal do portfólio.
 - `style.css`: Arquivo de estilos para o site.
 - `menu.js`: Arquivo JavaScript para o menu interativo.
+- `obrigado.html`: Página de agradecimento após envio do formulário.
+- `obrigado.css`: Arquivo de estilos para a página de agradecimento.
+- `script.js`: Arquivo JavaScript para o Swiper.
 - `images/`: Pasta contendo as imagens utilizadas no site.
 
 ## Funcionalidades
