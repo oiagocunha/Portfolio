@@ -209,6 +209,7 @@ section.topo-do-site .interface .flex {
     position: relative;
     animation: flutuar 2s ease-in-out infinite alternate;
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    margin-top: 25px;
 }
 
 .topo-do-site .img-topo-site img:hover {
@@ -223,39 +224,12 @@ section.topo-do-site .interface .flex {
     }
 
     100% {
-        top: 30px;
+        top: 20px;
     }
 }
 
 
-/* ESTILO DO TOPO DO SITE */
-
-.swiper {
-    width: 100%;
-    height: 400px;
-}
-
-swiper-container {
-    width: 100%;
-    height: 100%;
-}
-
-swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #000000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
+/* ESTILO DAS ESPECIALIDADES */
 
 section.especialidades {
     padding: 80px 4%;
@@ -265,12 +239,42 @@ section.especialidades .flex {
     gap: 60px;
 }
 
+section.especialidades .swiper {
+    width: 100%;
+    height: 400px;
+}
+
+section.especialidades swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+section.especialidades .mySwiper {
+    --swiper-navigation-color: #8E44AD; /* Substitua pela cor desejada */
+}
+
+section.especialidades swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section.especialidades swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .especialidades .especialidades-box {
     color: #fff;
     padding: 40px;
     margin-top: 45px;
     border-radius: 20px;
-    width: 1000px;
+    width: 70%;
 }
 
 .especialidades .especialidades-box:hover {
@@ -286,7 +290,7 @@ section.especialidades .flex {
     align-items: center;
     justify-content: center;
     text-align: justify;
-    width: 65%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -304,7 +308,63 @@ section.especialidades .flex {
     font-size: 22px;
     line-height: 30px;
     text-align: center;
+}  
+
+
+/* TECNOLOGIAS */
+
+section.tecnologias {
+    padding: 80px 4%;
+    box-shadow: 0 0 40px 10px #ffffff1d;
 }
+
+section.tecnologias .interface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+section.tecnologias .tecnologias-list {
+    width: 100%;    
+}
+
+section.tecnologias .tecnologias-img {
+    margin-top: 40px;
+    padding: 40px;
+    width: 100%;   
+}
+
+.tecnologia-img {
+    margin-top: 40px;
+    padding: 40px;
+    width: 40%; 
+}
+
+.tecnologias-img:hover, .tecnologia-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ffffff78;
+    transition: .2s;
+}
+
+.tecnologias-txt {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.tecnologias-svg{
+    fill: #8E44AD;
+    width: 40px;
+    height: auto;
+    transition: .2s;
+} 
+
+.tecnologias-svg:hover {
+    fill: #fff;
+    transform: scale(1.1);
+}
+
 
 /* ESTILO SOBRE MIM */
 
@@ -560,13 +620,18 @@ footer .flex {
 
     /* ESPECIALIDADES */
 
-    .especialidades {
+    section.especialidades {
         padding: 40px 8%;
     }
 
-    .swiper {
+    section.especialidades .interface .swiper{
         width: 100%;
-        height: 480px;
+        height: 500px;
+    }
+
+    section.especialidades swiper-slide {
+        width: 100%;
+        height: 450px;
     }
     
     swiper-container {
@@ -590,16 +655,6 @@ footer .flex {
         object-fit: cover;
     }
 
-    .especialidades .especialidades-box {
-        padding: 20px;
-        margin-top: 45px;
-        width: 80%;
-        height: 400px;
-    }
-        
-    .especialidades .especialidades-box .descricao {
-        width: 100%;
-    }
     
     .especialidades .especialidades-box i {
         font-size: 70px;
@@ -618,6 +673,18 @@ footer .flex {
     }
 
 
+    /* TECNOLOGIAS */
+
+    section.tecnologias {
+        padding: 40px 4%;
+    }
+
+    .tecnologia-img {
+        margin-top: 40px;
+        padding: 40px;
+        width: 100%; 
+    }
+
     /* SOBRE MIM */
 
     section.sobre {
@@ -627,10 +694,6 @@ footer .flex {
     .sobre-img {
         display: flex;
         justify-content: center;
-    }
-
-    .sobre-img img {
-        width: 75%;
     }
 
     .sobre .flex {
@@ -807,23 +870,39 @@ footer .flex {
     }
 
     .topo-do-site .img-topo-site img {
-        width: 75%;
+        width: 50%;
     }
 
 
+    /* TECNOLOGIAS */
+
+    .tecnologia-img {
+        margin-top: 40px;
+        padding: 40px;
+        width: 100%; 
+    }
+
+    
     /* ESPECIALIDADES */
 
-    /* ESPECIALIDADES */
-
-    .especialidades {
+    section.especialidades {
         padding: 40px 8%;
     }
 
-    .swiper {
-        width: 100%;
-        height: 480px;
+    section.especialidades {
+        padding: 40px 8%;
     }
-    
+
+    section.especialidades .interface .swiper{
+        width: 100%;
+        height: 500px;
+    }
+
+    section.especialidades swiper-slide {
+        width: 100%;
+        height: 450px;
+    }
+        
     swiper-container {
         width: 100%;
         height: 100%;
@@ -847,7 +926,6 @@ footer .flex {
 
     .especialidades .especialidades-box {
         padding: 20px;
-        margin-top: 45px;
         width: 80%;
         height: 400px;
     }
@@ -863,7 +941,7 @@ footer .flex {
     
     .especialidades .especialidades-box h3 {
         font-size: 28px;
-        margin: 15px 0;
+        margin: 20px 0;
     }
     
     .especialidades .especialidades-box p {
@@ -885,11 +963,11 @@ footer .flex {
     }
 
     .sobre-img img {
-        width: 75%;
+        width: 55%;
     }
 
     .sobre .flex {
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 
     .sobre .sobre-txt h2 {
