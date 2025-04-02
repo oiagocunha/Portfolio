@@ -24,6 +24,7 @@
     <link rel="icon" href="assets/img/images/Logo.png">
     <link rel="stylesheet" href="style.css">
     <script src="menu.js" defer></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <title>Portfólio Iago Cunha</title>
 </head>
 
@@ -80,12 +81,36 @@
             <div class="interface">
                 <div class="flex">
                     <div class="txt-topo-site">
-                        <h1>TRANSFORMANDO IDEIAS EM REALIDADE VIRTUAL<span>.</span></h1>
-                        <p>Criando soluções digitais que fazem a diferença. Transformo ideias em experiências
+                        <h1 id="typewriter"></h1>
+
+                        <script>
+                            const typewriter = new Typewriter("#typewriter", {
+                                loop: true,
+                                delay: 75,
+                                deleteSpeed: 50
+                            });
+
+                            typewriter
+                                .typeString("Olá! Me chamo Iago Cunha!")
+                                .pauseFor(2000)
+                                .deleteAll()
+                                .typeString("Desenvolvedor Full Stack")
+                                .pauseFor(2000)
+                                .deleteAll()
+                                .typeString("Apaixonado por Tecnologia")
+                                .pauseFor(2000)
+                                .deleteAll()
+                                .typeString("Criando soluções incríveis!")
+                                .pauseFor(2000)
+                                .deleteAll()
+                                .start();
+                        </script>
+
+                        <p>Crio soluções digitais que fazem a diferença. Transformo ideias em experiências
                             interativas incríveis.</p>
                         <div class="btn-contato">
                             <a href="#contato">
-                                <button>Entre em contato</button>
+                                <button>Entre em contato e faça um orçamento!</button>
                             </a>
                         </div> <!-- btn-contato -->
                     </div> <!-- txt-topo-site -->
@@ -233,21 +258,21 @@
                         </a>
                     </div>
 
-                    <!-- <div class="img-port" style="background-image: url(assets/img/images/Work_in_progress.png);">
-                        <a href="https://oiagocunha.github.io/Receitas/">
+                    <div class="img-port" style="background-image: url(assets/img/images/QRCode.png);">
+                        <a href="https://link-to-qr-code.vercel.app/">
                             <div class="overlay">
-                                EM BREVE...    
+                                Link para QR Code em React
                             </div>
                         </a>                        
                     </div>
 
-                    <div class="img-port" style="background-image: url(assets/img/images/Work_in_progress.png);">
-                        <a href="https://oiagocunha.github.io/Receitas/">
+                    <div class="img-port" style="background-image: url(assets/img/images/CRUD.png);">
+                        <a href="https://oiagocunha.github.io/Cadastro_Produtos/">
                             <div class="overlay">
-                                EM BREVE...    
+                                CRUD em JavaScript
                             </div>
                         </a>                        
-                    </div> -->
+                    </div>
 
                 </div> <!-- flex -->
             </div> <!-- interface -->
