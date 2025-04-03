@@ -13,7 +13,8 @@ Este portfólio apresenta minhas especialidades, projetos e informações de con
 - **JavaScript**
 - **Bootstrap Icons**
 - **Google Fonts**
-- **Swiper**
+- **Swiper**  
+- **Typewriter**
 
 ## Estrutura do Projeto
 
