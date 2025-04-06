@@ -1,3 +1,28 @@
+/* Variáveis de Tema */
+:root {
+    --background-color: black;
+    --text-color: white;
+    --primary-color: #8E44AD;
+    --button-hover-shadow: #7d23a3;
+    --overlay-color: #000000b8;
+    --shadow-color: #ffffff1d;
+    --hover-shadow: #ffffff78;
+    --input-background: #242424;
+    --placeholder-color: #ffffff63;
+}
+
+body.light-theme {
+    --background-color: #fafafa;
+    --text-color: black;
+    --primary-color: #fa8e50;
+    --button-hover-shadow: #fa8e50;
+    --overlay-color: #000000b8;
+    --shadow-color: #fa8e502b;
+    --hover-shadow: #000000b8;
+    --input-background: #e1e1e1;
+    --placeholder-color: #00000063;
+}
+
 /* ESTILO GERAL */
 
 * {
@@ -8,9 +33,9 @@
 }
 
 body {
-    background-color: black;
+    background-color: var(--background-color);
+    color: var(--text-color);
     height: 100dvh;
-
 }
 
 .interface {
@@ -26,7 +51,7 @@ body {
     padding: 10px 40px;
     font-size: 18px;
     font-weight: 600;
-    background-color: #8E44AD;
+    background-color: var(--primary-color);
     border: 0;
     border-radius: 30px;
     cursor: pointer;
@@ -34,26 +59,26 @@ body {
 }
 
 .btn-contato button:hover {
-    box-shadow: 0px 0px 9px #7d23a3;
+    box-shadow: 0px 0px 9px var(--button-hover-shadow);
     transform: scale(1.05);
-    color: #fff;
+    color: #fafafa;
 }
 
 h2.titulo {
-    color: #fff;
+    color: var(--text-color);
     font-size: 38px;
     text-align: center;
 }
 
 h2.titulo span {
-    color: #8E44AD;
+    color: var(--primary-color);
 }
 
 button:hover,
 form .btn-enviar input:hover {
-    box-shadow: 0 0 10px #8E44AD;
+    box-shadow: 0 0 10px var(--primary-color);
     transform: scale(1.05);
-    color: #fff;
+    color: #fafafa;
 }
 
 .logo img,
@@ -67,7 +92,7 @@ form .btn-enviar input:hover {
     height: 60px;
     border-radius: 50%;
     border: none;
-    background-color: #8E44AD;
+    background-color: var(--primary-color);
     font-size: 30px;
     cursor: pointer;
     margin: 0 5px;
@@ -87,16 +112,16 @@ header>.interface {
 }
 
 header a {
-    color: #ffffff;
+    color: var(--text-color);
     text-decoration: none;
     display: inline-block;
     transition: .2s;
 }
 
 header nav.menu-desktop a:hover {
-    color: #8E44AD;
+    color: var(--primary-color);
     transform: scale(1.05);
-    text-shadow: 2px 2px 10px #ffffffa4;
+    text-shadow: 2px 2px 10px var(--text-color);
 }
 
 header nav ul {
@@ -108,16 +133,33 @@ header nav.menu-desktop ul li {
     padding: 0 40px;
 }
 
+/* ALTERANADOR DE TEMA */
+.theme-toggle button {
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+  
+.theme-toggle button:hover {
+    box-shadow: 0px 0px 8px var(--button-hover-shadow);
+    transform: scale(1.05);
+    color: var(--text-color);
+}
 
 /* ESTILO DO MENU MOBILE */
 
 .btn-abrir-menu i {
-    color: #8E44AD;
+    color: var(--primary-color);
     font-size: 40px;
 }
 
 .menu-mobile {
-    background: #000;
+    background: var(--background-color);
     height: 100vh;
     position: fixed;
     top: 0;
@@ -133,7 +175,7 @@ header nav.menu-desktop ul li {
 }
 
 .menu-mobile .btn-fechar i {
-    color: #8E44AD;
+    color: var(--primary-color);
     font-size: 30px;
 }
 
@@ -148,11 +190,10 @@ header nav.menu-desktop ul li {
 
 .menu-mobile nav ul {
     text-align: right;
-
 }
 
 .menu-mobile nav ul a {
-    color: #fff;
+    color: var(--text-color);
     font-size: 20px;
     font-weight: 300;
     padding: 20px 8%;
@@ -160,12 +201,12 @@ header nav.menu-desktop ul li {
 }
 
 .menu-mobile nav ul a:hover {
-    background-color: #8E44AD;
-    color: #000;
+    background-color: var(--primary-color);
+    color: var(--background-color);
 }
 
 .overlay-menu {
-    background-color: #000000a7;
+    background-color: var(--overlay-color);
     width: 100%;
     height: 100%;
     position: fixed;
@@ -191,15 +232,15 @@ section.topo-do-site .interface .flex {
     font-size: 42px;
     font-weight: 700;
     line-height: 40px;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .topo-do-site .txt-topo-site h1 span {
-    color: #8E44AD;
+    color: var(--primary-color);
 }
 
 .topo-do-site .txt-topo-site p {
-    color: #fff;
+    color: var(--text-color);
     margin: 40px 0;
 }
 
@@ -213,7 +254,7 @@ section.topo-do-site .interface .flex {
 }
 
 .topo-do-site .img-topo-site img:hover {
-    filter: drop-shadow(0 0 10px #8E44AD);
+    filter: drop-shadow(0 0 10px var(--primary-color));
     transition: transform 0.3s, filter 0.3s;
 }
 
@@ -250,13 +291,13 @@ section.especialidades swiper-container {
 }
 
 section.especialidades .mySwiper {
-    --swiper-navigation-color: #8E44AD; /* Substitua pela cor desejada */
+    --swiper-navigation-color: var(--primary-color);
 }
 
 section.especialidades swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #000000;
+    background: var(--background-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -270,7 +311,7 @@ section.especialidades swiper-slide img {
 }
 
 .especialidades .especialidades-box {
-    color: #fff;
+    color: var(--text-color);
     padding: 40px;
     margin-top: 45px;
     border-radius: 20px;
@@ -279,7 +320,7 @@ section.especialidades swiper-slide img {
 
 .especialidades .especialidades-box:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px #ffffff78;
+    box-shadow: 0 0 20px var(--hover-shadow);
     transition: .2s;
 }
 
@@ -296,7 +337,7 @@ section.especialidades swiper-slide img {
 
 .especialidades .especialidades-box i {
     font-size: 70px;
-    color: #8E44AD;
+    color: var(--primary-color);
 }
 
 .especialidades .especialidades-box h3 {
@@ -315,7 +356,8 @@ section.especialidades swiper-slide img {
 
 section.tecnologias {
     padding: 80px 4%;
-    box-shadow: 0 0 40px 10px #ffffff1d;
+    box-shadow: 0 0 40px 10px var(--shadow-color);
+    border-radius: 20px;
 }
 
 section.tecnologias .interface {
@@ -343,25 +385,25 @@ section.tecnologias .tecnologias-img {
 
 .tecnologias-img:hover, .tecnologia-img:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px #ffffff78;
+    box-shadow: 0 0 20px var(--hover-shadow);
     transition: .2s;
 }
 
 .tecnologias-txt {
     font-size: 28px;
-    color: #fff;
+    color: var(--text-color);
     margin-bottom: 20px;
 }
 
 .tecnologias-svg{
-    fill: #8E44AD;
+    fill: var(--primary-color);
     width: 40px;
     height: auto;
     transition: .2s;
 } 
 
 .tecnologias-svg:hover {
-    fill: #fff;
+    fill: var(--text-color);
     transform: scale(1.1);
 }
 
@@ -384,8 +426,7 @@ section.sobre .flex {
 }
 
 .sobre .sobre-txt {
-    color: #fff;
-
+    color: var(--text-color);
 }
 
 .sobre .sobre-txt h2 {
@@ -395,7 +436,7 @@ section.sobre .flex {
 }
 
 .sobre .sobre-txt h2 span {
-    color: #8E44AD;
+    color: var(--primary-color);
     display: block;
 }
 
@@ -411,7 +452,8 @@ section.sobre .flex {
 
 section.portfolio {
     padding: 80px 4%;
-    box-shadow: 0 0 40px 10px #ffffff1d;
+    box-shadow: 0 0 40px 10px var(--shadow-color);
+    border-radius: 20px;
 }
 
 .portfolio .flex {
@@ -423,7 +465,7 @@ section.portfolio {
 .img-port {
     width: 360px;
     height: 460px;
-    background-color: #8E44AD;
+    background-color: var(--primary-color);
     background-size: cover;
     background-position: 100% 0%;
     transition: 8s;
@@ -442,14 +484,14 @@ section.portfolio {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000000b8;
+    background-color: var(--overlay-color);
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
     font-weight: 600;
-    color: #fff;
+    color: var(--text-color);
     opacity: 0;
 }
 
@@ -478,19 +520,18 @@ form {
 form input,
 form textarea {
     width: 100%;
-    background-color: #242424;
+    background-color: var(--input-background);
     border: 0;
     outline: 0;
     padding: 20px 15px;
     border-radius: 8px;
-    color: #fff;
+    color: var(--text-color);
     font-size: 18px;
-
 }
 
 form input::placeholder,
 form textarea::placeholder {
-    color: #ffffff63;
+    color: var(--placeholder-color);
 }
 
 form textarea {
@@ -505,8 +546,8 @@ form .btn-enviar {
 
 form .btn-enviar input {
     width: 120px;
-    background-color: #8E44AD;
-    color: #000;
+    background-color: var(--primary-color);
+    color: var(--background-color);
     font-weight: 700;
     cursor: pointer;
     transition: .2s;
@@ -516,7 +557,7 @@ form .btn-enviar input {
 
 footer {
     padding: 40px 4%;
-    box-shadow: 0 0 40px 10px #ffffff1d;
+    box-shadow: 0 0 40px 10px var(--shadow-color);
 }
 
 footer .flex {
@@ -529,33 +570,68 @@ footer .flex {
 }
 
 .borda {
-    border-top: 2px solid #8E44AD;
+    border-top: 2px solid var(--primary-color);
 }
 
 .line-footer p i {
-    color: #8E44AD;
+    color: var(--primary-color);
     font-size: 22px;
 }
 
 .line-footer p a {
-    color: #fff;
+    color: var(--text-color);
     text-decoration: none;
     transition: .2s;
     margin: 10px;
 }
 
 .line-footer p a:hover {
-    color: blue;
+    color: var(--primary-color);
     cursor: pointer;
 }
 
+/* Melhorias no botão Voltar ao Topo */
+#btn-topo {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    text-decoration: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    pointer-events: none;
+}
+
+#btn-topo.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+#btn-topo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px var(--button-hover-shadow);
+    transition: all 0.3s ease;
+    color: var(--text-color)
+}
 
 /* ESTILIZAÇÃO DA RESPONSIVIDADE */
 
 @media (max-width: 420px) {
 
-    /* GLOBAL
-     */
+    /* GLOBAL */
     .flex {
         flex-direction: column;
     }
@@ -573,7 +649,7 @@ footer .flex {
         position: fixed;
         top: 0;
         width: 85%;
-        background-color: black;
+        background-color: var(--background-color);
         z-index: 1000;
     }
 
@@ -643,7 +719,7 @@ footer .flex {
     swiper-slide {
         text-align: center;
         font-size: 18px;
-        background: #000000;
+        background: var(--background-color);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -659,7 +735,7 @@ footer .flex {
     
     .especialidades .especialidades-box i {
         font-size: 70px;
-        color: #8E44AD;
+        color: var(--primary-color);
     }
     
     .especialidades .especialidades-box h3 {
@@ -726,7 +802,7 @@ footer .flex {
 
     section.portfolio {
         margin: 0 auto;
-        box-shadow: 0 0 20px 10px #ffffff1d;
+        box-shadow: 0 0 20px 10px var(--shadow-color);
     }
 
     .img-port {
@@ -765,18 +841,18 @@ footer .flex {
     form input,
     form textarea {
         width: 100%;
-        background-color: #242424;
+        background-color: var(--input-background);
         border: 0;
         outline: 0;
         padding: 20px 15px;
         border-radius: 8px;
-        color: #fff;
+        color: var(--text-color);
         font-size: 18px;
     }
 
     form input::placeholder,
     form textarea::placeholder {
-        color: #ffffff63;
+        color: var(--placeholder-color);
     }
 
     form textarea {
@@ -791,8 +867,8 @@ footer .flex {
 
     form .btn-enviar input {
         width: 120px;
-        background-color: #8E44AD;
-        color: #000;
+        background-color: var(--primary-color);
+        color: var(--background-color);
         font-weight: 700;
         cursor: pointer;
         transition: .2s;
@@ -834,7 +910,7 @@ footer .flex {
         position: fixed;
         top: 0;
         width: 85%;
-        background-color: black;
+        background-color: var(--background-color);
         z-index: 1000;
     }
 
@@ -912,7 +988,7 @@ footer .flex {
     swiper-slide {
         text-align: center;
         font-size: 18px;
-        background: #000000;
+        background: var(--background-color);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -937,7 +1013,7 @@ footer .flex {
     
     .especialidades .especialidades-box i {
         font-size: 70px;
-        color: #8E44AD;
+        color: var(--primary-color);
     }
     
     .especialidades .especialidades-box h3 {
@@ -1009,7 +1085,7 @@ footer .flex {
 
     footer {
         margin: 0 auto;
-        box-shadow: 0 0 20px 10px #ffffff1d;
+        box-shadow: 0 0 20px 10px var(--shadow-color);
     }
 
     footer .flex {
@@ -1023,7 +1099,6 @@ footer .flex {
 }
 
 @media (min-width: 1020px) {
-
     .btn-abrir-menu,
     .menu-mobile,
     .overlay-menu {

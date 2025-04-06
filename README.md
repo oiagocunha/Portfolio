@@ -1,58 +1,97 @@
-# Portfólio Iago Cunha
+# 🚀 Portfólio Iago Cunha
 
-Bem-vindo ao meu portfólio! Este site foi criado para mostrar minhas habilidades e projetos como desenvolvedor Full Stack.
+Bem-vindo ao meu portfólio! Este site foi desenvolvido para apresentar minhas habilidades, projetos e especialidades como desenvolvedor Full Stack.
 
-## Introdução
+## ✨ Introdução
 
-Este portfólio apresenta minhas especialidades, projetos e informações de contato. Meu objetivo é transformar ideias em experiências digitais incríveis, ajudando empresas e empreendedores a alcançarem seus objetivos através da tecnologia.
+Este portfólio foi criado com o objetivo de transformar ideias em experiências digitais incríveis. Ele apresenta minhas especialidades, projetos e informações de contato, ajudando empresas e empreendedores a alcançarem seus objetivos através da tecnologia.
 
-## Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
-- **HTML5**
-- **CSS3**
-- **JavaScript**
-- **Bootstrap Icons**
-- **Google Fonts**
-- **Swiper**  
-- **Typewriter**
+- **HTML5** - Estrutura semântica e acessível
+- **CSS3** - Estilização avançada com variáveis e responsividade
+- **JavaScript (ES6+)** - Funcionalidades dinâmicas e interatividade
+- **Bootstrap Icons** - Ícones modernos e escaláveis
+- **Google Fonts** - Tipografia estilizada com a fonte Poppins
+- **Swiper.js** - Carrossel interativo e responsivo
+- **Typewriter.js** - Efeito de digitação animada
 
-## Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
-- **`index.html`**: Página principal do portfólio.
-- **`style.css`**: Arquivo de estilos para o site.
-- **`menu.js`**: Arquivo JavaScript para o menu interativo.
-- **`obrigado.html`**: Página de agradecimento após envio do formulário.
-- **`obrigado.css`**: Arquivo de estilos para a página de agradecimento.
-- **`script.js`**: Arquivo JavaScript para o Swiper.
-- **`assets/`**: Pasta contendo as imagens utilizadas no site.
+```
+portfolio/
+├── index.html          # Página principal do portfólio
+├── style.css           # Estilos principais do site
+├── script.js           # Scripts principais (Typewriter e Swiper)
+├── menu.js             # Script para o menu mobile
+├── obrigado.html       # Página de agradecimento após envio do formulário
+├── obrigado.css        # Estilos da página de agradecimento
+└── assets/
+    └── img/
+        └── images/     # Imagens utilizadas no site
+```
 
-## Funcionalidades
+## 🌟 Funcionalidades
 
-- **Responsividade**: O site é totalmente responsivo e se adapta a diferentes tamanhos de tela.
-- **Menu Interativo**: Menu mobile interativo com animações.
-- **Formulário de Contato**: Formulário funcional para envio de mensagens.
+- **🌓 Tema Claro/Escuro**: Alternância dinâmica entre temas com troca automática de logotipo e cores.
+- **📱 Design Responsivo**: Adaptação perfeita para dispositivos móveis, tablets e desktops.
+- **🔝 Botão "Voltar ao Topo"**: Navegação facilitada com botão que aparece ao rolar a página.
+- **⌨️ Efeito Typewriter**: Animação de digitação na seção principal.
+- **🔄 Carrossel Interativo**: Apresentação de especialidades com Swiper.js.
+- **📝 Formulário de Contato**: Formulário funcional integrado ao [FormSubmit](https://formsubmit.co/).
+- **📊 Otimização SEO**: Estrutura semântica para melhor indexação.
+- **📱 Menu Mobile**: Menu responsivo com animações para dispositivos móveis.
 
-## Como Usar
+## 🚀 Como Usar
 
 1. Clone o repositório:
-    ```sh
-    git clone https://github.com/oiagocunha/portfolio.git
-    ```
+   ```bash
+   git clone https://github.com/oiagocunha/Portfolio.git
+   ```
+
 2. Navegue até o diretório do projeto:
-    ```sh
-    cd portfolio
-    ```
-3. Abra o arquivo `index.html` no seu navegador preferido.
+   ```bash
+   cd Portfolio
+   ```
 
-## Link do Site
+3. Abra o arquivo `index.html` no navegador ou utilize uma extensão como Live Server no VSCode.
 
-O site está hospedado no seguinte link: [portfolio-oiagocunha.vercel.app](https://portfolio-oiagocunha.vercel.app)
+## 🎨 Personalização
 
-## Contato
+### Alteração de Cores
+O site utiliza variáveis CSS para facilitar a personalização. Edite as variáveis no início do arquivo `style.css`:
 
-- [Instagram](https://www.instagram.com/oiagocunha/)
-- [LinkedIn](https://www.linkedin.com/in/oiagocunha/)
-- [GitHub](https://github.com/oiagocunha)
-- Email: [dev.iagocunha@gmail.com](mailto:dev.iagocunha@gmail.com)
+```css
+:root {
+    --background-color: black;
+    --text-color: white;
+    --primary-color: #8E44AD;
+    /* Outras variáveis */
+}
 
-Obrigado por visitar meu portfólio!
+body.light-theme {
+    --background-color: #fafafa;
+    --text-color: black;
+    --primary-color: #fa8e50;
+    /* Outras variáveis */
+}
+```
+
+### Sistema de Temas
+O sistema de temas alterna automaticamente entre claro e escuro, adaptando as cores e a logo do site.
+
+## 🔗 Links
+
+- **Live Demo**: [portfolio-oiagocunha.vercel.app](https://portfolio-oiagocunha.vercel.app)
+- **Repositório**: [GitHub](https://github.com/oiagocunha/Portfolio)
+
+## 📬 Contato
+
+- **LinkedIn**: [oiagocunha](https://www.linkedin.com/in/oiagocunha/)
+- **GitHub**: [oiagocunha](https://github.com/oiagocunha)
+- **Instagram**: [oiagocunha](https://www.instagram.com/oiagocunha/)
+- **Email**: [dev.iagocunha@gmail.com](mailto:dev.iagocunha@gmail.com)
+
+---
+
+Desenvolvido com 💜 por **Iago Cunha**

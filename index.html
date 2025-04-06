@@ -21,28 +21,31 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!--  FIM DO BOOTSTRAP ICONS  -->
 
-    <link rel="icon" href="assets/img/images/Logo_semFundo.png">
+    <link rel="icon" href="assets/img/images/Logo_semFundo_light.png">
     <link rel="stylesheet" href="style.css">
     <script src="menu.js" defer></script>
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <title>Portfólio Iago Cunha</title>
 </head>
 
-<body>
+<body class="dark-theme">
     <header>
         <div class="interface">
             <div class="logo">
-                <img src="assets/img/images/Logo_semFundo.png" alt="Logo do site Iago Cunha">
+                <img src="assets/img/images/Logo_semFundo_light.png" alt="Logo do site Iago Cunha">
             </div> <!-- logo -->
 
             <nav class="menu-desktop">
                 <ul>
-                    <li><a href="#inicio">Início</a></li>
                     <li><a href="#especialidades">Especialidades</a></li>
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#portfolio">Projetos</a></li>
                 </ul>
             </nav> <!-- menu-desktop -->
+
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn"><i class="bi bi-brightness-high-fill"></i></button>
+            </div>
 
             <div class="btn-contato">
                 <a href="#contato">
@@ -69,9 +72,14 @@
                     </ul>
                 </nav>
 
+                <div class="theme-toggle-mobile">
+                    <button id="theme-toggle-btn-mobile"><i class="bi bi-brightness-high-fill"></i></button>
+                </div>
+
             </div> <!-- menu-mobile -->
 
             <div class="overlay-menu" id="overlay-menu"></div>
+
 
         </div> <!-- interface -->
     </header>
@@ -83,25 +91,7 @@
                     <div class="txt-topo-site">
                         <h1 id="typewriter"></h1>
 
-                        <script>
-                            const typewriter = new Typewriter("#typewriter", {
-                                loop: true,
-                                delay: 75,
-                                deleteSpeed: 50
-                            });
 
-                            typewriter
-                                .typeString("Olá! Me chamo Iago Cunha!")
-                                .pauseFor(2500)
-                                .deleteAll()
-                                .typeString("Desenvolvedor Full Stack")
-                                .pauseFor(2500)
-                                .deleteAll()
-                                .typeString("Apaixonado por Tecnologia")
-                                .pauseFor(2500)
-                                .deleteAll()
-                                .start();
-                        </script>
 
                         <p>Se você está procurando por um desenvolvedor web para criar ou aprimorar seu projeto, você
                             está no lugar certo!<br>Vamos conversar e transformar sua ideia em realidade.</p>
@@ -113,7 +103,7 @@
                         </div> <!-- btn-contato -->
                     </div> <!-- txt-topo-site -->
                     <div class="img-topo-site">
-                        <img src="assets/img/images/Perfil.jpeg" alt="Foto de Iago Cunha, desenvolvedor Full Stack.">
+                        <img src="assets/img/images/Perfil.jpg" alt="Foto de Iago Cunha, desenvolvedor Full Stack.">
                     </div> <!-- img-topo-site -->
 
                 </div>
@@ -421,7 +411,7 @@
             <div class="line-footer">
                 <div class="flex">
                     <div class="logo-footer">
-                        <img src="assets/img/images/Logo_semFundo.png" alt="Logo do site Iago Cunha">
+                        <img src="assets/img/images/Logo_semFundo_light.png" alt="Logo do site Iago Cunha">
                     </div> <!-- logo -->
                     <div class="btn-social">
                         <a href="https://www.instagram.com/oiagocunha/"><button><i
@@ -442,6 +432,100 @@
 
         </div> <!-- interface -->
     </footer>
+
+
+    <a href="#inicio" id="btn-topo">
+        <i class="bi bi-arrow-up-circle"></i>
+    </a>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggleBtn = document.getElementById("theme-toggle-btn");
+            const logoHeader = document.querySelector(".logo img");
+            const logoFooter = document.querySelector(".logo-footer img");
+
+            // Função para atualizar o tema e as logos
+            function updateTheme(isDark) {
+                if (isDark) {
+                    // Tema escuro
+                    document.body.classList.remove("light-theme");
+                    document.body.classList.add("dark-theme");
+                    themeToggleBtn.innerHTML = '<i class="bi bi-brightness-high-fill"></i>';
+                    logoHeader.src = "assets/img/images/Logo_semFundo_light.png";
+                    logoFooter.src = "assets/img/images/Logo_semFundo_light.png";
+                } else {
+                    // Tema claro
+                    document.body.classList.remove("dark-theme");
+                    document.body.classList.add("light-theme");
+                    themeToggleBtn.innerHTML = '<i class="bi bi-moon-stars"></i>';
+                    logoHeader.src = "assets/img/images/Logo_semFundo_dark.png";
+                    logoFooter.src = "assets/img/images/Logo_semFundo_dark.png";
+                }
+            }
+
+            // Definir estado inicial com base na classe atual
+            if (themeToggleBtn) {
+                const isDarkTheme = document.body.classList.contains("dark-theme");
+                updateTheme(isDarkTheme);
+
+                // Event listener para o botão de tema
+                themeToggleBtn.addEventListener("click", function () {
+                    const isDarkTheme = document.body.classList.contains("dark-theme");
+                    updateTheme(!isDarkTheme); // Inverter o tema atual
+                });
+            }
+        });
+
+        // Script otimizado para o botão voltar ao topo (compatível com mobile)
+        document.addEventListener('DOMContentLoaded', function () {
+            const btnTopo = document.getElementById('btn-topo');
+
+            if (btnTopo) {
+                // Função para verificar a posição do scroll e mostrar/esconder o botão
+                function checkScroll() {
+                    // Em mobile, podemos usar um limite menor para mostrar mais cedo
+                    const scrollLimit = window.innerWidth <= 768 ? 200 : 300;
+
+                    if (window.pageYOffset > scrollLimit) {
+                        btnTopo.classList.add('show');
+                    } else {
+                        btnTopo.classList.remove('show');
+                    }
+                }
+
+                // Verificar na inicialização
+                checkScroll();
+
+                // Verificar durante o scroll com otimização para performance
+                let scrollTimeout;
+                window.addEventListener('scroll', function () {
+                    if (!scrollTimeout) {
+                        scrollTimeout = setTimeout(function () {
+                            checkScroll();
+                            scrollTimeout = null;
+                        }, 100);
+                    }
+                });
+
+                // Adicionar eventos para desktop e mobile
+                btnTopo.addEventListener('click', scrollToTop);
+                btnTopo.addEventListener('touchend', function (e) {
+                    e.preventDefault(); // Previne comportamentos indesejados em mobile
+                    scrollToTop(e);
+                });
+
+                // Função para rolar para o topo
+                function scrollToTop(e) {
+                    if (e) e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
     <script src="script.js"></script>
