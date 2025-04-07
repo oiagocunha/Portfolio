@@ -491,7 +491,7 @@ section.portfolio {
     justify-content: center;
     font-size: 24px;
     font-weight: 600;
-    color: var(--text-color);
+    color: white;
     opacity: 0;
 }
 
@@ -547,7 +547,7 @@ form .btn-enviar {
 form .btn-enviar input {
     width: 120px;
     background-color: var(--primary-color);
-    color: var(--background-color);
+    color: black;
     font-weight: 700;
     cursor: pointer;
     transition: .2s;
