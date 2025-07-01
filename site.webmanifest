@@ -1,0 +1,22 @@
+{
+    "name": "Iago Cunha - Desenvolvedor Front-end",
+    "short_name": "Iago Cunha",
+    "description": "Portfólio profissional de Iago Cunha - Desenvolvedor Front-end especializado em React, JavaScript e tecnologias modernas",
+    "icons": [
+        {
+            "src": "assets/img/images/Logo_semFundo_light.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/img/images/Logo_semFundo_light.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0B1426",
+    "theme_color": "#00D4FF",
+    "orientation": "portrait-primary"
+}

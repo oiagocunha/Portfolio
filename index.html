@@ -5,6 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- SEO META TAGS -->
+    <meta name="description" content="Portfólio de Iago Cunha - Desenvolvedor Front-end especializado em React, JavaScript, HTML5 e CSS3. Confira meus projetos e entre em contato para desenvolvimento web.">
+    <meta name="keywords" content="desenvolvedor front-end, react, javascript, html, css, portfólio, web developer, programador, Iago Cunha">
+    <meta name="author" content="Iago Cunha">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="pt-BR">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- OPEN GRAPH / FACEBOOK -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://portfolio-oiagocunha.vercel.app/">
+    <meta property="og:title" content="Iago Cunha - Desenvolvedor Front-end | Portfólio">
+    <meta property="og:description" content="Desenvolvedor Front-end especializado em React, JavaScript e tecnologias modernas. Confira meus projetos e habilidades técnicas.">
+    <meta property="og:image" content="https://portfolio-oiagocunha.vercel.app/assets/img/images/Logo.png">
+    <meta property="og:site_name" content="Portfólio Iago Cunha">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- TWITTER -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://portfolio-oiagocunha.vercel.app/">
+    <meta property="twitter:title" content="Iago Cunha - Desenvolvedor Front-end | Portfólio">
+    <meta property="twitter:description" content="Desenvolvedor Front-end especializado em React, JavaScript e tecnologias modernas. Confira meus projetos e habilidades técnicas.">
+    <meta property="twitter:image" content="https://portfolio-oiagocunha.vercel.app/assets/img/images/Logo.png">
+    
+    <!-- CANONICAL URL -->
+    <link rel="canonical" href="https://portfolio-oiagocunha.vercel.app/">
+    
+    <!-- PRECONNECT FOR PERFORMANCE -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://vercel.app">
+    <!-- FIM DO SEO META TAGS -->
+
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,8 +54,70 @@
     <!--  FIM DO BOOTSTRAP ICONS  -->
 
     <link rel="icon" href="assets/img/images/Logo_semFundo_light.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/images/Logo_semFundo_light.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/images/Logo_semFundo_light.png">
+    <link rel="apple-touch-icon" href="assets/img/images/Logo_semFundo_light.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#00D4FF">
+    <meta name="msapplication-TileColor" content="#00D4FF">
+    
     <link rel="stylesheet" href="src/css/main.css">
-    <title>Portfólio Iago Cunha</title>
+    <title>Iago Cunha - Desenvolvedor Front-end | Portfólio Profissional</title>
+
+    <!-- STRUCTURED DATA (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Iago Cunha",
+        "jobTitle": "Desenvolvedor Front-end",
+        "description": "Desenvolvedor Front-end especializado em React, JavaScript, HTML5 e CSS3",
+        "url": "https://portfolio-oiagocunha.vercel.app/",
+        "image": "https://portfolio-oiagocunha.vercel.app/assets/img/images/Perfil.jpg",
+        "sameAs": [
+            "https://github.com/oiagocunha",
+            "https://linkedin.com/in/iago-cunha"
+        ],
+        "knowsAbout": [
+            "JavaScript",
+            "React",
+            "HTML5",
+            "CSS3",
+            "Front-end Development",
+            "Web Development",
+            "Responsive Design"
+        ],
+        "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Desenvolvedor Front-end"
+        },
+        "workExample": [
+            {
+                "@type": "CreativeWork",
+                "name": "QR Code Generator",
+                "description": "Aplicação React moderna e responsiva que transforma links em QR Codes exportáveis",
+                "url": "https://link-to-qr-code.vercel.app/",
+                "programmingLanguage": ["React", "JavaScript", "Vite"]
+            },
+            {
+                "@type": "CreativeWork",
+                "name": "Sistema CRUD",
+                "description": "Sistema completo de gestão de produtos com operações CRUD desenvolvido com JavaScript puro",
+                "url": "https://oiagocunha.github.io/Cadastro_Produtos/",
+                "programmingLanguage": ["JavaScript", "HTML5", "CSS3"]
+            },
+            {
+                "@type": "CreativeWork",
+                "name": "Site de Receitas",
+                "description": "Website responsivo dedicado ao compartilhamento de receitas culinárias",
+                "url": "https://oiagocunha.github.io/Receitas/",
+                "programmingLanguage": ["HTML5", "CSS3", "JavaScript"]
+            }
+        ]
+    }
+    </script>
+    <!-- FIM DO STRUCTURED DATA -->
+
 </head>
 
 <body class="dark-theme">
@@ -42,7 +136,9 @@
             </nav> <!-- menu-desktop -->
 
             <div class="theme-toggle">
-                <button id="theme-toggle-btn"><i class="bi bi-brightness-high-fill"></i></button>
+                <button id="theme-toggle-btn" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+                    <i class="bi bi-brightness-high-fill"></i>
+                </button>
             </div>
 
             <div class="btn-contato">
@@ -52,7 +148,7 @@
             </div> <!-- btn-contato -->
 
             <div class="btn-abrir-menu" id="btn-abrir-menu">
-                <i class="bi bi-list"></i>
+                <i class="bi bi-list" aria-label="Abrir menu de navegação"></i>
             </div>
 
             <div class="menu-mobile" id="menu-mobile">
@@ -340,11 +436,15 @@
                             Se você precisa de alguém que entende tanto de código quanto de produto, pode contar comigo.
                         </p>
                         <div class="btn-social">
-                            <a href="https://www.instagram.com/oiagocunha/"><button><i
-                                        class="bi bi-instagram"></i></button></a>
-                            <a href="https://www.linkedin.com/in/oiagocunha/"><button><i
-                                        class="bi bi-linkedin"></i></button></a>
-                            <a href="https://github.com/oiagocunha"><button><i class="bi bi-github"></i></button></a>
+                            <a href="https://www.instagram.com/oiagocunha/" aria-label="Visitar perfil no Instagram" target="_blank" rel="noopener noreferrer">
+                                <button><i class="bi bi-instagram"></i></button>
+                            </a>
+                            <a href="https://www.linkedin.com/in/oiagocunha/" aria-label="Visitar perfil no LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <button><i class="bi bi-linkedin"></i></button>
+                            </a>
+                            <a href="https://github.com/oiagocunha" aria-label="Visitar perfil no GitHub" target="_blank" rel="noopener noreferrer">
+                                <button><i class="bi bi-github"></i></button>
+                            </a>
                         </div> <!-- sobre-txt -->
                     </div> <!-- flex -->
                 </div> <!-- interface -->
@@ -356,7 +456,7 @@
                 <h2 class="titulo">MEU <span>PORTFÓLIO.</span></h2>
                 <div class="flex">
                     <div class="img-port" style="background-image: url(assets/img/images/sistema_notas.png);">
-                        <a href="https://github.com/oiagocunha/sistema_notas">
+                        <a href="https://github.com/oiagocunha/sistema_notas" target="_blank" rel="noopener noreferrer" aria-label="Ver projeto Sistema de Notas no GitHub">
                             <div class="overlay">
                                 <h3>Sistema de permissões</h3>
                                 <div class="project-description">
@@ -379,7 +479,7 @@
                     </div>
 
                     <div class="img-port" style="background-image: url(assets/img/images/QRCode.png);">
-                        <a href="https://link-to-qr-code.vercel.app/">
+                        <a href="https://link-to-qr-code.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Ver projeto QR Code Generator">
                             <div class="overlay">
                                 <h3>QR Code Generator</h3>
                                 <div class="project-description">
@@ -402,7 +502,7 @@
                     </div>
 
                     <div class="img-port" style="background-image: url(assets/img/images/CRUD.png);">
-                        <a href="https://oiagocunha.github.io/Cadastro_Produtos/">
+                        <a href="https://oiagocunha.github.io/Cadastro_Produtos/" target="_blank" rel="noopener noreferrer" aria-label="Ver projeto Sistema CRUD">
                             <div class="overlay">
                                 <h3>Cadastro de Produtos</h3>
                                 <div class="project-description">
@@ -433,15 +533,25 @@
             <div class="interface">
                 <h2 class="titulo">ENTRE EM <span>CONTATO.</span></h2>
 
-                <form action="https://formsubmit.co/0abf524fd7a7652976c723ab11ef2cce" method="POST">
-                    <input type="text" id="nome" name="name" placeholder="Nome" required>
-                    <input type="email" id="email" name="email" placeholder="E-mail" required>
-                    <input type="tel" id="telefone" name="telefone" placeholder="Telefone" required>
-                    <textarea id="mensagem" name="mensagem" placeholder="Mensagem" required></textarea>
+                <form action="https://formsubmit.co/0abf524fd7a7652976c723ab11ef2cce" method="POST" aria-label="Formulário de contato">
+                    <label for="nome" class="sr-only">Nome completo</label>
+                    <input type="text" id="nome" name="name" placeholder="Nome completo" required aria-required="true" autocomplete="name">
+                    
+                    <label for="email" class="sr-only">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="E-mail" required aria-required="true" autocomplete="email">
+                    
+                    <label for="telefone" class="sr-only">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="Telefone (opcional)" autocomplete="tel">
+                    
+                    <label for="mensagem" class="sr-only">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem" required aria-required="true" rows="5"></textarea>
+                    
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_next" value="https://portfolio-oiagocunha.vercel.app/obrigado.html">
+                    <input type="hidden" name="_subject" value="Novo contato do portfólio">
+                    
                     <div class="btn-enviar">
-                        <input type="submit" value="ENVIAR">
+                        <input type="submit" value="ENVIAR MENSAGEM" aria-label="Enviar formulário de contato">
                     </div>
                 </form>
             </div>
