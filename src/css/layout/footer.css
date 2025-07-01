@@ -1,0 +1,35 @@
+/* Estilos do footer */
+footer {
+    padding: 40px 4%;
+    box-shadow: 0 0 40px 10px var(--shadow-color);
+}
+
+footer .flex {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.line-footer {
+    padding: 20px 0;
+}
+
+.borda {
+    border-top: 2px solid var(--primary-color);
+}
+
+.line-footer p i {
+    color: var(--primary-color);
+    font-size: 22px;
+}
+
+.line-footer p a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: .2s;
+    margin: 10px;
+}
+
+.line-footer p a:hover {
+    color: var(--primary-color);
+    cursor: pointer;
+}
