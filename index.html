@@ -331,11 +331,14 @@
                     <div class="sobre-txt">
                         <h2>MUITO PRAZER,<span> ME CHAMO IAGO CUNHA.</span></h2>
                         <p><strong>Desenvolvedor Full Stack</strong> com foco em soluções web modernas e eficientes.
-Atuo há quase 1 ano no desenvolvimento de sistemas e interfaces que realmente entregam valor — rápidos, responsivos e fáceis de manter.</p>
-                        <p>Trabalho lado a lado com empresas e empreendedores para tirar projetos do papel com tecnologia sob medida: sites institucionais, CRUDs personalizados, automações e integrações com backend.</p>
-                            <p>
-                                Se você precisa de alguém que entende tanto de código quanto de produto, pode contar comigo.
-                            </p>
+                            Atuo há 1 ano no desenvolvimento de sistemas e interfaces que realmente entregam valor
+                            — rápidos, responsivos e fáceis de manter.</p>
+                        <p>Trabalho lado a lado com empresas e empreendedores para tirar projetos do papel com
+                            tecnologia sob medida: sites institucionais, CRUDs personalizados, automações e integrações
+                            com backend.</p>
+                        <p>
+                            Se você precisa de alguém que entende tanto de código quanto de produto, pode contar comigo.
+                        </p>
                         <div class="btn-social">
                             <a href="https://www.instagram.com/oiagocunha/"><button><i
                                         class="bi bi-instagram"></i></button></a>
@@ -350,20 +353,50 @@ Atuo há quase 1 ano no desenvolvimento de sistemas e interfaces que realmente e
 
         <section class="portfolio" id="portfolio">
             <div class="interface">
-                <h2 class="titulo">MEU <span>PORTIFÓLIO.</span></h2>
+                <h2 class="titulo">MEU <span>PORTFÓLIO.</span></h2>
                 <div class="flex">
-                    <!-- <div class="img-port" style="background-image: url(assets/img/images/Site-de-receita.jpg);">
-                        <a href="https://oiagocunha.github.io/Receitas/">
+                    <div class="img-port" style="background-image: url(assets/img/images/sistema_notas.png);">
+                        <a href="https://github.com/oiagocunha/sistema_notas">
                             <div class="overlay">
-                                Site de Receitas
+                                <h3>Sistema de permissões</h3>
+                                <div class="project-description">
+                                    Aplicação desktop com interface gráfica para gerenciamento de notas escolares, feita
+                                    em Python. Permite adicionar, editar, visualizar e excluir notas, com persistência
+                                    local via SQLite.
+                                </div>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Tkinter</span>
+                                    <span class="tech-tag">SQLite3</span>
+                                    <span class="tech-tag">ttk</span>
+                                </div>
+                                <span class="project-link">
+                                    <i class="bi bi-box-arrow-up-right"></i>
+                                    Ver Projeto
+                                </span>
                             </div>
                         </a>
-                    </div> -->
+                    </div>
 
                     <div class="img-port" style="background-image: url(assets/img/images/QRCode.png);">
                         <a href="https://link-to-qr-code.vercel.app/">
                             <div class="overlay">
-                                Link para QR Code em React
+                                <h3>QR Code Generator</h3>
+                                <div class="project-description">
+                                    Aplicação React moderna e responsiva que transforma links em QR Codes exportáveis.
+                                    Desenvolvida com foco na experiência do usuário, oferecendo interface intuitiva
+                                    e funcionalidades práticas para geração e download de códigos QR.
+                                </div>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Vite</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">HTML2Canvas</span>
+                                </div>
+                                <span class="project-link">
+                                    <i class="bi bi-box-arrow-up-right"></i>
+                                    Ver Projeto
+                                </span>
                             </div>
                         </a>
                     </div>
@@ -371,7 +404,23 @@ Atuo há quase 1 ano no desenvolvimento de sistemas e interfaces que realmente e
                     <div class="img-port" style="background-image: url(assets/img/images/CRUD.png);">
                         <a href="https://oiagocunha.github.io/Cadastro_Produtos/">
                             <div class="overlay">
-                                CRUD em JavaScript
+                                <h3>Cadastro de Produtos</h3>
+                                <div class="project-description">
+                                    Sistema completo de gestão de produtos com operações CRUD (Create, Read, Update,
+                                    Delete).
+                                    Desenvolvido com JavaScript puro, demonstrando domínio em manipulação do DOM
+                                    e persistência de dados no navegador através do localStorage.
+                                </div>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">LocalStorage</span>
+                                </div>
+                                <span class="project-link">
+                                    <i class="bi bi-box-arrow-up-right"></i>
+                                    Ver Projeto
+                                </span>
                             </div>
                         </a>
                     </div>
@@ -434,13 +483,13 @@ Atuo há quase 1 ano no desenvolvimento de sistemas e interfaces que realmente e
     <!-- Scripts na ordem correta -->
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-    
+
     <!-- Script de debug -->
     <script>
         console.log('🔍 Verificando bibliotecas...');
         console.log('Typewriter disponível:', typeof Typewriter !== 'undefined');
         console.log('Swiper disponível:', typeof Swiper !== 'undefined');
-        
+
         // Aguardar um pouco para garantir que as bibliotecas carregaram
         setTimeout(() => {
             console.log('🔍 Verificação após timeout...');
@@ -448,7 +497,7 @@ Atuo há quase 1 ano no desenvolvimento de sistemas e interfaces que realmente e
             console.log('Swiper disponível:', typeof Swiper !== 'undefined');
         }, 1000);
     </script>
-    
+
     <script type="module" src="src/js/main.js"></script>
 </body>
 
