@@ -76,39 +76,6 @@ portfolio/
             └── back-to-top.js  # Botão voltar ao topo
 ```
 
-## 🧩 Modularização HTML
-
-### Componentes HTML
-
-O HTML também foi modularizado para melhor organização e reutilização:
-
-```text
-src/html/
-├── components/                # Componentes reutilizáveis
-│   ├── header.html           # Cabeçalho com navegação
-│   ├── footer.html           # Rodapé
-│   └── back-to-top.html      # Botão voltar ao topo
-└── sections/                 # Seções específicas
-    ├── hero.html             # Seção principal (topo)
-    ├── especialidades.html   # Carrossel de especialidades
-    ├── tecnologias.html      # Grade de tecnologias
-    ├── sobre.html            # Seção sobre mim
-    ├── portfolio.html        # Galeria de projetos
-    └── contato.html          # Formulário de contato
-```
-
-### Sistema de Carregamento
-
-- **`src/js/modules/html-loader.js`**: Módulo responsável por carregar e montar os componentes
-- **`index-modular.html`**: Versão do site que carrega componentes automaticamente
-- **Montagem Dinâmica**: Os componentes são carregados via fetch e inseridos no DOM
-
-### Como Usar
-
-1. **Automático**: Use `index-modular.html` para carregamento dinâmico
-2. **Manual**: Consulte `COMPONENTES.md` para instruções de montagem manual
-3. **Build Process**: Implemente um sistema de build para concatenar os arquivos
-
 ## 🌟 Funcionalidades
 
 ### 🎨 Interface
@@ -131,61 +98,6 @@ src/html/
 - **⚡ ES6 Modules**: JavaScript modular para melhor manutenção
 - **🎯 Separation of Concerns**: Separação clara entre estrutura, estilo e comportamento
 - **♻️ Reutilização de Código**: Componentes reutilizáveis e bem definidos
-
-## 🚀 Como Usar
-
-1. **Clone o repositório:**
-
-   ```bash
-   git clone https://github.com/oiagocunha/Portfolio.git
-   ```
-
-2. **Navegue até o diretório:**
-
-   ```bash
-   cd Portfolio
-   ```
-
-3. **Abra o projeto:**
-
-   - Abra `index.html` diretamente no navegador, ou
-   - Use Live Server no VSCode para desenvolvimento local
-
-## 🎨 Personalização
-
-### 🎨 Alteração de Cores
-
-O site utiliza variáveis CSS centralizadas em `src/css/utilities/variables.css`:
-
-```css
-:root {
-    /* Tema Escuro (padrão) */
-    --background-color: black;
-    --text-color: white;
-    --primary-color: #8E44AD;
-    --button-hover-shadow: #7d23a3;
-    /* Outras variáveis */
-}
-
-body.light-theme {
-    /* Tema Claro */
-    --background-color: #fafafa;
-    --text-color: black;
-    --primary-color: #fa8e50;
-    /* Outras variáveis */
-}
-```
-
-### 🧩 Adição de Novos Componentes
-
-1. Crie um novo arquivo CSS em `src/css/components/`
-2. Adicione o import em `src/css/main.css`
-3. Se necessário, crie o módulo JavaScript correspondente em `src/js/modules/`
-4. Importe e inicialize no `src/js/main.js`
-
-### 📱 Personalização de Responsividade
-
-Edite as media queries em `src/css/utilities/responsive.css`
 
 ## 🏗️ Arquitetura Modular
 
