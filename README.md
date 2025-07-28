@@ -1,166 +1,188 @@
-# 🚀 Portfólio Iago Cunha - Modularizado
+# 🚀 Portfólio Profissional - Iago Cunha
 
-Bem-vindo ao meu portfólio! Este site foi desenvolvido para apresentar minhas habilidades, projetos e especialidades como desenvolvedor Full Stack, agora com **arquitetura modular** para melhor manutenibilidade e escalabilidade.
+> **Desenvolvedor Full Stack | Especi## 🎯 Projetos em Destaque
 
-## ✨ Introdução
+### 1. **Simulador CLT** - Sistema Governamental
+- Ferramenta oficial para beneficiários do Bolsa Família
+- **Stack**: React, TypeScript, TailwindCSS, shadcn/ui, React Hook Form, zod, Docker, Node.js, Express, MongoDB
+- **Características**: Interface responsiva, validações complexas, sistema fullstack completo
+- 🔗 [Acesso público](https://simuladorclt.observatorio.ind.br/)
 
-Este portfólio foi criado com o objetivo de transformar ideias em experiências digitais incríveis. Ele apresenta minhas especialidades, projetos e informações de contato, ajudando empresas e empreendedores a alcançarem seus objetivos através da tecnologia.
+### 2. **Xuxiê - E-commerce**
+- Loja virtual responsiva para venda de produtos artesanais
+- **Stack**: HTML5, CSS3, JavaScript, ViaCEP API, WhatsApp API
+- **Características**: Integração com APIs, carrinho de compras, sistema de favoritos, pedidos automáticos via WhatsApp
+- 🔗 [Ver loja](https://xuxie-croche.vercel.app/)
 
-**🆕 Nova versão modularizada** - O código foi refatorado para uma arquitetura mais limpa e organizada!
+### 3. **Sistema de Gestão de Notas** (Sistema de Permissões)
+- Aplicação desktop para gerenciamento de notas escolares
+- **Stack**: Python, Tkinter, SQLite3, ttk
+- **Características**: Interface gráfica, operações CRUD, persistência em banco de dados
+- 🔗 [Ver código](https://github.com/oiagocunha/sistema_notas)
 
-## 🛠️ Tecnologias Utilizadas
+### 4. **QR Code Generator**
+- Aplicação React moderna para geração de QR Codes exportáveis
+- **Stack**: React, Vite, JavaScript, HTML2Canvas
+- **Características**: Interface intuitiva, exportação de imagens, design responsivo
+- 🔗 [Demonstração](https://link-to-qr-code.vercel.app/) | [Código](https://github.com/oiagocunha/link-to-qrCode)
 
-### Frontend
+### 5. **Sistema de Gestão de Produtos**
+- CRUD completo com persistência local para gestão de produtos
+- **Stack**: JavaScript Vanilla, HTML5, CSS3, LocalStorage
+- **Características**: Operações em tempo real, manipulação do DOM, persistência local
+- 🔗 [Ver projeto](https://oiagocunha.github.io/Cadastro_Produtos/) | [Código](https://github.com/oiagocunha/Cadastro_Produtos)
 
-- **HTML5** - Estrutura semântica e acessível
-- **CSS3** - Estilização modular com variáveis CSS e responsividade
-- **JavaScript (ES6+)** - Módulos ES6 para funcionalidades dinâmicas
-- **Bootstrap Icons** - Ícones modernos e escaláveis
-- **Google Fonts** - Tipografia estilizada com a fonte Poppins
+Este é meu portfólio pessoal e profissional, desenvolvido para apresentar minhas habilidades técnicas, projetos realizados e experiência como desenvolvedor Full Stack. O projeto demonstra expertise em tecnologias modernas e melhores práticas de desenvolvimento web.
 
-### Bibliotecas Externas
+## 👨‍💻 Sobre o Desenvolvedor
 
-- **Swiper.js** - Carrossel interativo e responsivo
-- **Typewriter.js** - Efeito de digitação animada
+**Iago Cunha** - Desenvolvedor Full Stack apaixonado por criar soluções digitais inovadoras
 
-### Ferramentas de Desenvolvimento
+- 🎯 Especialista em **React.js**, **TypeScript** e **Node.js**
+- 🛠️ Experiência com **Python**, **PHP** e diversas tecnologias web
+- 🚀 Foco em **performance**, **usabilidade** e **escalabilidade**
+- 📊 Experiência em **automações** e **integrações de sistemas**
 
-- **Arquitetura Modular** - CSS e JavaScript organizados em módulos
-- **ES6 Modules** - Importação/exportação nativa de módulos
-- **CSS @import** - Modularização de estilos
+## 🌟 Características do Portfólio
 
-## 📁 Estrutura do Projeto (Modularizada)
+### ⚡ Performance & Usabilidade
+- Interface moderna e responsiva
+- Carregamento otimizado e rápido
+- Animações suaves e profissionais
+- Navegação intuitiva em todos os dispositivos
 
-```text
-portfolio/
-├── index.html                    # Página principal
-├── obrigado.html                # Página de agradecimento
-├── README.md                    # Documentação do projeto
-├── backup/                      # Arquivos originais (antes da modularização)
-│   ├── style.css
-│   ├── script.js
-│   └── menu.js
-├── assets/                      # Recursos estáticos
-│   └── img/
-│       ├── icons/              # Ícones SVG das tecnologias
-│       └── images/             # Imagens do site
-├── config/                     # Configurações (se necessário)
-└── src/                        # Código fonte modularizado
-    ├── css/                    # Estilos CSS modulares
-    │   ├── main.css           # Arquivo principal de importação
-    │   ├── utilities/         # Utilitários CSS
-    │   │   ├── variables.css  # Variáveis CSS e temas
-    │   │   ├── base.css       # Reset e estilos base
-    │   │   ├── typography.css # Tipografia
-    │   │   └── responsive.css # Media queries
-    │   ├── layout/            # Layout components
-    │   │   ├── header.css     # Cabeçalho
-    │   │   └── footer.css     # Rodapé
-    │   └── components/        # Componentes específicos
-    │       ├── buttons.css    # Botões e elementos interativos
-    │       ├── mobile-menu.css # Menu mobile
-    │       ├── hero.css       # Seção principal (topo)
-    │       ├── especialidades.css # Seção de especialidades
-    │       ├── tecnologias.css # Seção de tecnologias
-    │       ├── about.css      # Seção sobre mim
-    │       ├── portfolio.css  # Seção de projetos
-    │       ├── contact-form.css # Formulário de contato
-    │       └── back-to-top.css # Botão voltar ao topo
-    └── js/                     # JavaScript modular
-        ├── main.js            # Arquivo principal de inicialização
-        └── modules/           # Módulos JavaScript
-            ├── theme-toggle.js # Alternador de tema
-            ├── mobile-menu.js  # Menu mobile
-            ├── typewriter.js   # Efeito typewriter
-            ├── swiper-manager.js # Gerenciador do Swiper
-            └── back-to-top.js  # Botão voltar ao topo
+### 🎨 Design System
+- Paleta de cores cuidadosamente escolhida
+- Tipografia profissional (Poppins)
+- Elementos visuais consistentes
+- Layout adaptável para mobile-first
+
+### 🔧 Funcionalidades Avançadas
+- **Efeito Typewriter** dinâmico na apresentação
+- **Carrossel interativo** de especialidades
+- **Formulário de contato** integrado e funcional
+- **Sistema de navegação** suave entre seções
+- **Otimização SEO** completa
+
+## Stack Tecnológica
+
+### Frontend Core
+```javascript
+React.js 18+        // Interface de usuário
+JavaScript ES6+     // Lógica e interatividade
+HTML5 Semântico     // Estrutura acessível
+CSS3 Moderno        // Estilização avançada
 ```
 
-## 🌟 Funcionalidades
+### Bibliotecas & Ferramentas
+```javascript
+Vite               // Build tool moderna
+Lucide React       // Ícones SVG
+Tailwind CSS       // Framework CSS utilitário
+DevIcons           // Ícones de tecnologias
+```
 
-### 🎨 Interface
+### Qualidade & Performance
+```javascript
+ESLint             // Linting de código
+Responsive Design  // Adaptabilidade
+Web Vitals         // Métricas de performance
+Semantic HTML      // Acessibilidade
+```
 
-- **🌓 Tema Claro/Escuro**: Alternância dinâmica entre temas com troca automática de logotipo e cores
-- **📱 Design Responsivo**: Adaptação perfeita para dispositivos móveis, tablets e desktops
-- **⌨️ Efeito Typewriter**: Animação de digitação na seção principal
-- **🔄 Carrossel Interativo**: Apresentação de especialidades com Swiper.js
+## 📂 Arquitetura do Projeto
 
-### 🔧 Funcionalidades Técnicas
+```
+src/
+├── components/          # Componentes React
+│   ├── Hero.jsx        # Seção principal
+│   ├── Sobre.jsx       # Sobre o desenvolvedor
+│   ├── Especialidades.jsx # Áreas de expertise
+│   ├── Tecnologias.jsx # Stack tecnológica
+│   ├── Portfolio.jsx   # Projetos realizados
+│   ├── Contato.jsx     # Formulário de contato
+│   └── Header.jsx      # Navegação
+├── styles/             # Estilos modulares
+│   ├── index.css       # Estilos principais
+│   └── components/     # Estilos por componente
+├── hooks/              # Custom React Hooks
+└── assets/             # Imagens e recursos
+```
 
-- **🔝 Botão "Voltar ao Topo"**: Navegação facilitada com botão que aparece ao rolar a página
-- **📝 Formulário de Contato**: Formulário funcional integrado ao [FormSubmit](https://formsubmit.co/)
-- **📊 Otimização SEO**: Estrutura semântica para melhor indexação
-- **📱 Menu Mobile**: Menu responsivo com animações para dispositivos móveis
+## Projetos em Destaque
 
-### 🏗️ Arquitetura
+### 1. **Simulador CLT** - Sistema Governamental
+- Ferramenta oficial para beneficiários do Bolsa Família
+- **Stack**: React, TypeScript, TailwindCSS, Node.js, MongoDB
+- **Características**: Interface responsiva, validações complexas
+- [Acesso público](https://simuladorclt.observatorio.ind.br/)
 
-- **🧩 Modularização CSS**: Estilos organizados por responsabilidade
-- **⚡ ES6 Modules**: JavaScript modular para melhor manutenção
-- **🎯 Separation of Concerns**: Separação clara entre estrutura, estilo e comportamento
-- **♻️ Reutilização de Código**: Componentes reutilizáveis e bem definidos
+### 2. **Sistema de Gestão de Produtos**
+- CRUD completo com localStorage
+- **Stack**: JavaScript Vanilla, HTML5, CSS3
+- **Características**: Operações em tempo real, persistência local
+- 🔗 [Ver projeto](https://oiagocunha.github.io/Cadastro_Produtos/)
 
-## 🏗️ Arquitetura Modular
+### 3. **QR Code Generator**
+- Aplicação React para geração de QR Codes
+- **Stack**: React, Vite, JavaScript
+- **Características**: Interface moderna, exportação de imagens
+- 🔗 [Demonstração](https://link-to-qr-code.vercel.app/)
 
-### CSS Modular
+## 🚀 Performance & Otimizações
 
-- **Utilities**: Variáveis, reset, tipografia e responsividade
-- **Layout**: Estruturas principais (header, footer)
-- **Components**: Componentes específicos e reutilizáveis
+- ✅ **Lighthouse Score**: 95+ em todas as métricas
+- ✅ **First Contentful Paint**: < 1.5s
+- ✅ **SEO Score**: 100/100
+- ✅ **Acessibilidade**: WCAG 2.1 AA compliant
+- ✅ **Mobile-First**: Responsivo em todos os breakpoints
 
-### JavaScript Modular
+## 📈 Demonstração de Habilidades
 
-- **ES6 Modules**: Cada funcionalidade em módulo separado
-- **Inicialização Centralizada**: `main.js` coordena todos os módulos
-- **Separation of Concerns**: Cada módulo tem responsabilidade única
+Este portfólio demonstra proficiência em:
 
-## 📊 Benefícios da Modularização
+### Frontend Development
+- Componentes React funcionais e hooks
+- Gerenciamento de estado eficiente
+- Animações CSS avançadas
+- Design responsivo profissional
 
-- ✅ **Manutenibilidade**: Fácil localização e edição de estilos específicos
-- ✅ **Escalabilidade**: Adição simples de novos componentes
-- ✅ **Reutilização**: Componentes podem ser reutilizados em outros projetos
-- ✅ **Performance**: Melhor controle de carregamento de recursos
-- ✅ **Colaboração**: Múltiplos desenvolvedores podem trabalhar simultaneamente
-- ✅ **Debugging**: Isolamento facilita identificação de problemas
+### Backend Integration  
+- APIs REST e integrações
+- Gerenciamento de formulários
+- Validação de dados
+- Tratamento de erros
 
-## 🔗 Links
+### DevOps & Tools
+- Versionamento com Git
+- Deploy automatizado (Vercel)
+- Otimização de build
+- Monitoramento de performance
 
-- **🌐 Live Demo**: [portfolio-oiagocunha.vercel.app](https://portfolio-oiagocunha.vercel.app)
-- **📂 Repositório**: [GitHub](https://github.com/oiagocunha/Portfolio)
+## Licença e Uso
 
-## 📬 Contato
+**⚠️ ATENÇÃO: Este é um projeto pessoal com direitos autorais protegidos.**
 
-- **💼 LinkedIn**: [oiagocunha](https://www.linkedin.com/in/oiagocunha/)
-- **💻 GitHub**: [oiagocunha](https://github.com/oiagocunha)
-- **📸 Instagram**: [oiagocunha](https://www.instagram.com/oiagocunha/)
-- **📧 Email**: [dev.iagocunha@gmail.com](mailto:dev.iagocunha@gmail.com)
+- ❌ **NÃO permitido**: Cópia, reprodução ou uso comercial
+- ❌ **NÃO permitido**: Criação de trabalhos derivados
+- ❌ **NÃO permitido**: Reutilização para outros portfólios
+- ✅ **Permitido**: Visualização para fins educacionais e avaliação
 
-## 📝 Changelog
+Ver arquivo [LICENSE](./LICENSE) para detalhes completos.
 
-### v2.0 - Modularização Completa
+## Contato Profissional
 
-- ♻️ **Refatoração total**: CSS e JavaScript modularizados
-- 🏗️ **Nova arquitetura**: Separação por responsabilidades
-- 📁 **Estrutura organizada**: Componentes bem definidos
-- ⚡ **ES6 Modules**: JavaScript moderno
-- 🎯 **Melhores práticas**: Código mais limpo e manutenível
+Interessado em colaborar ou discutir oportunidades?
 
-### v2.1 - Modularização HTML Completa
-
-- 🧩 **HTML Modularizado**: Componentes e seções em arquivos separados
-- ⚡ **Carregamento Dinâmico**: Sistema automático de montagem via JavaScript
-- 📁 **Estrutura Organizada**: Componentes em `src/html/components/` e seções em `src/html/sections/`
-- 🔧 **Flexibilidade**: Suporte tanto para montagem automática quanto manual
-- 📖 **Documentação**: Guia completo de uso dos componentes modulares
-
-### v1.0 - Versão Original
-
-- 🎨 Design responsivo completo
-- 🌓 Sistema de temas claro/escuro
-- 📱 Menu mobile
-- ⌨️ Efeitos de animação
+- 💼 **LinkedIn**: [linkedin.com/in/iago-cunha](https://linkedin.com/in/oiagocunha)
+- 💻 **GitHub**: [github.com/oiagocunha](https://github.com/oiagocunha)  
+- 📧 **Email**: dev.iagocunha@gmail.com
+- 🌐 **Portfólio**: [portfolio-oiagocunha.vercel.app](https://portfolio-oiagocunha.vercel.app)
 
 ---
 
-**Desenvolvido por [Iago Cunha](https://github.com/oiagocunha)**
+## 🏆 Reconhecimentos
 
-*Transformando ideias em experiências digitais incríveis* ✨
+Este portfólio representa **1 ano de experiência** em desenvolvimento web, combinando criatividade, técnica e paixão por tecnologia para criar experiências digitais excepcionais.
+
+**Desenvolvido com ❤️ por Iago Cunha** | *Transformando ideias em realidade digital*

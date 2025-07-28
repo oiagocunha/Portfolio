@@ -1,0 +1,167 @@
+/* Responsividade */
+@media (min-width: 992px) {
+    .menu-desktop {
+        display: block;
+    }
+    
+    .btn-abrir-menu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    .menu-desktop,
+    .btn-contato {
+        display: none;
+    }
+    
+    .menu-mobile.abrir-menu {
+        width: 85%;
+    }
+
+    .topo-do-site .flex {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .sobre .flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .portfolio .flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .img-port {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .tecnologias .flex {
+        flex-direction: column;
+    }
+
+    .tecnologia-img,
+    .tecnologias-img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    section.topo-do-site,
+    section.especialidades,
+    section.tecnologias,
+    section.sobre,
+    section.portfolio,
+    section.formulario {
+        padding: 40px 4%;
+    }
+
+    .txt-topo-site h1 {
+        font-size: 32px;
+        line-height: 32px;
+    }
+
+    .img-topo-site img {
+        width: 280px;
+    }
+
+    h2.titulo {
+        font-size: 28px;
+    }
+
+    .especialidades-box {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .especialidades-box h3 {
+        font-size: 24px;
+    }
+
+    .especialidades-box p {
+        font-size: 18px;
+    }
+
+    .sobre-img img {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .sobre .sobre-txt h2 {
+        font-size: 32px;
+    }
+
+    .tech-grid {
+        gap: 10px;
+    }
+
+    .tech-item {
+        min-width: 70px;
+        padding: 12px;
+    }
+
+    .tech-icon {
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .tech-name {
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .interface {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .txt-topo-site h1 {
+        font-size: 28px;
+        line-height: 28px;
+    }
+
+    .img-topo-site img {
+        width: 250px;
+    }
+
+    .especialidades-box {
+        padding: 20px;
+    }
+
+    .especialidades-box h3 {
+        font-size: 20px;
+    }
+
+    .especialidades-box p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .btn-social button {
+        width: 50px;
+        height: 50px;
+    }
+
+    form input,
+    form textarea {
+        font-size: 16px;
+        padding: 15px 12px;
+    }
+
+    .overlay h3 {
+        font-size: 18px;
+    }
+
+    .overlay .project-description {
+        font-size: 13px;
+    }
+
+    .overlay .project-link {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,184 @@
+/* Componentes CSS - Header */
+header {
+    padding: 40px 4%;
+}
+
+header > .interface {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+}
+
+header nav.menu-desktop a:hover {
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+header nav ul {
+    list-style-type: none;
+}
+
+header nav.menu-desktop ul li {
+    display: inline-block;
+    padding: 0 40px;
+}
+
+/* Logo */
+.logo img,
+.logo-footer img {
+    width: 100px;
+    height: auto;
+    transition: var(--transition-normal);
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+/* Menu desktop */
+.menu-desktop {
+    display: none;
+}
+
+.menu-desktop ul {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-xl);
+}
+
+.menu-desktop ul li a {
+    color: var(--text-color);
+    font-weight: 500;
+    transition: var(--transition-normal);
+    padding: var(--spacing-sm) 0;
+    position: relative;
+}
+
+.menu-desktop ul li a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.menu-desktop ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition-normal);
+}
+
+.menu-desktop ul li a:hover::after {
+    width: 100%;
+}
+
+/* Alternador de tema */
+.theme-toggle button {
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle button:hover {
+    box-shadow: 0px 0px 8px var(--button-hover-shadow);
+    transform: scale(1.05);
+    color: var(--text-color);
+}
+
+/* Menu mobile trigger */
+.btn-abrir-menu {
+    display: block;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    color: var(--primary-color);
+}
+
+.btn-abrir-menu:hover {
+    transform: scale(1.1);
+}
+
+/* Menu mobile */
+.menu-mobile {
+    background: var(--background-color);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    width: 0%;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.menu-mobile.abrir-menu {
+    width: 70%;
+}
+
+.menu-mobile .btn-fechar {
+    padding: 20px 5%;
+}
+
+.menu-mobile .btn-fechar {
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.menu-mobile .btn-fechar:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+
+.menu-mobile nav ul {
+    text-align: right;
+    list-style: none;
+}
+
+.menu-mobile nav ul a {
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 300;
+    padding: 20px 8%;
+    display: block;
+    text-decoration: none;
+    transition: var(--transition-normal);
+}
+
+.menu-mobile nav ul a:hover {
+    color: var(--primary-color);
+    background-color: var(--shadow-color);
+}
+
+/* Overlay */
+.overlay-menu {
+    background-color: var(--overlay-color);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 888;
+    display: block;
+    animation: fadeIn var(--transition-normal) ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
