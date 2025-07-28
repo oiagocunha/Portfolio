@@ -27,7 +27,7 @@ const Footer = ({ darkTheme }) => {
               </a>
               
               <a 
-                href="https://linkedin.com/in/iago-cunha" 
+                href="https://linkedin.com/in/oiagocunha" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
