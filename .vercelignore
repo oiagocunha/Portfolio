@@ -1,0 +1,7 @@
+node_modules
+.git
+.vscode
+*.log
+.env*
+README.md
+src/.vscode
