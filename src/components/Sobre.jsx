@@ -9,7 +9,7 @@ const Sobre = () => {
           <div className="sobre-img">
             <img 
               src="/assets/img/images/Conquista.png" 
-              alt="Foto de Iago Cunha, desenvolvedor Full Stack." 
+              alt="Foto de Iago Cunha, desenvolvedor Fullstack." 
             />
           </div>
           
@@ -20,7 +20,7 @@ const Sobre = () => {
             </h2>
             
             <p>
-              <strong>Desenvolvedor Full Stack</strong> apaixonado por criar experiências digitais que fazem a diferença. 
+              <strong>Desenvolvedor Fullstack</strong> apaixonado por criar experiências digitais que fazem a diferença. 
               Especializo-me em transformar ideias complexas em soluções web elegantes, intuitivas e de alta performance.
             </p>
             

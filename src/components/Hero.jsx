@@ -8,7 +8,7 @@ const Hero = () => {
 
   const texts = useMemo(() => [
     "Olá! Me chamo Iago Cunha!",
-    "Desenvolvedor Full Stack",
+    "Desenvolvedor Fullstack",
     "Apaixonado por Tecnologia"
   ], []);
 
@@ -52,7 +52,7 @@ const Hero = () => {
 
             <p>
               Transformo ideias em experiências digitais extraordinárias. 
-              Como desenvolvedor Full Stack, crio soluções que conectam pessoas, 
+              Como desenvolvedor Fullstack, crio soluções que conectam pessoas, 
               impulsionam negócios e fazem a diferença no mundo digital.
             </p>
 
@@ -66,7 +66,7 @@ const Hero = () => {
           <div className="img-topo-site">
             <img 
               src="/assets/img/images/Perfil.jpg" 
-              alt="Foto de Iago Cunha, desenvolvedor Full Stack." 
+              alt="Foto de Iago Cunha, desenvolvedor Fullstack." 
             />
           </div>
         </div>

@@ -1,6 +1,8 @@
 # 🚀 Portfólio Profissional - Iago Cunha
 
-> **Desenvolvedor Full Stack | Especi## 🎯 Projetos em Destaque
+> **Desenvolvedor Fullstack | Especialista em Tecnologias Modernas**
+
+## 🎯 Projetos em Destaque
 
 ### 1. **Simulador CLT** - Sistema Governamental
 - Ferramenta oficial para beneficiários do Bolsa Família
@@ -32,11 +34,11 @@
 - **Características**: Operações em tempo real, manipulação do DOM, persistência local
 - 🔗 [Ver projeto](https://oiagocunha.github.io/Cadastro_Produtos/) | [Código](https://github.com/oiagocunha/Cadastro_Produtos)
 
-Este é meu portfólio pessoal e profissional, desenvolvido para apresentar minhas habilidades técnicas, projetos realizados e experiência como desenvolvedor Full Stack. O projeto demonstra expertise em tecnologias modernas e melhores práticas de desenvolvimento web.
+Este é meu portfólio pessoal e profissional, desenvolvido para apresentar minhas habilidades técnicas, projetos realizados e experiência como desenvolvedor Fullstack. O projeto demonstra expertise em tecnologias modernas e melhores práticas de desenvolvimento web.
 
 ## 👨‍💻 Sobre o Desenvolvedor
 
-**Iago Cunha** - Desenvolvedor Full Stack apaixonado por criar soluções digitais inovadoras
+**Iago Cunha** - Desenvolvedor Fullstack apaixonado por criar soluções digitais inovadoras
 
 - 🎯 Especialista em **React.js**, **TypeScript** e **Node.js**
 - 🛠️ Experiência com **Python**, **PHP** e diversas tecnologias web

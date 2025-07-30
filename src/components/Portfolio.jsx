@@ -35,7 +35,7 @@ const Portfolio = () => {
     {
       id: 4,
       title: "Simulador CLT",
-      description: "Ajuda beneficiários do Bolsa Família a simularem o impacto de aceitar um emprego com carteira assinada. Desenvolvido fullstack e publicado pela FIEC.",
+      description: "Ajuda beneficiários do Bolsa Família a simularem o impacto de aceitar um emprego com carteira assinada. Sistema completo desenvolvido como Fullstack e publicado pela FIEC.",
       image: "/assets/img/images/simuladorCLT.png",
       technologies: ["React", "Vite", "TypeScript", "TailwindCSS", "shadcn/ui", "React Hook Form", "zod", "Docker", "Node", "Express", "MongoDB"],
       githubUrl: null,
