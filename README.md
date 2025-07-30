@@ -156,7 +156,7 @@ Ver arquivo [LICENSE](./LICENSE) para detalhes completos.
 
 Interessado em colaborar ou discutir oportunidades?
 
-- 💼 **LinkedIn**: [linkedin.com/in/iago-cunha](https://linkedin.com/in/oiagocunha)
+- 💼 **LinkedIn**: [linkedin.com/in/oiagocunha](https://linkedin.com/in/oiagocunha)
 - 💻 **GitHub**: [github.com/oiagocunha](https://github.com/oiagocunha)  
 - 📧 **Email**: dev.iagocunha@gmail.com
 - 🌐 **Portfólio**: [portfolio-oiagocunha.vercel.app](https://portfolio-oiagocunha.vercel.app)
