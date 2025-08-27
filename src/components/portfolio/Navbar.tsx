@@ -1,22 +1,37 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import LanguageToggle from "./LanguageToggle";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Navbar = () => {
+interface NavbarProps {
+  language: 'pt' | 'en';
+  setLanguage: (lang: 'pt' | 'en') => void;
+}
+
+const Navbar = ({ language, setLanguage }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
-    { href: "#hero", label: "Início" },
-    { href: "#especialidades", label: "Especialidades" },
-    { href: "#tecnologias", label: "Tecnologias" },
-    { href: "#sobre", label: "Sobre" },
-    { href: "#projetos", label: "Projetos" },
-    { href: "#contato", label: "Contato" },
-  ];
+  const navItems = language === 'pt'
+    ? [
+        { href: "#hero", label: "Início" },
+        { href: "#especialidades", label: "Especialidades" },
+        { href: "#tecnologias", label: "Tecnologias" },
+        { href: "#sobre", label: "Sobre" },
+        { href: "#projetos", label: "Projetos" },
+        { href: "#contato", label: "Contato" },
+      ]
+    : [
+        { href: "#hero", label: "Home" },
+        { href: "#especialidades", label: "Specialties" },
+        { href: "#tecnologias", label: "Technologies" },
+        { href: "#sobre", label: "About" },
+        { href: "#projetos", label: "Portfolio" },
+        { href: "#contato", label: "Contact" },
+      ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="fixed top-0 left-0 w-full z-40 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg">
       <nav className="container flex h-16 items-center justify-between">
         <a href="#hero" className="flex items-center space-x-2 font-bold text-xl">
           <div className="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center text-primary-foreground text-sm font-bold">
@@ -40,7 +55,7 @@ const Navbar = () => {
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          
+          <LanguageToggle language={language} setLanguage={setLanguage} />
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}

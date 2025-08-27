@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navbar from "@/components/portfolio/Navbar";
 import Hero from "@/components/portfolio/Hero";
 import Specialties from "@/components/portfolio/Specialties";
@@ -9,21 +10,23 @@ import ScrollTop from "@/components/portfolio/ScrollTop";
 import ScrollProgress from "@/components/portfolio/ScrollProgress";
 
 const Index = () => {
+  const [language, setLanguage] = useState<'pt' | 'en'>('pt');
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <ScrollProgress />
-      <Navbar />
+      <Navbar language={language} setLanguage={setLanguage} />
       <main>
-        <Hero />
-        <Specialties />
-        <Technologies />
-        <About />
-        <Projects />
-        <Contact />
+        <Hero language={language} />
+        <Specialties language={language} />
+        <Technologies language={language} />
+        <About language={language} />
+        <Projects language={language} />
+        <Contact language={language} />
       </main>
       <ScrollTop />
       <footer className="border-t py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Iago Cunha. Todos os direitos reservados.
+        {language === 'pt' ? '©' : '©'} {new Date().getFullYear()} Iago Cunha. {language === 'pt' ? 'Todos os direitos reservados.' : 'All rights reserved.'}
       </footer>
     </div>
   );
