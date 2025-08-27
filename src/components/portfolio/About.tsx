@@ -91,9 +91,9 @@ const About = () => {
                 </a>
               </Button>
               <Button asChild variant="hero" className="w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                <a href="/Iago Cunha - Desenvolvedor FullStack.pdf" download className="inline-flex items-center gap-2">
+                <a href="public\Currículo - Iago Cunha - Desenvolvedor FullStack.pdf" download className="inline-flex items-center gap-2">
                   <Download className="h-4 w-4" />
-                  Baixar CV
+                  Baixar CV (PT-BR)
                 </a>
               </Button>
             </div>
