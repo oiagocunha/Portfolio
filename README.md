@@ -192,6 +192,6 @@ Interessado em colaborar ou discutir oportunidades?
 
 ## 🏆 Reconhecimentos
 
-Este portfólio representa **1 ano de experiência** em desenvolvimento web, combinando criatividade, técnica e paixão por tecnologia para criar experiências digitais excepcionais.
+Este portfólio representa **1 ano e meio de experiência** em desenvolvimento web, combinando criatividade, técnica e paixão por tecnologia para criar experiências digitais excepcionais.
 
 **Desenvolvido com ❤️ por Iago Cunha** | *Transformando ideias em realidade digital*
