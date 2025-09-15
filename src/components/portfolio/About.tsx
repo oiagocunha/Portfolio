@@ -2,6 +2,8 @@ import { Github, Linkedin, Instagram, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FadeInSection from "./FadeInSection";
 import AnimatedCounter from "./AnimatedCounter";
+import CVPortugues from "@/assets/cv/Currículo - Iago Cunha - Desenvolvedor FullStack.pdf";
+import CVIngles from "@/assets/cv/[EN] Currículo - Iago Cunha - Desenvolvedor FullStack.pdf";
 
 interface AboutProps {
   language: 'pt' | 'en';
@@ -23,7 +25,7 @@ const About = ({ language }: AboutProps) => {
         'Gosto de trabalhar com metodologias ágeis e explorar novas ferramentas que tragam resultados. Meu objetivo é entregar produtos digitais que façam diferença para quem os usa.',
       ],
       cv: {
-        path: 'public/Currículo - Iago Cunha - Desenvolvedor FullStack.pdf',
+        path: CVPortugues,
         label: 'Baixar CV (PT-BR)',
       },
     },
@@ -41,7 +43,7 @@ const About = ({ language }: AboutProps) => {
         'I enjoy working with agile methodologies and exploring new tools that deliver results. My goal is to deliver digital products that make a difference for their users.',
       ],
       cv: {
-        path: 'public/[EN] Currículo - Iago Cunha - Desenvolvedor FullStack.pdf',
+        path: CVIngles,
         label: 'Download CV (EN)',
       },
     },
