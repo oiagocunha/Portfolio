@@ -83,7 +83,6 @@ src/
 - Ferramenta oficial para beneficiários do Bolsa Família
 - **Stack**: React, TypeScript, TailwindCSS, shadcn/ui, React Hook Form, zod, Docker, Node.js, Express, MongoDB
 - **Características**: Interface responsiva, validações complexas, sistema fullstack completo
-- 🔗 [Acesso público](https://simuladorclt.observatorio.ind.br/)
 - **Stack**: React, TypeScript, TailwindCSS, shadcn/ui, React Hook Form, zod, Docker, Node.js, Express, MongoDB
 - **Características**: Interface responsiva, validações complexas, sistema fullstack completo
 - 🔗 [Acesso público](https://simuladorclt.observatorio.ind.br/)
