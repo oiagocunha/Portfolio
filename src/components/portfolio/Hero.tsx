@@ -2,40 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Typewriter } from "./Typewriter";
 import { motion } from "framer-motion";
 import FadeInSection from "./FadeInSection";
+import { useI18n } from "@/i18n";
 
-interface HeroProps {
-  language: 'pt' | 'en';
-}
-
-const Hero = ({ language }: HeroProps) => {
-  const content = {
-    pt: {
-      greeting: 'Olá! Me chamo',
-      typewriter: [
-        "Desenvolvedor Fullstack",
-        "Criador de Experiências Digitais",
-        "Focado em Performance",
-        "Construindo Soluções Escaláveis",
-      ],
-      description: 'Transformo ideias em experiências digitais extraordinárias. Como desenvolvedor Fullstack, crio soluções que conectam pessoas, impulsionam negócios e fazem a diferença no mundo digital.',
-      button: 'Entre em Contato',
-      alt: 'Foto de Iago Cunha, desenvolvedor Fullstack',
-    },
-    en: {
-      greeting: 'Hello! My name is',
-      typewriter: [
-        "Fullstack Developer",
-        "Digital Experience Creator",
-        "Performance Focused",
-        "Building Scalable Solutions",
-      ],
-      description: 'I transform ideas into extraordinary digital experiences. As a Fullstack developer, I create solutions that connect people, drive businesses, and make a difference in the digital world.',
-      button: 'Contact me',
-      alt: 'Photo of Iago Cunha, Fullstack developer',
-    },
-  };
-
-  const c = content[language];
+const Hero = () => {
+  const { t } = useI18n();
   return (
     <section id="hero" className="relative container grid gap-8 pt-24 pb-12 md:grid-cols-2 md:py-24 lg:gap-10">
       {/* Animated gradient background */}
@@ -62,7 +32,7 @@ const Hero = ({ language }: HeroProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.25, 0.25, 0.25, 0.75] }}
           >
-            {c.greeting} <span className="gradient-text">Iago Cunha</span>!
+            {t.hero.greeting} <span className="gradient-text">Iago Cunha</span>!
           </motion.h1>
           
           <motion.p 
@@ -71,7 +41,7 @@ const Hero = ({ language }: HeroProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.25, 0.25, 0.75] }}
           >
-            <Typewriter words={c.typewriter} />
+            <Typewriter words={t.hero.typewriter} />
           </motion.p>
           
           <motion.p 
@@ -80,7 +50,7 @@ const Hero = ({ language }: HeroProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.25, 0.25, 0.75] }}
           >
-            {c.description}
+            {t.hero.description}
           </motion.p>
           
           <motion.div 
@@ -95,7 +65,7 @@ const Hero = ({ language }: HeroProps) => {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
-                <a href="#contato">{c.button}</a>
+                <a href="#contato">{t.hero.button}</a>
               </Button>
             </motion.div>
           </motion.div>
@@ -106,7 +76,7 @@ const Hero = ({ language }: HeroProps) => {
         <aside className="flex items-center justify-center order-first md:order-last">
           <motion.img
             src="/images/Perfil.jpg"
-            alt={c.alt}
+            alt={t.hero.alt}
             loading="lazy"
             className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-[2rem] md:rounded-[2.5rem] object-cover shadow-[0_0_40px_hsl(var(--accent)/0.35)]"
             whileHover={{ 

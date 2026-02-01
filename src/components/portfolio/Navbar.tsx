@@ -1,34 +1,14 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
+import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { useI18n } from "@/i18n";
 
-interface NavbarProps {
-  language: 'pt' | 'en';
-  setLanguage: (lang: 'pt' | 'en') => void;
-}
-
-const Navbar = ({ language, setLanguage }: NavbarProps) => {
+const Navbar = () => {
+  const { t } = useI18n();
   const [isOpen, setIsOpen] = useState(false);
-
-  const navItems = language === 'pt'
-    ? [
-        { href: "#hero", label: "Início" },
-        { href: "#especialidades", label: "Especialidades" },
-        { href: "#tecnologias", label: "Tecnologias" },
-        { href: "#sobre", label: "Sobre" },
-        { href: "#projetos", label: "Projetos" },
-        { href: "#contato", label: "Contato" },
-      ]
-    : [
-        { href: "#hero", label: "Home" },
-        { href: "#especialidades", label: "Specialties" },
-        { href: "#tecnologias", label: "Technologies" },
-        { href: "#sobre", label: "About" },
-        { href: "#projetos", label: "Portfolio" },
-        { href: "#contato", label: "Contact" },
-      ];
 
   return (
     <header className="fixed top-0 left-0 w-full z-40 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg">
@@ -41,8 +21,8 @@ const Navbar = ({ language, setLanguage }: NavbarProps) => {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
-          {navItems.map((item) => (
+        <div className="hidden lg:flex items-center space-x-4">
+          {t.navbar.items.map((item) => (
             <a
               key={item.href}
               href={item.href}
@@ -53,13 +33,19 @@ const Navbar = ({ language, setLanguage }: NavbarProps) => {
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          <Button asChild size="sm" variant="outline" className="hidden md:flex">
+            <a href={t.navbar.cvPath} download className="flex items-center gap-2">
+              <Download className="h-4 w-4" />
+              {t.navbar.downloadCV}
+            </a>
+          </Button>
           <ThemeToggle />
-          <LanguageToggle language={language} setLanguage={setLanguage} />
+          <LanguageToggle />
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border bg-background text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+            className="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border bg-background text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -75,10 +61,10 @@ const Navbar = ({ language, setLanguage }: NavbarProps) => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden border-t bg-background/95 backdrop-blur"
+            className="lg:hidden border-t bg-background/95 backdrop-blur"
           >
             <div className="container py-4 space-y-3">
-              {navItems.map((item) => (
+              {t.navbar.items.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
@@ -88,6 +74,12 @@ const Navbar = ({ language, setLanguage }: NavbarProps) => {
                   {item.label}
                 </a>
               ))}
+              <Button asChild size="sm" variant="outline" className="w-full">
+                <a href={t.navbar.cvPath} download className="flex items-center justify-center gap-2">
+                  <Download className="h-4 w-4" />
+                  {t.navbar.downloadCV}
+                </a>
+              </Button>
             </div>
           </motion.div>
         )}

@@ -1,14 +1,15 @@
+User-agent: *
+Allow: /
+Sitemap: https://portfolio-oiagocunha.vercel.app/sitemap.xml
+
+# Google
 User-agent: Googlebot
 Allow: /
 
+# Bing
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: *
+# Yahoo
+User-agent: Slurp
 Allow: /
