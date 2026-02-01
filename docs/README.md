@@ -1,147 +1,167 @@
 # 🚀 Portfólio Profissional - Iago Cunha
 
-> **Desenvolvedor FullStack**
+> **Backend Developer | Automation & Data**
 
 ## 👨‍💻 Sobre o Desenvolvedor
 
-**Iago Cunha** - Desenvolvedor FullStack apaixonado por criar soluções digitais inovadoras
+**Iago Cunha** - Backend Developer focado em automação, integração de sistemas e orquestração de fluxos
 
-- 🎯 Especialista em **React.js**, **TypeScript** e **Node.js**
-- 🛠️ Experiência com **Python**, **PHP** e diversas tecnologias web
-- 🚀 Foco em **performance**, **usabilidade** e **escalabilidade**
-- 📊 Experiência em **automações** e **integrações de sistemas**
+- ⚙️ Especialista em **Python**, **Node.js** e **Automação**
+- 🔄 Experiência com **n8n**, **Temporal** e **Integração de Sistemas**
+- 🛠️ Atuação em sistemas críticos: **nInA**, **GovMonitor**
+- 🎤 Palestrante em eventos técnicos (Digital College, Observatório da Indústria)
 
 ## 🌟 Características do Portfólio
 
-### ⚡ Performance & Usabilidade
-- Interface moderna e responsiva
-- Carregamento otimizado e rápido
-- Animações suaves e profissionais
-- Navegação intuitiva em todos os dispositivos
+### ⚡ Arquitetura Moderna
+- React 18.3 + TypeScript 5.7 + Vite 7.3
+- Sistema i18n próprio (PT/EN/ES)
+- Design Tokens centralizados
+- Code splitting e lazy loading
+- Build otimizado: 162 KB gzipped
 
 ### 🎨 Design System
-- Paleta de cores cuidadosamente escolhida
-- Tipografia profissional (Poppins)
-- Elementos visuais consistentes
-- Layout adaptável para mobile-first
+- 10 categorias de tokens (typography, spacing, transitions, etc.)
+- Componentes reutilizáveis com shadcn/ui
+- Dark/Light theme com persistência
+- Layout responsivo mobile-first
 
-### 🔧 Funcionalidades Avançadas
-- **Efeito Typewriter** dinâmico na apresentação
-- **Carrossel interativo** de especialidades
-- **Formulário de contato** integrado e funcional
-- **Sistema de navegação** suave entre seções
-- **Otimização SEO** completa
+### 🔧 Funcionalidades Técnicas
+- **i18n System**: Internacionalização sem dependências externas
+- **Lazy Loading**: 8 seções carregadas sob demanda
+- **Design Tokens**: Consistência visual em 13 componentes
+- **Layouts Pattern**: Separação de providers e estrutura
+- **TypeScript Strict**: Type-safety completo
 
-## Stack Tecnológica
+## 📐 Stack Tecnológica
 
-### Frontend Core
-```javascript
-React.js 18+        // Interface de usuário
-JavaScript ES6+     // Lógica e interatividade
-HTML5 Semântico     // Estrutura acessível
-CSS3 Moderno        // Estilização avançada
+### Core
+```typescript
+React 18.3.1        // UI Library
+TypeScript 5.7.3    // Type Safety
+Vite 7.3.1          // Build Tool
+Tailwind CSS 3.4.1  // Styling
 ```
 
-### Bibliotecas & Ferramentas
-```javascript
-Vite               // Build tool moderna
-Lucide React       // Ícones SVG
-Tailwind CSS       // Framework CSS utilitário
-DevIcons           // Ícones de tecnologias
+### UI & Components
+```typescript
+shadcn/ui           // Component Library (Radix UI)
+Framer Motion       // Animations
+Lucide React        // Icons
+React Hook Form     // Forms
+Zod                 // Validation
 ```
 
-### Qualidade & Performance
-```javascript
-ESLint             // Linting de código
-Responsive Design  // Adaptabilidade
-Web Vitals         // Métricas de performance
-Semantic HTML      // Acessibilidade
+### Architecture
+```typescript
+Custom i18n         // Internationalization (zero-dependency)
+Design Tokens       // Design System
+Lazy Loading        // Performance
+Layouts Pattern     // Structure
 ```
 
 ## 📂 Arquitetura do Projeto
 
 ```
-src/
-├── components/          # Componentes React
-│   ├── Hero.jsx        # Seção principal
-│   ├── Sobre.jsx       # Sobre o desenvolvedor
-│   ├── Especialidades.jsx # Áreas de expertise
-│   ├── Tecnologias.jsx # Stack tecnológica
-│   ├── Portfolio.jsx   # Projetos realizados
-│   ├── Contato.jsx     # Formulário de contato
-│   └── Header.jsx      # Navegação
-├── styles/             # Estilos modulares
-│   ├── index.css       # Estilos principais
-│   └── components/     # Estilos por componente
-├── hooks/              # Custom React Hooks
-└── assets/             # Imagens e recursos
+portfolio/
+├── src/
+│   ├── components/
+│   │   ├── portfolio/          # Seções principais
+│   │   ├── shared/             # Componentes reutilizáveis (6)
+│   │   │   ├── ProjectCard.tsx
+│   │   │   ├── StatCard.tsx
+│   │   │   ├── CertificationCard.tsx
+│   │   │   └── index.ts        # Barrel exports
+│   │   └── ui/                 # shadcn/ui components
+│   ├── i18n/                   # Sistema i18n próprio
+│   │   ├── types.ts            # PortfolioContent interface
+│   │   ├── I18nProvider.tsx    # Context + Hook
+│   │   └── locales/
+│   │       ├── pt.ts
+│   │       ├── en.ts
+│   │       └── es.ts
+│   ├── constants/
+│   │   ├── design-tokens.ts    # 10 categorias de tokens
+│   │   └── icons.ts
+│   ├── layouts/
+│   │   └── MainLayout.tsx      # Layout pattern
+│   └── pages/
+│       └── Index.tsx           # Lazy loading + Suspense
+├── docs/
+│   ├── README.md               # Este arquivo
+│   └── ARCHITECTURE.md         # Documentação técnica
+└── CONFIG.md                   # Guia de configurações
 ```
 
 ## Projetos em Destaque
 
 ### 1. **Simulador CLT** - Sistema Governamental
 - Ferramenta oficial para beneficiários do Bolsa Família
-- **Stack**: React, TypeScript, TailwindCSS, shadcn/ui, React Hook Form, zod, Docker, Node.js, Express, MongoDB
-- **Características**: Interface responsiva, validações complexas, sistema fullstack completo
-- **Stack**: React, TypeScript, TailwindCSS, shadcn/ui, React Hook Form, zod, Docker, Node.js, Express, MongoDB
-- **Características**: Interface responsiva, validações complexas, sistema fullstack completo
-- 🔗 [Acesso público](https://simuladorclt.observatorio.ind.br/)
+### Backend & Automation
+**Python | Node.js | n8n | Temporal**
 
-### 2. **Xuxiê - E-commerce**
-- Loja virtual responsiva para venda de produtos artesanais
-- **Stack**: HTML5, CSS3, JavaScript, ViaCEP API, WhatsApp API
-- **Características**: Integração com APIs, carrinho de compras, sistema de favoritos, pedidos automáticos via WhatsApp
-- 🔗 [Ver loja](https://xuxie-croche.vercel.app/)
+#### Sistemas Críticos
+- **nInA** - Núcleo de Inteligência Artificial (FIEC)
+  - Orquestração de workflows com Temporal
+  - Automações inteligentes com n8n
+  - Integração multi-sistemas
+  
+- **GovMonitor** - Observatório da Indústria (FIEC)
+  - Backend Node.js + Python
+  - Raspagem e processamento de dados governamentais
+  - APIs REST para dashboards de indicadores
 
-### 3. **Sistema de Gestão de Notas** (Sistema de Permissões)
-- Aplicação desktop para gerenciamento de notas escolares
-- **Stack**: Python, Tkinter, SQLite3, ttk
-- **Características**: Interface gráfica, operações CRUD, persistência em banco de dados
-- 🔗 [Ver código](https://github.com/oiagocunha/sistema_notas)
+#### Experiência Técnica
+- ⚙️ **Automação**: Python scripts, n8n workflows, Temporal orchestration
+- 🔄 **Integração**: APIs REST/SOAP, webhooks, message queues
+- 🗄️ **Bancos de Dados**: PostgreSQL, MongoDB, Redis
+- 🐳 **DevOps**: Docker, Git, Linux servers
 
-### 4. **QR Code Generator**
-- Aplicação React moderna para geração de QR Codes exportáveis
-- **Stack**: React, Vite, JavaScript, HTML2Canvas
-- **Características**: Interface intuitiva, exportação de imagens, design responsivo
-- 🔗 [Demonstração](https://link-to-qr-code.vercel.app/) | [Código](https://github.com/oiagocunha/link-to-qrCode)
+Este é meu portfólio profissional, demonstrando capacidade de construir arquiteturas escaláveis, implementar design systems consistentes e manter código limpo e type-safe. O projeto reflete as mesmas práticas técnicas aplicadas em sistemas de produção.
 
-### 5. **Sistema de Gestão de Produtos**
-- CRUD completo com persistência local para gestão de produtos
-- **Stack**: JavaScript Vanilla, HTML5, CSS3, LocalStorage
-- **Características**: Operações em tempo real, manipulação do DOM, persistência local
-- 🔗 [Ver projeto](https://oiagocunha.github.io/Cadastro_Produtos/) | [Código](https://github.com/oiagocunha/Cadastro_Produtos)
+## 🚀 Performance & Métricas
 
-Este é meu portfólio pessoal e profissional, desenvolvido para apresentar minhas habilidades técnicas, projetos realizados e experiência como desenvolvedor Full Stack. O projeto demonstra expertise em tecnologias modernas e melhores práticas de desenvolvimento web.
+### Build Performance
+- ✅ **Gzipped CSS**: 8.18 KB (otimização de ~34% vs. baseline)
+- ✅ **Main Bundle**: 162.17 KB gzipped
+- ✅ **Chunks**: 14 arquivos com code splitting
+- ✅ **Módulos**: 2136 transformados com SWC
 
-## 🚀 Performance & Otimizações
+### Otimizações Aplicadas
+- **Lazy Loading**: 8 seções carregadas sob demanda
+- **Code Splitting**: Bundle dividido em 14 chunks
+- **Design Tokens**: Redução de ~64% em componentes Card
+- **Tree Shaking**: Eliminação automática de código não usado
+- **TypeScript Strict**: Zero erros de tipo
 
-- ✅ **Lighthouse Score**: 95+ em todas as métricas
-- ✅ **First Contentful Paint**: < 1.5s
-- ✅ **SEO Score**: 100/100
-- ✅ **Acessibilidade**: WCAG 2.1 AA compliant
-- ✅ **Mobile-First**: Responsivo em todos os breakpoints
+### Developer Experience
+- **Type Safety**: Interface `PortfolioContent` com 100% de cobertura
+- **i18n System**: Zero dependências, hot reload funcional
+- **Barrel Exports**: Importações organizadas via `index.ts`
+- **Layouts Pattern**: Separação clara de providers e estrutura
 
 ## 📈 Demonstração de Habilidades
 
-Este portfólio demonstra proficiência em:
+### Backend Development
+- Orquestração de workflows com Temporal
+- Automações complexas com n8n
+- Integração de sistemas legados e modernos
+- APIs REST com validação robusta
+- Processamento de dados em larga escala
 
-### Frontend Development
-- Componentes React funcionais e hooks
-- Gerenciamento de estado eficiente
-- Animações CSS avançadas
-- Design responsivo profissional
+### Frontend Architecture
+- Design system escalável com tokens centralizados
+- Sistema i18n próprio (PT/EN/ES)
+- Componentes reutilizáveis (shadcn/ui + custom)
+- Lazy loading e code splitting estratégico
+- TypeScript strict mode end-to-end
 
-### Backend Integration  
-- APIs REST e integrações
-- Gerenciamento de formulários
-- Validação de dados
-- Tratamento de erros
-
-### DevOps & Tools
-- Versionamento com Git
-- Deploy automatizado (Vercel)
-- Otimização de build
-- Monitoramento de performance
+### DevOps & Performance
+- Build otimizado (Vite 7.3 + SWC)
+- Docker containerization
+- Git workflows profissionais
+- Monitoramento de bundle size
+- CI/CD best practices
 
 ## Licença e Uso
 
