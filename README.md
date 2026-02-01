@@ -83,7 +83,6 @@ src/
 - Ferramenta oficial para beneficiários do Bolsa Família
 - **Stack**: React, TypeScript, TailwindCSS, shadcn/ui, React Hook Form, zod, Docker, Node.js, Express, MongoDB
 - **Características**: Interface responsiva, validações complexas, sistema fullstack completo
-- 🔗 [Acesso público](https://simuladorclt.observatorio.ind.br/)
 - **Stack**: React, TypeScript, TailwindCSS, shadcn/ui, React Hook Form, zod, Docker, Node.js, Express, MongoDB
 - **Características**: Interface responsiva, validações complexas, sistema fullstack completo
 - 🔗 [Acesso público](https://simuladorclt.observatorio.ind.br/)
@@ -99,31 +98,7 @@ src/
 - **Stack**: Python, Tkinter, SQLite3, ttk
 - **Características**: Interface gráfica, operações CRUD, persistência em banco de dados
 - 🔗 [Ver código](https://github.com/oiagocunha/sistema_notas)
-### 2. **Xuxiê - E-commerce**
-- Loja virtual responsiva para venda de produtos artesanais
-- **Stack**: HTML5, CSS3, JavaScript, ViaCEP API, WhatsApp API
-- **Características**: Integração com APIs, carrinho de compras, sistema de favoritos, pedidos automáticos via WhatsApp
-- 🔗 [Ver loja](https://xuxie-croche.vercel.app/)
 
-### 3. **Sistema de Gestão de Notas** (Sistema de Permissões)
-- Aplicação desktop para gerenciamento de notas escolares
-- **Stack**: Python, Tkinter, SQLite3, ttk
-- **Características**: Interface gráfica, operações CRUD, persistência em banco de dados
-- 🔗 [Ver código](https://github.com/oiagocunha/sistema_notas)
-
-### 4. **QR Code Generator**
-- Aplicação React moderna para geração de QR Codes exportáveis
-- **Stack**: React, Vite, JavaScript, HTML2Canvas
-- **Características**: Interface intuitiva, exportação de imagens, design responsivo
-- 🔗 [Demonstração](https://link-to-qr-code.vercel.app/) | [Código](https://github.com/oiagocunha/link-to-qrCode)
-
-### 5. **Sistema de Gestão de Produtos**
-- CRUD completo com persistência local para gestão de produtos
-- **Stack**: JavaScript Vanilla, HTML5, CSS3, LocalStorage
-- **Características**: Operações em tempo real, manipulação do DOM, persistência local
-- 🔗 [Ver projeto](https://oiagocunha.github.io/Cadastro_Produtos/) | [Código](https://github.com/oiagocunha/Cadastro_Produtos)
-
-Este é meu portfólio pessoal e profissional, desenvolvido para apresentar minhas habilidades técnicas, projetos realizados e experiência como desenvolvedor Full Stack. O projeto demonstra expertise em tecnologias modernas e melhores práticas de desenvolvimento web.
 ### 4. **QR Code Generator**
 - Aplicação React moderna para geração de QR Codes exportáveis
 - **Stack**: React, Vite, JavaScript, HTML2Canvas
@@ -192,6 +167,6 @@ Interessado em colaborar ou discutir oportunidades?
 
 ## 🏆 Reconhecimentos
 
-Este portfólio representa **1 ano de experiência** em desenvolvimento web, combinando criatividade, técnica e paixão por tecnologia para criar experiências digitais excepcionais.
+Este portfólio representa **1 ano e meio de experiência** em desenvolvimento web, combinando criatividade, técnica e paixão por tecnologia para criar experiências digitais excepcionais.
 
 **Desenvolvido com ❤️ por Iago Cunha** | *Transformando ideias em realidade digital*
