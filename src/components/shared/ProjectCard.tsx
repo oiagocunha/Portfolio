@@ -3,6 +3,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, LucideIcon } from "lucide-react";
+import { iconSizes, typography, transitions, shadows } from "@/constants/design-tokens";
 
 interface ProjectCardProps {
   title: string;
@@ -34,7 +35,7 @@ export const ProjectCard = ({
       whileHover={{ y: -8 }}
       transition={{ duration: 0.3, ease: [0.25, 0.25, 0.25, 0.75] }}
     >
-      <Card className="overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/10">
+      <Card className={`overflow-hidden ${transitions.default} ${shadows.card}`}>
         <CardContent className="p-0">
           <AspectRatio ratio={16 / 9} className="overflow-hidden">
             <motion.img
@@ -51,11 +52,11 @@ export const ProjectCard = ({
                 transition={{ duration: 0.5 }}
                 className="flex items-center justify-center rounded-full bg-primary/10 p-2.5 md:p-3 text-primary"
               >
-                <Icon className="h-4 w-4 md:h-5 md:w-5" />
+                <Icon className={`${iconSizes.md}`} />
               </motion.div>
-              <h3 className="text-lg md:text-xl font-bold">{title}</h3>
+              <h3 className={`${typography.h3}`}>{title}</h3>
             </div>
-            <p className="mt-2 md:mt-3 text-sm md:text-base text-muted-foreground">
+            <p className={`mt-2 md:mt-3 ${typography.body} text-muted-foreground`}>
               {description}
             </p>
             <div className="mt-3 md:mt-4 flex flex-wrap gap-1.5 md:gap-2">
@@ -69,18 +70,18 @@ export const ProjectCard = ({
               {demo && (
                 <Badge
                   variant="outline"
-                  className="gap-1 transition-colors hover:bg-primary hover:text-primary-foreground"
+                  className={`gap-1 ${transitions.fast} hover:bg-primary hover:text-primary-foreground`}
                 >
-                  <ExternalLink className="h-3 w-3" />
+                  <ExternalLink className={iconSizes.sm} />
                   Demo
                 </Badge>
               )}
               {repo && (
                 <Badge
                   variant="outline"
-                  className="gap-1 transition-colors hover:bg-primary hover:text-primary-foreground"
+                  className={`gap-1 ${transitions.fast} hover:bg-primary hover:text-primary-foreground`}
                 >
-                  <Github className="h-3 w-3" />
+                  <Github className={iconSizes.sm} />
                   Código
                 </Badge>
               )}

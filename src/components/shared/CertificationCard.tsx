@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award, ExternalLink, Calendar } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { iconSizes, typography, transitions, shadows, gradients } from "@/constants/design-tokens";
 
 interface CertificationCardProps {
   title: string;
@@ -22,12 +23,12 @@ export const CertificationCard = ({
   viewCertLabel,
 }: CertificationCardProps) => {
   return (
-    <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group">
-      <CardHeader className="bg-gradient-to-br from-primary/5 to-accent/5">
+    <Card className={`h-full overflow-hidden ${transitions.default} ${shadows.card} group`}>
+      <CardHeader className={gradients.primary}>
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1">
-            <CardTitle className="flex items-center gap-2 text-lg md:text-xl mb-2">
-              <Award className="h-5 w-5 text-primary flex-shrink-0" />
+            <CardTitle className={`flex items-center gap-2 ${typography.h3} mb-2`}>
+              <Award className={`${iconSizes.md} text-primary flex-shrink-0`} />
               <span className="line-clamp-2">{title}</span>
             </CardTitle>
             <p className="text-sm font-medium text-accent">{issuer}</p>

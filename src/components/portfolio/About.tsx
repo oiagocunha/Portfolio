@@ -1,14 +1,15 @@
 import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
 import { SocialLinks, StatCard } from "@/components/shared";
+import { spacing, typography, transitions } from "@/constants/design-tokens";
 
 const About = () => {
   const { t, locale } = useI18n();
 
   return (
-    <section id="sobre" className="container py-16 md:py-24">
+    <section id="sobre" className={`container ${spacing.section}`}>
       <FadeInSection>
-        <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">{t.about.title}</h2>
+        <h2 className={`text-center ${typography.h2}`}>{t.about.title}</h2>
       </FadeInSection>
 
       {/* Stats Section */}
@@ -27,7 +28,7 @@ const About = () => {
               src="/images/Conquista.png"
               alt={locale === 'pt' ? "Conquista ou certificado de Iago Cunha" : "Iago Cunha's achievement or certificate"}
               loading="lazy"
-              className="h-[60dvh] max-w-md mx-auto md:max-w-none rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
+              className={`h-[60dvh] max-w-md mx-auto md:max-w-none rounded-lg shadow-lg ${transitions.default} hover:scale-105`}
             />
           </div>
         </FadeInSection>
@@ -35,7 +36,7 @@ const About = () => {
         <FadeInSection delay={0.3} direction="right">
           <article className="space-y-4 order-1 md:order-2">
             {t.about.paragraphs.map((p, i) => (
-              <p className="text-base md:text-lg text-muted-foreground" key={i}>{p}</p>
+              <p className={`${typography.body} text-muted-foreground`} key={i}>{p}</p>
             ))}
 
             <SocialLinks />

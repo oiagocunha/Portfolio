@@ -7,6 +7,7 @@ import { toast } from "@/hooks/use-toast";
 import { Send, Mail, Phone, MapPin } from "lucide-react";
 import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
+import { spacing, typography, iconSizes, borderRadius, transitions } from "@/constants/design-tokens";
 
 const Contact = () => {
   const { t } = useI18n();
@@ -34,7 +35,7 @@ const Contact = () => {
       formDataToSend.append("_captcha", "false");
       formDataToSend.append("_subject", subject ? `${t.contact.formSubject}: ${subject}` : t.contact.formSubject);
 
-      const response = await fetch("https://formsubmit.co/0abf524fd7a7652976c723ab11ef2cce", {
+      const response = await fetch(import.meta.env.VITE_FORMSUBMIT_ENDPOINT, {
         method: "POST",
         body: formDataToSend,
       });
@@ -57,10 +58,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contato" className="container py-16 md:py-24">
+    <section id="contato" className={`container ${spacing.section}`}>
       <FadeInSection>
-        <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">{t.contact.title}</h2>
-        <p className="mt-4 text-center text-muted-foreground max-w-2xl mx-auto">
+        <h2 className={`text-center ${typography.h2}`}>{t.contact.title}</h2>
+        <p className={`mt-4 text-center text-muted-foreground max-w-2xl mx-auto`}>
           {t.contact.subtitle}
         </p>
       </FadeInSection>
@@ -70,8 +71,8 @@ const Contact = () => {
           <div className="space-y-6">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="rounded-md border p-2 text-accent">
-                  <Mail className="h-5 w-5" />
+                <div className={`${borderRadius.md} border p-2 text-accent`}>
+                  <Mail className={iconSizes.md} />
                 </div>
                 <div>
                   <p className="font-medium">{t.contact.email}</p>
@@ -80,8 +81,8 @@ const Contact = () => {
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="rounded-md border p-2 text-accent">
-                  <MapPin className="h-5 w-5" />
+                <div className={`${borderRadius.md} border p-2 text-accent`}>
+                  <MapPin className={iconSizes.md} />
                 </div>
                 <div>
                   <p className="font-medium">{t.contact.location}</p>

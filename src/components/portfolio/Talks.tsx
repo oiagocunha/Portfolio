@@ -1,14 +1,15 @@
 import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
 import { TalkCard } from "@/components/shared";
+import { spacing, typography } from "@/constants/design-tokens";
 
 const Talks = () => {
   const { t } = useI18n();
 
   return (
-    <section id="palestras" className="container py-16 md:py-24 bg-muted/30">
+    <section id="palestras" className={`container ${spacing.section} bg-muted/30`}>
       <FadeInSection>
-        <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">
+        <h2 className={`text-center ${typography.h2}`}>
           {t.talks.title} <span className="gradient-text">{t.talks.subtitle}</span>.
         </h2>
       </FadeInSection>

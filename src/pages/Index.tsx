@@ -1,9 +1,6 @@
 import { lazy, Suspense } from "react";
-import Navbar from "@/components/portfolio/Navbar";
 import Hero from "@/components/portfolio/Hero";
-import ScrollTop from "@/components/portfolio/ScrollTop";
-import ScrollProgress from "@/components/portfolio/ScrollProgress";
-import { useI18n } from "@/i18n";
+import { MainLayout } from "@/layouts/MainLayout";
 
 // Lazy loaded sections (below the fold)
 const About = lazy(() => import("@/components/portfolio/About"));
@@ -28,44 +25,34 @@ const SectionSkeleton = () => (
 );
 
 const Index = () => {
-  const { t } = useI18n();
-
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <ScrollProgress />
-      <Navbar />
-      <main>
-        <Hero />
-        <Suspense fallback={<SectionSkeleton />}>
-          <About />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <Projects />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <section id="habilidades">
-            <Specialties />
-            <Technologies />
-          </section>
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <Certifications />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <Talks />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <Experience />
-        </Suspense>
-        <Suspense fallback={<SectionSkeleton />}>
-          <Contact />
-        </Suspense>
-      </main>
-      <ScrollTop />
-      <footer className="border-t py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Iago Cunha. {t.footer.rights}
-      </footer>
-    </div>
+    <MainLayout>
+      <Hero />
+      <Suspense fallback={<SectionSkeleton />}>
+        <About />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <Projects />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <section id="habilidades">
+          <Specialties />
+          <Technologies />
+        </section>
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <Certifications />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <Talks />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <Experience />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <Contact />
+      </Suspense>
+    </MainLayout>
   );
 };
 

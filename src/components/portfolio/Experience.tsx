@@ -1,14 +1,15 @@
 import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
 import { ExperienceCard } from "@/components/shared";
+import { spacing, typography } from "@/constants/design-tokens";
 
 const Experience = () => {
   const { t } = useI18n();
 
   return (
-    <section id="experiencia" className="container py-16 md:py-24">
+    <section id="experiencia" className={`container ${spacing.section}`}>
       <FadeInSection>
-        <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">
+        <h2 className={`text-center ${typography.h2}`}>
           {t.experience.title} <span className="gradient-text">{t.experience.subtitle}</span>.
         </h2>
       </FadeInSection>

@@ -3,11 +3,12 @@ import { Typewriter } from "./Typewriter";
 import { motion } from "framer-motion";
 import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
+import { typography, spacing, gradients } from "@/constants/design-tokens";
 
 const Hero = () => {
   const { t } = useI18n();
   return (
-    <section id="hero" className="relative container grid gap-8 pt-24 pb-12 md:grid-cols-2 md:py-24 lg:gap-10">
+    <section id="hero" className="relative container grid gap-8 pt-24 pb-12 md:grid-cols-2 lg:gap-10">
       {/* Animated gradient background */}
       <div aria-hidden className="pointer-events-none absolute inset-x-0 -top-10 -z-10 flex justify-center">
         <motion.div 
@@ -27,7 +28,7 @@ const Hero = () => {
       <FadeInSection delay={0.1}>
         <article>
           <motion.h1 
-            className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
+            className={typography.h1}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.25, 0.25, 0.25, 0.75] }}

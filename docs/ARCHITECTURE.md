@@ -151,6 +151,183 @@ Links sociais centralizados:
 - **CVA:** Variantes de componentes
 - **Framer Motion:** Animações
 
+### **Design Tokens System** 🎨
+
+Sistema centralizado de tokens de design para garantir consistência visual em todo o projeto.
+
+#### **Localização**
+```
+src/constants/design-tokens.ts
+```
+
+#### **Categorias de Tokens**
+
+**1. Icon Sizes** - Tamanhos responsivos de ícones
+```typescript
+iconSizes: {
+  xs: "h-3 w-3",      // 12px
+  sm: "h-4 w-4",      // 16px
+  md: "h-5 w-5",      // 20px
+  lg: "h-6 w-6",      // 24px
+  xl: "h-8 w-8",      // 32px
+}
+```
+
+**2. Typography** - Hierarquia tipográfica
+```typescript
+typography: {
+  h1: "text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight",
+  h2: "text-3xl md:text-4xl font-bold tracking-tight",
+  h3: "text-2xl md:text-3xl font-semibold",
+  h4: "text-xl md:text-2xl font-semibold",
+  body: "text-base md:text-lg",
+  small: "text-sm md:text-base",
+}
+```
+
+**3. Spacing** - Espaçamentos consistentes
+```typescript
+spacing: {
+  section: "py-16 md:py-24",        // Seções principais
+  sectionSmall: "py-8 md:py-12",    // Seções menores
+  container: "container",            // Container padrão
+}
+```
+
+**4. Transitions** - Animações padronizadas
+```typescript
+transitions: {
+  default: "transition-all duration-300",      // Padrão
+  fast: "transition-all duration-150",         // Rápida
+  slow: "transition-all duration-500",         // Lenta
+  colors: "transition-colors duration-300",    // Apenas cores
+  transform: "transition-transform duration-300", // Apenas transform
+}
+```
+
+**5. Shadows** - Efeitos de profundidade
+```typescript
+shadows: {
+  card: "hover:shadow-lg hover:shadow-primary/10",
+  cardStrong: "hover:shadow-xl hover:shadow-primary/20",
+}
+```
+
+**6. Gradients** - Gradientes consistentes
+```typescript
+gradients: {
+  primary: "bg-gradient-to-r from-primary/5 to-accent/5",
+  accent: "bg-gradient-to-r from-accent/10 to-primary/10",
+  text: "bg-gradient-to-r from-accent to-accent/70",
+}
+```
+
+**7. Z-Index** - Camadas de empilhamento
+```typescript
+zIndex: {
+  base: "z-0",
+  dropdown: "z-10",
+  sticky: "z-20",
+  fixed: "z-30",        // Navbar
+  modalBackdrop: "z-40",
+  modal: "z-50",
+  popover: "z-60",
+  tooltip: "z-70",
+}
+```
+
+**8. Border Radius** - Arredondamentos
+```typescript
+borderRadius: {
+  sm: "rounded-sm",
+  md: "rounded-md",
+  lg: "rounded-lg",
+  xl: "rounded-xl",
+  full: "rounded-full",
+}
+```
+
+**9. Gap** - Espaçamentos entre elementos
+```typescript
+gap: {
+  xs: "gap-1",
+  sm: "gap-2",
+  md: "gap-4",
+  lg: "gap-6",
+  xl: "gap-8",
+}
+```
+
+**10. Animations** - Animações Tailwind
+```typescript
+animations: {
+  fadeIn: "animate-in fade-in",
+  fadeOut: "animate-out fade-out",
+  slideInFromTop: "animate-in slide-in-from-top",
+  slideInFromBottom: "animate-in slide-in-from-bottom",
+  slideInFromLeft: "animate-in slide-in-from-left",
+  slideInFromRight: "animate-in slide-in-from-right",
+  spin: "animate-spin",
+  pulse: "animate-pulse",
+}
+```
+
+#### **Padrões de Uso**
+
+**❌ ANTES - Classes hardcoded**
+```tsx
+// Inconsistente, difícil de manter
+<h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+<Icon className="h-5 w-5" />
+<div className="transition-all duration-300 hover:shadow-lg">
+```
+
+**✅ DEPOIS - Design Tokens**
+```tsx
+import { typography, iconSizes, transitions, shadows } from "@/constants/design-tokens";
+
+<h2 className={typography.h2}>
+<Icon className={iconSizes.md} />
+<div className={`${transitions.default} ${shadows.card}`}>
+```
+
+#### **Benefícios**
+
+- ✅ **Consistência Visual** - Mesmos valores em todo o projeto
+- ✅ **Manutenibilidade** - Mudar 1 token atualiza todos os usos
+- ✅ **Type-Safety** - IntelliSense mostra tokens disponíveis
+- ✅ **Escalabilidade** - Fácil adicionar novos tokens
+- ✅ **Responsividade** - Tokens incluem breakpoints mobile-first
+- ✅ **Performance** - Classes reutilizadas = CSS menor
+
+#### **Componentes Aplicados**
+
+| Componente | Tokens Usados |
+|------------|---------------|
+| **About.tsx** | spacing, typography, transitions |
+| **Hero.tsx** | typography, spacing, gradients |
+| **Navbar.tsx** | zIndex, transitions, iconSizes, borderRadius |
+| **Contact.tsx** | spacing, typography, iconSizes, borderRadius, transitions |
+| **ProjectCard** | iconSizes, typography, transitions, shadows |
+| **StatCard** | typography |
+| **CertificationCard** | iconSizes, typography, transitions, shadows, gradients |
+| **Projects, Technologies, Specialties, Talks, Experience, Certifications** | spacing, typography |
+
+#### **Como Adicionar Novo Token**
+
+1. Editar `src/constants/design-tokens.ts`
+2. Adicionar nova categoria ou valor:
+   ```typescript
+   export const myToken = {
+     value: "tailwind-classes-here",
+   } as const;
+   ```
+3. Importar e usar:
+   ```typescript
+   import { myToken } from "@/constants/design-tokens";
+   <div className={myToken.value} />
+   ```
+
 ### **Tema**
 - Dark/Light mode via `ThemeToggle.tsx`
 - Variáveis CSS customizadas

@@ -2,14 +2,15 @@ import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
 import { ProjectCard } from "@/components/shared";
 import { projectIcons } from "@/constants/icons";
+import { spacing, typography } from "@/constants/design-tokens";
 
 const Projects = () => {
   const { t } = useI18n();
 
   return (
-    <section id="projetos" className="container py-16 md:py-24">
+    <section id="projetos" className={`container ${spacing.section}`}>
       <FadeInSection>
-        <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">{t.projects.title}</h2>
+        <h2 className={`text-center ${typography.h2}`}>{t.projects.title}</h2>
       </FadeInSection>
       
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

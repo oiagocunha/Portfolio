@@ -1,11 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useI18n } from "@/i18n";
+import { spacing, typography } from "@/constants/design-tokens";
 
 const Specialties = () => {
   const { t } = useI18n();
   return (
-    <section id="especialidades" className="container py-16 md:py-24">
-      <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">
+    <section id="especialidades" className={`container ${spacing.section}`}>
+      <h2 className={`text-center ${typography.h2}`}>
         {t.specialties.title} <span className="gradient-text">{t.specialties.subtitle}</span>.
       </h2>
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

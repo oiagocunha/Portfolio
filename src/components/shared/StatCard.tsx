@@ -1,4 +1,5 @@
 import AnimatedCounter from "../portfolio/AnimatedCounter";
+import { typography } from "@/constants/design-tokens";
 
 interface StatCardProps {
   value: number;
@@ -9,10 +10,10 @@ interface StatCardProps {
 export const StatCard = ({ value, suffix, label }: StatCardProps) => {
   return (
     <div className="space-y-1">
-      <div className="text-2xl md:text-3xl font-bold text-primary">
+      <div className={`${typography.h3} text-primary`}>
         <AnimatedCounter value={value} suffix={suffix} />
       </div>
-      <p className="text-xs md:text-sm text-muted-foreground">{label}</p>
+      <p className={`${typography.small} text-muted-foreground`}>{label}</p>
     </div>
   );
 };
