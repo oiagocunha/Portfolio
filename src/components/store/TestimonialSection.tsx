@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -63,13 +63,8 @@ export default function TestimonialSection() {
                   {/* Author */}
                   <div className="mt-6 flex items-center gap-3 border-t border-gray-50 pt-4">
                     <Avatar className="h-10 w-10 border-2 border-pink-100">
-                      <AvatarImage src={t.avatar} alt={t.name} />
                       <AvatarFallback className="bg-gradient-to-br from-pink-100 to-purple-100 text-xs font-bold text-pink-600">
-                        {t.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")
-                          .slice(0, 2)}
+                        {t.avatar}
                       </AvatarFallback>
                     </Avatar>
 
