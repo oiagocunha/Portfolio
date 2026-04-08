@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShoppingCart, Star } from "lucide-react";
 
@@ -34,6 +35,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       <Card className="group relative h-full overflow-hidden border-gray-100 bg-white transition-shadow hover:shadow-xl">
         {/* Image */}
         <CardHeader className="relative overflow-hidden p-0">
+          <Link to={`/loja/produto/${product.id}`}>
           <div className="aspect-square overflow-hidden bg-gray-50">
             <img
               src={product.image}
@@ -42,6 +44,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
               loading="lazy"
             />
           </div>
+          </Link>
 
           {/* Sale badge */}
           {discount && (
@@ -61,9 +64,9 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
 
         {/* Body */}
         <CardContent className="space-y-2 p-4">
-          <h3 className="line-clamp-1 text-sm font-semibold text-gray-900">
+          <Link to={`/loja/produto/${product.id}`} className="line-clamp-1 text-sm font-semibold text-gray-900 hover:text-pink-600 transition-colors">
             {product.name}
-          </h3>
+          </Link>
 
           <p className="line-clamp-2 text-xs text-gray-500">
             {product.description}
