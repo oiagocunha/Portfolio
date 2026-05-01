@@ -3,15 +3,22 @@ import { PortfolioContent } from '../types';
 export const pt: PortfolioContent = {
   hero: {
     greeting: 'Olá! Me chamo',
+    headline: 'Engenheiro Fullstack focado em sistemas resilientes, automação e interfaces de alta performance.',
     typewriter: [
-      'Backend Developer',
-      'Especialista em Automação',
-      'Integrador de Sistemas',
-      'Desenvolvedor de Soluções',
+      'Temporal + Kafka + Workflows Distribuídos',
+      'Automação n8n com impacto operacional real',
+      'APIs FastAPI/Node.js para sistemas críticos',
+      'Frontend React/Next.js orientado a performance',
     ],
-    description: 'Desenvolvedor backend focado em automação, integração de sistemas e orquestração de fluxos. Atuo com Python, Node.js e ferramentas como n8n e Temporal para construir soluções robustas e escaláveis.',
-    button: 'Entre em Contato',
+    description: 'Projeto e estabilizo produtos fullstack para cenários críticos, conectando backend, automação e frontend com foco em confiabilidade, escala e evolução contínua.',
+    primaryCta: 'Falar sobre uma vaga',
+    secondaryCta: 'Ver Case Study',
     alt: 'Foto de Iago Cunha, Backend Developer',
+    highlights: [
+      '80% de redução em erros operacionais com automações n8n',
+      'Diagnóstico e correção de falhas em workflows com Temporal, Kafka e DLQ',
+      'Integração ponta a ponta entre chat, orquestração e busca vetorial com foco em produção',
+    ],
   },
 
   about: {
@@ -36,7 +43,7 @@ export const pt: PortfolioContent = {
     items: [
       {
         emoji: '⚙️',
-        title: 'Backend Development',
+        title: 'Desenvolvimento Backend',
         description: 'Desenvolvimento de APIs, serviços e integrações com Python, Node.js, Express e PHP. Foco em robustez, escalabilidade e manutenibilidade.',
       },
       {
@@ -96,50 +103,83 @@ export const pt: PortfolioContent = {
 
   projects: {
     title: 'MEU PORTFÓLIO.',
+    subtitle: 'Projetos com foco em impacto de negócio, decisões técnicas e complexidade real.',
     demo: 'Demo',
     code: 'Código',
+    caseStudy: 'Case Study',
     items: [
       {
         title: 'Simulador CLT - Sistema Governamental',
-        description: 'Ferramenta oficial para beneficiários do Bolsa Família. Interface responsiva e validações complexas.',
+        description: 'Produto oficial para beneficiários do Bolsa Família com regras financeiras sensíveis e validações de alta criticidade.',
         demo: 'https://simuladorclt.observatorio.ind.br/',
+        caseStudyPath: '/case-study/Chat-platform',
         image: '/images/simuladorCLT.png',
         alt: 'Thumbnail do projeto Simulador CLT',
         technologies: ['React', 'JavaScript', 'Tailwind CSS', 'API Integration'],
+        complexity: 'High',
+        impact: [
+          'Converte regra governamental complexa em experiência simples',
+          'Reduziu fricção no entendimento de benefícios',
+          'Garantiu consistência em múltiplos cenários de simulação',
+        ],
       },
       {
         title: 'Xuxiê - E-commerce',
-        description: 'Loja virtual responsiva com integração ViaCEP e pedidos via WhatsApp.',
+        description: 'E-commerce focado em conversão mobile, checkout simplificado e integração de pedidos via WhatsApp.',
         demo: 'https://xuxie-croche.vercel.app/',
         image: '/images/xuxie-croche.png',
         alt: 'Thumbnail do projeto Xuxiê E-commerce',
         technologies: ['React', 'JavaScript', 'Tailwind CSS', 'WhatsApp API'],
+        complexity: 'Medium',
+        impact: [
+          'Fluxo de compra simplificado para mobile-first',
+          'Integração ViaCEP para reduzir erros de cadastro',
+          'Canal direto de venda via WhatsApp',
+        ],
       },
       {
         title: 'Sistema de Gestão de Notas',
-        description: 'Aplicação desktop com Python/Tkinter para gerenciamento de notas.',
+        description: 'Aplicação desktop para gestão acadêmica com persistência local e fluxo de operação simplificado.',
         repo: 'https://github.com/oiagocunha/sistema_notas',
         image: '/images/sistema_notas.png',
         alt: 'Thumbnail do Sistema de Gestão de Notas',
         technologies: ['Python', 'Tkinter', 'SQLite'],
+        complexity: 'Medium',
+        impact: [
+          'Centralizou lançamentos e consultas de notas',
+          'Reduziu esforço manual em rotinas acadêmicas',
+          'Interface desktop de baixo custo operacional',
+        ],
       },
       {
         title: 'QR Code Generator',
-        description: 'Geração de QR Codes com exportação de imagens.',
+        description: 'Ferramenta para geração dinâmica de QR Codes com foco em velocidade de uso e exportação direta.',
         demo: 'https://link-to-qr-code.vercel.app/',
         repo: 'https://github.com/oiagocunha/link-to-qrCode',
         image: '/images/QRCode.png',
         alt: 'Thumbnail do QR Code Generator',
         technologies: ['React', 'JavaScript', 'QR Library'],
+        complexity: 'Low',
+        impact: [
+          'Acelerou geração de identificadores em rotinas internas',
+          'UX enxuta para execução em segundos',
+          'Redução de gargalos em processos documentais',
+        ],
       },
       {
         title: 'Sistema de Gestão de Produtos',
-        description: 'CRUD com persistência local em LocalStorage.',
+        description: 'CRUD de produtos com persistência local e arquitetura focada em aprendizado de fundamentos.',
         demo: 'https://oiagocunha.github.io/Cadastro_Produtos/',
         repo: 'https://github.com/oiagocunha/Cadastro_Produtos',
         image: '/images/CRUD.png',
         alt: 'Thumbnail do Sistema de Gestão de Produtos',
         technologies: ['HTML', 'CSS', 'JavaScript', 'LocalStorage'],
+        complexity: 'Low',
+        impact: [
+          'Base sólida de modelagem CRUD e estado local',
+          'Estrutura simples para extensão futura',
+          'Exercício prático de fundamentos de frontend',
+        ],
       },
     ],
   },
@@ -198,13 +238,13 @@ export const pt: PortfolioContent = {
     attendees: 'participantes',
     items: [
       {
-        title: 'Apresentação da Plataforma nInA',
+        title: 'Apresentação da Plataforma Chat IA',
         event: 'Observatório da Indústria - Sistema FIEC',
-        date: '2025',
+        date: '2026',
         location: 'Fortaleza, CE',
-        description: 'Apresentação técnica sobre a arquitetura, funcionalidades e implementação da plataforma nInA, sistema de inteligência artificial para análise de dados industriais.',
+        description: 'Apresentação técnica sobre a arquitetura, funcionalidades e implementação da plataforma chat IA, sistema de inteligência artificial para análise de dados industriais.',
         attendees: 20,
-        topics: ['nInA', 'Arquitetura', 'Integração', 'IA'],
+        topics: ['Chat Agent IA', 'Arquitetura', 'Integração', 'IA'],
       },
       {
         title: 'Orquestração de Workflows com Temporal',
@@ -236,7 +276,7 @@ export const pt: PortfolioContent = {
         role: 'Backend Developer | Automation & Data',
         period: '2025 - Presente (PJ)',
         description: [
-          'Desenvolvimento e manutenção de sistemas críticos em produção (nInA, GovMonitor)',
+          'Desenvolvimento e manutenção de sistemas críticos em produção (Chat IA, GovMonitor)',
           'Automação de processos e orquestração de workflows com n8n e Temporal',
           'Integração de sistemas e APIs, gestão de estado e resiliência',
           'Trabalho com Python, Node.js e bancos de dados relacionais e NoSQL',
@@ -302,7 +342,7 @@ export const pt: PortfolioContent = {
       { href: '#contato', label: 'Contato' },
     ],
     downloadCV: 'Baixar CV',
-    cvPath: '/Currículo - Iago Cunha - Desenvolvedor FullStack.pdf',
+    cvPath: '/[PT] Currículo - Dev. Fullstack- Iago Cunha.pdf',
   },
 
   footer: {

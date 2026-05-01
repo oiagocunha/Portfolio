@@ -3,15 +3,22 @@ import { PortfolioContent } from '../types';
 export const es: PortfolioContent = {
   hero: {
     greeting: '¡Hola! Me llamo',
+    headline: 'Ingeniero Fullstack enfocado en sistemas resilientes, automatización e interfaces de alto rendimiento.',
     typewriter: [
-      'Desarrollador Backend',
-      'Especialista en Automatización',
-      'Integrador de Sistemas',
-      'Desarrollador de Soluciones',
+      'Temporal + Kafka + Workflows Distribuidos',
+      'Automatización n8n con resultados medibles',
+      'APIs FastAPI/Node.js para sistemas críticos',
+      'Frontend React/Next.js orientado a performance',
     ],
-    description: 'Desarrollador backend enfocado en automatización, integración de sistemas y orquestación de flujos. Trabajo con Python, Node.js y herramientas como n8n y Temporal para construir soluciones robustas y escalables.',
-    button: 'Contactar',
+    description: 'Convierto reglas de negocio complejas en productos confiables: reduje errores operativos en 80%, implementé workflows asíncronos con retry/backoff/DLQ y evolucioné sistemas críticos en producción con enfoque en escalabilidad y observabilidad.',
+    primaryCta: 'Hablar sobre una vacante',
+    secondaryCta: 'Ver Case Study',
     alt: 'Foto de Iago Cunha, Desarrollador Backend',
+    highlights: [
+      '80% menos errores operativos con automatizaciones n8n',
+      'Workflows resilientes con Temporal, Kafka, retry/backoff y DLQ',
+      'Sistemas críticos con observabilidad y foco en performance',
+    ],
   },
 
   about: {
@@ -96,16 +103,25 @@ export const es: PortfolioContent = {
 
   projects: {
     title: 'MI PORTAFOLIO.',
+    subtitle: 'Proyectos orientados a impacto de negocio, decisiones técnicas y complejidad real.',
     demo: 'Demo',
     code: 'Código',
+    caseStudy: 'Case Study',
     items: [
       {
         title: 'Simulador CLT - Sistema Gubernamental',
-        description: 'Herramienta oficial para beneficiarios de Bolsa Família. Interfaz responsiva y validaciones complejas.',
+        description: 'Producto oficial para beneficiarios de Bolsa Família con reglas financieras críticas y validaciones complejas.',
         demo: 'https://simuladorclt.observatorio.ind.br/',
+        caseStudyPath: '/case-study/Chat-platform',
         image: '/images/simuladorCLT.png',
         alt: 'Miniatura del proyecto Simulador CLT',
         technologies: ['React', 'JavaScript', 'Tailwind CSS', 'API Integration'],
+        complexity: 'High',
+        impact: [
+          'Convirtió reglas complejas en una experiencia clara',
+          'Redujo fricción en simulaciones de beneficios',
+          'Consistencia en múltiples escenarios',
+        ],
       },
       {
         title: 'Xuxiê - E-commerce',
@@ -114,6 +130,12 @@ export const es: PortfolioContent = {
         image: '/images/xuxie-croche.png',
         alt: 'Miniatura del proyecto Xuxiê E-commerce',
         technologies: ['React', 'JavaScript', 'Tailwind CSS', 'WhatsApp API'],
+        complexity: 'Medium',
+        impact: [
+          'Flujo de compra mobile-first',
+          'ViaCEP redujo errores de dirección',
+          'Canal directo de venta por WhatsApp',
+        ],
       },
       {
         title: 'Sistema de Gestión de Notas',
@@ -122,6 +144,12 @@ export const es: PortfolioContent = {
         image: '/images/sistema_notas.png',
         alt: 'Miniatura del Sistema de Gestión de Notas',
         technologies: ['Python', 'Tkinter', 'SQLite'],
+        complexity: 'Medium',
+        impact: [
+          'Centralizó gestión académica',
+          'Disminuyó tareas manuales',
+          'Experiencia desktop liviana',
+        ],
       },
       {
         title: 'Generador de Códigos QR',
@@ -131,6 +159,12 @@ export const es: PortfolioContent = {
         image: '/images/QRCode.png',
         alt: 'Miniatura del Generador de Códigos QR',
         technologies: ['React', 'JavaScript', 'QR Library'],
+        complexity: 'Low',
+        impact: [
+          'Aceleró generación de identificadores',
+          'UX simple para ejecución rápida',
+          'Menor fricción en rutinas documentales',
+        ],
       },
       {
         title: 'Sistema de Gestión de Productos',
@@ -140,6 +174,12 @@ export const es: PortfolioContent = {
         image: '/images/CRUD.png',
         alt: 'Miniatura del Sistema de Gestión de Productos',
         technologies: ['HTML', 'CSS', 'JavaScript', 'LocalStorage'],
+        complexity: 'Low',
+        impact: [
+          'Base sólida en CRUD y estado local',
+          'Estructura simple para crecer',
+          'Demostración práctica de fundamentos',
+        ],
       },
     ],
   },
@@ -198,13 +238,13 @@ export const es: PortfolioContent = {
     attendees: 'participantes',
     items: [
       {
-        title: 'Presentación de la Plataforma nInA',
+        title: 'Presentación de la Plataforma de Chat IA',
         event: 'Observatorio de la Industria - Sistema FIEC',
         date: '2025',
         location: 'Fortaleza, CE',
-        description: 'Presentación técnica sobre la arquitectura, funcionalidades e implementación de la plataforma nInA, sistema de inteligencia artificial para análisis de datos industriales.',
+        description: 'Presentación técnica sobre la arquitectura, funcionalidades e implementación de la plataforma chat IA, sistema de inteligencia artificial para análisis de datos industriales.',
         attendees: 20,
-        topics: ['nInA', 'Arquitectura', 'Integración', 'IA'],
+        topics: ['Chat Agent IA', 'Arquitectura', 'Integración', 'IA'],
       },
       {
         title: 'Orquestación de Workflows con Temporal',
@@ -236,7 +276,7 @@ export const es: PortfolioContent = {
         role: 'Desarrollador Backend | Automatización y Datos',
         period: '2025 - Presente (Contratista)',
         description: [
-          'Desarrollo y mantenimiento de sistemas críticos en producción (nInA, GovMonitor)',
+          'Desarrollo y mantenimiento de sistemas críticos en producción (Chat IA, GovMonitor)',
           'Automatización de procesos y orquestación de workflows con n8n y Temporal',
           'Integración de sistemas y APIs, gestión de estado y resiliencia',
           'Trabajo con Python, Node.js y bases de datos relacionales y NoSQL',
@@ -302,7 +342,7 @@ export const es: PortfolioContent = {
       { href: '#contato', label: 'Contacto' },
     ],
     downloadCV: 'Descargar CV',
-    cvPath: '/[ES] Currículum - Iago Cunha - Desarrollador Full Stack.pdf',
+    cvPath: '/[EN] Resume - Iago Cunha - FullStack Developer.pdf',
   },
 
   footer: {

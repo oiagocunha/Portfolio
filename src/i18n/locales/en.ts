@@ -3,15 +3,22 @@ import { PortfolioContent } from '../types';
 export const en: PortfolioContent = {
   hero: {
     greeting: 'Hello! I am',
+    headline: 'Fullstack Engineer focused on resilient systems, automation, and high-performance interfaces.',
     typewriter: [
-      'Backend Developer',
-      'Automation Specialist',
-      'Systems Integrator',
-      'Solutions Developer',
+      'Temporal + Kafka + Distributed Workflows',
+      'n8n Automation with measurable outcomes',
+      'FastAPI/Node.js APIs for critical systems',
+      'React/Next.js frontend with performance focus',
     ],
-    description: 'Backend developer focused on automation, system integration, and workflow orchestration. I work with Python, Node.js, and tools like n8n and Temporal to build robust and scalable solutions.',
-    button: 'Get in Touch',
+    description: 'I turn complex business rules into reliable products: reduced operational errors by 80%, implemented asynchronous workflows with retry/backoff/DLQ, and evolved critical production systems with scalability and observability in mind.',
+    primaryCta: 'Discuss an opportunity',
+    secondaryCta: 'Read Case Study',
     alt: 'Photo of Iago Cunha, Backend Developer',
+    highlights: [
+      '80% reduction in operational errors through n8n automation',
+      'Resilient workflows with Temporal, Kafka, retry/backoff and DLQ',
+      'Critical production systems with observability and performance focus',
+    ],
   },
 
   about: {
@@ -96,16 +103,25 @@ export const en: PortfolioContent = {
 
   projects: {
     title: 'MY PORTFOLIO.',
+    subtitle: 'Projects emphasizing business impact, technical decisions, and real complexity.',
     demo: 'Demo',
     code: 'Code',
+    caseStudy: 'Case Study',
     items: [
       {
         title: 'CLT Simulator - Government System',
-        description: 'Official tool for Bolsa Família beneficiaries. Responsive interface and complex validations.',
+        description: 'Official product for Bolsa Família beneficiaries with critical financial rules and complex validations.',
         demo: 'https://simuladorclt.observatorio.ind.br/',
+        caseStudyPath: '/case-study/Chat-platform',
         image: '/images/simuladorCLT.png',
         alt: 'CLT Simulator project thumbnail',
         technologies: ['React', 'JavaScript', 'Tailwind CSS', 'API Integration'],
+        complexity: 'High',
+        impact: [
+          'Translated complex government rules into clear UX',
+          'Reduced friction for benefit simulation flows',
+          'Ensured consistency across multiple scenarios',
+        ],
       },
       {
         title: 'Xuxiê - E-commerce',
@@ -114,6 +130,12 @@ export const en: PortfolioContent = {
         image: '/images/xuxie-croche.png',
         alt: 'Xuxiê E-commerce project thumbnail',
         technologies: ['React', 'JavaScript', 'Tailwind CSS', 'WhatsApp API'],
+        complexity: 'Medium',
+        impact: [
+          'Mobile-first purchase flow',
+          'Address lookup reduced data-entry mistakes',
+          'Direct sales channel through WhatsApp',
+        ],
       },
       {
         title: 'Grade Management System',
@@ -122,6 +144,12 @@ export const en: PortfolioContent = {
         image: '/images/sistema_notas.png',
         alt: 'Grade Management System thumbnail',
         technologies: ['Python', 'Tkinter', 'SQLite'],
+        complexity: 'Medium',
+        impact: [
+          'Centralized grade-management operations',
+          'Reduced manual academic routines',
+          'Lightweight desktop experience',
+        ],
       },
       {
         title: 'QR Code Generator',
@@ -131,6 +159,12 @@ export const en: PortfolioContent = {
         image: '/images/QRCode.png',
         alt: 'QR Code Generator thumbnail',
         technologies: ['React', 'JavaScript', 'QR Library'],
+        complexity: 'Low',
+        impact: [
+          'Faster identifier generation workflows',
+          'Simple UX for quick execution',
+          'Lower friction in document routines',
+        ],
       },
       {
         title: 'Product Management System',
@@ -140,6 +174,12 @@ export const en: PortfolioContent = {
         image: '/images/CRUD.png',
         alt: 'Product Management System thumbnail',
         technologies: ['HTML', 'CSS', 'JavaScript', 'LocalStorage'],
+        complexity: 'Low',
+        impact: [
+          'Strong CRUD/state-management foundations',
+          'Simple structure for future extension',
+          'Practical frontend fundamentals showcase',
+        ],
       },
     ],
   },
@@ -198,13 +238,13 @@ export const en: PortfolioContent = {
     attendees: 'attendees',
     items: [
       {
-        title: 'nInA Platform Presentation',
+        title: 'Platform Presentation',
         event: 'Industry Observatory - FIEC System',
         date: '2025',
         location: 'Fortaleza, CE',
-        description: 'Technical presentation on the architecture, features, and implementation of the nInA platform, an AI system for industrial data analysis.',
+        description: 'Technical presentation on the architecture, features, and implementation of the chat platform, an AI system for industrial data analysis.',
         attendees: 20,
-        topics: ['nInA', 'Architecture', 'Integration', 'AI'],
+        topics: ['Chat Agent IA', 'Architecture', 'Integration', 'AI'],
       },
       {
         title: 'Workflow Orchestration with Temporal',
@@ -236,7 +276,7 @@ export const en: PortfolioContent = {
         role: 'Backend Developer | Automation & Data',
         period: '2025 - Present (Contractor)',
         description: [
-          'Development and maintenance of critical production systems (nInA, GovMonitor)',
+          'Development and maintenance of critical production systems (chat IA, GovMonitor)',
           'Process automation and workflow orchestration with n8n and Temporal',
           'System and API integration, state management and resilience',
           'Work with Python, Node.js, and relational and NoSQL databases',

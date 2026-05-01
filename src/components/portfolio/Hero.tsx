@@ -3,7 +3,7 @@ import { Typewriter } from "./Typewriter";
 import { motion } from "framer-motion";
 import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
-import { typography, spacing, gradients } from "@/constants/design-tokens";
+import { typography } from "@/constants/design-tokens";
 
 const Hero = () => {
   const { t } = useI18n();
@@ -36,11 +36,20 @@ const Hero = () => {
             {t.hero.greeting} <span className="gradient-text">Iago Cunha</span>!
           </motion.h1>
           
+          <motion.h2
+            className="mt-3 text-xl font-semibold text-foreground/90 sm:text-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.25, 0.25, 0.75] }}
+          >
+            {t.hero.headline}
+          </motion.h2>
+
           <motion.p 
             className="mt-3 text-lg font-medium text-accent sm:text-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.25, 0.25, 0.75] }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.25, 0.25, 0.75] }}
           >
             <Typewriter words={t.hero.typewriter} />
           </motion.p>
@@ -49,13 +58,27 @@ const Hero = () => {
             className="mt-4 text-base text-muted-foreground max-w-prose md:text-lg lg:mt-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.25, 0.25, 0.75] }}
+            transition={{ duration: 0.8, delay: 0.45, ease: [0.25, 0.25, 0.25, 0.75] }}
           >
             {t.hero.description}
           </motion.p>
+
+          <motion.ul
+            className="mt-5 space-y-2 text-sm text-muted-foreground md:text-base"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.55, ease: [0.25, 0.25, 0.25, 0.75] }}
+          >
+            {t.hero.highlights.map((highlight) => (
+              <li key={highlight} className="flex items-start gap-2">
+                <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+                <span>{highlight}</span>
+              </li>
+            ))}
+          </motion.ul>
           
           <motion.div 
-            className="mt-6 md:mt-8"
+            className="mt-6 flex flex-col gap-3 sm:flex-row md:mt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.25, 0.25, 0.75] }}
@@ -66,7 +89,16 @@ const Hero = () => {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
-                <a href="#contato">{t.hero.button}</a>
+                <a href="#contato">{t.hero.primaryCta}</a>
+              </Button>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            >
+              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
+                <a href="/case-study/Chat-platform">{t.hero.secondaryCta}</a>
               </Button>
             </motion.div>
           </motion.div>

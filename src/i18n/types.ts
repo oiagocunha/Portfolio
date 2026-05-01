@@ -4,10 +4,13 @@ export type Locale = 'pt' | 'en' | 'es';
 export interface PortfolioContent {
   hero: {
     greeting: string;
+    headline: string;
     typewriter: string[];
     description: string;
-    button: string;
+    primaryCta: string;
+    secondaryCta: string;
     alt: string;
+    highlights: string[];
   };
   
   about: {
@@ -41,16 +44,21 @@ export interface PortfolioContent {
   
   projects: {
     title: string;
+    subtitle: string;
     demo: string;
     code: string;
+    caseStudy: string;
     items: Array<{
       title: string;
       description: string;
       demo?: string;
       repo?: string;
+      caseStudyPath?: string;
       image: string;
       alt: string;
       technologies: string[];
+      complexity: 'Low' | 'Medium' | 'High' | 'Very High';
+      impact: string[];
     }>;
   };
   

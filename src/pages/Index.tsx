@@ -5,6 +5,7 @@ import { MainLayout } from "@/layouts/MainLayout";
 // Lazy loaded sections (below the fold)
 const About = lazy(() => import("@/components/portfolio/About"));
 const Projects = lazy(() => import("@/components/portfolio/Projects"));
+const WorkflowShowcase = lazy(() => import("@/components/portfolio/WorkflowShowcase"));
 const Specialties = lazy(() => import("@/components/portfolio/Specialties"));
 const Technologies = lazy(() => import("@/components/portfolio/Technologies"));
 const Certifications = lazy(() => import("@/components/portfolio/Certifications"));
@@ -33,6 +34,9 @@ const Index = () => {
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <Projects />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <WorkflowShowcase />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <section id="habilidades">

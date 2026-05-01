@@ -6,10 +6,27 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/i18n";
 import { zIndex, transitions, iconSizes, borderRadius } from "@/constants/design-tokens";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const { t } = useI18n();
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  const handleSectionNav = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) return;
+    event.preventDefault();
+
+    if (location.pathname !== "/") {
+      window.location.href = `/${href}`;
+      return;
+    }
+
+    const section = document.querySelector(href);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <header className={`fixed top-0 left-0 w-full ${zIndex.fixed} border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg`}>
@@ -27,6 +44,7 @@ const Navbar = () => {
             <a
               key={item.href}
               href={item.href}
+              onClick={(event) => handleSectionNav(event, item.href)}
               className={`text-sm font-medium ${transitions.colors} hover:text-primary story-link`}
             >
               {item.label}
@@ -69,7 +87,10 @@ const Navbar = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(event) => {
+                    handleSectionNav(event, item.href);
+                    setIsOpen(false);
+                  }}
                   className={`block py-2 text-sm font-medium ${transitions.colors} hover:text-primary`}
                 >
                   {item.label}
