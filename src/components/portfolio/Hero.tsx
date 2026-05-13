@@ -27,23 +27,29 @@ const Hero = () => {
 
       <FadeInSection delay={0.1}>
         <article>
-          <motion.h1 
+          <motion.h1
             className={typography.h1}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.25, 0.25, 0.25, 0.75] }}
           >
-            {t.hero.greeting} <span className="gradient-text">Iago Cunha</span>!
+            <span className="block text-lg font-normal text-muted-foreground sm:text-xl">
+              {t.hero.greeting}
+            </span>
+            <span className="gradient-text">Iago Cunha</span>
+            <span className="mt-2 block text-xl font-semibold text-foreground/90 sm:text-2xl">
+              {t.hero.role}
+            </span>
           </motion.h1>
-          
-          <motion.h2
-            className="mt-3 text-xl font-semibold text-foreground/90 sm:text-2xl"
+
+          <motion.p
+            className="mt-3 text-lg font-semibold text-foreground/90 sm:text-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.25, 0.25, 0.75] }}
           >
             {t.hero.headline}
-          </motion.h2>
+          </motion.p>
 
           <motion.p 
             className="mt-3 text-lg font-medium text-accent sm:text-xl"

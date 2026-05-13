@@ -48,6 +48,7 @@ export interface PortfolioContent {
     primaryCta: string;
     secondaryCta: string;
     alt: string;
+    role: string;
     highlights: string[];
   };
   
@@ -172,6 +173,25 @@ export interface PortfolioContent {
   
   footer: {
     rights: string;
+  };
+
+  seo: {
+    siteName: string;
+    keywords: string;
+    pages: {
+      home: {
+        title: string;
+        description: string;
+      };
+      chatCaseStudy: {
+        title: string;
+        description: string;
+      };
+      publicDataCaseStudy: {
+        title: string;
+        description: string;
+      };
+    };
   };
 
   caseStudies: {

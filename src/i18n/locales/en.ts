@@ -15,7 +15,8 @@ export const en: PortfolioContent = {
       'I am a fullstack developer with most of my work on backend, APIs, and system integration, using Python (FastAPI), Node.js, and async architectures. I also use React and Next.js when it helps shape the final product. I have worked with workflows (Temporal), messaging/events (Kafka), and automations with n8n.',
     primaryCta: 'Get in touch',
     secondaryCta: 'Read case study',
-    alt: 'Photo of Iago Cunha, backend developer',
+    alt: 'Photo of Iago Cunha, fullstack and backend developer',
+    role: 'Fullstack · Backend · Frontend Developer',
     highlights: [
       '~80% drop in operational errors with n8n automations',
       'Fixed failures in flows with Temporal, Kafka, and vector search (RAG)',
@@ -414,6 +415,32 @@ export const en: PortfolioContent = {
 
   footer: {
     rights: 'All rights reserved.',
+  },
+
+  seo: {
+    siteName: 'Iago Cunha | Portfolio',
+    keywords:
+      'Iago Cunha, fullstack developer, backend developer, frontend developer, desenvolvedor fullstack, Python developer, FastAPI, React, Next.js, Node.js, Temporal, Kafka, PostgreSQL, Fortaleza Brazil, software engineer portfolio',
+    pages: {
+      home: {
+        title:
+          'Iago Cunha | Fullstack, Backend & Frontend Developer in Brazil',
+        description:
+          'Portfolio of Iago Cunha, a fullstack developer focused on backend, APIs, and automation. Python, FastAPI, Temporal, Kafka, React, and Next.js. Projects, case studies, and contact.',
+      },
+      chatCaseStudy: {
+        title:
+          'Case Study: AI Chat Platform with Temporal and RAG | Iago Cunha',
+        description:
+          'How I stabilized an AI chat platform with Temporal, Kafka, RAG, and LDAP. A backend and distributed systems case study by Iago Cunha.',
+      },
+      publicDataCaseStudy: {
+        title:
+          'Case Study: Public Data Pipeline with FastAPI | Iago Cunha',
+        description:
+          'FastAPI service for news collection, PostgreSQL deduplication, and published Swagger docs. Backend case study by Iago Cunha, fullstack developer.',
+      },
+    },
   },
 
   caseStudies: {

@@ -15,7 +15,8 @@ export const pt: PortfolioContent = {
       "Sou desenvolvedor fullstack, com maior atuação em backend, APIs e integração entre sistemas, com python (fastapi), node.js e arquiteturas assíncronas. Possuo, também, experiência em frontend com react e next.js, para maior controle da experiência final do produto. Além de vivencia com a criação de workflows (temporal), mensagerias/eventos (Kafka) e automações com n8n.",
     primaryCta: "Entre em contato",
     secondaryCta: "Ver case study",
-    alt: "Foto de Iago Cunha, desenvolvedor backend",
+    alt: "Foto de Iago Cunha, desenvolvedor fullstack e backend",
+    role: "Desenvolvedor Fullstack · Backend · Frontend",
     highlights: [
       "Redução de ~80% em erros operacionais com automações n8n",
       "Correção de falhas em fluxos com Temporal, Kafka e busca vetorial (RAG)",
@@ -414,6 +415,32 @@ export const pt: PortfolioContent = {
 
   footer: {
     rights: "Todos os direitos reservados.",
+  },
+
+  seo: {
+    siteName: "Iago Cunha | Portfólio",
+    keywords:
+      "Iago Cunha, desenvolvedor fullstack, desenvolvedor backend, desenvolvedor frontend, fullstack developer, backend developer, frontend developer, Python, FastAPI, React, Next.js, Node.js, Temporal, Kafka, n8n, PostgreSQL, Fortaleza, Ceará, Brasil, portfólio desenvolvedor",
+    pages: {
+      home: {
+        title:
+          "Iago Cunha | Desenvolvedor Fullstack, Backend e Frontend em Fortaleza",
+        description:
+          "Portfólio de Iago Cunha, desenvolvedor fullstack com foco em backend, APIs e automação. Python, FastAPI, Temporal, Kafka, React e Next.js. Projetos, case studies e contato.",
+      },
+      chatCaseStudy: {
+        title:
+          "Case Study: Plataforma de Chat com IA, Temporal e RAG | Iago Cunha",
+        description:
+          "Como estabilizei uma plataforma de chat com IA usando Temporal, Kafka, RAG e LDAP. Case study de backend e sistemas distribuídos por Iago Cunha.",
+      },
+      publicDataCaseStudy: {
+        title:
+          "Case Study: Pipeline de Dados Públicos com FastAPI | Iago Cunha",
+        description:
+          "API em FastAPI para coleta de notícias, deduplicação no PostgreSQL e Swagger publicado. Case study de backend por Iago Cunha, desenvolvedor fullstack.",
+      },
+    },
   },
 
   caseStudies: {
