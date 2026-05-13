@@ -13,7 +13,6 @@ const LanguageToggle = () => {
   const languages = [
     { code: "pt" as Locale, label: "Português", flag: "🇧🇷" },
     { code: "en" as Locale, label: "English", flag: "🇺🇸" },
-    { code: "es" as Locale, label: "Español", flag: "🇪🇸" },
   ];
 
   const currentLanguage = languages.find(lang => lang.code === locale);

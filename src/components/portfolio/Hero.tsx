@@ -98,7 +98,7 @@ const Hero = () => {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-                <a href="/case-study/Chat-platform">{t.hero.secondaryCta}</a>
+                <a href="/case-study/chat-platform">{t.hero.secondaryCta}</a>
               </Button>
             </motion.div>
           </motion.div>

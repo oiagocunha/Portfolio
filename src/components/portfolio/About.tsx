@@ -14,7 +14,7 @@ const About = () => {
 
       {/* Stats Section */}
       <FadeInSection delay={0.2}>
-        <div className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+        <div className="mt-6 grid grid-cols-2 lg:grid-cols-3 gap-4 text-center">
           {t.about.stats.map((stat) => (
             <StatCard key={stat.label} {...stat} />
           ))}

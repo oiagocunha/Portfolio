@@ -1,5 +1,43 @@
 // Contrato central de tipos para todo o conteúdo do portfólio
-export type Locale = 'pt' | 'en' | 'es';
+export type Locale = 'pt' | 'en';
+
+export interface CaseStudyPage {
+  label: string;
+  title: string;
+  subtitle: string;
+  tags: string[];
+  summaryCards: Array<{
+    title: string;
+    paragraphs: string[];
+  }>;
+  imageAlt?: string;
+  architectureTitle: string;
+  diagramTitles: {
+    systemFlow: string;
+    backendArchitecture: string;
+    sequence: string;
+  };
+  charts: {
+    systemFlow: string;
+    backendArchitecture: string;
+    sequence: string;
+  };
+  detailCards: Array<{
+    title: string;
+    items: string[];
+  }>;
+  roleTitle: string;
+  roles: Array<{
+    label: string;
+    text: string;
+  }>;
+  cta: {
+    demo?: string;
+    github?: string;
+    backToProjects: string;
+    contact: string;
+  };
+}
 
 export interface PortfolioContent {
   hero: {
@@ -41,6 +79,21 @@ export interface PortfolioContent {
       content: string;
     }>;
   };
+
+  workflowShowcase: {
+    title: string;
+    subtitle: string;
+    cardTitle: string;
+    inPracticeLabel: string;
+    inPracticeText: string;
+    cta: string;
+    stages: Array<{
+      id: string;
+      title: string;
+      goal: string;
+      tech: string[];
+    }>;
+  };
   
   projects: {
     title: string;
@@ -73,21 +126,6 @@ export interface PortfolioContent {
       credential: string;
       link: string;
       skills: string[];
-    }>;
-  };
-  
-  talks: {
-    title: string;
-    subtitle: string;
-    attendees: string;
-    items: Array<{
-      title: string;
-      event: string;
-      date: string;
-      location: string;
-      description: string;
-      attendees?: number;
-      topics: string[];
     }>;
   };
   
@@ -134,5 +172,10 @@ export interface PortfolioContent {
   
   footer: {
     rights: string;
+  };
+
+  caseStudies: {
+    publicData: CaseStudyPage;
+    chatPlatform: CaseStudyPage;
   };
 }

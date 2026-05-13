@@ -60,7 +60,7 @@ function MeuComponente() {
 }
 ```
 
-### 3. Exemplo Real: Hero Component
+### 3. Exemplo: Hero Component
 
 **Antes (com condicionais):**
 

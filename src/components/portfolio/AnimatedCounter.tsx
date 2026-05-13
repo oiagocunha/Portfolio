@@ -1,5 +1,5 @@
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { animate, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 interface AnimatedCounterProps {
   value: number;
@@ -7,31 +7,40 @@ interface AnimatedCounterProps {
   duration?: number;
 }
 
-const AnimatedCounter = ({ value, suffix = "", duration = 2 }: AnimatedCounterProps) => {
+const getDuration = (value: number) => {
+  // Números pequenos: tempo suficiente para ver 0 → 1 → 2 → ...
+  // Números grandes: um pouco mais longo, mas com teto para não travar
+  return Math.min(3, Math.max(1.8, value * 0.04));
+};
+
+const AnimatedCounter = ({ value, suffix = "", duration }: AnimatedCounterProps) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, {
-    damping: 60,
-    stiffness: 100,
-    duration: duration * 1000,
-  });
+  const [display, setDisplay] = useState(0);
   const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
 
   useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [motionValue, isInView, value]);
+    if (!isInView) return;
 
-  useEffect(() => {
-    springValue.on("change", (latest) => {
-      if (ref.current) {
-        ref.current.textContent = Math.floor(latest) + suffix;
-      }
+    const animationDuration = duration ?? getDuration(value);
+
+    const controls = animate(0, value, {
+      duration: animationDuration,
+      // linear faz cada degrau do contador aparecer de forma mais perceptível
+      ease: "linear",
+      onUpdate: (latest) => {
+        setDisplay(latest >= value ? value : Math.floor(latest));
+      },
     });
-  }, [springValue, suffix]);
 
-  return <span ref={ref}>0{suffix}</span>;
+    return () => controls.stop();
+  }, [isInView, value, duration]);
+
+  return (
+    <span ref={ref}>
+      {display}
+      {suffix}
+    </span>
+  );
 };
 
 export default AnimatedCounter;

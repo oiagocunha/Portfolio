@@ -5,48 +5,24 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { spacing, typography } from "@/constants/design-tokens";
-
-const workflowStages = [
-  {
-    id: "ingestion",
-    title: "1. Ingestao de evento",
-    tech: ["Kafka", "Webhook", "FastAPI"],
-    goal: "Receber eventos com idempotencia e rastreabilidade.",
-  },
-  {
-    id: "orchestration",
-    title: "2. Orquestracao resiliente",
-    tech: ["Temporal", "Retry", "Backoff"],
-    goal: "Executar workflow distribuido com controle de falhas transientes.",
-  },
-  {
-    id: "automation",
-    title: "3. Automacao operacional",
-    tech: ["n8n", "Integracoes", "Notificacoes"],
-    goal: "Disparar automacoes de negocio com reducao de tarefas manuais.",
-  },
-  {
-    id: "recovery",
-    title: "4. Recuperacao e observabilidade",
-    tech: ["DLQ", "Logs", "Metricas"],
-    goal: "Isolar falhas, reprocessar mensagens e manter SLOs de confiabilidade.",
-  },
-];
+import { useI18n } from "@/i18n";
 
 const WorkflowShowcase = () => {
-  const [activeStage, setActiveStage] = useState(workflowStages[0].id);
+  const { t } = useI18n();
+  const { stages } = t.workflowShowcase;
+  const [activeStage, setActiveStage] = useState(stages[0].id);
 
   const selected = useMemo(
-    () => workflowStages.find((stage) => stage.id === activeStage) ?? workflowStages[0],
-    [activeStage],
+    () => stages.find((stage) => stage.id === activeStage) ?? stages[0],
+    [activeStage, stages],
   );
 
   return (
     <section className={`container ${spacing.section}`}>
       <FadeInSection>
-        <h2 className={`text-center ${typography.h2}`}>Visualização de Workflow</h2>
+        <h2 className={`text-center ${typography.h2}`}>{t.workflowShowcase.title}</h2>
         <p className="mt-3 text-center text-muted-foreground max-w-3xl mx-auto">
-          Simulacao interativa do tipo de arquitetura que eu implemento em producao para automacao, resiliencia e escalabilidade.
+          {t.workflowShowcase.subtitle}
         </p>
       </FadeInSection>
 
@@ -54,10 +30,10 @@ const WorkflowShowcase = () => {
         <FadeInSection delay={0.1}>
           <Card>
             <CardHeader>
-              <CardTitle>Fluxo Temporal + Kafka + n8n</CardTitle>
+              <CardTitle>{t.workflowShowcase.cardTitle}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {workflowStages.map((stage) => {
+              {stages.map((stage) => {
                 const isActive = stage.id === activeStage;
                 return (
                   <button
@@ -91,10 +67,13 @@ const WorkflowShowcase = () => {
                 ))}
               </div>
               <div className="rounded-lg border bg-muted/30 p-4 text-sm text-muted-foreground">
-                <p><strong>Impacto esperado:</strong> menor taxa de erro operacional, maior confiabilidade em workflows assíncronos e recuperação rápida de falhas.</p>
+                <p>
+                  <strong>{t.workflowShowcase.inPracticeLabel}</strong>{" "}
+                  {t.workflowShowcase.inPracticeText}
+                </p>
               </div>
               <Button asChild variant="hero">
-                <Link to="/case-study/Chat-platform">Ver arquitetura detalhada</Link>
+                <Link to="/case-study/chat-platform">{t.workflowShowcase.cta}</Link>
               </Button>
             </CardContent>
           </Card>

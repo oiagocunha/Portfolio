@@ -2,7 +2,6 @@ import React, { createContext, useState, useContext, ReactNode } from 'react';
 import { Locale, PortfolioContent } from './types';
 import { pt } from './locales/pt';
 import { en } from './locales/en';
-import { es } from './locales/es';
 
 interface I18nContextType {
   locale: Locale;
@@ -15,7 +14,6 @@ const I18nContext = createContext<I18nContextType | undefined>(undefined);
 const locales: Record<Locale, PortfolioContent> = {
   pt,
   en,
-  es,
 };
 
 interface I18nProviderProps {

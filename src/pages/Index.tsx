@@ -9,7 +9,6 @@ const WorkflowShowcase = lazy(() => import("@/components/portfolio/WorkflowShowc
 const Specialties = lazy(() => import("@/components/portfolio/Specialties"));
 const Technologies = lazy(() => import("@/components/portfolio/Technologies"));
 const Certifications = lazy(() => import("@/components/portfolio/Certifications"));
-const Talks = lazy(() => import("@/components/portfolio/Talks"));
 const Experience = lazy(() => import("@/components/portfolio/Experience"));
 const Contact = lazy(() => import("@/components/portfolio/Contact"));
 
@@ -46,9 +45,6 @@ const Index = () => {
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <Certifications />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <Talks />
       </Suspense>
       <Suspense fallback={<SectionSkeleton />}>
         <Experience />

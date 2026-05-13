@@ -28,7 +28,6 @@ portfolio/
 │   │   └── locales/
 │   │       ├── pt.ts           # Português (padrão)
 │   │       ├── en.ts           # English
-│   │       └── es.ts           # Español
 │   ├── constants/              # Configurações centralizadas
 │   │   └── icons.ts            # Mapeamento de ícones
 │   ├── lib/                    # Utilitários
@@ -311,7 +310,7 @@ import { typography, iconSizes, transitions, shadows } from "@/constants/design-
 | **ProjectCard** | iconSizes, typography, transitions, shadows |
 | **StatCard** | typography |
 | **CertificationCard** | iconSizes, typography, transitions, shadows, gradients |
-| **Projects, Technologies, Specialties, Talks, Experience, Certifications** | spacing, typography |
+| **Projects, Technologies, Specialties, Experience, Certifications** | spacing, typography |
 
 #### **Como Adicionar Novo Token**
 
