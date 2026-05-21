@@ -183,6 +183,30 @@ export const en: PortfolioContent = {
         ],
       },
       {
+        title: 'Job Match Alerts',
+        description:
+          'FastAPI + React monorepo: PDF resume upload, job import by URL (Gupy, LinkedIn, Inhire), and explainable ATS score with skills, seniority, experience, and semantic breakdown.',
+        repo: 'https://github.com/oiagocunha/job-match-alerts',
+        image: '/images/job-match-alerts-swagger.png',
+        alt: 'Job Match Alerts Swagger UI',
+        technologies: [
+          'Python',
+          'FastAPI',
+          'PostgreSQL',
+          'React',
+          'TypeScript',
+          'OpenAI',
+          'Docker',
+        ],
+        complexity: 'High',
+        impact: [
+          'Multiple resume profiles saved from PDF uploads',
+          'Instant ATS score on job import with matched and missing skills',
+          'Ranking across saved jobs with seniority and remote filters',
+          'Documented REST API and deterministic scoring engine',
+        ],
+      },
+      {
         title: 'CLT Simulator (Government System)',
         description:
           'Government financial rules exposed through an API and reactive UI, with critical validations and context-sensitive logic.',
@@ -198,18 +222,19 @@ export const en: PortfolioContent = {
         ],
       },
       {
-        title: 'Xuxiê - E-commerce',
+        title: 'FV Crochê',
         description:
-          'E-commerce focused on mobile conversion, simplified checkout, and WhatsApp order integration.',
+          'Handmade crochet storefront in Fortaleza: category catalog, cart, and focus on custom orders. React front end with a mobile-first layout and brand identity.',
         demo: 'https://xuxie-croche.vercel.app/',
-        image: '/images/xuxie-croche.png',
-        alt: 'Xuxiê E-commerce project thumbnail',
-        technologies: ['React', 'JavaScript', 'Tailwind CSS', 'WhatsApp API'],
+        repo: 'https://github.com/oiagocunha/FV_Croche',
+        image: '/images/fv-croche.png',
+        alt: 'FV Crochê landing page',
+        technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
         complexity: 'Medium',
         impact: [
-          'Simplified mobile-first purchase flow',
-          'ViaCEP integration to reduce registration errors',
-          'Direct sales channel through WhatsApp',
+          'Home and storefront with clear catalog and category CTAs',
+          'Cart flow built for custom order requests',
+          'Rebrand and evolution from the Xuxiê project to FV Crochê',
         ],
       },
       {

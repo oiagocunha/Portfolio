@@ -1,10 +1,10 @@
-import { Globe, ShoppingCart, GraduationCap, QrCode, Boxes, Network, Newspaper, LucideIcon } from "lucide-react";
+import { Globe, ShoppingCart, GraduationCap, QrCode, Newspaper, Briefcase, LucideIcon } from "lucide-react";
 
 export const projectIcons: Record<number, LucideIcon> = {
   0: Newspaper,
-  1: Globe,
-  2: ShoppingCart,
-  3: GraduationCap,
-  4: QrCode,
-  5: Boxes,
+  1: Briefcase,
+  2: Globe,
+  3: ShoppingCart,
+  4: GraduationCap,
+  5: QrCode,
 };

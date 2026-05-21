@@ -183,6 +183,30 @@ export const pt: PortfolioContent = {
         ],
       },
       {
+        title: "Job Match Alerts",
+        description:
+          "Monorepo FastAPI + React: upload de currículo em PDF, import de vaga por link (Gupy, LinkedIn, Inhire) e score ATS explicável com breakdown de skills, senioridade, experiência e match semântico.",
+        repo: "https://github.com/oiagocunha/job-match-alerts",
+        image: "/images/job-match-alerts-swagger.png",
+        alt: "Swagger do Job Match Alerts",
+        technologies: [
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "React",
+          "TypeScript",
+          "OpenAI",
+          "Docker",
+        ],
+        complexity: "High",
+        impact: [
+          "Múltiplos perfis de currículo salvos a partir de PDF",
+          "Score ATS na hora ao importar vaga, com skills matched e missing",
+          "Ranking entre vagas cadastradas com filtros de senioridade e remoto",
+          "API REST documentada em OpenAPI e motor de score determinístico",
+        ],
+      },
+      {
         title: "Simulador CLT — Sistema Governamental",
         description:
           "Camada de domínio financeiro governamental exposta via API e interface reativa, com validações críticas e regras sensíveis a contexto.",
@@ -198,18 +222,19 @@ export const pt: PortfolioContent = {
         ],
       },
       {
-        title: "Xuxiê - E-commerce",
+        title: "FV Crochê",
         description:
-          "E-commerce focado em conversão mobile, checkout simplificado e integração de pedidos via WhatsApp.",
+          "Vitrine de crochê artesanal em Fortaleza: catálogo por categorias, carrinho e foco em peças únicas e encomendas. Front em React com layout mobile-first e identidade visual da marca.",
         demo: "https://xuxie-croche.vercel.app/",
-        image: "/images/xuxie-croche.png",
-        alt: "Thumbnail do projeto Xuxiê E-commerce",
-        technologies: ["React", "JavaScript", "Tailwind CSS", "WhatsApp API"],
+        repo: "https://github.com/oiagocunha/FV_Croche",
+        image: "/images/fv-croche.png",
+        alt: "Landing page do FV Crochê",
+        technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
         complexity: "Medium",
         impact: [
-          "Fluxo de compra simplificado para mobile-first",
-          "Integração ViaCEP para reduzir erros de cadastro",
-          "Canal direto de venda via WhatsApp",
+          "Home e vitrine com CTA claro para catálogo e categorias",
+          "Carrinho e fluxo pensado para pedido por encomenda",
+          "Rebrand e evolução do projeto Xuxiê para FV Crochê",
         ],
       },
       {
