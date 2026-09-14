@@ -2,12 +2,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
-import { Send, Mail, Phone, MapPin } from "lucide-react";
+import { Send, Mail, MapPin } from "lucide-react";
 import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
-import { spacing, typography, iconSizes, borderRadius, transitions } from "@/constants/design-tokens";
+import { spacing, typography, iconSizes, borderRadius } from "@/constants/design-tokens";
 
 const Contact = () => {
   const { t } = useI18n();
@@ -17,42 +18,73 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     const form = e.target as HTMLFormElement;
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 15000);
 
     try {
+      const endpoint = import.meta.env.VITE_FORMSUBMIT_ENDPOINT;
+      if (!endpoint) throw new Error(t.contact.errorEndpoint);
+
       const data = new FormData(form);
       const name = String(data.get("name") || "").trim();
       const email = String(data.get("email") || "").trim();
       const subject = String(data.get("subject") || "").trim();
       const message = String(data.get("message") || "").trim();
+      const honeypot = String(data.get("company") || "").trim();
+
+      if (honeypot) {
+        toast({
+          title: t.contact.successTitle,
+          description: t.contact.successDescription,
+        });
+        form.reset();
+        return;
+      }
 
       if (!name || !email || !message) throw new Error(t.contact.errorDescription);
 
       const formDataToSend = new FormData();
       formDataToSend.append("name", name);
       formDataToSend.append("email", email);
+      formDataToSend.append("_replyto", email);
       if (subject) formDataToSend.append("subject", subject);
       formDataToSend.append("message", message);
       formDataToSend.append("_captcha", "false");
-      formDataToSend.append("_subject", subject ? `${t.contact.formSubject}: ${subject}` : t.contact.formSubject);
+      formDataToSend.append(
+        "_subject",
+        subject ? `${t.contact.formSubject}: ${subject}` : t.contact.formSubject,
+      );
 
-      const response = await fetch(import.meta.env.VITE_FORMSUBMIT_ENDPOINT, {
+      const response = await fetch(endpoint, {
         method: "POST",
+        headers: { Accept: "application/json" },
         body: formDataToSend,
+        signal: controller.signal,
       });
 
-      if (!response.ok) throw new Error("Erro ao enviar mensagem");
+      if (!response.ok) throw new Error(t.contact.errorGeneric);
+
+      const result = (await response.json().catch(() => null)) as
+        | { success?: string | boolean; message?: string }
+        | null;
+      if (result && result.success === false) {
+        throw new Error(result.message || t.contact.errorGeneric);
+      }
 
       toast({
         title: t.contact.successTitle,
         description: t.contact.successDescription,
       });
       form.reset();
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error && err.message ? err.message : t.contact.errorGeneric;
       toast({
         title: t.contact.errorTitle,
-        description: err?.message || "Tente novamente mais tarde.",
+        description: message,
       });
     } finally {
+      window.clearTimeout(timeout);
       setLoading(false);
     }
   };
@@ -76,7 +108,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-medium">{t.contact.email}</p>
-                  <p className="text-sm text-muted-foreground">dev.iagocunha@gmail.com</p>
+                  <a
+                    href="mailto:dev.iagocunha@gmail.com"
+                    className="text-sm text-muted-foreground hover:text-foreground underline-offset-2 hover:underline"
+                  >
+                    dev.iagocunha@gmail.com
+                  </a>
                 </div>
               </div>
 
@@ -100,48 +137,57 @@ const Contact = () => {
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="hidden" aria-hidden="true">
+                  <Label htmlFor="company">Company</Label>
+                  <Input id="company" name="company" tabIndex={-1} autoComplete="off" />
+                </div>
+
                 <div className="grid gap-4 md:grid-cols-2">
-                  <div>
+                  <div className="space-y-2">
+                    <Label htmlFor="name">{t.contact.nameLabel}</Label>
                     <Input
+                      id="name"
                       placeholder={t.contact.namePlaceholder}
                       required
-                      className="transition-all duration-300 focus:scale-[1.02]"
                       name="name"
+                      autoComplete="name"
                     />
                   </div>
-                  <div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">{t.contact.emailLabel}</Label>
                     <Input
+                      id="email"
                       type="email"
                       placeholder={t.contact.emailPlaceholder}
                       required
-                      className="transition-all duration-300 focus:scale-[1.02]"
                       name="email"
+                      autoComplete="email"
                     />
                   </div>
                 </div>
 
-                <Input
-                  placeholder={t.contact.subjectPlaceholder}
-                  required
-                  className="transition-all duration-300 focus:scale-[1.02]"
-                  name="subject"
-                />
+                <div className="space-y-2">
+                  <Label htmlFor="subject">{t.contact.subjectLabel}</Label>
+                  <Input
+                    id="subject"
+                    placeholder={t.contact.subjectPlaceholder}
+                    name="subject"
+                  />
+                </div>
 
-                <Textarea
-                  placeholder={t.contact.messagePlaceholder}
-                  required
-                  rows={5}
-                  className="transition-all duration-300 focus:scale-[1.02] resize-none"
-                  name="message"
-                />
-                
+                <div className="space-y-2">
+                  <Label htmlFor="message">{t.contact.messageLabel}</Label>
+                  <Textarea
+                    id="message"
+                    placeholder={t.contact.messagePlaceholder}
+                    required
+                    rows={5}
+                    className="resize-none"
+                    name="message"
+                  />
+                </div>
 
-                <Button
-                  type="submit"
-                  className="w-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                  disabled={loading}
-                  variant="hero"
-                >
+                <Button type="submit" className="w-full" disabled={loading} variant="hero">
                   {loading ? (
                     t.contact.sending
                   ) : (

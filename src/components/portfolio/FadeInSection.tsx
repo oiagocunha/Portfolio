@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 interface FadeInSectionProps {
   children: ReactNode;
@@ -8,12 +9,13 @@ interface FadeInSectionProps {
   className?: string;
 }
 
-const FadeInSection = ({ 
-  children, 
-  delay = 0, 
-  direction = "up", 
-  className = "" 
+const FadeInSection = ({
+  children,
+  delay = 0,
+  direction = "up",
+  className = "",
 }: FadeInSectionProps) => {
+  const reducedMotion = usePrefersReducedMotion();
   const directionOffset = {
     up: { y: 40, x: 0 },
     down: { y: -40, x: 0 },
@@ -21,17 +23,21 @@ const FadeInSection = ({
     right: { y: 0, x: -40 },
   };
 
+  if (reducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       className={className}
-      initial={{ 
-        opacity: 0, 
-        ...directionOffset[direction] 
+      initial={{
+        opacity: 0,
+        ...directionOffset[direction],
       }}
-      whileInView={{ 
-        opacity: 1, 
-        x: 0, 
-        y: 0 
+      whileInView={{
+        opacity: 1,
+        x: 0,
+        y: 0,
       }}
       viewport={{ once: true, margin: "0px 0px -100px 0px" }}
       transition={{

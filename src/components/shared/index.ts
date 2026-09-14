@@ -4,3 +4,5 @@ export { SocialLinks } from './SocialLinks';
 export { CertificationCard } from './CertificationCard';
 export { TalkCard } from './TalkCard';
 export { ExperienceCard } from './ExperienceCard';
+export { CaseStudyView } from './CaseStudyView';
+export { MermaidDiagram } from './MermaidDiagram';

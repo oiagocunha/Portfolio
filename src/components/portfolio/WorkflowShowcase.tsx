@@ -3,6 +3,7 @@ import FadeInSection from "./FadeInSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { MermaidDiagram } from "@/components/shared/MermaidDiagram";
 import { Link } from "react-router-dom";
 import { spacing, typography } from "@/constants/design-tokens";
 import { useI18n } from "@/i18n";
@@ -32,12 +33,15 @@ const WorkflowShowcase = () => {
             <CardHeader>
               <CardTitle>{t.workflowShowcase.cardTitle}</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-3" role="tablist" aria-label={t.workflowShowcase.cardTitle}>
               {stages.map((stage) => {
                 const isActive = stage.id === activeStage;
                 return (
                   <button
                     key={stage.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
                     onClick={() => setActiveStage(stage.id)}
                     className={`w-full rounded-lg border p-3 text-left transition ${
                       isActive ? "border-primary bg-primary/10" : "hover:bg-muted/40"
@@ -66,6 +70,7 @@ const WorkflowShowcase = () => {
                   </Badge>
                 ))}
               </div>
+              <MermaidDiagram title={t.workflowShowcase.diagramTitle} chart={selected.diagram} />
               <div className="rounded-lg border bg-muted/30 p-4 text-sm text-muted-foreground">
                 <p>
                   <strong>{t.workflowShowcase.inPracticeLabel}</strong>{" "}

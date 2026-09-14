@@ -1,10 +1,10 @@
-# Portfólio — Iago Cunha
+# Portfólio Iago Cunha
 
 Portfólio orientado a **engenharia de backend e sistemas distribuídos**: orquestração, mensageria, automação, dados e operação em produção.
 
 ## Posicionamento
 
-Este repositório não é uma vitrine genérica de projetos pessoais. Ele documenta como penso e opero sistemas reais:
+Este repositório não é uma vitrine genérica de projetos pessoais. Ele documenta como penso e opero sistemas:
 
 - problemas técnicos e tradeoffs
 - decisões arquiteturais
@@ -25,8 +25,8 @@ Este repositório não é uma vitrine genérica de projetos pessoais. Ele docume
 
 ## Documentação
 
-- `docs/CASE_STUDY_CHAT.md` — narrativa técnica + diagramas Mermaid
-- `docs/ARCHITECTURE.md` — arquitetura do portfólio
+- `docs/CASE_STUDY_CHAT.md` narrativa técnica + diagramas Mermaid
+- `docs/ARCHITECTURE.md` arquitetura do portfólio
 
 ## Currículos oficiais
 

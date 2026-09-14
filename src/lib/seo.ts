@@ -1,6 +1,6 @@
 export const SITE_URL = "https://portfolio-oiagocunha.vercel.app";
 
-export const SITE_IMAGE = `${SITE_URL}/images/Logo_semFundo_light.png`;
+export const SITE_IMAGE = `${SITE_URL}/images/logo.svg`;
 export const PROFILE_IMAGE = `${SITE_URL}/images/Perfil.jpg`;
 
 export function upsertMeta(

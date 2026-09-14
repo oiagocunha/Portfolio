@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Project preview">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1424"/>
+      <stop offset="100%" stop-color="#2d1b3d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect x="80" y="80" width="1120" height="560" rx="24" fill="none" stroke="#8E44AD" stroke-opacity="0.45" stroke-width="3"/>
+  <circle cx="640" cy="320" r="56" fill="#8E44AD" fill-opacity="0.35"/>
+  <text x="640" y="440" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="36" fill="#c9b3d9">Preview do projeto</text>
+  <text x="640" y="490" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" fill="#8a7a98">Adicione um PNG, WebP ou GIF em /public/images</text>
+</svg>

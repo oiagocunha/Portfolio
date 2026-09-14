@@ -95,6 +95,16 @@
 
   html { scroll-behavior: smooth; overflow-x: hidden; scrollbar-gutter: stable both-edges; }
   body { @apply bg-background text-foreground; overflow-x: hidden; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer utilities {

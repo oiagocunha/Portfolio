@@ -8,20 +8,21 @@ import {
 import { useI18n, Locale } from "@/i18n";
 
 const LanguageToggle = () => {
-  const { locale, setLocale } = useI18n();
-  
+  const { locale, setLocale, t } = useI18n();
+
   const languages = [
     { code: "pt" as Locale, label: "Português", flag: "🇧🇷" },
     { code: "en" as Locale, label: "English", flag: "🇺🇸" },
   ];
 
-  const currentLanguage = languages.find(lang => lang.code === locale);
+  const currentLanguage = languages.find((lang) => lang.code === locale);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
-          aria-label="Change language"
+          type="button"
+          aria-label={t.a11y.changeLanguage}
           className="inline-flex h-9 items-center gap-2 rounded-md border bg-background px-3 text-foreground transition-colors hover:bg-accent hover:text-accent-foreground text-sm font-medium"
         >
           <Globe className="h-4 w-4" />

@@ -14,9 +14,11 @@ const Specialties = () => {
           <Card key={s.title} className="animate-fade-in">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <span className="text-2xl" aria-hidden>
-                  {s.emoji}
-                </span>
+                {s.emoji ? (
+                  <span className="text-2xl" aria-hidden>
+                    {s.emoji}
+                  </span>
+                ) : null}
                 <span>{s.title}</span>
               </CardTitle>
             </CardHeader>

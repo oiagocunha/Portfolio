@@ -1,272 +1,315 @@
 import { PortfolioContent } from '../types';
 
 export const en: PortfolioContent = {
+  a11y: {
+    skipToContent: "Skip to content",
+    toggleMenu: "Open or close menu",
+    changeLanguage: "Change language",
+    toggleTheme: "Toggle light or dark theme",
+    scrollTop: "Back to top",
+    openMedia: "Play demo",
+    showDiagramSource: "View Mermaid source",
+    hideDiagramSource: "Hide source",
+    diagramError: "Could not render the diagram.",
+  },
+
+  notFound: {
+    title: "Page not found",
+    description: "This URL does not exist on this portfolio.",
+    backHome: "Back to home",
+  },
+
   hero: {
-    greeting: 'Hi! I am',
-    headline:
-      'Developer focused on distributed systems, automation, and backend architecture.',
+    greeting: "Hi, I'm",
+    headline: "Backend focused on APIs, automation, and orchestrating AI flows.",
     typewriter: [
-      'Resilient workflows with Temporal in production.',
-      'Event-driven setups with Kafka.',
-      'APIs in Python and Node.js.',
-      'Automations that cut operational bottlenecks.',
+      "I orchestrate agents end to end, from chat to Temporal.",
+      "OpenAI-style APIs built for continuous production use.",
+      "When vector search hits the wrong base, I find where the flow failed.",
+      "Less manual work: n8n, Kafka, and retries that hold up day to day.",
     ],
     description:
-      'I am a fullstack developer with most of my work on backend, APIs, and system integration, using Python (FastAPI), Node.js, and async architectures. I also use React and Next.js when it helps shape the final product. I have worked with workflows (Temporal), messaging/events (Kafka), and automations with n8n.',
-    primaryCta: 'Get in touch',
-    secondaryCta: 'Read case study',
-    alt: 'Photo of Iago Cunha, fullstack and backend developer',
-    role: 'Fullstack · Backend · Frontend Developer',
+      "I mostly build backend with Python (FastAPI), Temporal, and integrations. I also work with React when the product needs a UI. I care about systems that survive use: handled failures, predictable retries, and readable logs.",
+    primaryCta: "Get in touch",
+    secondaryCta: "Read a case study",
+    alt: "Photo of Iago Cunha",
+    role: "Backend and fullstack developer",
     highlights: [
-      '~80% drop in operational errors with n8n automations',
-      'Fixed failures in flows with Temporal, Kafka, and vector search (RAG)',
-      'Stabilized a multi-service environment for ops and testing',
-      'Better logs and easier debugging across systems',
-      'Refactored legacy systems for performance and maintainability',
+      "API that takes chat traffic and starts the right Temporal agent",
+      "Each domain hits the right knowledge base, without generic answers in the wrong place",
+      "On failure: retry, dead-letter queue, and Docker the team can actually run",
+      "Corporate login (LDAP) and group-based access in the chat",
     ],
   },
 
   about: {
-    title: 'ABOUT ME.',
+    title: "ABOUT ME.",
     stats: [
-      { value: 3, suffix: '', label: 'Years in software development' },
-      { value: 10, suffix: '+', label: 'Automations in production' },
-      { value: 80, suffix: '%', label: 'Reduction in operational errors' },
+      { value: 3, suffix: "", label: "Years writing software" },
+      { value: 10, suffix: "+", label: "Automations in production" },
+      { value: 80, suffix: "%", label: "Fewer ops errors (n8n)" },
     ],
     paragraphs: [
-      'I am Iago Cunha, a fullstack developer focused on backend, automation, and integration.',
-      'I like understanding how an app is built end to end: where data comes from, what cannot fail, which services are needed, and how to keep it maintainable.',
-      'I have worked on production systems, migrations, incident fixes, homepage refactors, and integration between microservices.',
+      "I'm Iago. I work on backend: APIs, queues, databases, and the path from input to answer.",
+      "These days I spend much of my time on AI flows: chat, Temporal, document search, and what happens when that fails in production.",
+      "Before that I automated processes with n8n, integrated systems, and maintained legacy code. I prefer plain language and code another developer can maintain.",
     ],
   },
 
   specialties: {
-    title: 'MY',
-    subtitle: 'SPECIALTIES',
+    title: "MY",
+    subtitle: "SPECIALTIES",
     items: [
       {
-        emoji: '⚙️',
-        title: 'Backend & APIs',
+        emoji: "",
+        title: "Agent flows",
         description:
-          'Services in Python (FastAPI) and Node.js, with clear REST contracts, validation, and SQLAlchemy when it makes sense.',
+          "From the prompt in chat to Temporal: which agent runs, what it queries, and how the answer comes back.",
       },
       {
-        emoji: '🔄',
-        title: 'Workflows & messaging',
+        emoji: "",
+        title: "APIs and backend",
         description:
-          'Orchestration with Temporal, events with Kafka, and retry/backoff/DLQ for flows that cannot get lost halfway through.',
+          "FastAPI, REST contracts, streaming, and wiring multiple model providers.",
       },
       {
-        emoji: '🤖',
-        title: 'Automation & applied AI',
+        emoji: "",
+        title: "Document search",
         description:
-          'Flows with n8n, API integrations, and platforms like OpenWebUI/LibreChat. Less manual work, fewer operational errors.',
+          "Ingestion, embeddings, and per-domain lookup, including mixing semantic search with SQL when it helps.",
       },
       {
-        emoji: '🔗',
-        title: 'Systems integration',
+        emoji: "",
+        title: "Queues and failure",
         description:
-          'Connecting APIs, webhooks, and internal services without turning everything into a monolith that is hard to evolve and debug.',
+          "Kafka, retries, and DLQ so errors do not disappear mid-flow.",
       },
       {
-        emoji: '💾',
-        title: 'Data & queries',
+        emoji: "",
+        title: "Corporate access",
         description:
-          'PostgreSQL and MongoDB: modeling, queries that matter in production, and fixes when the data does not add up.',
+          "LDAP/AD, who can use which model, and sessions with a defined lifetime.",
       },
       {
-        emoji: '🚀',
-        title: 'Infra & operations',
+        emoji: "",
+        title: "Environment and deploy",
         description:
-          'Docker, GitLab CI/CD, Linux, and monitoring. Reproducible environments and debugging when something breaks outside localhost.',
+          "Docker, healthchecks, and a setup another developer can repeat.",
       },
     ],
   },
 
   technologies: {
-    title: 'MY',
-    subtitle: 'TECHNOLOGIES',
+    title: "MY",
+    subtitle: "TECH",
     categories: [
       {
-        title: 'Languages & frameworks',
-        content:
-          'Python, TypeScript, JavaScript, Node.js, FastAPI, React, Next.js',
+        title: "Languages and frameworks",
+        content: "Python, TypeScript, JavaScript, Node.js, FastAPI, React, Next.js",
       },
       {
-        title: 'Distributed systems',
-        content: 'Temporal, Kafka, asyncio, n8n, REST APIs',
+        title: "AI and workflows",
+        content: "Temporal, RAG, pgvector, OpenAI-style APIs, n8n",
       },
       {
-        title: 'Data',
-        content: 'PostgreSQL, MongoDB, SQLAlchemy',
+        title: "Data and messaging",
+        content: "PostgreSQL, MongoDB, Kafka, SQLAlchemy",
       },
       {
-        title: 'Frontend & UI',
-        content: 'React, Next.js, Tailwind CSS, Radix UI, TanStack Query',
+        title: "Frontend",
+        content: "React, Next.js, Tailwind CSS",
       },
       {
-        title: 'Infra & tools',
-        content: 'Docker, GitLab CI/CD, Git, GitHub, GitLab, Linux',
+        title: "Infra",
+        content: "Docker, GitLab CI/CD, Git, Linux, LDAP",
       },
     ],
   },
 
   workflowShowcase: {
-    title: 'Workflow overview',
+    title: "How a flow usually runs",
     subtitle:
-      'A simplified version of the kind of flow I work with daily: event intake, orchestration, automation, and failure recovery.',
-    cardTitle: 'Temporal + Kafka + n8n flow',
-    inPracticeLabel: 'In practice:',
+      "Day-to-day summary: the request hits the gateway, enters Temporal, fetches context, and handles failure in a controlled way.",
+    cardTitle: "Chat → API → Temporal → search",
+    inPracticeLabel: "In practice:",
     inPracticeText:
-      'fewer operational errors, more predictable recovery, and a clearer picture of where the flow broke.',
-    cta: 'See detailed architecture',
+      "the right agent answers from the right base. If it fails, you get logs and a queue to retry.",
+    cta: "Open the full case",
+    diagramTitle: "Stage sketch",
     stages: [
       {
-        id: 'ingestion',
-        title: '1. Event intake',
-        tech: ['Kafka', 'Webhook', 'FastAPI'],
-        goal: 'Idempotent entry with correlation tracking between producer and consumer.',
+        id: "ingestion",
+        title: "1. Intake",
+        tech: ["Kafka", "Webhook", "FastAPI"],
+        goal: "Accept the event without duplicates and record where it came from.",
+        diagram: `flowchart LR
+  P[Producer] --> K[Kafka / Webhook]
+  K --> API[FastAPI]
+  API --> C[Correlation ID]
+  API --> ACK[Idempotent ack]`,
       },
       {
-        id: 'orchestration',
-        title: '2. Flow orchestration',
-        tech: ['Temporal', 'Retry', 'Backoff'],
-        goal: 'Coordinate async steps and handle failures without losing control of the process.',
+        id: "orchestration",
+        title: "2. Orchestration",
+        tech: ["Temporal", "Retry", "Backoff"],
+        goal: "Chain steps and retry when an activity fails.",
+        diagram: `flowchart LR
+  E[Event] --> W[Temporal Workflow]
+  W --> A1[Activity]
+  A1 -->|ok| N[Next step]
+  A1 -->|fail| R[Retry / Backoff]
+  R --> A1`,
       },
       {
-        id: 'automation',
-        title: '3. Operational automation',
-        tech: ['n8n', 'Integrations', 'Notifications'],
-        goal: 'Less manual work, with flows you can monitor and fix later.',
+        id: "automation",
+        title: "3. Automation",
+        tech: ["n8n", "Integrations", "Notifications"],
+        goal: "Reduce repetitive work and keep the flow visible to the team.",
+        diagram: `flowchart LR
+  T[Trigger] --> N8[n8n]
+  N8 --> I[Integrations]
+  N8 --> NT[Notifications]
+  N8 --> L[Execution log]`,
       },
       {
-        id: 'recovery',
-        title: '4. Recovery and observability',
-        tech: ['DLQ', 'Logs', 'Metrics'],
-        goal: 'When something fails, isolate the issue and make reprocessing and investigation easier.',
+        id: "recovery",
+        title: "4. When it fails",
+        tech: ["DLQ", "Logs", "Metrics"],
+        goal: "Isolate the failure, investigate, and reprocess without affecting the rest.",
+        diagram: `flowchart LR
+  F[Failure] --> DLQ[Dead Letter Queue]
+  DLQ --> LOG[Structured logs]
+  LOG --> FIX[Investigation]
+  FIX --> REP[Reprocess]`,
       },
     ],
   },
 
   projects: {
-    title: 'PROJECTS.',
-    subtitle:
-      'Some projects with real technical problems, production context, and measurable impact.',
-    demo: 'Demo',
-    code: 'Code',
-    caseStudy: 'Case Study',
-    items: [
+    title: "PROJECTS.",
+    subtitle: "What I built or helped stabilize, with the problem and the outcome.",
+    demo: "Demo",
+    docs: "API",
+    code: "Code",
+    caseStudy: "Case study",
+    complexityLabel: "Complexity",
+    featuredLabel: "Main work",
+    earlyWorkLabel: "Smaller projects",
+    earlyWorkSubtitle:
+      "Older or simpler work. Here to show the path, not to compete with the main cases.",
+    statusLabels: {
+      internal: "Internal project",
+      unavailable: "Demo offline",
+      archived: "Archived",
+    },
+    complexity: {
+      Low: "Low",
+      Medium: "Medium",
+      High: "High",
+      "Very High": "Very high",
+    },
+    featured: [
       {
-        title: 'Public Data Monitor',
+        title: "Corporate assistant with agents",
         description:
-          'FastAPI service that scrapes G1 news, stores them in PostgreSQL with URL deduplication, and exposes documented REST endpoints. Live Swagger demo on Render.',
-        demo: 'https://public-data-monitor.onrender.com/docs',
-        repo: 'https://github.com/oiagocunha/public-data-monitor',
-        caseStudyPath: '/case-study/public-data-monitor',
-        image: '/images/public-data-monitor-swagger.png',
-        alt: 'Public Data Monitor Swagger UI',
+          "I worked on the API, Temporal workflows, document search, and Docker setup for an internal chat with multiple agents.",
+        caseStudyPath: "/case-study/chat-platform",
+        image: "/images/assistente-corporativo.jpg",
+        alt: "Corporate assistant screen with message input and advanced models",
         technologies: [
-          'Python',
-          'FastAPI',
-          'PostgreSQL',
-          'SQLAlchemy',
-          'httpx',
-          'Docker',
-          'Render',
+          "Temporal",
+          "FastAPI",
+          "RAG",
+          "Kafka",
+          "PostgreSQL",
+          "LDAP",
+          "Docker",
         ],
-        complexity: 'High',
+        complexity: "Very High",
         impact: [
-          'Idempotent ingestion with unique URL index and ON CONFLICT DO NOTHING',
-          'REST at /news: POST collect, GET list and GET by id, with hand-written OpenAPI',
-          'Resilient scraper: progressive retry, optional published_at, partial records',
-          'Live /docs demo and local setup via Docker Compose',
+          "Fixed wrong-domain answers: the model now reaches search",
+          "OpenAI-style API with streaming and end-to-end healthcheck",
+          "Doc ingestion, search+SQL agent, and DLQ for failures",
+          "LDAP login and group permissions in chat",
         ],
+        iconKey: "chatPlatform",
+        status: "internal",
       },
       {
-        title: 'Job Match Alerts',
+        title: "Public data monitor",
         description:
-          'FastAPI + React monorepo: PDF resume upload, job import by URL (Gupy, LinkedIn, Inhire), and explainable ATS score with skills, seniority, experience, and semantic breakdown.',
-        repo: 'https://github.com/oiagocunha/job-match-alerts',
-        image: '/images/job-match-alerts-swagger.png',
-        alt: 'Job Match Alerts Swagger UI',
+          "API that pulls G1 news, stores them in Postgres without duplicating URLs, and exposes Swagger. Live demo on Render.",
+        demo: "https://public-data-monitor.onrender.com/docs",
+        repo: "https://github.com/oiagocunha/public-data-monitor",
+        caseStudyPath: "/case-study/public-data-monitor",
+        image: "/images/public-data-monitor-swagger.png",
+        media: "/images/public-data-monitor-swagger.png",
+        alt: "Public Data Monitor Swagger",
         technologies: [
-          'Python',
-          'FastAPI',
-          'PostgreSQL',
-          'React',
-          'TypeScript',
-          'OpenAI',
-          'Docker',
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "SQLAlchemy",
+          "httpx",
+          "Docker",
+          "Render",
         ],
-        complexity: 'High',
+        complexity: "High",
         impact: [
-          'Multiple resume profiles saved from PDF uploads',
-          'Instant ATS score on job import with matched and missing skills',
-          'Ranking across saved jobs with seniority and remote filters',
-          'Documented REST API and deterministic scoring engine',
+          "Collection can run again without creating duplicates",
+          "Clear /news endpoints, documented in OpenAPI",
+          "Scraper retries when G1 HTML fails",
+          "Runs locally with Docker Compose",
         ],
+        iconKey: "publicData",
+        status: "live",
       },
       {
-        title: 'CLT Simulator (Government System)',
+        title: "Job Match Alerts",
         description:
-          'Government financial rules exposed through an API and reactive UI, with critical validations and context-sensitive logic.',
-        demo: 'https://simuladorclt.observatorio.ind.br/',
-        image: '/images/simuladorCLT.png',
-        alt: 'CLT Simulator project thumbnail',
-        technologies: ['React', 'REST APIs', 'Domain rules', 'Validation'],
-        complexity: 'High',
-        impact: [
-          'Complex rules turned into a predictable user flow',
-          'Consistent results across simulation scenarios',
-          'Integration with existing backend services',
+          "Upload a resume PDF, import a job by URL, get an ATS score with what matched and what was missing.",
+        demo: "https://job-match-alerts.vercel.app/",
+        docs: "https://job-match-alerts.onrender.com/docs",
+        repo: "https://github.com/oiagocunha/job-match-alerts",
+        image: "/images/job-match-alerts-swagger.png",
+        alt: "Job Match Alerts",
+        technologies: [
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "React",
+          "TypeScript",
+          "OpenAI",
+          "Docker",
         ],
+        complexity: "High",
+        impact: [
+          "Multiple resumes saved from PDF",
+          "Immediate score with matched and missing skills",
+          "Job ranking with seniority and remote filters",
+          "Documented API and predictable scoring",
+        ],
+        iconKey: "jobMatch",
+        status: "live",
       },
+    ],
+    earlyWork: [
       {
-        title: 'FV Crochê',
+        title: "FV Crochê",
         description:
-          'Handmade crochet storefront in Fortaleza: category catalog, cart, and focus on custom orders. React front end with a mobile-first layout and brand identity.',
-        demo: 'https://xuxie-croche.vercel.app/',
-        repo: 'https://github.com/oiagocunha/FV_Croche',
-        image: '/images/fv-croche.png',
-        alt: 'FV Crochê landing page',
-        technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-        complexity: 'Medium',
+          "Crochet storefront in React: catalog, categories, and cart for custom orders.",
+        demo: "https://fv-croche.vercel.app/",
+        image: "/images/fv-croche.png",
+        alt: "FV Crochê landing",
+        technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+        complexity: "Medium",
         impact: [
-          'Home and storefront with clear catalog and category CTAs',
-          'Cart flow built for custom order requests',
-          'Rebrand and evolution from the Xuxiê project to FV Crochê',
+          "Home points straight to the catalog",
+          "Cart built for custom orders",
+          "Rebrand from the older project",
         ],
-      },
-      {
-        title: 'Grade Management System',
-        description:
-          'Desktop application for academic management with local persistence and a simplified operation flow.',
-        repo: 'https://github.com/oiagocunha/sistema_notas',
-        image: '/images/sistema_notas.png',
-        alt: 'Grade Management System thumbnail',
-        technologies: ['Python', 'Tkinter', 'SQLite'],
-        complexity: 'Medium',
-        impact: [
-          'Centralized grade entry and lookup',
-          'Reduced manual effort in academic routines',
-          'Low-cost desktop interface',
-        ],
-      },
-      {
-        title: 'QR Code Generator',
-        description:
-          'Tool for dynamic QR Code generation focused on speed of use and direct export.',
-        demo: 'https://link-to-qr-code.vercel.app/',
-        repo: 'https://github.com/oiagocunha/link-to-qrCode',
-        image: '/images/QRCode.png',
-        alt: 'QR Code Generator thumbnail',
-        technologies: ['React', 'JavaScript', 'QR Library'],
-        complexity: 'Low',
-        impact: [
-          'Faster identifier generation in internal routines',
-          'Simple UX, done in seconds',
-          'Less friction in document workflows',
-        ],
+        iconKey: "croche",
+        status: "live",
       },
     ],
   },
@@ -320,126 +363,127 @@ export const en: PortfolioContent = {
   },
 
   experience: {
-    title: 'PROFESSIONAL',
-    subtitle: 'EXPERIENCE',
+    title: "EXPERIENCE",
+    subtitle: "WORK",
     items: [
       {
-        company: 'FIEC System / Industry Observatory',
-        role: 'Backend Developer | Automation & Data',
-        period: '11/2025 - Present',
+        company: "FIEC System / Industry Observatory",
+        role: "Backend developer",
+        period: "11/2025 - Present",
         description: [
-          'I build and maintain APIs and distributed workflows with Python, FastAPI, and Temporal, keeping execution reliable between services.',
-          'I implemented event-driven flows with Kafka, using retry, backoff, and Dead Letter Queue (DLQ) for fault tolerance and data integrity.',
-          'I worked across APIs, Temporal workflows, and OpenWebUI/LibreChat interfaces, helping keep the platform consistent and easier to evolve.',
-          'I optimized queries and maintained data in PostgreSQL and MongoDB, including critical incident fixes in production.',
-          'I took part in architecture decisions around distributed workflows, service contracts, resilience, and dev environment setup.',
-          'I also helped improve platform ops: service integration, setup automation, and the team dev experience.',
+          "I work on the chat API (OpenAI-style), Temporal workflows, and how they connect to the assistant UI.",
+          "I fixed the path so `model` reaches document search, and the agent hits the right knowledge base.",
+          "I also deal with Kafka/DLQ, healthchecks, and the Docker setup the team uses daily.",
+          "LDAP login, group permissions, and chat session behavior.",
+          "I join architecture discussions when the topic is splitting services, failure handling, and the local environment.",
         ],
         technologies: [
-          'Python',
-          'FastAPI',
-          'Node.js',
-          'Temporal',
-          'Kafka',
-          'n8n',
-          'PostgreSQL',
-          'MongoDB',
-          'Supabase',
-          'Docker',
-          'Git',
-          'GitHub',
-          'GitLab',
-          'CI/CD',
-          'DevOps',
+          "Python",
+          "FastAPI",
+          "Temporal",
+          "Kafka",
+          "RAG",
+          "PostgreSQL",
+          "MongoDB",
+          "Docker",
+          "LDAP",
+          "n8n",
+          "Node.js",
+          "GitLab CI/CD",
         ],
       },
       {
-        company: 'FIEC System / Industry Observatory',
-        role: 'Product Development Intern',
-        period: '03/2025 - 11/2025',
+        company: "FIEC System / Industry Observatory",
+        role: "Development intern",
+        period: "03/2025 - 11/2025",
         description: [
-          'Cut operational errors by about 80% with complex automations and system integration using n8n and REST APIs.',
-          'Built apps integrated with government services, turning business rules into automated, scalable flows.',
-          'Modernized legacy systems with PHP/Laravel, React, and frontend/backend integration.',
-          'Built internal tools to improve operations and give structured access to institutional information.',
+          "Automated routines with n8n and APIs, with about 80% fewer ops errors on what we shipped.",
+          "Turned business rules into flows the team could use day to day.",
+          "Worked on React fronts and PHP backends on existing systems.",
+          "Shipped internal tools to help the team move faster.",
         ],
         technologies: [
-          'React',
-          'Next.js',
-          'PHP',
-          'Laravel',
-          'Node.js',
-          'Express',
-          'TypeScript',
-          'Tailwind CSS',
+          "React",
+          "Next.js",
+          "PHP",
+          "Laravel",
+          "Node.js",
+          "Express",
+          "TypeScript",
+          "Tailwind CSS",
+          "n8n",
         ],
       },
       {
-        company: 'Entrepreneur & Full Stack Developer',
-        role: 'Independent Developer',
-        period: '06/2024 - Present',
+        company: "Freelance",
+        role: "Fullstack developer",
+        period: "06/2024 - Present",
         description: [
-          'Backend apps with Python, FastAPI, and Node.js: scalable architecture, fast APIs, and system integration.',
-          'Database modeling and maintenance with PostgreSQL and MongoDB.',
-          'Automations and structured data pipelines through REST APIs and automated workflows.',
-          'Containerized solutions with Docker to standardize environments for clients.',
-          'Requirements gathering, architecture decisions, and shipping working MVPs.',
+          "On-demand APIs and backends with Python, FastAPI, and Node.js.",
+          "PostgreSQL or MongoDB depending on the job.",
+          "Automation and system integration when a client needs to leave the spreadsheet behind.",
+          "Docker so the environment is reproducible on any machine.",
+          "From scoping to a working MVP.",
         ],
         technologies: [
-          'Python',
-          'FastAPI',
-          'Node.js',
-          'JavaScript',
-          'PostgreSQL',
-          'MongoDB',
-          'Docker',
-          'Git',
-          'GitHub',
-          'GitLab',
-          'CI/CD',
-          'DevOps',
+          "Python",
+          "FastAPI",
+          "Node.js",
+          "JavaScript",
+          "PostgreSQL",
+          "MongoDB",
+          "Docker",
+          "Git",
+          "GitHub",
+          "GitLab",
+          "CI/CD",
         ],
       },
     ],
   },
 
   contact: {
-    title: "LET'S TALK.",
-    subtitle:
-      'If you want to talk about backend, automation, or production systems, send me a message.',
-    email: 'Email',
-    location: 'Location',
-    locationText: 'Fortaleza, Ceará, Brazil',
-    formTitle: 'Send a message',
-    namePlaceholder: 'Your name',
-    emailPlaceholder: 'Your email',
-    subjectPlaceholder: 'Subject',
-    messagePlaceholder: 'Your message...',
-    sending: 'Sending...',
-    sendButton: 'Send message',
-    successTitle: 'Message sent!',
-    successDescription: 'Thanks for reaching out. I will reply soon!',
-    errorTitle: 'Sending failed',
-    errorDescription: 'Please fill in the required fields.',
-    formSubject: 'New contact from portfolio',
+    title: "CONTACT.",
+    subtitle: "Backend, automation, or an AI flow that needs attention? Send a message.",
+    email: "Email",
+    location: "Location",
+    locationText: "Fortaleza, Ceará",
+    formTitle: "Send a message",
+    nameLabel: "Name",
+    emailLabel: "Email",
+    subjectLabel: "Subject",
+    messageLabel: "Message",
+    namePlaceholder: "Your name",
+    emailPlaceholder: "you@email.com",
+    subjectPlaceholder: "Subject (optional)",
+    messagePlaceholder: "How can I help?",
+    sending: "Sending...",
+    sendButton: "Send",
+    successTitle: "Message sent",
+    successDescription: "I will reply as soon as I can.",
+    errorTitle: "Could not send",
+    errorDescription: "Please fill in all required fields.",
+    errorGeneric: "Try again in a moment.",
+    errorEndpoint: "Form endpoint is not configured yet.",
+    formSubject: "Portfolio contact",
   },
 
   navbar: {
     items: [
-      { href: '#hero', label: 'Home' },
-      { href: '#sobre', label: 'About' },
-      { href: '#projetos', label: 'Projects' },
-      { href: '#habilidades', label: 'Skills' },
-      { href: '#certificacoes', label: 'Certifications' },
-      { href: '#experiencia', label: 'Experience' },
-      { href: '#contato', label: 'Contact' },
+      { href: "#hero", label: "Home" },
+      { href: "#sobre", label: "About" },
+      { href: "#projetos", label: "Projects" },
+      { href: "#habilidades", label: "Skills" },
+      { href: "#certificacoes", label: "Certifications" },
+      { href: "#experiencia", label: "Experience" },
+      { href: "#contato", label: "Contact" },
     ],
-    downloadCV: 'Download CV',
-    cvPath: '/[EN] Resume - Iago Cunha - FullStack Developer.pdf',
+    downloadCV: "Download CV",
+    cvPath: "/[EN] Resume - Iago Cunha - FullStack Developer.pdf",
   },
 
   footer: {
-    rights: 'All rights reserved.',
+    rights: "All rights reserved.",
   },
 
   seo: {
@@ -448,22 +492,19 @@ export const en: PortfolioContent = {
       'Iago Cunha, fullstack developer, backend developer, frontend developer, desenvolvedor fullstack, Python developer, FastAPI, React, Next.js, Node.js, Temporal, Kafka, PostgreSQL, Fortaleza Brazil, software engineer portfolio',
     pages: {
       home: {
-        title:
-          'Iago Cunha | Fullstack, Backend & Frontend Developer in Brazil',
+        title: "Iago Cunha | Backend and fullstack developer",
         description:
-          'Portfolio of Iago Cunha, a fullstack developer focused on backend, APIs, and automation. Python, FastAPI, Temporal, Kafka, React, and Next.js. Projects, case studies, and contact.',
+          "Portfolio of Iago Cunha: backend with FastAPI, Temporal, automations, and AI flows. Projects, cases, and contact.",
       },
       chatCaseStudy: {
-        title:
-          'Case Study: AI Chat Platform with Temporal and RAG | Iago Cunha',
+        title: "Case: multi-agent assistant with Temporal and document search | Iago Cunha",
         description:
-          'How I stabilized an AI chat platform with Temporal, Kafka, RAG, and LDAP. A backend and distributed systems case study by Iago Cunha.',
+          "How an internal chat started calling the right agent, querying the right base, and failing in a controlled way.",
       },
       publicDataCaseStudy: {
-        title:
-          'Case Study: Public Data Pipeline with FastAPI | Iago Cunha',
+        title: "Case: public news API with FastAPI | Iago Cunha",
         description:
-          'FastAPI service for news collection, PostgreSQL deduplication, and published Swagger docs. Backend case study by Iago Cunha, fullstack developer.',
+          "G1 collection, Postgres without duplicate URLs, and live Swagger. Backend case by Iago Cunha.",
       },
     },
   },
@@ -472,9 +513,9 @@ export const en: PortfolioContent = {
     publicData: {
       label: 'Case study',
       title:
-        'Async public news pipeline with deduplication and documented API',
+        'Public news API: collection, Postgres, and Swagger',
       subtitle:
-        'Backend MVP to collect G1 Tecnologia news, store them idempotently in PostgreSQL, and expose a REST contract with OpenAPI. There is a live demo on Render if you want to try it without cloning the repo.',
+        'Backend MVP to collect G1 Tecnologia news, store them without duplicating URLs in PostgreSQL, and expose a REST contract with OpenAPI. Live demo on Render if you want to try it without cloning the repository.',
       tags: [
         'Python',
         'FastAPI',
@@ -510,12 +551,16 @@ export const en: PortfolioContent = {
           ],
         },
       ],
+      image: '/images/public-data-monitor-swagger.png',
       imageAlt: 'Public Data Monitor Swagger documentation',
+      demoUrl: 'https://public-data-monitor.onrender.com/docs',
+      githubUrl: 'https://github.com/oiagocunha/public-data-monitor',
       architectureTitle: 'Architecture and flow',
       diagramTitles: {
         systemFlow: 'End-to-end flow',
         backendArchitecture: 'Backend layers',
         sequence: 'POST /news collection sequence',
+        failureTree: 'Idempotent collection',
       },
       charts: {
         systemFlow: `
@@ -591,6 +636,14 @@ sequenceDiagram
   SVC-->>API: inserted
   API-->>C: CollectNewsResponse
 `,
+        failureTree: `
+flowchart LR
+  POST[POST /news] --> SCR[Scrape G1]
+  SCR --> INS[INSERT news]
+  INS --> UC{Unique URL?}
+  UC -->|new| OK[Persisted]
+  UC -->|conflict| SKIP[ON CONFLICT DO NOTHING]
+`,
       },
       detailCards: [
         {
@@ -598,7 +651,7 @@ sequenceDiagram
           items: [
             'Treat external sources as messy without throwing away partially valid news.',
             'Keep collection idempotent when triggered manually or run again.',
-            'Document how the API really behaves for people who will not open the code.',
+            'Document how the API behaves for people who will not open the code.',
             'Keep layers separate so scrapers can evolve without rewriting routes.',
           ],
         },
@@ -657,183 +710,205 @@ sequenceDiagram
       },
     },
     chatPlatform: {
-      label: 'Case study',
-      title:
-        'Stabilizing an AI chat platform with Temporal, RAG, and LDAP',
+      label: "Case study",
+      title: "Internal chat with multiple agents: API, Temporal, and document search",
       subtitle:
-        'Case study at the Industry Observatory: the chat gave wrong answers for one domain, Docker was unstable, and the flow between services was hard to debug. The goal was a fast, effective fix.',
+        "An assistant where each question can go to a different agent. I worked on the API, Temporal, search, and Docker, including a bug where the wrong domain answered with generic text.",
       tags: [
-        'Temporal',
-        'Kafka',
-        'Python',
-        'FastAPI',
-        'Supabase RPC',
-        'LDAP',
-        'Docker Compose',
-        'MongoDB',
+        "Temporal",
+        "FastAPI",
+        "RAG",
+        "Kafka",
+        "PostgreSQL",
+        "LDAP",
+        "Docker",
       ],
       summaryCards: [
         {
-          title: 'What was happening',
+          title: "The setup",
           paragraphs: [
-            'GEPLA domain queries returned generic answers even with the correct model selected in the chat.',
-            'Containers were unhealthy, there were compose conflicts, and friction between LDAP login and local login.',
+            "Chat sends prompt and model to an OpenAI-style API. The API starts a Temporal workflow, which fetches context and returns the answer with streaming.",
+            "There is also a queue (Kafka/DLQ) and corporate login. Not a tutorial: a system the team uses.",
           ],
         },
         {
-          title: 'What I suspected first',
+          title: "What was wrong",
           paragraphs: [
-            'The `model` field was not reaching the workflow → activity → RAG flow correctly.',
-            'The Temporal worker was running a different version of the code than the repository.',
-            'GEPLA vector search might be using the wrong credential or RPC.',
+            "For one domain, answers came back generic even when the right agent was selected on screen.",
+            "The worker sometimes ran an old library version, Docker was unstable, and mixing LDAP with local shortcuts made debugging harder.",
           ],
         },
         {
-          title: 'What improved',
+          title: "What I did",
           paragraphs: [
-            'Domain/model routing started working consistently.',
-            'The local environment became more predictable for testing and fixing issues.',
-            'It became easier to see where the flow broke thanks to more useful logs.',
+            "Made sure `model` reached vector search, with logs along the way and a warning when the worker was stale.",
+            "Adjustments on the API, workflows, document ingestion, the queue, and chat login and permissions.",
           ],
         },
       ],
-      architectureTitle: 'Architecture and flow',
+      image: "/images/assistente-corporativo.jpg",
+      imageAlt: "Corporate assistant screen",
+      architectureTitle: "How the pieces connect",
       diagramTitles: {
-        systemFlow: 'End-to-end flow',
-        backendArchitecture: 'Decoupled backend architecture',
-        sequence: 'Async RAG query pipeline',
+        systemFlow: "From chat to answer",
+        backendArchitecture: "Layers (chat, API, Temporal, data)",
+        sequence: "Call order for search",
+        failureTree: "Hypothesis → evidence → fix",
       },
       charts: {
         systemFlow: `
 flowchart LR
-  U[User] --> C[Chat UI]
-  C --> A[OpenAI-compatible API]
-  A --> W[Temporal Workflow]
-  W --> T[Activities / Tasks]
-  T --> R[RAG Service]
-  R --> V[(Supabase Vector RPC)]
-  W --> K[Kafka Events]
-  K --> D[Dispatcher / Worker]
+  U[User] --> C[Chat]
+  C --> A[OpenAI-style API]
+  A --> W[Temporal]
+  W --> T[Activities]
+  T --> R[Search / Agent]
+  R --> V[(Vector store)]
+  T --> S[(Optional SQL)]
+  A --> K[Kafka]
+  K --> D[Dispatcher]
   D --> Q[DLQ]
-  W --> L[Structured logs]
 `,
         backendArchitecture: `
 flowchart TB
   subgraph clientLayer [Client]
-    UI[Chat + LDAP Auth]
+    UI[Chat + LDAP]
   end
 
   subgraph apiLayer [API]
-    API[api]
-    AUTH[Session / Permissions]
+    API[FastAPI]
+    RT[Pick agent by model]
   end
 
-  subgraph orchestrationLayer [Orchestration]
-    TW[temporal-workflows]
-    WK[Temporal Worker]
+  subgraph orchestrationLayer [Temporal]
+    TW[Workflows]
+    WK[Worker]
+  end
+
+  subgraph intelligenceLayer [Intelligence]
+    RAG[Domain search]
+    HYB[Search + SQL]
+    LLM[Providers]
   end
 
   subgraph dataLayer [Data]
-    PG[(PostgreSQL)]
+    PG[(Postgres / pgvector)]
     MG[(MongoDB)]
-    SB[(Supabase Vector)]
   end
 
-  subgraph messagingLayer [Messaging]
+  subgraph messagingLayer [Queue]
     KF[Kafka]
-    DLQ[Dead Letter Queue]
+    DLQ[DLQ]
   end
 
   UI --> API
-  API --> AUTH
-  API --> TW
+  API --> RT
+  RT --> TW
   TW --> WK
-  WK --> SB
-  WK --> PG
-  WK --> MG
-  WK --> KF
+  WK --> RAG
+  WK --> HYB
+  WK --> LLM
+  RAG --> PG
+  HYB --> PG
+  API --> KF
   KF --> DLQ
+  UI --> MG
 `,
         sequence: `
 sequenceDiagram
   participant Chat
-  participant API as API
-  participant WF as Temporal Workflow
+  participant GW as API
+  participant WF as Temporal
   participant ACT as Activity
-  participant RAG as RAG Service
-  participant VS as Vector Store
+  participant RAG as Search
+  participant VS as Vector store
 
-  Chat->>API: prompt + selected model
-  API->>WF: start workflow
-  WF->>ACT: execute retrieval task
+  Chat->>GW: prompt + model
+  GW->>WF: start workflow
+  WF->>ACT: retrieval task
   ACT->>RAG: resolve domain by model
-  RAG->>VS: RPC / vector search
-  VS-->>RAG: domain chunks
-  RAG-->>ACT: filtered context
-  ACT-->>WF: auditable routed response
-  WF-->>API: completion
-  API-->>Chat: final response
+  RAG->>VS: search
+  VS-->>RAG: chunks
+  RAG-->>ACT: context
+  ACT-->>WF: answer
+  WF-->>GW: completion / stream
+  GW-->>Chat: response
+`,
+        failureTree: `
+flowchart TB
+  S[Generic answer for wrong domain] --> H1[model never arrives]
+  S --> H2[worker on old lib]
+  S --> H3[search hits wrong function]
+  H1 --> E1[logs without model]
+  H2 --> E2[version differs from repo]
+  H3 --> E3[RPC / domain function]
+  E1 --> FIX1[propagate and validate model]
+  E2 --> FIX2[rebuild worker]
+  E3 --> FIX3[fix search contract]
+  FIX1 --> OK[routing ok]
+  FIX2 --> OK
+  FIX3 --> OK
 `,
       },
       detailCards: [
         {
-          title: 'Challenges',
+          title: "Difficult points",
           items: [
-            'Follow the failure through the chain: chat → API → workflow → activity → vector search.',
-            'Keep compatibility with workers on different framework versions.',
-            'Tell application bugs apart from infrastructure issues.',
-            'Understand LDAP without mixing it up with local login.',
+            "Trace the bug from chat to the vector store without guessing.",
+            "Worker on an old package while the repository already had the fix.",
+            "Tell code bugs apart from Docker problems.",
+            "Keep LDAP in the path without breaking local testing.",
           ],
         },
         {
-          title: 'What we decided',
+          title: "What we decided",
           items: [
-            'Propagate `model` explicitly and validate it in logs.',
-            'Use signature-based fallback to avoid breaking older workers.',
-            'Isolate failures with DLQ instead of contaminating the main flow.',
-            'Make the contract between orchestration and vector search explicit.',
+            "Pass `model` explicitly and log each step.",
+            "Detect a stale worker lib and ask for a rebuild instead of failing silently.",
+            "Send unrecoverable failures to a DLQ.",
+            "Make the contract between Temporal and domain search clear.",
           ],
         },
         {
-          title: 'Tradeoffs',
+          title: "Tradeoffs",
           items: [
-            'I prioritized tracing the flow before optimizing performance.',
-            'I rebuilt the worker to make sure the running code matched the repo.',
-            'I kept backward compatibility to lower deploy risk.',
+            "Understand the flow first; latency tuning came later.",
+            "Worker rebuild was costly, but it removed version drift.",
+            "Kept fallbacks so production did not drop all at once.",
           ],
         },
         {
-          title: 'Next steps in production',
+          title: "Outcome",
           items: [
-            'Monitor critical workflow steps (input, search, response, error).',
-            'Alert when fallback or DLQ usage starts climbing.',
-            'Test the contract between API, workflow, and domain vector search.',
-            'Write a short runbook for common incidents.',
+            "Right agent on the right base, reliably.",
+            "Environment more predictable to debug.",
+            "Next: metrics and alerts on DLQ and provider fallback.",
+            "Contract tests between API, workflow, and search.",
           ],
         },
       ],
-      roleTitle: 'Where I worked',
+      roleTitle: "My part",
       roles: [
         {
-          label: 'Chat',
-          text: 'OpenAI-compatible API integration, LDAP session, and Docker adjustments.',
+          label: "API",
+          text: "OpenAI-style contract, agent selection, streaming, and healthcheck.",
         },
         {
-          label: 'Workflows',
-          text: 'activities, model propagation, and logs for investigation.',
+          label: "Temporal / search",
+          text: "workflows, ingestion, correct domain, and search+SQL agent.",
         },
         {
-          label: 'Infra',
-          text: 'healthchecks, startup, worker, dispatcher, Kafka, and DLQ.',
+          label: "Chat",
+          text: "client integration, LDAP, and group permissions.",
         },
         {
-          label: 'API',
-          text: 'making sure the endpoint and model are correct for whoever consumes the flow.',
+          label: "Infra",
+          text: "Docker, Kafka/DLQ, and smoke tests for the full path.",
         },
       ],
       cta: {
-        backToProjects: 'Back to projects',
-        contact: 'Want to talk about something similar?',
+        backToProjects: "Back to projects",
+        contact: "Want to talk about a similar flow?",
       },
     },
   },

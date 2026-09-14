@@ -1,10 +1,9 @@
-import { Globe, ShoppingCart, GraduationCap, QrCode, Newspaper, Briefcase, LucideIcon } from "lucide-react";
+import { Newspaper, Briefcase, MessageSquare, ShoppingCart, LucideIcon } from "lucide-react";
+import type { ProjectIconKey } from "@/i18n/types";
 
-export const projectIcons: Record<number, LucideIcon> = {
-  0: Newspaper,
-  1: Briefcase,
-  2: Globe,
-  3: ShoppingCart,
-  4: GraduationCap,
-  5: QrCode,
+export const projectIcons: Record<ProjectIconKey, LucideIcon> = {
+  publicData: Newspaper,
+  jobMatch: Briefcase,
+  chatPlatform: MessageSquare,
+  croche: ShoppingCart,
 };

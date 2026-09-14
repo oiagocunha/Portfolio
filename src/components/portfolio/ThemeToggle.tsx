@@ -1,5 +1,6 @@
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useI18n } from "@/i18n";
 
 const prefersDark = () =>
   window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -11,10 +12,13 @@ const applyTheme = (theme: "light" | "dark") => {
 };
 
 const ThemeToggle = () => {
+  const { t } = useI18n();
   const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
-    const saved = (localStorage.getItem("theme") as "light" | "dark") || (prefersDark() ? "dark" : "light");
+    const saved =
+      (localStorage.getItem("theme") as "light" | "dark") ||
+      (prefersDark() ? "dark" : "light");
     setTheme(saved);
     applyTheme(saved);
   }, []);
@@ -28,7 +32,8 @@ const ThemeToggle = () => {
 
   return (
     <button
-      aria-label="Alternar tema"
+      type="button"
+      aria-label={t.a11y.toggleTheme}
       onClick={toggle}
       className="inline-flex h-9 w-9 items-center justify-center rounded-md border bg-background text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
     >
