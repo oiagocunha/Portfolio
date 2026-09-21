@@ -5,7 +5,7 @@ import { spacing, typography } from "@/constants/design-tokens";
 const Specialties = () => {
   const { t } = useI18n();
   return (
-    <section id="especialidades" className={`container ${spacing.section}`}>
+    <section id="atuacao-tecnica" className={`container ${spacing.section}`}>
       <h2 className={`text-center ${typography.h2}`}>
         {t.specialties.title} <span className="gradient-text">{t.specialties.subtitle}</span>.
       </h2>

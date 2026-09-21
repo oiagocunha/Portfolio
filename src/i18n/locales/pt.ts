@@ -19,52 +19,155 @@ export const pt: PortfolioContent = {
     backHome: "Voltar para o início",
   },
 
+  brand: {
+    name: "IC Desenvolvimento",
+    byline: "por Iago Cunha",
+  },
+
   hero: {
-    greeting: "Olá, eu sou",
-    headline: "Backend com foco em APIs, automações e orquestração de fluxos com IA.",
-    typewriter: [
-      "Orquestro agentes de ponta a ponta, do chat ao Temporal.",
-      "APIs no contrato OpenAI pensadas para uso contínuo em produção.",
-      "Quando a busca vetorial consulta a base errada, eu encontro onde o fluxo falhou.",
-      "Menos trabalho manual: n8n, Kafka e retries que aguentam o dia a dia.",
-    ],
+    greeting: "IC Desenvolvimento",
+    headline: "Sites, automações e sistemas que resolvem problemas reais do seu negócio.",
+    typewriter: [],
     description:
-      "Atuo principalmente em backend com Python (FastAPI), Temporal e integrações. Também trabalho com React quando o produto precisa de interface. Busco sistemas que aguentam uso: falha tratada, retry previsível e log legível.",
-    primaryCta: "Falar comigo",
-    secondaryCta: "Ver um case",
+      "Eu crio sites, automatizo tarefas repetitivas, conecto ferramentas que hoje trabalham separadas e desenvolvo pequenos sistemas para o dia a dia da sua operação.",
+    primaryCta: "Falar pelo WhatsApp",
+    secondaryCta: "Ver projetos",
     alt: "Foto de Iago Cunha",
-    role: "Desenvolvedor backend e fullstack",
-    highlights: [
-      "API que recebe o chat e dispara o agente certo no Temporal",
-      "Cada domínio consulta a base certa, sem resposta genérica no lugar errado",
-      "Em falha: retry, fila morta e ambiente Docker que a equipe consegue subir",
-      "Login corporativo (LDAP) e permissão por grupo no chat",
+    role: "por Iago Cunha",
+    highlights: [],
+  },
+
+  problems: {
+    title: "Isso parece com o que vocês vivem hoje?",
+    subtitle: "Se alguma dessas situações for familiar, provavelmente posso ajudar.",
+    bridge:
+      "Você não precisa chegar sabendo qual tecnologia usar. Me conte como vocês fazem hoje e onde está o problema  a primeira conversa serve para entender a melhor solução.",
+    items: [
+      {
+        title: "Tarefas manuais demais",
+        description:
+          "A equipe perde tempo fazendo a mesma tarefa repetida, todo dia, à mão.",
+      },
+      {
+        title: "Informação espalhada",
+        description:
+          "Dados ficam em planilhas, e-mails e ferramentas diferentes  e ninguém encontra nada com facilidade.",
+      },
+      {
+        title: "Ferramentas que não conversam",
+        description:
+          "Vocês copiam informação de um sistema para outro porque as ferramentas não estão conectadas.",
+      },
+      {
+        title: "Falta de presença digital",
+        description:
+          "O negócio precisa de um site, página de serviços ou catálogo que transmita confiança.",
+      },
+      {
+        title: "Ferramenta pronta não resolve",
+        description:
+          "Existe uma necessidade interna que sistemas genéricos não cobrem do jeito que vocês precisam.",
+      },
+      {
+        title: "Dá para melhorar, mas não sei por onde",
+        description:
+          "Vocês sabem que o processo atual emperra, mas ainda não definiram qual solução criar.",
+      },
+    ],
+  },
+
+  services: {
+    title: "O que eu posso fazer por você",
+    subtitle: "Três caminhos claros. Sem jargão.",
+    whenLabel: "Quando faz sentido",
+    items: [
+      {
+        title: "Sites e aplicações web",
+        description:
+          "Um site ou uma pequena aplicação para apresentar o negócio, receber contatos ou mostrar produtos.",
+        when: "Quando você precisa aparecer online com clareza  site, página de serviços ou catálogo.",
+        examples: [
+          "Site institucional",
+          "Landing page e página de serviços",
+          "Catálogo e pequena aplicação web",
+        ],
+      },
+      {
+        title: "Automação e integração",
+        description:
+          "Automatizo o que a equipe repete todo dia e conecto ferramentas que hoje trabalham separadas.",
+        when: "Quando alguém copia dado de um lugar para outro, gera relatório na mão ou perde tempo em rotina previsível.",
+        examples: [
+          "Automatizar tarefas repetitivas",
+          "Conectar planilhas e sistemas",
+          "Organizar fluxos que hoje dependem de trabalho manual",
+        ],
+      },
+      {
+        title: "Sistemas sob medida",
+        description:
+          "Controles e ferramentas feitas para a sua operação  quando o que existe no mercado não encaixa.",
+        when: "Quando a planilha não dá mais conta, ou você precisa de um sistema inicial para organizar o processo.",
+        examples: [
+          "Controles internos",
+          "Painéis e acompanhamento",
+          "Primeira versão de um sistema específico",
+        ],
+      },
+    ],
+  },
+
+  process: {
+    title: "Como trabalho",
+    subtitle: "Do problema à entrega, sem complicar.",
+    steps: [
+      {
+        title: "Conversa inicial",
+        description: "Você me conta o contexto e o problema. Não precisa saber exatamente o que contratar.",
+      },
+      {
+        title: "Entendimento",
+        description: "Eu olho como vocês fazem hoje e o que dá para melhorar com site, automação ou sistema.",
+      },
+      {
+        title: "Proposta",
+        description: "Alinhamos o que entra na entrega, o prazo estimado e o investimento.",
+      },
+      {
+        title: "Desenvolvimento",
+        description: "Construo a solução e te mantenho no acompanhamento.",
+      },
+      {
+        title: "Entrega",
+        description: "Entrego, explico o uso e faço os ajustes combinados.",
+      },
     ],
   },
 
   about: {
-    title: "SOBRE MIM.",
+    title: "SOBRE.",
+    subtitle: "Quem está por trás da IC Desenvolvimento",
     stats: [
       { value: 3, suffix: "", label: "Anos escrevendo software" },
       { value: 10, suffix: "+", label: "Automações em produção" },
       { value: 80, suffix: "%", label: "Menos erro operacional (n8n)" },
     ],
     paragraphs: [
-      "Sou o Iago. Trabalho com backend: API, fila, banco e o caminho do dado até a resposta.",
-      "Hoje passo boa parte do tempo em fluxos com IA: chat, Temporal, busca em documentos e o que acontece quando isso falha em produção.",
-      "Antes, automatizei processos com n8n, integrei sistemas e mantive código legado. Prefiro texto claro e código que outro desenvolvedor consiga manter.",
+      "Sou o Iago Cunha. A IC Desenvolvimento é a marca sob a qual eu desenvolvo projetos para negócios: sites, automações, integrações e sistemas.",
+      "Tenho experiência profissional no Sistema FIEC / Observatório da Indústria, com backend, automação e soluções com IA em ambiente corporativo. Em paralelo, atendo projetos como autônomo.",
+      "Prefiro entender como vocês trabalham hoje antes de propor qualquer ferramenta.",
     ],
   },
 
   specialties: {
-    title: "MINHAS",
-    subtitle: "ESPECIALIDADES",
+    title: "ATUAÇÃO",
+    subtitle: "TÉCNICA",
     items: [
       {
         emoji: "",
         title: "Fluxos com agentes",
         description:
-          "Do prompt no chat até o Temporal: qual agente executa, o que ele consulta e como a resposta retorna.",
+          "Do prompt no chat até a orquestração: qual agente executa, o que ele consulta e como a resposta retorna.",
       },
       {
         emoji: "",
@@ -100,8 +203,8 @@ export const pt: PortfolioContent = {
   },
 
   technologies: {
-    title: "MINHAS",
-    subtitle: "TECNOLOGIAS",
+    title: "STACK",
+    subtitle: "TÉCNICA",
     categories: [
       {
         title: "Linguagens e frameworks",
@@ -187,16 +290,21 @@ export const pt: PortfolioContent = {
 
   projects: {
     title: "PROJETOS.",
-    subtitle: "O que construí ou ajudei a estabilizar, com o problema e o resultado.",
+    subtitle: "Exemplos do que eu já construí  começando pelo que mais fala com um negócio real.",
     demo: "Demo",
     docs: "API",
     code: "Código",
     caseStudy: "Case study",
     complexityLabel: "Complexidade",
-    featuredLabel: "Principais",
-    earlyWorkLabel: "Projetos menores",
+    problemLabel: "Problema",
+    solutionLabel: "Solução",
+    deliveryLabel: "O que foi entregue",
+    techLabel: "Tecnologias",
+    featuredLabel: "Para o seu negócio",
+    earlyWorkLabel: "Também construo soluções mais técnicas",
     earlyWorkSubtitle:
-      "Trabalhos mais antigos ou simples. Mostram o caminho, sem competir com os cases principais.",
+      "Projetos que mostram profundidade técnica. Úteis se você quiser ver como eu trabalho em sistemas mais complexos.",
+    similarWhatsappCta: "Quer algo parecido? Falar pelo WhatsApp",
     statusLabels: {
       internal: "Projeto interno",
       unavailable: "Demo fora do ar",
@@ -210,112 +318,99 @@ export const pt: PortfolioContent = {
     },
     featured: [
       {
-        title: "Assistente corporativo com agentes",
-        description:
-          "Atuei na API, nos workflows Temporal, na busca por documentos e no ambiente Docker de um chat interno com vários agentes.",
-        caseStudyPath: "/case-study/chat-platform",
-        image: "/images/assistente-corporativo.jpg",
-        alt: "Tela do assistente corporativo com campo de mensagem e modelos avançados",
-        technologies: [
-          "Temporal",
-          "FastAPI",
-          "RAG",
-          "Kafka",
-          "PostgreSQL",
-          "LDAP",
-          "Docker",
-        ],
-        complexity: "Very High",
-        impact: [
-          "Corrigimos respostas no domínio errado: o model passou a chegar até a busca",
-          "API no estilo OpenAI, com streaming e healthcheck de ponta a ponta",
-          "Ingestão de documentos, agente que combina busca e SQL, e DLQ para falha",
-          "Login LDAP e permissão por grupo no chat",
-        ],
-        iconKey: "chatPlatform",
-        status: "internal",
-      },
-      {
-        title: "Monitor de dados públicos",
-        description:
-          "API que coleta notícias do G1, grava no Postgres sem duplicar URL e expõe tudo no Swagger. Demo disponível no Render.",
-        demo: "https://public-data-monitor.onrender.com/docs",
-        repo: "https://github.com/oiagocunha/public-data-monitor",
-        caseStudyPath: "/case-study/public-data-monitor",
-        image: "/images/public-data-monitor-swagger.png",
-        media: "/images/public-data-monitor-swagger.png",
-        alt: "Swagger do Public Data Monitor",
-        technologies: [
-          "Python",
-          "FastAPI",
-          "PostgreSQL",
-          "SQLAlchemy",
-          "httpx",
-          "Docker",
-          "Render",
-        ],
-        complexity: "High",
-        impact: [
-          "Coleta que pode rodar de novo sem gerar notícia duplicada",
-          "Endpoints claros em /news, documentados no OpenAPI",
-          "Scraper com retry quando o HTML do G1 falha",
-          "Ambiente local com Docker Compose",
-        ],
-        iconKey: "publicData",
-        status: "live",
-      },
-      {
-        title: "Job Match Alerts",
-        description:
-          "Envio de currículo em PDF, importação de vaga por link e score ATS com o que bateu e o que faltou.",
-        demo: "https://job-match-alerts.vercel.app/",
-        docs: "https://job-match-alerts.onrender.com/docs",
-        repo: "https://github.com/oiagocunha/job-match-alerts",
-        image: "/images/job-match-alerts-swagger.png",
-        alt: "Job Match Alerts",
-        technologies: [
-          "Python",
-          "FastAPI",
-          "PostgreSQL",
-          "React",
-          "TypeScript",
-          "OpenAI",
-          "Docker",
-        ],
-        complexity: "High",
-        impact: [
-          "Vários currículos salvos a partir de PDF",
-          "Score imediato, com skills matched e missing",
-          "Ranking de vagas com filtro de senioridade e remoto",
-          "API documentada e score previsível",
-        ],
-        iconKey: "jobMatch",
-        status: "live",
-      },
-    ],
-    earlyWork: [
-      {
         title: "FV Crochê",
         description:
-          "Loja de crochê em React: catálogo, categorias e carrinho para encomenda.",
+          "Um negócio precisava apresentar produtos online e facilitar o pedido. Foi criada uma aplicação web com catálogo, categorias e carrinho.",
+        problem:
+          "O negócio precisava mostrar produtos com clareza e receber encomendas sem depender só de conversa solta.",
+        solution:
+          "Aplicação web com catálogo organizado, categorias e carrinho pensado para encomenda.",
         demo: "https://fv-croche.vercel.app/",
         image: "/images/fv-croche.png",
         alt: "Landing do FV Crochê",
         technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
         complexity: "Medium",
         impact: [
-          "Home direta para o catálogo",
-          "Carrinho pensado em encomenda",
-          "Rebrand do projeto antigo",
+          "Catálogo online com categorias",
+          "Carrinho para encomenda",
+          "Página inicial direta para os produtos",
         ],
         iconKey: "croche",
+        status: "live",
+      },
+    ],
+    earlyWork: [
+      {
+        title: "Assistente corporativo com agentes",
+        description:
+          "Chat interno para a equipe consultar informações e receber respostas de forma mais organizada.",
+        problem:
+          "O time precisava de um assistente interno estável, com respostas no contexto certo.",
+        solution:
+          "Participei da construção e estabilização do chat, da busca em documentos e do ambiente usado pelo time.",
+        caseStudyPath: "/case-study/chat-platform",
+        image: "/images/assistente-corporativo.jpg",
+        alt: "Tela do assistente corporativo",
+        technologies: ["Temporal", "FastAPI", "RAG", "Kafka", "PostgreSQL", "LDAP", "Docker"],
+        complexity: "Very High",
+        impact: [
+          "Chat interno com múltiplos agentes",
+          "Busca em documentos por contexto",
+          "Ambiente mais previsível para o time",
+        ],
+        iconKey: "chatPlatform",
+        status: "internal",
+      },
+      {
+        title: "Job Match Alerts",
+        description:
+          "Ferramenta para comparar currículo e vaga e ver o que bate e o que falta.",
+        problem:
+          "Avaliar o alinhamento entre currículo e vaga sem revisar tudo manualmente.",
+        solution:
+          "Aplicação que recebe o currículo, analisa a vaga e devolve um comparativo objetivo.",
+        demo: "https://job-match-alerts.vercel.app/",
+        repo: "https://github.com/oiagocunha/job-match-alerts",
+        image: "/images/job-match-alerts-swagger.png",
+        alt: "Job Match Alerts",
+        technologies: ["Python", "FastAPI", "PostgreSQL", "React", "TypeScript", "OpenAI", "Docker"],
+        complexity: "High",
+        impact: [
+          "Upload de currículo em PDF",
+          "Comparativo objetivo com a vaga",
+          "Demo disponível online",
+        ],
+        iconKey: "jobMatch",
+        status: "live",
+      },
+      {
+        title: "Monitor de dados públicos",
+        description:
+          "API que coleta notícias públicas, grava sem duplicar e deixa a consulta documentada.",
+        problem:
+          "Precisava de uma forma confiável de coletar dados externos e consultar sem duplicata.",
+        solution:
+          "Sistema de coleta com armazenamento organizado e documentação pronta para uso.",
+        demo: "https://public-data-monitor.onrender.com/docs",
+        repo: "https://github.com/oiagocunha/public-data-monitor",
+        caseStudyPath: "/case-study/public-data-monitor",
+        image: "/images/public-data-monitor-swagger.png",
+        alt: "Monitor de dados públicos",
+        technologies: ["Python", "FastAPI", "PostgreSQL", "Docker", "Render"],
+        complexity: "High",
+        impact: [
+          "Coleta sem duplicar registros",
+          "Consulta documentada online",
+          "Ambiente reproduzível",
+        ],
+        iconKey: "publicData",
         status: "live",
       },
     ],
   },
 
   certifications: {
-    title: "CERTIFICAÇÕES",
+    title: "FORMAÇÃO",
     subtitle: "E CURSOS",
     viewCert: "Ver Certificado",
     items: [
@@ -371,11 +466,9 @@ export const pt: PortfolioContent = {
         role: "Desenvolvedor backend",
         period: "11/2025 - Atualmente",
         description: [
-          "Atuo na API do chat (estilo OpenAI), nos workflows Temporal e na integração com o front do assistente.",
-          "Ajustei o caminho do `model` até a busca em documentos para o agente consultar a base certa.",
-          "Também trabalho com Kafka/DLQ, healthcheck e o Docker usado pelo time no dia a dia.",
-          "Login LDAP, permissão por grupo e sessão no chat.",
-          "Participo de discussões de arquitetura quando o tema é separação de serviço, falha e ambiente de desenvolvimento.",
+          "Experiência profissional em backend, automação e soluções com IA em ambiente corporativo.",
+          "Atuo em sistemas usados no dia a dia do time: APIs, fluxos automatizados e integração com o front.",
+          "Participo de melhorias de estabilidade, falha controlada e ambiente de desenvolvimento.",
         ],
         technologies: [
           "Python",
@@ -386,10 +479,8 @@ export const pt: PortfolioContent = {
           "PostgreSQL",
           "MongoDB",
           "Docker",
-          "LDAP",
           "n8n",
           "Node.js",
-          "GitLab CI/CD",
         ],
       },
       {
@@ -398,9 +489,8 @@ export const pt: PortfolioContent = {
         period: "03/2025 - 11/2025",
         description: [
           "Automatizei rotinas com n8n e APIs, com cerca de 80% menos erro operacional no que entregamos.",
-          "Traduzi regras de negócio em fluxos que o time consegue usar no dia a dia.",
-          "Atuei em front React e backend PHP em sistemas já existentes.",
-          "Entreguei ferramentas internas para acelerar o trabalho da equipe.",
+          "Transformei regras de negócio em fluxos que o time consegue usar no dia a dia.",
+          "Atuei em sistemas já existentes e entreguei ferramentas internas para acelerar o trabalho.",
         ],
         technologies: [
           "React",
@@ -408,35 +498,27 @@ export const pt: PortfolioContent = {
           "PHP",
           "Laravel",
           "Node.js",
-          "Express",
           "TypeScript",
-          "Tailwind CSS",
           "n8n",
         ],
       },
       {
-        company: "Autônomo",
+        company: "Autônomo · IC Desenvolvimento",
         role: "Desenvolvedor fullstack",
         period: "06/2024 - Atualmente",
         description: [
-          "APIs e backends sob demanda com Python, FastAPI e Node.js.",
-          "PostgreSQL e MongoDB conforme o caso.",
-          "Automação e integração entre sistemas quando o cliente precisa sair da planilha.",
-          "Docker para o ambiente ser reproduzível em qualquer máquina.",
-          "Do alinhamento de escopo até um MVP em funcionamento.",
+          "Desenvolvimento de sites, aplicações web, automações e sistemas conforme a necessidade do projeto.",
+          "Integração entre ferramentas e redução de processos manuais.",
+          "Do alinhamento do problema até a primeira versão em funcionamento.",
         ],
         technologies: [
           "Python",
           "FastAPI",
           "Node.js",
-          "JavaScript",
+          "React",
           "PostgreSQL",
           "MongoDB",
           "Docker",
-          "Git",
-          "GitHub",
-          "GitLab",
-          "CI/CD",
         ],
       },
     ],
@@ -444,11 +526,19 @@ export const pt: PortfolioContent = {
 
   contact: {
     title: "CONTATO.",
-    subtitle: "Backend, automação ou um fluxo com IA que precisa de atenção? Envie uma mensagem.",
+    subtitle: "Quer conversar sobre um projeto? Me chama no WhatsApp.",
+    reassurance:
+      "Não sabe exatamente o que precisa? Tudo bem. Me conte como vocês fazem hoje e qual problema querem resolver.",
     email: "Email",
+    whatsapp: "WhatsApp",
+    whatsappNumber: "5585989035010",
+    whatsappDisplay: "+55 85 98903-5010",
+    whatsappMessage:
+      "Olá, Iago! Vi o site da IC Desenvolvimento e queria conversar sobre um projeto.",
+    whatsappCta: "Falar pelo WhatsApp",
     location: "Localização",
     locationText: "Fortaleza, Ceará",
-    formTitle: "Envie uma mensagem",
+    formTitle: "Ou envie uma mensagem",
     nameLabel: "Nome",
     emailLabel: "Email",
     subjectLabel: "Assunto",
@@ -456,45 +546,47 @@ export const pt: PortfolioContent = {
     namePlaceholder: "Seu nome",
     emailPlaceholder: "seu@email.com",
     subjectPlaceholder: "Assunto (opcional)",
-    messagePlaceholder: "Em que posso ajudar?",
+    messagePlaceholder: "Descreva o problema ou o projeto  pode ser em poucas linhas.",
     sending: "Enviando...",
-    sendButton: "Enviar",
+    sendButton: "Enviar mensagem",
     successTitle: "Mensagem enviada",
     successDescription: "Respondo assim que possível.",
     errorTitle: "Não foi possível enviar",
     errorDescription: "Preencha todos os campos obrigatórios.",
     errorGeneric: "Tente novamente em instantes.",
     errorEndpoint: "Formulário ainda sem endpoint configurado.",
-    formSubject: "Contato do portfólio",
+    formSubject: "Contato  IC Desenvolvimento",
   },
 
   navbar: {
     items: [
       { href: "#hero", label: "Início" },
-      { href: "#sobre", label: "Sobre" },
+      { href: "#servicos", label: "Serviços" },
       { href: "#projetos", label: "Projetos" },
-      { href: "#habilidades", label: "Habilidades" },
-      { href: "#certificacoes", label: "Certificações" },
-      { href: "#experiencia", label: "Experiência" },
+      { href: "#como-trabalho", label: "Como trabalho" },
+      { href: "#sobre", label: "Sobre" },
       { href: "#contato", label: "Contato" },
     ],
-    downloadCV: "Baixar CV",
-    cvPath: "/[PT] Currículo - Dev. Fullstack- Iago Cunha.pdf",
   },
 
   footer: {
     rights: "Todos os direitos reservados.",
+    tagline: "Sites, automações e sistemas para o seu negócio.",
+  },
+
+  whatsappFloat: {
+    label: "WhatsApp",
   },
 
   seo: {
-    siteName: "Iago Cunha | Portfólio",
+    siteName: "IC Desenvolvimento | Iago Cunha",
     keywords:
-      "Iago Cunha, desenvolvedor fullstack, desenvolvedor backend, desenvolvedor frontend, fullstack developer, backend developer, frontend developer, Python, FastAPI, React, Next.js, Node.js, Temporal, Kafka, n8n, PostgreSQL, Fortaleza, Ceará, Brasil, portfólio desenvolvedor",
+      "IC Desenvolvimento, Iago Cunha, desenvolvimento de sites, automação de processos, integração de sistemas, desenvolvimento sob medida, automação n8n, MVP, sistemas internos, IA aplicada, FastAPI, React, Fortaleza, Ceará",
     pages: {
       home: {
-        title: "Iago Cunha | Desenvolvedor backend e fullstack",
+        title: "IC Desenvolvimento | Sites, Automação e Sistemas sob Medida",
         description:
-          "Portfólio de Iago Cunha: backend com FastAPI, Temporal, automações e fluxos com IA. Projetos, cases e contato.",
+          "IC Desenvolvimento, por Iago Cunha: sites, automações, integrações e sistemas sob medida em Fortaleza/CE. Converse sobre o seu projeto.",
       },
       chatCaseStudy: {
         title: "Case: assistente com agentes, Temporal e busca em documentos | Iago Cunha",

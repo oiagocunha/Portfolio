@@ -12,6 +12,9 @@ export type ProjectIconKey =
 export interface ProjectItem {
   title: string;
   description: string;
+  /** Commercial framing: problem → solution → delivery */
+  problem?: string;
+  solution?: string;
   demo?: string;
   docs?: string;
   repo?: string;
@@ -22,6 +25,7 @@ export interface ProjectItem {
   alt: string;
   technologies: string[];
   complexity: ProjectComplexity;
+  /** Delivery / outcome bullets (no invented metrics) */
   impact: string[];
   iconKey: ProjectIconKey;
   status?: ProjectStatus;
@@ -90,6 +94,11 @@ export interface PortfolioContent {
     backHome: string;
   };
 
+  brand: {
+    name: string;
+    byline: string;
+  };
+
   hero: {
     greeting: string;
     headline: string;
@@ -102,8 +111,40 @@ export interface PortfolioContent {
     highlights: string[];
   };
 
+  problems: {
+    title: string;
+    subtitle: string;
+    bridge: string;
+    items: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+
+  services: {
+    title: string;
+    subtitle: string;
+    whenLabel: string;
+    items: Array<{
+      title: string;
+      description: string;
+      when: string;
+      examples: string[];
+    }>;
+  };
+
+  process: {
+    title: string;
+    subtitle: string;
+    steps: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+
   about: {
     title: string;
+    subtitle: string;
     stats: Array<{
       value: number;
       suffix: string;
@@ -156,9 +197,14 @@ export interface PortfolioContent {
     code: string;
     caseStudy: string;
     complexityLabel: string;
+    problemLabel: string;
+    solutionLabel: string;
+    deliveryLabel: string;
+    techLabel: string;
     featuredLabel: string;
     earlyWorkLabel: string;
     earlyWorkSubtitle: string;
+    similarWhatsappCta: string;
     statusLabels: {
       internal: string;
       unavailable: string;
@@ -198,7 +244,13 @@ export interface PortfolioContent {
   contact: {
     title: string;
     subtitle: string;
+    reassurance: string;
     email: string;
+    whatsapp: string;
+    whatsappNumber: string;
+    whatsappDisplay: string;
+    whatsappMessage: string;
+    whatsappCta: string;
     location: string;
     locationText: string;
     formTitle: string;
@@ -226,12 +278,15 @@ export interface PortfolioContent {
       href: string;
       label: string;
     }>;
-    downloadCV: string;
-    cvPath: string;
   };
 
   footer: {
     rights: string;
+    tagline: string;
+  };
+
+  whatsappFloat: {
+    label: string;
   };
 
   seo: {

@@ -10,9 +10,11 @@ const About = () => {
     <section id="sobre" className={`container ${spacing.section}`}>
       <FadeInSection>
         <h2 className={`text-center ${typography.h2}`}>{t.about.title}</h2>
+        <p className="mt-3 text-center text-muted-foreground max-w-2xl mx-auto">
+          {t.about.subtitle}
+        </p>
       </FadeInSection>
 
-      {/* Stats Section */}
       <FadeInSection delay={0.2}>
         <div className="mt-6 grid grid-cols-2 lg:grid-cols-3 gap-4 text-center">
           {t.about.stats.map((stat) => (
@@ -26,7 +28,11 @@ const About = () => {
           <div className="order-2 md:order-1">
             <img
               src="/images/Conquista.png"
-              alt={locale === 'pt' ? "Conquista ou certificado de Iago Cunha" : "Iago Cunha's achievement or certificate"}
+              alt={
+                locale === "pt"
+                  ? "Conquista ou certificado de Iago Cunha"
+                  : "Iago Cunha's achievement or certificate"
+              }
               loading="lazy"
               className={`h-[60dvh] max-w-md mx-auto md:max-w-none rounded-lg shadow-lg ${transitions.default} hover:scale-105`}
             />
@@ -36,7 +42,9 @@ const About = () => {
         <FadeInSection delay={0.3} direction="right">
           <article className="space-y-4 order-1 md:order-2">
             {t.about.paragraphs.map((p, i) => (
-              <p className={`${typography.body} text-muted-foreground`} key={i}>{p}</p>
+              <p className={`${typography.body} text-muted-foreground`} key={i}>
+                {p}
+              </p>
             ))}
 
             <SocialLinks />

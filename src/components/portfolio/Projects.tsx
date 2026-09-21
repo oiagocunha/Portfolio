@@ -8,8 +8,16 @@ import type { ProjectItem, ProjectStatus } from "@/i18n/types";
 const Projects = () => {
   const { t } = useI18n();
 
-  const renderGrid = (items: ProjectItem[]) => (
-    <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  const whatsappHref = `https://wa.me/${t.contact.whatsappNumber}?text=${encodeURIComponent(t.contact.whatsappMessage)}`;
+
+  const renderGrid = (
+    items: ProjectItem[],
+    mode: "commercial" | "technical",
+    withWhatsapp: boolean,
+  ) => (
+    <div
+      className={`mt-8 grid gap-4 ${mode === "commercial" ? "sm:grid-cols-1 lg:grid-cols-1 max-w-2xl mx-auto" : "sm:grid-cols-2 lg:grid-cols-3"}`}
+    >
       {items.map((project, index) => {
         const status = project.status as ProjectStatus | undefined;
         const statusLabel =
@@ -24,10 +32,14 @@ const Projects = () => {
               docsLabel={t.projects.docs}
               codeLabel={t.projects.code}
               caseStudyLabel={t.projects.caseStudy}
-              complexityLabel={t.projects.complexityLabel}
-              complexityValue={t.projects.complexity[project.complexity]}
+              problemLabel={t.projects.problemLabel}
+              solutionLabel={t.projects.solutionLabel}
+              deliveryLabel={t.projects.deliveryLabel}
               statusLabel={statusLabel}
               mediaPlayLabel={t.a11y.openMedia}
+              mode={mode}
+              whatsappHref={withWhatsapp ? whatsappHref : undefined}
+              whatsappCta={withWhatsapp ? t.projects.similarWhatsappCta : undefined}
             />
           </FadeInSection>
         );
@@ -49,17 +61,21 @@ const Projects = () => {
           {t.projects.featuredLabel}
         </h3>
       </FadeInSection>
-      {renderGrid(t.projects.featured)}
+      {renderGrid(t.projects.featured, "commercial", true)}
 
-      <FadeInSection delay={0.05}>
-        <h3 className="mt-14 text-lg font-semibold tracking-wide text-foreground/90">
-          {t.projects.earlyWorkLabel}
-        </h3>
-        <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
-          {t.projects.earlyWorkSubtitle}
-        </p>
-      </FadeInSection>
-      {renderGrid(t.projects.earlyWork)}
+      {t.projects.earlyWork.length > 0 && (
+        <>
+          <FadeInSection delay={0.05}>
+            <h3 className="mt-14 text-lg font-semibold tracking-wide text-foreground/90">
+              {t.projects.earlyWorkLabel}
+            </h3>
+            <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
+              {t.projects.earlyWorkSubtitle}
+            </p>
+          </FadeInSection>
+          {renderGrid(t.projects.earlyWork, "technical", false)}
+        </>
+      )}
     </section>
   );
 };

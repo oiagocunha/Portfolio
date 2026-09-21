@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, LucideIcon, Play } from "lucide-react";
+import { ExternalLink, Github, LucideIcon, MessageCircle, Play } from "lucide-react";
 import { iconSizes, typography, transitions, shadows } from "@/constants/design-tokens";
 import { Link } from "react-router-dom";
 import type { ProjectComplexity, ProjectStatus } from "@/i18n/types";
@@ -12,6 +13,8 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 interface ProjectCardProps {
   title: string;
   description: string;
+  problem?: string;
+  solution?: string;
   demo?: string;
   docs?: string;
   repo?: string;
@@ -27,11 +30,16 @@ interface ProjectCardProps {
   docsLabel: string;
   codeLabel: string;
   caseStudyLabel: string;
-  complexityLabel: string;
-  complexityValue: string;
+  problemLabel: string;
+  solutionLabel: string;
+  deliveryLabel: string;
   statusLabel?: string;
   mediaPlayLabel: string;
   icon: LucideIcon;
+  /** Commercial cards hide complexity and heavy tech badges */
+  mode?: "commercial" | "technical";
+  whatsappHref?: string;
+  whatsappCta?: string;
 }
 
 const FALLBACK_IMAGE = "/images/placeholder-project.svg";
@@ -42,8 +50,9 @@ const isAnimatedStill = (src: string) => /\.(gif|webp)$/i.test(src);
 export const ProjectCard = ({
   title,
   description,
+  problem,
+  solution,
   demo,
-  docs,
   repo,
   image,
   media,
@@ -53,14 +62,17 @@ export const ProjectCard = ({
   caseStudyPath,
   status,
   demoLabel,
-  docsLabel,
   codeLabel,
   caseStudyLabel,
-  complexityLabel,
-  complexityValue,
+  problemLabel,
+  solutionLabel,
+  deliveryLabel,
   statusLabel,
   mediaPlayLabel,
   icon: Icon,
+  mode = "commercial",
+  whatsappHref,
+  whatsappCta,
 }: ProjectCardProps) => {
   const reducedMotion = usePrefersReducedMotion();
   const [imgSrc, setImgSrc] = useState(image || FALLBACK_IMAGE);
@@ -68,6 +80,8 @@ export const ProjectCard = ({
   const mediaSrc = media && media !== image ? media : undefined;
   const canPlayMedia = Boolean(mediaSrc) && !reducedMotion;
   const hasVisual = Boolean(image || media);
+  const visibleTech =
+    mode === "technical" ? technologies.slice(0, 4) : technologies.slice(0, 3);
 
   return (
     <motion.article
@@ -126,22 +140,38 @@ export const ProjectCard = ({
             <p className={`mt-2 md:mt-3 ${typography.body} text-muted-foreground`}>
               {description}
             </p>
-            <div className="mt-3 flex flex-wrap items-center gap-2">
-              <Badge className="bg-primary/10 text-primary hover:bg-primary/10">
-                {complexityLabel}: {complexityValue}
-              </Badge>
-              {statusLabel && status && status !== "live" && (
+            {(problem || solution) && (
+              <div className="mt-3 space-y-2 text-sm">
+                {problem && (
+                  <p className="text-muted-foreground">
+                    <span className="font-medium text-foreground">{problemLabel}: </span>
+                    {problem}
+                  </p>
+                )}
+                {solution && (
+                  <p className="text-muted-foreground">
+                    <span className="font-medium text-foreground">{solutionLabel}: </span>
+                    {solution}
+                  </p>
+                )}
+              </div>
+            )}
+            {statusLabel && status && status !== "live" && (
+              <div className="mt-3">
                 <Badge variant="outline">{statusLabel}</Badge>
-              )}
-            </div>
-            <div className="mt-3 md:mt-4 flex flex-wrap gap-1.5 md:gap-2">
-              {technologies.map((tech) => (
-                <Badge key={tech} variant="secondary" className="text-xs">
-                  {tech}
-                </Badge>
-              ))}
-            </div>
+              </div>
+            )}
+            {mode === "technical" && visibleTech.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {visibleTech.map((tech) => (
+                  <Badge key={tech} variant="secondary" className="text-xs">
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+            )}
             <div className="mt-3 space-y-1.5">
+              <p className="text-sm font-medium text-foreground">{deliveryLabel}</p>
               {impact.map((item) => (
                 <p key={item} className="text-sm text-muted-foreground">
                   - {item}
@@ -160,18 +190,7 @@ export const ProjectCard = ({
                   </Badge>
                 </a>
               )}
-              {docs && (
-                <a href={docs} target="_blank" rel="noreferrer">
-                  <Badge
-                    variant="outline"
-                    className={`gap-1 cursor-pointer ${transitions.fast} hover:bg-primary hover:text-primary-foreground`}
-                  >
-                    <ExternalLink className={iconSizes.sm} />
-                    {docsLabel}
-                  </Badge>
-                </a>
-              )}
-              {repo && (
+              {repo && mode === "technical" && (
                 <a href={repo} target="_blank" rel="noreferrer">
                   <Badge
                     variant="outline"
@@ -193,6 +212,16 @@ export const ProjectCard = ({
                 </Link>
               )}
             </div>
+            {whatsappHref && whatsappCta && (
+              <div className="mt-4">
+                <Button asChild variant="outline" size="sm" className="w-full sm:w-auto">
+                  <a href={whatsappHref} target="_blank" rel="noreferrer">
+                    <MessageCircle className="mr-2 h-4 w-4" />
+                    {whatsappCta}
+                  </a>
+                </Button>
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>

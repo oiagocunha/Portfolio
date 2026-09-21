@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
-import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/i18n";
 import { zIndex, transitions, iconSizes, borderRadius } from "@/constants/design-tokens";
@@ -33,13 +32,16 @@ const Navbar = () => {
       className={`fixed top-0 left-0 w-full ${zIndex.fixed} border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg`}
     >
       <nav className="container flex h-16 items-center justify-between" aria-label="Primary">
-        <a href="#hero" className="flex items-center space-x-2 font-bold text-xl">
+        <a href="#hero" className="flex items-center space-x-2 font-bold text-xl" onClick={(e) => handleSectionNav(e, "#hero")}>
           <div
             className={`h-8 w-8 ${borderRadius.full} bg-gradient-to-r from-primary to-accent flex items-center justify-center text-primary-foreground text-sm font-bold`}
           >
             IC
           </div>
-          <span className="hidden sm:inline">Iago Cunha</span>
+          <span className="hidden sm:flex flex-col leading-tight">
+            <span className="text-base">{t.brand.name}</span>
+            <span className="text-[11px] font-medium text-muted-foreground">{t.brand.byline}</span>
+          </span>
         </a>
 
         <div className="hidden lg:flex items-center space-x-4">
@@ -56,12 +58,6 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button asChild size="sm" variant="outline" className="hidden md:flex">
-            <a href={t.navbar.cvPath} download className="flex items-center gap-2">
-              <Download className={iconSizes.sm} />
-              {t.navbar.downloadCV}
-            </a>
-          </Button>
           <ThemeToggle />
           <LanguageToggle />
           <button
@@ -101,12 +97,6 @@ const Navbar = () => {
                   {item.label}
                 </a>
               ))}
-              <Button asChild size="sm" variant="outline" className="w-full">
-                <a href={t.navbar.cvPath} download className="flex items-center justify-center gap-2">
-                  <Download className={iconSizes.sm} />
-                  {t.navbar.downloadCV}
-                </a>
-              </Button>
             </div>
           </motion.div>
         )}

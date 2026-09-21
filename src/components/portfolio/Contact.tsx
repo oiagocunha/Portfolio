@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
-import { Send, Mail, MapPin } from "lucide-react";
+import { Send, Mail, MapPin, MessageCircle } from "lucide-react";
 import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
 import { spacing, typography, iconSizes, borderRadius } from "@/constants/design-tokens";
@@ -13,6 +13,8 @@ import { spacing, typography, iconSizes, borderRadius } from "@/constants/design
 const Contact = () => {
   const { t } = useI18n();
   const [loading, setLoading] = useState(false);
+
+  const whatsappHref = `https://wa.me/${t.contact.whatsappNumber}?text=${encodeURIComponent(t.contact.whatsappMessage)}`;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -93,44 +95,70 @@ const Contact = () => {
     <section id="contato" className={`container ${spacing.section}`}>
       <FadeInSection>
         <h2 className={`text-center ${typography.h2}`}>{t.contact.title}</h2>
-        <p className={`mt-4 text-center text-muted-foreground max-w-2xl mx-auto`}>
+        <p className="mt-4 text-center text-muted-foreground max-w-2xl mx-auto">
           {t.contact.subtitle}
         </p>
+        <p className="mt-3 text-center text-sm text-muted-foreground max-w-2xl mx-auto">
+          {t.contact.reassurance}
+        </p>
+        <div className="mt-6 flex justify-center">
+          <Button asChild variant="hero" size="lg" className="w-full max-w-sm sm:w-auto">
+            <a href={whatsappHref} target="_blank" rel="noreferrer">
+              <MessageCircle className="mr-2 h-4 w-4" />
+              {t.contact.whatsappCta}
+            </a>
+          </Button>
+        </div>
       </FadeInSection>
 
       <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-12">
         <FadeInSection delay={0.1} direction="left">
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className={`${borderRadius.md} border p-2 text-accent`}>
-                  <Mail className={iconSizes.md} />
-                </div>
-                <div>
-                  <p className="font-medium">{t.contact.email}</p>
-                  <a
-                    href="mailto:dev.iagocunha@gmail.com"
-                    className="text-sm text-muted-foreground hover:text-foreground underline-offset-2 hover:underline"
-                  >
-                    dev.iagocunha@gmail.com
-                  </a>
-                </div>
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className={`${borderRadius.md} border p-2 text-accent`}>
+                <MessageCircle className={iconSizes.md} />
               </div>
+              <div>
+                <p className="font-medium">{t.contact.whatsapp}</p>
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm text-muted-foreground hover:text-foreground underline-offset-2 hover:underline"
+                >
+                  {t.contact.whatsappDisplay}
+                </a>
+              </div>
+            </div>
 
-              <div className="flex items-center gap-3">
-                <div className={`${borderRadius.md} border p-2 text-accent`}>
-                  <MapPin className={iconSizes.md} />
-                </div>
-                <div>
-                  <p className="font-medium">{t.contact.location}</p>
-                  <p className="text-sm text-muted-foreground">{t.contact.locationText}</p>
-                </div>
+            <div className="flex items-center gap-3">
+              <div className={`${borderRadius.md} border p-2 text-accent`}>
+                <Mail className={iconSizes.md} />
+              </div>
+              <div>
+                <p className="font-medium">{t.contact.email}</p>
+                <a
+                  href="mailto:dev.iagocunha@gmail.com"
+                  className="text-sm text-muted-foreground hover:text-foreground underline-offset-2 hover:underline"
+                >
+                  dev.iagocunha@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className={`${borderRadius.md} border p-2 text-accent`}>
+                <MapPin className={iconSizes.md} />
+              </div>
+              <div>
+                <p className="font-medium">{t.contact.location}</p>
+                <p className="text-sm text-muted-foreground">{t.contact.locationText}</p>
               </div>
             </div>
           </div>
         </FadeInSection>
 
-        <FadeInSection delay={0.3} direction="right">
+        <FadeInSection delay={0.2} direction="right">
           <Card>
             <CardHeader>
               <CardTitle>{t.contact.formTitle}</CardTitle>
@@ -187,7 +215,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button type="submit" className="w-full" disabled={loading} variant="hero">
+                <Button type="submit" className="w-full" disabled={loading} variant="outline">
                   {loading ? (
                     t.contact.sending
                   ) : (

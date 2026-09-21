@@ -30,7 +30,7 @@ const ScrollTop = () => {
 
   return createPortal(
     <div
-      className={`fixed bottom-6 right-6 z-50 ${visible ? "opacity-100" : "opacity-0 pointer-events-none"} transition-opacity`}
+      className={`fixed bottom-24 right-5 md:bottom-28 md:right-6 z-50 ${visible ? "opacity-100" : "opacity-0 pointer-events-none"} transition-opacity`}
     >
       <Button
         onClick={toTop}

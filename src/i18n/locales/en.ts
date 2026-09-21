@@ -19,52 +19,154 @@ export const en: PortfolioContent = {
     backHome: "Back to home",
   },
 
+  brand: {
+    name: "IC Desenvolvimento",
+    byline: "by Iago Cunha",
+  },
+
   hero: {
-    greeting: "Hi, I'm",
-    headline: "Backend focused on APIs, automation, and orchestrating AI flows.",
-    typewriter: [
-      "I orchestrate agents end to end, from chat to Temporal.",
-      "OpenAI-style APIs built for continuous production use.",
-      "When vector search hits the wrong base, I find where the flow failed.",
-      "Less manual work: n8n, Kafka, and retries that hold up day to day.",
-    ],
+    greeting: "IC Desenvolvimento",
+    headline: "Websites, automation, and systems that solve real business problems.",
+    typewriter: [],
     description:
-      "I mostly build backend with Python (FastAPI), Temporal, and integrations. I also work with React when the product needs a UI. I care about systems that survive use: handled failures, predictable retries, and readable logs.",
-    primaryCta: "Get in touch",
-    secondaryCta: "Read a case study",
+      "I build websites, automate repetitive tasks, connect tools that currently work separately, and create small systems for day-to-day operations.",
+    primaryCta: "Chat on WhatsApp",
+    secondaryCta: "See projects",
     alt: "Photo of Iago Cunha",
-    role: "Backend and fullstack developer",
-    highlights: [
-      "API that takes chat traffic and starts the right Temporal agent",
-      "Each domain hits the right knowledge base, without generic answers in the wrong place",
-      "On failure: retry, dead-letter queue, and Docker the team can actually run",
-      "Corporate login (LDAP) and group-based access in the chat",
+    role: "by Iago Cunha",
+    highlights: [],
+  },
+
+  problems: {
+    title: "Does this sound like your day-to-day?",
+    subtitle: "If any of these feel familiar, I can probably help.",
+    bridge:
+      "You do not need to know which technology to use. Tell me how you work today and where it breaks  the first conversation is to find the right solution.",
+    items: [
+      {
+        title: "Too much manual work",
+        description: "The team spends time repeating the same task by hand, every day.",
+      },
+      {
+        title: "Scattered information",
+        description:
+          "Data lives in spreadsheets, email, and different tools  and nobody can find things easily.",
+      },
+      {
+        title: "Tools that do not talk",
+        description:
+          "You copy information from one system to another because the tools are not connected.",
+      },
+      {
+        title: "Missing digital presence",
+        description:
+          "The business needs a website, service page, or catalog that builds trust.",
+      },
+      {
+        title: "Off-the-shelf tools fall short",
+        description:
+          "There is an internal need that generic systems do not cover the way you need.",
+      },
+      {
+        title: "You know it can improve, but not how",
+        description:
+          "You know the current process stalls, but you have not defined what to build yet.",
+      },
+    ],
+  },
+
+  services: {
+    title: "What I can do for you",
+    subtitle: "Three clear paths. No jargon.",
+    whenLabel: "When it makes sense",
+    items: [
+      {
+        title: "Websites and web apps",
+        description:
+          "A website or small app to present the business, take inquiries, or show products.",
+        when: "When you need to show up online clearly  a site, service page, or catalog.",
+        examples: [
+          "Institutional website",
+          "Landing page and service page",
+          "Catalog and small web app",
+        ],
+      },
+      {
+        title: "Automation and integration",
+        description:
+          "I automate what the team repeats every day and connect tools that currently work separately.",
+        when: "When someone copies data between places, builds reports by hand, or loses time on predictable routines.",
+        examples: [
+          "Automate repetitive tasks",
+          "Connect spreadsheets and systems",
+          "Organize flows that currently depend on manual work",
+        ],
+      },
+      {
+        title: "Custom systems",
+        description:
+          "Controls and tools built for your operation  when off-the-shelf options do not fit.",
+        when: "When the spreadsheet is no longer enough, or you need an initial system to organize the process.",
+        examples: [
+          "Internal controls",
+          "Dashboards and tracking",
+          "First version of a specific system",
+        ],
+      },
+    ],
+  },
+
+  process: {
+    title: "How I work",
+    subtitle: "From problem to delivery, without overcomplicating it.",
+    steps: [
+      {
+        title: "Initial conversation",
+        description: "You share the context and the problem. You do not need to know exactly what to hire.",
+      },
+      {
+        title: "Understanding",
+        description: "I look at how you work today and what can improve with a site, automation, or system.",
+      },
+      {
+        title: "Proposal",
+        description: "We align what is included, the estimated timeline, and the investment.",
+      },
+      {
+        title: "Development",
+        description: "I build the solution and keep you in the loop.",
+      },
+      {
+        title: "Delivery",
+        description: "I deliver, explain how to use it, and make the agreed adjustments.",
+      },
     ],
   },
 
   about: {
-    title: "ABOUT ME.",
+    title: "ABOUT.",
+    subtitle: "Who is behind IC Desenvolvimento",
     stats: [
       { value: 3, suffix: "", label: "Years writing software" },
       { value: 10, suffix: "+", label: "Automations in production" },
       { value: 80, suffix: "%", label: "Fewer ops errors (n8n)" },
     ],
     paragraphs: [
-      "I'm Iago. I work on backend: APIs, queues, databases, and the path from input to answer.",
-      "These days I spend much of my time on AI flows: chat, Temporal, document search, and what happens when that fails in production.",
-      "Before that I automated processes with n8n, integrated systems, and maintained legacy code. I prefer plain language and code another developer can maintain.",
+      "I'm Iago Cunha. IC Desenvolvimento is the brand under which I build projects for businesses: websites, automations, integrations, and systems.",
+      "I have professional experience at Sistema FIEC / Observatório da Indústria, working on backend, automation, and AI solutions in a corporate environment. In parallel, I take on projects as an independent developer.",
+      "I prefer to understand how you work today before proposing any tool.",
     ],
   },
 
   specialties: {
-    title: "MY",
-    subtitle: "SPECIALTIES",
+    title: "TECHNICAL",
+    subtitle: "WORK",
     items: [
       {
         emoji: "",
         title: "Agent flows",
         description:
-          "From the prompt in chat to Temporal: which agent runs, what it queries, and how the answer comes back.",
+          "From the prompt in chat to orchestration: which agent runs, what it queries, and how the answer comes back.",
       },
       {
         emoji: "",
@@ -100,8 +202,8 @@ export const en: PortfolioContent = {
   },
 
   technologies: {
-    title: "MY",
-    subtitle: "TECH",
+    title: "TECH",
+    subtitle: "STACK",
     categories: [
       {
         title: "Languages and frameworks",
@@ -187,16 +289,21 @@ export const en: PortfolioContent = {
 
   projects: {
     title: "PROJECTS.",
-    subtitle: "What I built or helped stabilize, with the problem and the outcome.",
+    subtitle: "Examples of what I have built  starting with what speaks most to a real business.",
     demo: "Demo",
     docs: "API",
     code: "Code",
     caseStudy: "Case study",
     complexityLabel: "Complexity",
-    featuredLabel: "Main work",
-    earlyWorkLabel: "Smaller projects",
+    problemLabel: "Problem",
+    solutionLabel: "Solution",
+    deliveryLabel: "What was delivered",
+    techLabel: "Technologies",
+    featuredLabel: "For your business",
+    earlyWorkLabel: "I also build more technical solutions",
     earlyWorkSubtitle:
-      "Older or simpler work. Here to show the path, not to compete with the main cases.",
+      "Projects that show technical depth. Useful if you want to see how I work on more complex systems.",
+    similarWhatsappCta: "Want something similar? Chat on WhatsApp",
     statusLabels: {
       internal: "Internal project",
       unavailable: "Demo offline",
@@ -210,154 +317,141 @@ export const en: PortfolioContent = {
     },
     featured: [
       {
-        title: "Corporate assistant with agents",
-        description:
-          "I worked on the API, Temporal workflows, document search, and Docker setup for an internal chat with multiple agents.",
-        caseStudyPath: "/case-study/chat-platform",
-        image: "/images/assistente-corporativo.jpg",
-        alt: "Corporate assistant screen with message input and advanced models",
-        technologies: [
-          "Temporal",
-          "FastAPI",
-          "RAG",
-          "Kafka",
-          "PostgreSQL",
-          "LDAP",
-          "Docker",
-        ],
-        complexity: "Very High",
-        impact: [
-          "Fixed wrong-domain answers: the model now reaches search",
-          "OpenAI-style API with streaming and end-to-end healthcheck",
-          "Doc ingestion, search+SQL agent, and DLQ for failures",
-          "LDAP login and group permissions in chat",
-        ],
-        iconKey: "chatPlatform",
-        status: "internal",
-      },
-      {
-        title: "Public data monitor",
-        description:
-          "API that pulls G1 news, stores them in Postgres without duplicating URLs, and exposes Swagger. Live demo on Render.",
-        demo: "https://public-data-monitor.onrender.com/docs",
-        repo: "https://github.com/oiagocunha/public-data-monitor",
-        caseStudyPath: "/case-study/public-data-monitor",
-        image: "/images/public-data-monitor-swagger.png",
-        media: "/images/public-data-monitor-swagger.png",
-        alt: "Public Data Monitor Swagger",
-        technologies: [
-          "Python",
-          "FastAPI",
-          "PostgreSQL",
-          "SQLAlchemy",
-          "httpx",
-          "Docker",
-          "Render",
-        ],
-        complexity: "High",
-        impact: [
-          "Collection can run again without creating duplicates",
-          "Clear /news endpoints, documented in OpenAPI",
-          "Scraper retries when G1 HTML fails",
-          "Runs locally with Docker Compose",
-        ],
-        iconKey: "publicData",
-        status: "live",
-      },
-      {
-        title: "Job Match Alerts",
-        description:
-          "Upload a resume PDF, import a job by URL, get an ATS score with what matched and what was missing.",
-        demo: "https://job-match-alerts.vercel.app/",
-        docs: "https://job-match-alerts.onrender.com/docs",
-        repo: "https://github.com/oiagocunha/job-match-alerts",
-        image: "/images/job-match-alerts-swagger.png",
-        alt: "Job Match Alerts",
-        technologies: [
-          "Python",
-          "FastAPI",
-          "PostgreSQL",
-          "React",
-          "TypeScript",
-          "OpenAI",
-          "Docker",
-        ],
-        complexity: "High",
-        impact: [
-          "Multiple resumes saved from PDF",
-          "Immediate score with matched and missing skills",
-          "Job ranking with seniority and remote filters",
-          "Documented API and predictable scoring",
-        ],
-        iconKey: "jobMatch",
-        status: "live",
-      },
-    ],
-    earlyWork: [
-      {
         title: "FV Crochê",
         description:
-          "Crochet storefront in React: catalog, categories, and cart for custom orders.",
+          "A business needed to present products online and make ordering easier. A web app was built with catalog, categories, and cart.",
+        problem:
+          "The business needed to show products clearly and take orders without relying only on scattered chats.",
+        solution:
+          "A web app with an organized catalog, categories, and a cart designed for custom orders.",
         demo: "https://fv-croche.vercel.app/",
         image: "/images/fv-croche.png",
         alt: "FV Crochê landing",
         technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
         complexity: "Medium",
         impact: [
-          "Home points straight to the catalog",
-          "Cart built for custom orders",
-          "Rebrand from the older project",
+          "Online catalog with categories",
+          "Cart built for orders",
+          "Home page that leads straight to products",
         ],
         iconKey: "croche",
+        status: "live",
+      },
+    ],
+    earlyWork: [
+      {
+        title: "Corporate assistant with agents",
+        description:
+          "Internal chat for the team to look up information and get answers in a more organized way.",
+        problem:
+          "The team needed a stable internal assistant with answers in the right context.",
+        solution:
+          "I helped build and stabilize the chat, document search, and the environment used by the team.",
+        caseStudyPath: "/case-study/chat-platform",
+        image: "/images/assistente-corporativo.jpg",
+        alt: "Corporate assistant screen",
+        technologies: ["Temporal", "FastAPI", "RAG", "Kafka", "PostgreSQL", "LDAP", "Docker"],
+        complexity: "Very High",
+        impact: [
+          "Internal chat with multiple agents",
+          "Document search by context",
+          "More predictable environment for the team",
+        ],
+        iconKey: "chatPlatform",
+        status: "internal",
+      },
+      {
+        title: "Job Match Alerts",
+        description:
+          "A tool to compare a resume and a job posting and see what matches and what is missing.",
+        problem:
+          "Assess resume–job fit without reviewing everything by hand.",
+        solution:
+          "An app that takes the resume, analyzes the job, and returns a clear comparison.",
+        demo: "https://job-match-alerts.vercel.app/",
+        repo: "https://github.com/oiagocunha/job-match-alerts",
+        image: "/images/job-match-alerts-swagger.png",
+        alt: "Job Match Alerts",
+        technologies: ["Python", "FastAPI", "PostgreSQL", "React", "TypeScript", "OpenAI", "Docker"],
+        complexity: "High",
+        impact: [
+          "Resume upload from PDF",
+          "Clear comparison with the job",
+          "Live demo available",
+        ],
+        iconKey: "jobMatch",
+        status: "live",
+      },
+      {
+        title: "Public data monitor",
+        description:
+          "An API that collects public news, stores without duplicates, and keeps the query documented.",
+        problem:
+          "Needed a reliable way to collect external data and query it without duplicates.",
+        solution:
+          "A collection system with organized storage and ready-to-use documentation.",
+        demo: "https://public-data-monitor.onrender.com/docs",
+        repo: "https://github.com/oiagocunha/public-data-monitor",
+        caseStudyPath: "/case-study/public-data-monitor",
+        image: "/images/public-data-monitor-swagger.png",
+        alt: "Public data monitor",
+        technologies: ["Python", "FastAPI", "PostgreSQL", "Docker", "Render"],
+        complexity: "High",
+        impact: [
+          "Collection without duplicate records",
+          "Documented online query",
+          "Reproducible environment",
+        ],
+        iconKey: "publicData",
         status: "live",
       },
     ],
   },
 
   certifications: {
-    title: 'CERTIFICATIONS',
-    subtitle: 'AND COURSES',
-    viewCert: 'View certificate',
+    title: "EDUCATION",
+    subtitle: "AND COURSES",
+    viewCert: "View certificate",
     items: [
       {
-        title: 'Complete Python (Worlds 1, 2, and 3)',
-        issuer: 'Curso em Vídeo',
-        date: '2024-2026',
-        credential: '3 modules completed + 4th in progress',
-        link: '',
-        skills: ['Python', 'OOP', 'Data Structures', 'Algorithms'],
+        title: "Complete Python (Worlds 1, 2, and 3)",
+        issuer: "Curso em Vídeo",
+        date: "2024-2026",
+        credential: "3 modules completed + 4th in progress",
+        link: "",
+        skills: ["Python", "OOP", "Data Structures", "Algorithms"],
       },
       {
-        title: 'Complete JavaScript',
-        issuer: 'Curso em Vídeo',
-        date: '2024',
-        credential: 'Full JavaScript course',
-        link: '',
-        skills: ['JavaScript', 'DOM', 'ES6+', 'Async'],
+        title: "Complete JavaScript",
+        issuer: "Curso em Vídeo",
+        date: "2024",
+        credential: "Full JavaScript course",
+        link: "",
+        skills: ["JavaScript", "DOM", "ES6+", "Async"],
       },
       {
-        title: 'Programming Logic',
-        issuer: 'Curso em Vídeo',
-        date: '2024',
-        credential: 'Logic and algorithm fundamentals',
-        link: '',
-        skills: ['Algorithms', 'Logic', 'Control Structures'],
+        title: "Programming Logic",
+        issuer: "Curso em Vídeo",
+        date: "2024",
+        credential: "Logic and algorithm fundamentals",
+        link: "",
+        skills: ["Algorithms", "Logic", "Control Structures"],
       },
       {
-        title: 'Tech Generation Program',
-        issuer: 'Ger Tech',
-        date: '2024',
-        credential: 'Technology training',
-        link: '',
-        skills: ['Web Development', 'Backend', 'Frontend'],
+        title: "Tech Generation Program",
+        issuer: "Ger Tech",
+        date: "2024",
+        credential: "Technology training",
+        link: "",
+        skills: ["Web Development", "Backend", "Frontend"],
       },
       {
-        title: 'Basic English',
-        issuer: 'Language Courses',
-        date: '2023',
-        credential: 'B1 level certified',
-        link: 'https://cert.efset.org/en/je23Yi',
-        skills: ['Reading', 'Writing', 'Listening', 'Speaking'],
+        title: "Basic English",
+        issuer: "Language Courses",
+        date: "2023",
+        credential: "B1 level certified",
+        link: "https://cert.efset.org/en/je23Yi",
+        skills: ["Reading", "Writing", "Listening", "Speaking"],
       },
     ],
   },
@@ -371,11 +465,9 @@ export const en: PortfolioContent = {
         role: "Backend developer",
         period: "11/2025 - Present",
         description: [
-          "I work on the chat API (OpenAI-style), Temporal workflows, and how they connect to the assistant UI.",
-          "I fixed the path so `model` reaches document search, and the agent hits the right knowledge base.",
-          "I also deal with Kafka/DLQ, healthchecks, and the Docker setup the team uses daily.",
-          "LDAP login, group permissions, and chat session behavior.",
-          "I join architecture discussions when the topic is splitting services, failure handling, and the local environment.",
+          "Professional experience in backend, automation, and AI solutions in a corporate environment.",
+          "I work on systems the team uses day to day: APIs, automated flows, and front-end integration.",
+          "I help improve stability, controlled failure handling, and the development environment.",
         ],
         technologies: [
           "Python",
@@ -386,10 +478,8 @@ export const en: PortfolioContent = {
           "PostgreSQL",
           "MongoDB",
           "Docker",
-          "LDAP",
           "n8n",
           "Node.js",
-          "GitLab CI/CD",
         ],
       },
       {
@@ -399,8 +489,7 @@ export const en: PortfolioContent = {
         description: [
           "Automated routines with n8n and APIs, with about 80% fewer ops errors on what we shipped.",
           "Turned business rules into flows the team could use day to day.",
-          "Worked on React fronts and PHP backends on existing systems.",
-          "Shipped internal tools to help the team move faster.",
+          "Worked on existing systems and shipped internal tools to help the team move faster.",
         ],
         technologies: [
           "React",
@@ -408,35 +497,27 @@ export const en: PortfolioContent = {
           "PHP",
           "Laravel",
           "Node.js",
-          "Express",
           "TypeScript",
-          "Tailwind CSS",
           "n8n",
         ],
       },
       {
-        company: "Freelance",
+        company: "Independent · IC Desenvolvimento",
         role: "Fullstack developer",
         period: "06/2024 - Present",
         description: [
-          "On-demand APIs and backends with Python, FastAPI, and Node.js.",
-          "PostgreSQL or MongoDB depending on the job.",
-          "Automation and system integration when a client needs to leave the spreadsheet behind.",
-          "Docker so the environment is reproducible on any machine.",
-          "From scoping to a working MVP.",
+          "Building websites, web apps, automations, and systems based on what each project needs.",
+          "Integrating tools and reducing manual processes.",
+          "From aligning the problem to a first working version.",
         ],
         technologies: [
           "Python",
           "FastAPI",
           "Node.js",
-          "JavaScript",
+          "React",
           "PostgreSQL",
           "MongoDB",
           "Docker",
-          "Git",
-          "GitHub",
-          "GitLab",
-          "CI/CD",
         ],
       },
     ],
@@ -444,11 +525,19 @@ export const en: PortfolioContent = {
 
   contact: {
     title: "CONTACT.",
-    subtitle: "Backend, automation, or an AI flow that needs attention? Send a message.",
+    subtitle: "Want to talk about a project? Message me on WhatsApp.",
+    reassurance:
+      "Not sure exactly what you need? That is fine. Tell me how you work today and what problem you want to solve.",
     email: "Email",
+    whatsapp: "WhatsApp",
+    whatsappNumber: "5585989035010",
+    whatsappDisplay: "+55 85 98903-5010",
+    whatsappMessage:
+      "Hi Iago! I found the IC Desenvolvimento site and would like to talk about a project.",
+    whatsappCta: "Chat on WhatsApp",
     location: "Location",
     locationText: "Fortaleza, Ceará",
-    formTitle: "Send a message",
+    formTitle: "Or send a message",
     nameLabel: "Name",
     emailLabel: "Email",
     subjectLabel: "Subject",
@@ -456,45 +545,47 @@ export const en: PortfolioContent = {
     namePlaceholder: "Your name",
     emailPlaceholder: "you@email.com",
     subjectPlaceholder: "Subject (optional)",
-    messagePlaceholder: "How can I help?",
+    messagePlaceholder: "Describe the problem or project  a few lines is enough.",
     sending: "Sending...",
-    sendButton: "Send",
+    sendButton: "Send message",
     successTitle: "Message sent",
     successDescription: "I will reply as soon as I can.",
     errorTitle: "Could not send",
     errorDescription: "Please fill in all required fields.",
     errorGeneric: "Try again in a moment.",
     errorEndpoint: "Form endpoint is not configured yet.",
-    formSubject: "Portfolio contact",
+    formSubject: "Contact  IC Desenvolvimento",
   },
 
   navbar: {
     items: [
       { href: "#hero", label: "Home" },
-      { href: "#sobre", label: "About" },
+      { href: "#servicos", label: "Services" },
       { href: "#projetos", label: "Projects" },
-      { href: "#habilidades", label: "Skills" },
-      { href: "#certificacoes", label: "Certifications" },
-      { href: "#experiencia", label: "Experience" },
+      { href: "#como-trabalho", label: "How I work" },
+      { href: "#sobre", label: "About" },
       { href: "#contato", label: "Contact" },
     ],
-    downloadCV: "Download CV",
-    cvPath: "/[EN] Resume - Iago Cunha - FullStack Developer.pdf",
   },
 
   footer: {
     rights: "All rights reserved.",
+    tagline: "Websites, automation, and systems for your business.",
+  },
+
+  whatsappFloat: {
+    label: "WhatsApp",
   },
 
   seo: {
-    siteName: 'Iago Cunha | Portfolio',
+    siteName: "IC Desenvolvimento | Iago Cunha",
     keywords:
-      'Iago Cunha, fullstack developer, backend developer, frontend developer, desenvolvedor fullstack, Python developer, FastAPI, React, Next.js, Node.js, Temporal, Kafka, PostgreSQL, Fortaleza Brazil, software engineer portfolio',
+      "IC Desenvolvimento, Iago Cunha, web development, process automation, system integration, custom software, n8n automation, MVP, internal systems, applied AI, FastAPI, React, Fortaleza, Brazil",
     pages: {
       home: {
-        title: "Iago Cunha | Backend and fullstack developer",
+        title: "IC Desenvolvimento | Custom Websites, Automation & Systems",
         description:
-          "Portfolio of Iago Cunha: backend with FastAPI, Temporal, automations, and AI flows. Projects, cases, and contact.",
+          "IC Desenvolvimento, by Iago Cunha: websites, automations, integrations, and custom systems in Fortaleza, Brazil. Let's talk about your project.",
       },
       chatCaseStudy: {
         title: "Case: multi-agent assistant with Temporal and document search | Iago Cunha",
