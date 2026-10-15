@@ -1,6 +1,34 @@
 {
   "rewrites": [
     {
+      "source": "/perfil",
+      "destination": "/perfil/index.html"
+    },
+    {
+      "source": "/en",
+      "destination": "/en/index.html"
+    },
+    {
+      "source": "/en/perfil",
+      "destination": "/en/perfil/index.html"
+    },
+    {
+      "source": "/case-study/chat-platform",
+      "destination": "/case-study/chat-platform/index.html"
+    },
+    {
+      "source": "/case-study/public-data-monitor",
+      "destination": "/case-study/public-data-monitor/index.html"
+    },
+    {
+      "source": "/en/case-study/chat-platform",
+      "destination": "/en/case-study/chat-platform/index.html"
+    },
+    {
+      "source": "/en/case-study/public-data-monitor",
+      "destination": "/en/case-study/public-data-monitor/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

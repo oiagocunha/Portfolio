@@ -1,3 +1,5 @@
+import { recordConversion } from "@/lib/conversions";
+import { isContactAccepted } from "@/lib/contact-response";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -66,12 +68,9 @@ const Contact = () => {
 
       if (!response.ok) throw new Error(t.contact.errorGeneric);
 
-      const result = (await response.json().catch(() => null)) as
-        | { success?: string | boolean; message?: string }
-        | null;
-      if (result && result.success === false) {
-        throw new Error(result.message || t.contact.errorGeneric);
-      }
+      const result: unknown = await response.json().catch(() => null);
+      if (!isContactAccepted(result)) throw new Error(t.contact.errorGeneric);
+      recordConversion("contact_accepted", { page: window.location.pathname });
 
       toast({
         title: t.contact.successTitle,

@@ -111,10 +111,9 @@ export interface PortfolioContent {
     highlights: string[];
   };
 
-  problems: {
+  applications: {
     title: string;
     subtitle: string;
-    bridge: string;
     items: Array<{
       title: string;
       description: string;
@@ -145,11 +144,6 @@ export interface PortfolioContent {
   about: {
     title: string;
     subtitle: string;
-    stats: Array<{
-      value: number;
-      suffix: string;
-      label: string;
-    }>;
     paragraphs: string[];
   };
 

@@ -1,0 +1,26 @@
+{
+  "name": "prospecting-mvp",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "MVP de prospecção comercial: discovery → website → AI → score → Google Sheets",
+  "scripts": {
+    "prospect": "tsx src/cli/prospect.ts",
+    "setup-sheet": "tsx src/cli/setup-sheet.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "googleapis": "^144.0.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.16.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.8.3",
+    "vitest": "^3.0.5"
+  }
+}

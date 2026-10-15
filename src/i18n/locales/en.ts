@@ -26,10 +26,10 @@ export const en: PortfolioContent = {
 
   hero: {
     greeting: "IC Desenvolvimento",
-    headline: "Websites, automation, and systems that solve real business problems.",
+    headline: "Websites, automation, and custom systems.",
     typewriter: [],
     description:
-      "I build websites, automate repetitive tasks, connect tools that currently work separately, and create small systems for day-to-day operations.",
+      "Web development, routine automation, tool integrations, and first versions of internal systems — under IC Desenvolvimento, by Iago Cunha.",
     primaryCta: "Chat on WhatsApp",
     secondaryCta: "See projects",
     alt: "Photo of Iago Cunha",
@@ -37,80 +37,69 @@ export const en: PortfolioContent = {
     highlights: [],
   },
 
-  problems: {
-    title: "Does this sound like your day-to-day?",
-    subtitle: "If any of these feel familiar, I can probably help.",
-    bridge:
-      "You do not need to know which technology to use. Tell me how you work today and where it breaks  the first conversation is to find the right solution.",
+  applications: {
+    title: "Where this shows up",
+    subtitle: "Practical situations. Deliverables are listed under Services.",
     items: [
       {
-        title: "Too much manual work",
-        description: "The team spends time repeating the same task by hand, every day.",
+        title: "Catalog with online orders",
+        description:
+          "Show products by category and take orders without relying only on WhatsApp chats.",
       },
       {
-        title: "Scattered information",
+        title: "Reports that are still manual",
         description:
-          "Data lives in spreadsheets, email, and different tools  and nobody can find things easily.",
+          "Pull data from spreadsheets or APIs, generate the report, and notify the team when it is ready.",
       },
       {
-        title: "Tools that do not talk",
+        title: "Moving data between tools",
         description:
-          "You copy information from one system to another because the tools are not connected.",
+          "Stop copying between CRM, spreadsheets, and email — let information flow from one system to another.",
       },
       {
-        title: "Missing digital presence",
+        title: "Replacing the spreadsheet",
         description:
-          "The business needs a website, service page, or catalog that builds trust.",
-      },
-      {
-        title: "Off-the-shelf tools fall short",
-        description:
-          "There is an internal need that generic systems do not cover the way you need.",
-      },
-      {
-        title: "You know it can improve, but not how",
-        description:
-          "You know the current process stalls, but you have not defined what to build yet.",
+          "Track orders, status, or inventory in a small tool built for how the business actually works.",
       },
     ],
   },
 
   services: {
-    title: "What I can do for you",
-    subtitle: "Three clear paths. No jargon.",
-    whenLabel: "When it makes sense",
+    title: "Services",
+    subtitle: "Three delivery formats. Scope is fixed in the proposal.",
+    whenLabel: "What is included",
     items: [
       {
-        title: "Websites and web apps",
+        title: "Website for inquiries",
         description:
-          "A website or small app to present the business, take inquiries, or show products.",
-        when: "When you need to show up online clearly  a site, service page, or catalog.",
+          "A lean website or app to present the business, take inquiries, or show products.",
+        when: "",
         examples: [
-          "Institutional website",
-          "Landing page and service page",
-          "Catalog and small web app",
+          "Pages and content defined in the scope",
+          "Contact form or WhatsApp",
+          "Publishing and usage guidance",
         ],
       },
       {
-        title: "Automation and integration",
+        title: "Automate one workflow",
         description:
-          "I automate what the team repeats every day and connect tools that currently work separately.",
-        when: "When someone copies data between places, builds reports by hand, or loses time on predictable routines.",
+          "Automate a repetitive routine and connect the tools involved in the flow.",
+        when: "",
         examples: [
-          "Automate repetitive tasks",
-          "Connect spreadsheets and systems",
-          "Organize flows that currently depend on manual work",
+          "Map the routine and its integrations",
+          "Workflow with failure handling",
+          "Operating documentation",
         ],
       },
       {
-        title: "Custom systems",
+        title: "First version of a system",
         description:
-          "Controls and tools built for your operation  when off-the-shelf options do not fit.",
-        when: "When the spreadsheet is no longer enough, or you need an initial system to organize the process.",
+          "An internal tool for the main operational flow when off-the-shelf software does not fit.",
+        when: "",
         examples: [
-          "Internal controls",
-          "Dashboards and tracking",
-          "First version of a specific system",
+          "Main workflow with a defined scope",
+          "Interface and data required for operations",
+          "Acceptance criteria in the proposal",
         ],
       },
     ],
@@ -118,43 +107,33 @@ export const en: PortfolioContent = {
 
   process: {
     title: "How I work",
-    subtitle: "From problem to delivery, without overcomplicating it.",
+    subtitle: "From alignment to delivery.",
     steps: [
       {
         title: "Initial conversation",
-        description: "You share the context and the problem. You do not need to know exactly what to hire.",
+        description: "Business context and the problem to solve.",
       },
       {
-        title: "Understanding",
-        description: "I look at how you work today and what can improve with a site, automation, or system.",
-      },
-      {
-        title: "Proposal",
-        description: "We align what is included, the estimated timeline, and the investment.",
+        title: "Scope",
+        description: "What is included, estimated timeline, and investment.",
       },
       {
         title: "Development",
-        description: "I build the solution and keep you in the loop.",
+        description: "Build with regular visibility into what is being done.",
       },
       {
         title: "Delivery",
-        description: "I deliver, explain how to use it, and make the agreed adjustments.",
+        description: "Launch, usage guidance, and agreed adjustments.",
       },
     ],
   },
 
   about: {
     title: "ABOUT.",
-    subtitle: "Who is behind IC Desenvolvimento",
-    stats: [
-      { value: 3, suffix: "", label: "Years writing software" },
-      { value: 10, suffix: "+", label: "Automations in production" },
-      { value: 80, suffix: "%", label: "Fewer ops errors (n8n)" },
-    ],
+    subtitle: "IC Desenvolvimento · Iago Cunha",
     paragraphs: [
-      "I'm Iago Cunha. IC Desenvolvimento is the brand under which I build projects for businesses: websites, automations, integrations, and systems.",
-      "I have professional experience at Sistema FIEC / Observatório da Indústria, working on backend, automation, and AI solutions in a corporate environment. In parallel, I take on projects as an independent developer.",
-      "I prefer to understand how you work today before proposing any tool.",
+      "IC Desenvolvimento is the brand under which I take on business projects: websites, automations, integrations, and systems.",
+      "I work at Sistema FIEC / Industry Observatory on backend, automation, and AI. Independently, I have shipped client projects since June 2024.",
     ],
   },
 
@@ -164,39 +143,39 @@ export const en: PortfolioContent = {
     items: [
       {
         emoji: "",
-        title: "Agent flows",
+        title: "Agents and orchestration",
         description:
-          "From the prompt in chat to orchestration: which agent runs, what it queries, and how the answer comes back.",
+          "From the chat prompt to the workflow: which agent answers, what it queries, and how the response streams back.",
       },
       {
         emoji: "",
         title: "APIs and backend",
         description:
-          "FastAPI, REST contracts, streaming, and wiring multiple model providers.",
+          "FastAPI, REST contracts, SSE streaming, and integration with model providers.",
       },
       {
         emoji: "",
         title: "Document search",
         description:
-          "Ingestion, embeddings, and per-domain lookup, including mixing semantic search with SQL when it helps.",
+          "Ingestion, embeddings, and context-aware lookup — including mixing semantic search with SQL when it helps.",
       },
       {
         emoji: "",
-        title: "Queues and failure",
+        title: "Queues and failures",
         description:
-          "Kafka, retries, and DLQ so errors do not disappear mid-flow.",
+          "Kafka, retries, backoff, and DLQ so errors do not disappear mid-flow.",
       },
       {
         emoji: "",
         title: "Corporate access",
         description:
-          "LDAP/AD, who can use which model, and sessions with a defined lifetime.",
+          "Google Workspace/AD authentication and group-based access control.",
       },
       {
         emoji: "",
         title: "Environment and deploy",
         description:
-          "Docker, healthchecks, and a setup another developer can repeat.",
+          "Docker, Kubernetes, and a setup another developer can repeat.",
       },
     ],
   },
@@ -206,16 +185,16 @@ export const en: PortfolioContent = {
     subtitle: "STACK",
     categories: [
       {
-        title: "Languages and frameworks",
-        content: "Python, TypeScript, JavaScript, Node.js, FastAPI, React, Next.js",
+        title: "Backend",
+        content: "Python, FastAPI, Node.js, TypeScript, SQLAlchemy, Pytest",
       },
       {
-        title: "AI and workflows",
-        content: "Temporal, RAG, pgvector, OpenAI-style APIs, n8n",
+        title: "AI and automation",
+        content: "LLMs, agents, RAG, embeddings, pgvector, n8n",
       },
       {
-        title: "Data and messaging",
-        content: "PostgreSQL, MongoDB, Kafka, SQLAlchemy",
+        title: "Orchestration and data",
+        content: "Temporal, Kafka, asyncio, PostgreSQL, MongoDB, Redis",
       },
       {
         title: "Frontend",
@@ -223,7 +202,7 @@ export const en: PortfolioContent = {
       },
       {
         title: "Infra",
-        content: "Docker, GitLab CI/CD, Git, Linux, LDAP",
+        content: "Docker, Kubernetes, GitLab CI/CD, GitHub Actions, Linux",
       },
     ],
   },
@@ -231,7 +210,7 @@ export const en: PortfolioContent = {
   workflowShowcase: {
     title: "How a flow usually runs",
     subtitle:
-      "Day-to-day summary: the request hits the gateway, enters Temporal, fetches context, and handles failure in a controlled way.",
+      "The request hits the gateway, enters Temporal, fetches the right context, and handles failure in a controlled way.",
     cardTitle: "Chat → API → Temporal → search",
     inPracticeLabel: "In practice:",
     inPracticeText:
@@ -289,7 +268,7 @@ export const en: PortfolioContent = {
 
   projects: {
     title: "PROJECTS.",
-    subtitle: "Examples of what I have built  starting with what speaks most to a real business.",
+    subtitle: "Recent work and what each project solved.",
     demo: "Demo",
     docs: "API",
     code: "Code",
@@ -300,9 +279,9 @@ export const en: PortfolioContent = {
     deliveryLabel: "What was delivered",
     techLabel: "Technologies",
     featuredLabel: "For your business",
-    earlyWorkLabel: "I also build more technical solutions",
+    earlyWorkLabel: "Technical projects",
     earlyWorkSubtitle:
-      "Projects that show technical depth. Useful if you want to see how I work on more complex systems.",
+      "Systems and prototypes where you can see backend, AI, and integration decisions.",
     similarWhatsappCta: "Want something similar? Chat on WhatsApp",
     statusLabels: {
       internal: "Internal project",
@@ -319,11 +298,11 @@ export const en: PortfolioContent = {
       {
         title: "FV Crochê",
         description:
-          "A business needed to present products online and make ordering easier. A web app was built with catalog, categories, and cart.",
+          "A web app with catalog, categories, and cart to present products and make ordering easier.",
         problem:
           "The business needed to show products clearly and take orders without relying only on scattered chats.",
         solution:
-          "A web app with an organized catalog, categories, and a cart designed for custom orders.",
+          "An organized catalog, categories, and a cart designed for the order flow.",
         demo: "https://fv-croche.vercel.app/",
         image: "/images/fv-croche.png",
         alt: "FV Crochê landing",
@@ -342,20 +321,20 @@ export const en: PortfolioContent = {
       {
         title: "Corporate assistant with agents",
         description:
-          "Internal chat for the team to look up information and get answers in a more organized way.",
+          "Internal chat with an OpenAI-compatible gateway, Temporal-based agents, and document search by context.",
         problem:
-          "The team needed a stable internal assistant with answers in the right context.",
+          "The team needed a stable internal assistant with answers in the right context — and without silent failures.",
         solution:
-          "I helped build and stabilize the chat, document search, and the environment used by the team.",
+          "I worked on the gateway, Temporal orchestration, RAG pipelines, and stabilizing the environment the team uses.",
         caseStudyPath: "/case-study/chat-platform",
         image: "/images/assistente-corporativo.jpg",
         alt: "Corporate assistant screen",
-        technologies: ["Temporal", "FastAPI", "RAG", "Kafka", "PostgreSQL", "LDAP", "Docker"],
+        technologies: ["Temporal", "FastAPI", "RAG", "Kafka", "PostgreSQL", "Docker", "Kubernetes"],
         complexity: "Very High",
         impact: [
-          "Internal chat with multiple agents",
-          "Document search by context",
-          "More predictable environment for the team",
+          "OpenAI-compatible gateway with SSE streaming",
+          "Context routing with dedicated RAG bases",
+          "Retry, backoff, and DLQ in workflows",
         ],
         iconKey: "chatPlatform",
         status: "internal",
@@ -363,11 +342,11 @@ export const en: PortfolioContent = {
       {
         title: "Job Match Alerts",
         description:
-          "A tool to compare a resume and a job posting and see what matches and what is missing.",
+          "Resume-to-job matching with LLMs: PDF upload, URL import, and explainable compatibility ranking.",
         problem:
           "Assess resume–job fit without reviewing everything by hand.",
         solution:
-          "An app that takes the resume, analyzes the job, and returns a clear comparison.",
+          "An app with LLM-assisted extraction, explainable scoring, Pytest coverage, and GitHub Actions CI.",
         demo: "https://job-match-alerts.vercel.app/",
         repo: "https://github.com/oiagocunha/job-match-alerts",
         image: "/images/job-match-alerts-swagger.png",
@@ -375,9 +354,9 @@ export const en: PortfolioContent = {
         technologies: ["Python", "FastAPI", "PostgreSQL", "React", "TypeScript", "OpenAI", "Docker"],
         complexity: "High",
         impact: [
-          "Resume upload from PDF",
-          "Clear comparison with the job",
-          "Live demo available",
+          "Resume PDF upload",
+          "Job import from URL",
+          "Explainable compatibility ranking",
         ],
         iconKey: "jobMatch",
         status: "live",
@@ -385,22 +364,22 @@ export const en: PortfolioContent = {
       {
         title: "Public data monitor",
         description:
-          "An API that collects public news, stores without duplicates, and keeps the query documented.",
+          "Async public-news pipeline with a paginated API, deduplication, and idempotent persistence.",
         problem:
-          "Needed a reliable way to collect external data and query it without duplicates.",
+          "Collect external data reliably, without duplicate records, and with a documented API.",
         solution:
-          "A collection system with organized storage and ready-to-use documentation.",
+          "Collection with retry and backoff, unique URL index, OpenAPI docs, and local Docker Compose.",
         demo: "https://public-data-monitor.onrender.com/docs",
         repo: "https://github.com/oiagocunha/public-data-monitor",
         caseStudyPath: "/case-study/public-data-monitor",
         image: "/images/public-data-monitor-swagger.png",
         alt: "Public data monitor",
-        technologies: ["Python", "FastAPI", "PostgreSQL", "Docker", "Render"],
+        technologies: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "asyncio", "Docker"],
         complexity: "High",
         impact: [
-          "Collection without duplicate records",
-          "Documented online query",
-          "Reproducible environment",
+          "Collection without duplicate URLs",
+          "API documented in Swagger",
+          "Reproducible Docker Compose setup",
         ],
         iconKey: "publicData",
         status: "live",
@@ -446,11 +425,11 @@ export const en: PortfolioContent = {
         skills: ["Web Development", "Backend", "Frontend"],
       },
       {
-        title: "Basic English",
-        issuer: "Language Courses",
-        date: "2023",
-        credential: "B1 level certified",
-        link: "https://cert.efset.org/en/je23Yi",
+        title: "English",
+        issuer: "Self-assessed",
+        date: "2025",
+        credential: "B2 level",
+        link: "",
         skills: ["Reading", "Writing", "Listening", "Speaking"],
       },
     ],
@@ -461,13 +440,16 @@ export const en: PortfolioContent = {
     subtitle: "WORK",
     items: [
       {
-        company: "FIEC System / Industry Observatory",
-        role: "Backend developer",
-        period: "11/2025 - Present",
+        company: "Sistema FIEC / Observatório da Indústria",
+        role: "Backend & AI Developer",
+        period: "03/2025 - Present",
         description: [
-          "Professional experience in backend, automation, and AI solutions in a corporate environment.",
-          "I work on systems the team uses day to day: APIs, automated flows, and front-end integration.",
-          "I help improve stability, controlled failure handling, and the development environment.",
+          "Built an OpenAI-compatible gateway connecting LibreChat to corporate agents through Temporal, with SSE streaming responses.",
+          "Implemented routing across four specialized capabilities and two general-purpose models, each with its own RAG knowledge base by context.",
+          "Built document ingestion and semantic search pipelines with Google Drive, embeddings, PostgreSQL, and pgvector.",
+          "Automated corporate workflows with n8n and APIs, reducing manual steps and operational errors.",
+          "Implemented retries, backoff, and DLQ in async workflows, plus corporate auth (Google Workspace/AD) with group-based access.",
+          "Helped support apps across three Kubernetes environments and pilot telemetry (47 registered users, 31 with usage, ~1.4 million tokens).",
         ],
         technologies: [
           "Python",
@@ -478,37 +460,17 @@ export const en: PortfolioContent = {
           "PostgreSQL",
           "MongoDB",
           "Docker",
-          "n8n",
-          "Node.js",
-        ],
-      },
-      {
-        company: "FIEC System / Industry Observatory",
-        role: "Development intern",
-        period: "03/2025 - 11/2025",
-        description: [
-          "Automated routines with n8n and APIs, with about 80% fewer ops errors on what we shipped.",
-          "Turned business rules into flows the team could use day to day.",
-          "Worked on existing systems and shipped internal tools to help the team move faster.",
-        ],
-        technologies: [
-          "React",
-          "Next.js",
-          "PHP",
-          "Laravel",
-          "Node.js",
-          "TypeScript",
+          "Kubernetes",
           "n8n",
         ],
       },
       {
         company: "Independent · IC Desenvolvimento",
-        role: "Fullstack developer",
+        role: "Full Stack Developer",
         period: "06/2024 - Present",
         description: [
-          "Building websites, web apps, automations, and systems based on what each project needs.",
-          "Integrating tools and reducing manual processes.",
-          "From aligning the problem to a first working version.",
+          "I build MVPs, automations, and API integrations — from technical planning through frontend, backend, and relational and non-relational databases.",
+          "I deliver websites, lean systems, and automated routines based on what each project needs.",
         ],
         technologies: [
           "Python",
@@ -525,9 +487,9 @@ export const en: PortfolioContent = {
 
   contact: {
     title: "CONTACT.",
-    subtitle: "Want to talk about a project? Message me on WhatsApp.",
+    subtitle: "WhatsApp, email, or the form below.",
     reassurance:
-      "Not sure exactly what you need? That is fine. Tell me how you work today and what problem you want to solve.",
+      "Share the project context and what you need. If the scope is still open, the first conversation is for that.",
     email: "Email",
     whatsapp: "WhatsApp",
     whatsappNumber: "5585989035010",
@@ -537,7 +499,7 @@ export const en: PortfolioContent = {
     whatsappCta: "Chat on WhatsApp",
     location: "Location",
     locationText: "Fortaleza, Ceará",
-    formTitle: "Or send a message",
+    formTitle: "Send a message",
     nameLabel: "Name",
     emailLabel: "Email",
     subjectLabel: "Subject",
@@ -545,7 +507,7 @@ export const en: PortfolioContent = {
     namePlaceholder: "Your name",
     emailPlaceholder: "you@email.com",
     subjectPlaceholder: "Subject (optional)",
-    messagePlaceholder: "Describe the problem or project  a few lines is enough.",
+    messagePlaceholder: "Project context and what you need.",
     sending: "Sending...",
     sendButton: "Send message",
     successTitle: "Message sent",
@@ -554,7 +516,7 @@ export const en: PortfolioContent = {
     errorDescription: "Please fill in all required fields.",
     errorGeneric: "Try again in a moment.",
     errorEndpoint: "Form endpoint is not configured yet.",
-    formSubject: "Contact  IC Desenvolvimento",
+    formSubject: "Contact — IC Desenvolvimento",
   },
 
   navbar: {
@@ -570,7 +532,7 @@ export const en: PortfolioContent = {
 
   footer: {
     rights: "All rights reserved.",
-    tagline: "Websites, automation, and systems for your business.",
+    tagline: "Websites, automation, and custom systems.",
   },
 
   whatsappFloat: {
@@ -583,19 +545,19 @@ export const en: PortfolioContent = {
       "IC Desenvolvimento, Iago Cunha, web development, process automation, system integration, custom software, n8n automation, MVP, internal systems, applied AI, FastAPI, React, Fortaleza, Brazil",
     pages: {
       home: {
-        title: "IC Desenvolvimento | Custom Websites, Automation & Systems",
+        title: "IC Desenvolvimento | Websites, Automation & Systems",
         description:
-          "IC Desenvolvimento, by Iago Cunha: websites, automations, integrations, and custom systems in Fortaleza, Brazil. Let's talk about your project.",
+          "Websites, automations, integrations, and custom systems. IC Desenvolvimento, by Iago Cunha — Fortaleza, Brazil.",
       },
       chatCaseStudy: {
-        title: "Case: multi-agent assistant with Temporal and document search | Iago Cunha",
+        title: "Case: corporate assistant with agents, Temporal, and RAG | Iago Cunha",
         description:
-          "How an internal chat started calling the right agent, querying the right base, and failing in a controlled way.",
+          "OpenAI-compatible gateway, Temporal orchestration, context-specific document search, and failure handling with retries and DLQ.",
       },
       publicDataCaseStudy: {
         title: "Case: public news API with FastAPI | Iago Cunha",
         description:
-          "G1 collection, Postgres without duplicate URLs, and live Swagger. Backend case by Iago Cunha.",
+          "Async collection, URL deduplication in PostgreSQL, and a documented Swagger API.",
       },
     },
   },
@@ -802,38 +764,38 @@ flowchart LR
     },
     chatPlatform: {
       label: "Case study",
-      title: "Internal chat with multiple agents: API, Temporal, and document search",
+      title: "Corporate assistant: gateway, Temporal, and document search",
       subtitle:
-        "An assistant where each question can go to a different agent. I worked on the API, Temporal, search, and Docker, including a bug where the wrong domain answered with generic text.",
+        "An internal chat where each question can go to a different agent. I worked on the OpenAI-compatible gateway, Temporal orchestration, RAG pipelines, and environment stability — including a bug where the wrong domain answered with generic text.",
       tags: [
         "Temporal",
         "FastAPI",
         "RAG",
         "Kafka",
         "PostgreSQL",
-        "LDAP",
+        "Kubernetes",
         "Docker",
       ],
       summaryCards: [
         {
           title: "The setup",
           paragraphs: [
-            "Chat sends prompt and model to an OpenAI-style API. The API starts a Temporal workflow, which fetches context and returns the answer with streaming.",
-            "There is also a queue (Kafka/DLQ) and corporate login. Not a tutorial: a system the team uses.",
+            "Chat sends prompt and model to an OpenAI-compatible gateway. The gateway starts a Temporal workflow, which fetches the right context and returns the answer with SSE streaming.",
+            "The flow includes a queue (Kafka/DLQ), corporate authentication, and per-context document bases. It is a system the team uses, not a standalone prototype.",
           ],
         },
         {
           title: "What was wrong",
           paragraphs: [
             "For one domain, answers came back generic even when the right agent was selected on screen.",
-            "The worker sometimes ran an old library version, Docker was unstable, and mixing LDAP with local shortcuts made debugging harder.",
+            "The worker sometimes ran an old library version, the Docker environment drifted, and mixing corporate auth with local shortcuts made debugging harder.",
           ],
         },
         {
           title: "What I did",
           paragraphs: [
             "Made sure `model` reached vector search, with logs along the way and a warning when the worker was stale.",
-            "Adjustments on the API, workflows, document ingestion, the queue, and chat login and permissions.",
+            "Adjustments on the gateway, workflows, document ingestion, the queue, and chat access control.",
           ],
         },
       ],

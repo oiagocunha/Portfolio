@@ -2,9 +2,10 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { I18nProvider } from './i18n'
+import { BrowserRouter } from 'react-router-dom'
 
 createRoot(document.getElementById("root")!).render(
-  <I18nProvider defaultLocale="pt">
+  <BrowserRouter><I18nProvider defaultLocale="pt">
     <App />
-  </I18nProvider>
+  </I18nProvider></BrowserRouter>
 );

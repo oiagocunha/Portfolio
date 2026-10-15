@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom";
+import { isProfessionalPath } from "@/lib/paths";
 import { ReactNode } from "react";
 import Navbar from "@/components/portfolio/Navbar";
 import ScrollTop from "@/components/portfolio/ScrollTop";
@@ -11,6 +13,7 @@ interface MainLayoutProps {
 }
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
+  const professional = isProfessionalPath(useLocation().pathname);
   const { t } = useI18n();
   const whatsappHref = `https://wa.me/${t.contact.whatsappNumber}?text=${encodeURIComponent(t.contact.whatsappMessage)}`;
 
@@ -34,7 +37,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       <Navbar />
       <main id="main-content">{children}</main>
       <ScrollTop />
-      <WhatsAppFloat />
+      {!professional && <WhatsAppFloat />}
       <footer className="border-t py-10">
         <div className="container flex flex-col items-center gap-4 text-center">
           <div>

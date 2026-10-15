@@ -1,4 +1,6 @@
-import React, { createContext, useState, useContext, ReactNode, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { localizedPath } from "@/lib/paths";
+import React, { createContext, useContext, ReactNode } from "react";
 import { Locale, PortfolioContent } from "./types";
 import { pt } from "./locales/pt";
 import { en } from "./locales/en";
@@ -16,37 +18,17 @@ const locales: Record<Locale, PortfolioContent> = {
   en,
 };
 
-const STORAGE_KEY = "portfolio-locale";
-
-function readStoredLocale(fallback: Locale): Locale {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "pt" || stored === "en") return stored;
-  } catch {
-    /* ignore */
-  }
-  return fallback;
-}
-
 interface I18nProviderProps {
   children: ReactNode;
   defaultLocale?: Locale;
 }
 
 export function I18nProvider({ children, defaultLocale = "pt" }: I18nProviderProps) {
-  const [locale, setLocaleState] = useState<Locale>(defaultLocale);
-
-  useEffect(() => {
-    setLocaleState(readStoredLocale(defaultLocale));
-  }, [defaultLocale]);
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  const locale: Locale = /^\/en(?:\/|$)/.test(location.pathname) ? "en" : "pt";
   const setLocale = (next: Locale) => {
-    setLocaleState(next);
-    try {
-      localStorage.setItem(STORAGE_KEY, next);
-    } catch {
-      /* ignore */
-    }
+    navigate(localizedPath(location.pathname, next) + location.search + location.hash);
   };
 
   const value: I18nContextType = {

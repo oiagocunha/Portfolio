@@ -1,0 +1,962 @@
+{
+  "name": "Prospecção Comercial V4 — Search Discovery",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4.0.0-search",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": [
+    {
+      "name": "prospeccao"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "note",
+      "name": "📌 LEIA-ME",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        160
+      ],
+      "parameters": {
+        "width": 460,
+        "height": 520,
+        "color": 5,
+        "content": "## V4 — Search, não Maps/OSM\n\nObjetivo: **leads que valem abordar**, não volume.\n\n1. Credencial Google Sheets nos nodes Sheets + Escrever Cabeçalhos\n2. Aba **Leads**\n3. (Opcional) OpenAI Header Auth — IA opcional: AI_ENABLED=true e AI_MIN_SCORE=45\n4. DISCOVERY_MODE:\n   - `search` = DuckDuckGo (grátis, sem cartão)\n   - `csv` = aba Entrada\n\nFiltro remove: gov, CNES, Facebook, Instagram, Wikipedia, etc.\n\nScore responde: *vale a pena eu abordar?*"
+      }
+    },
+    {
+      "id": "trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        400
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "config",
+      "name": "Configuração",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        400
+      ],
+      "parameters": {
+        "mode": "manual",
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "DISCOVERY_MODE",
+              "value": "search",
+              "type": "string"
+            },
+            {
+              "id": "2",
+              "name": "SEARCH_PROVIDER",
+              "value": "duckduckgo",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "NICHO",
+              "value": "clínica odontológica",
+              "type": "string"
+            },
+            {
+              "id": "4",
+              "name": "CIDADE",
+              "value": "Fortaleza",
+              "type": "string"
+            },
+            {
+              "id": "5",
+              "name": "QUANTIDADE",
+              "value": 20,
+              "type": "number"
+            },
+            {
+              "id": "6",
+              "name": "SPREADSHEET_ID",
+              "value": "1Z5FHZeHmnLvsayFMbE8nQkl_7Z0wzErlFm0kyWRqvm0",
+              "type": "string"
+            },
+            {
+              "id": "7",
+              "name": "SHEET_NAME",
+              "value": "Leads",
+              "type": "string"
+            },
+            {
+              "id": "8",
+              "name": "CSV_SHEET_NAME",
+              "value": "Entrada",
+              "type": "string"
+            },
+            {
+              "id": "9",
+              "name": "AI_MODEL",
+              "value": "gpt-4o-mini",
+              "type": "string"
+            },
+            {
+              "id": "10",
+              "name": "AI_MIN_SCORE",
+              "value": 45,
+              "type": "number"
+            },
+            {
+              "id": "11",
+              "name": "AI_ENABLED",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "if-mode",
+      "name": "Modo Discovery?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        440,
+        400
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "c1",
+              "leftValue": "={{ $json.DISCOVERY_MODE }}",
+              "rightValue": "csv",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "montar",
+      "name": "Montar Buscas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        260
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const cfg = $('Configuração').first().json;\nconst nicho = String(cfg.NICHO || '').trim();\nconst cidade = String(cfg.CIDADE || '').trim();\nconst q1 = '\"' + nicho + '\" \"' + cidade + '\"';\nconst q2 = '\"' + nicho + '\" \"' + cidade + '\" -facebook -instagram -youtube';\nconst provider = String(cfg.SEARCH_PROVIDER || 'duckduckgo').toLowerCase();\n\nreturn [{\n  pairedItem: { item: 0 },\n  json: {\n    ...cfg,\n    queries: [q1, q2],\n    search_provider: provider,\n  },\n}];"
+      }
+    },
+    {
+      "id": "search",
+      "name": "Buscar DuckDuckGo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        900,
+        260
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const cfg = $('Montar Buscas').first().json;\nconst queries = cfg.queries || [];\nconst all = [];\n\nasync function searchOne(q) {\n  const html = await this.helpers.httpRequest({\n    method: 'POST',\n    url: 'https://html.duckduckgo.com/html/',\n    headers: {\n      'Content-Type': 'application/x-www-form-urlencoded',\n      'User-Agent': 'Mozilla/5.0 (compatible; ProspectingN8n/4.0)',\n    },\n    body: 'q=' + encodeURIComponent(q),\n    timeout: 30000,\n    json: false,\n  });\n  const text = typeof html === 'string' ? html : String(html);\n  const results = [];\n  const re = /<a[^>]*class=\"result__a\"[^>]*href=\"([^\"]+)\"[^>]*>([\\s\\S]*?)<\\/a>/gi;\n  let m;\n  while ((m = re.exec(text)) !== null) {\n    let url = m[1];\n    // duckduckgo redirect\n    const uddg = url.match(/uddg=([^&]+)/);\n    if (uddg) {\n      try { url = decodeURIComponent(uddg[1]); } catch (e) {}\n    }\n    const title = m[2].replace(/<[^>]+>/g, '').replace(/\\s+/g, ' ').trim();\n    if (!url || !title) continue;\n    if (!/^https?:\\/\\//i.test(url)) continue;\n    results.push({ title, url, query: q });\n  }\n  return results;\n}\n\nfor (const q of queries) {\n  try {\n    const chunk = await searchOne.call(this, q);\n    all.push(...chunk);\n  } catch (e) {\n    // continua com as outras queries\n  }\n  await new Promise((r) => setTimeout(r, 600));\n}\n\nif (all.length === 0) {\n  throw new Error('Busca não retornou resultados. Tente outro NICHO/CIDADE ou SEARCH_PROVIDER=csv.');\n}\n\nreturn [{\n  pairedItem: { item: 0 },\n  json: {\n    ...cfg,\n    raw_results: all,\n    raw_count: all.length,\n  },\n}];"
+      }
+    },
+    {
+      "id": "filtrar",
+      "name": "Filtrar e Normalizar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        260
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const cfg = $('Configuração').first().json;\nconst input = items[0].json;\nconst raw = Array.isArray(input.raw_results) ? input.raw_results : [];\nconst quantity = Math.min(Number(cfg.QUANTIDADE) || 20, 40);\n\nconst BLOCK_HOST = [\n  'facebook.com','instagram.com','youtube.com','tiktok.com','twitter.com','x.com',\n  'linkedin.com','wikipedia.org','google.com','goo.gl','maps.app.goo.gl',\n  'apple.com','play.google.com','booking.com','tripadvisor.','reclameaqui.',\n  'olx.com','mercadolivre.','amazon.','gov.br','datasus.gov','cnes','saude.gov',\n  'jus.br','mp.br','edu.br','org.br/portal',\n];\n\nconst BLOCK_TITLE = [\n  /prefeitura/i, /secretaria de saúde/i, /ministério/i, /hospital universit/i,\n  /sus\\b/i, /cnes/i, /wikipedia/i, /vagas\\b/i, /currículo/i, /curriculo/i,\n  /glassdoor/i, /indeed/i, /doctoralia/i, /boaconsulta/i,\n];\n\nconst FRANCHISE = [\n  /sorridents/i, /odontocompany/i, /odontoclinic/i, /uniodonto/i,\n  /oraldents/i, /neodent/i, /odontoprev/i, /dentaluni/i,\n];\n\nfunction hostOf(u) {\n  try { return new URL(u).hostname.toLowerCase().replace(/^www\\./,''); } catch (e) { return ''; }\n}\n\nfunction isBlocked(url, title) {\n  const h = hostOf(url);\n  if (!h) return 'url_invalida';\n  if (BLOCK_HOST.some((b) => h.includes(b))) return 'host_bloqueado:' + h;\n  if (BLOCK_TITLE.some((re) => re.test(title))) return 'titulo_bloqueado';\n  if (/\\/maps\\//i.test(url)) return 'maps_link';\n  return null;\n}\n\nfunction companyName(title, host) {\n  let t = title\n    .replace(/\\s*[\\|\\-–—:].*$/, '')\n    .replace(/\\s+/g, ' ')\n    .trim();\n  if (t.length < 3) t = host.split('.')[0] || title;\n  return t.slice(0, 120);\n}\n\nfunction asTextPhone(p) {\n  if (!p) return null;\n  const s = String(p).trim();\n  if (!s || s === 'não encontrado') return null;\n  // evita #ERROR! no Excel\n  if (/^[+=]/.test(s)) return \"'\" + s;\n  return s;\n}\n\nconst seenHost = new Set();\nconst out = [];\n\nfor (const r of raw) {\n  const block = isBlocked(r.url, r.title || '');\n  if (block) continue;\n  const host = hostOf(r.url);\n  if (seenHost.has(host)) continue;\n  seenHost.add(host);\n\n  const nome = companyName(r.title || host, host);\n  const franchise = FRANCHISE.some((re) => re.test(nome) || re.test(host) || re.test(r.title || ''));\n  const isGoogleSites = host.endsWith('sites.google.com') || host.includes('googleusercontent');\n\n  out.push({\n    pairedItem: { item: 0 },\n    json: {\n      place_id: 'web/' + host,\n      nome,\n      categoria: cfg.NICHO,\n      endereco: null,\n      cidade: cfg.CIDADE,\n      telefone: null,\n      telefone_normalizado: null,\n      website: r.url.split('#')[0],\n      dominio: host,\n      rating: null,\n      avaliacoes: null,\n      google_maps: null,\n      business_status: 'OPERATIONAL',\n      whatsapp_google: 'não encontrado',\n      nicho: cfg.NICHO,\n      sheet_name: cfg.SHEET_NAME,\n      data_descoberta: new Date().toISOString().slice(0, 10),\n      fonte: 'search',\n      search_title: r.title,\n      search_query: r.query,\n      flags: {\n        franchise: !!franchise,\n        google_sites: !!isGoogleSites,\n        apparently_private: !franchise && !isGoogleSites,\n      },\n    },\n  });\n  if (out.length >= quantity) break;\n}\n\nif (out.length === 0) {\n  throw new Error('Nenhuma empresa passou no filtro. Ajuste NICHO/CIDADE ou use DISCOVERY_MODE=csv.');\n}\nreturn out;"
+      }
+    },
+    {
+      "id": "read-csv",
+      "name": "Ler Aba Entrada CSV",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        680,
+        560
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_ME_SHEETS",
+          "name": "Google Sheets account"
+        }
+      },
+      "continueOnFail": true,
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Configuração').first().json.SPREADSHEET_ID }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "={{ $('Configuração').first().json.CSV_SHEET_NAME }}"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "norm-csv",
+      "name": "Normalizar CSV",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        900,
+        560
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const cfg = $('Configuração').first().json;\nconst rows = items.map((i) => i.json).filter((r) => r && (r.EMPRESA || r.Empresa || r.nome || r.name || r.WEBSITE || r.website));\nconst quantity = Math.min(Number(cfg.QUANTIDADE) || 20, 40);\n\nfunction hostOf(u) {\n  try {\n    const withProto = /^https?:\\/\\//i.test(u) ? u : ('https://' + u);\n    return new URL(withProto).hostname.toLowerCase().replace(/^www\\./,'');\n  } catch (e) { return ''; }\n}\n\nconst out = [];\nfor (const r of rows.slice(0, quantity)) {\n  const rawWebsite = String(r.WEBSITE || r.website || r.site || '').trim();\n  const website = rawWebsite ? (/^https?:/.test(rawWebsite) ? rawWebsite : 'https://' + rawWebsite) : null;\n  const nome = String(r.EMPRESA || r.Empresa || r.nome || r.name || hostOf(website) || '').trim();\n  if (!nome && !website) continue;\n  const host = (website ? hostOf(website) : '') || ('csv-' + nome.toLowerCase().replace(/\\s+/g,'-').slice(0,40));\n  out.push({\n    pairedItem: { item: 0 },\n    json: {\n      place_id: r.PLACE_ID || ('csv/' + host),\n      nome,\n      categoria: r.CATEGORIA || r.categoria || cfg.NICHO,\n      endereco: r.ENDEREÇO || r.endereco || null,\n      cidade: r.CIDADE || r.cidade || cfg.CIDADE,\n      telefone: r.TELEFONE || r.telefone || null,\n      telefone_normalizado: null,\n      email: r.EMAIL || null,\n      whatsapp_url: r['WHATSAPP URL'] || null,\n      instagram: r.INSTAGRAM || null,\n      website,\n      dominio: host,\n      rating: null,\n      avaliacoes: null,\n      google_maps: null,\n      business_status: 'OPERATIONAL',\n      whatsapp_google: 'não encontrado',\n      nicho: cfg.NICHO,\n      sheet_name: cfg.SHEET_NAME,\n      data_descoberta: new Date().toISOString().slice(0, 10),\n      fonte: 'csv',\n      flags: { franchise: false, google_sites: false, apparently_private: true },\n    },\n  });\n}\nif (!out.length) throw new Error('Aba Entrada vazia.');\nreturn out;"
+      }
+    },
+    {
+      "id": "headers",
+      "name": "Escrever Cabeçalhos",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        700
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_ME_SHEETS",
+          "name": "Google Sheets account"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/{{ $('Configuração').first().json.SPREADSHEET_ID }}/values/{{ encodeURIComponent($('Configuração').first().json.SHEET_NAME + '!A1') }}?valueInputOption=RAW",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\"values\":[[\"DATA DA DESCOBERTA\",\"EMPRESA\",\"CATEGORIA\",\"CIDADE\",\"ENDEREÇO\",\"TELEFONE\",\"WHATSAPP\",\"GOOGLE RATING\",\"GOOGLE AVALIAÇÕES\",\"GOOGLE MAPS\",\"WEBSITE\",\"SITE STATUS\",\"SITE REASON\",\"MOBILE STATUS\",\"OPORTUNIDADES\",\"OPORTUNIDADE\",\"SERVIÇO SUGERIDO\",\"CONFIANÇA IA\",\"EVIDÊNCIA\",\"INFERÊNCIA\",\"RESUMO\",\"SCORE\",\"PRIORIDADE\",\"STATUS COMERCIAL\",\"ÚLTIMO CONTATO\",\"PRÓXIMA AÇÃO\",\"OBSERVAÇÕES\",\"PLACE_ID\",\"EMAIL\",\"WHATSAPP URL\",\"INSTAGRAM\",\"ORIGEM\",\"SINAL AUTOMAÇÃO\",\"DATA PRÓXIMA AÇÃO\",\"RESPOSTA\",\"REUNIÃO\",\"PROPOSTA\",\"MOTIVO PERDA\"]]}",
+        "options": {
+          "timeout": 30000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "read-leads",
+      "name": "Ler Planilha Existente",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1120,
+        560
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_ME_SHEETS",
+          "name": "Google Sheets account"
+        }
+      },
+      "alwaysOutputData": true,
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Configuração').first().json.SPREADSHEET_ID }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "={{ $('Configuração').first().json.SHEET_NAME }}"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "merge",
+      "name": "Merge Discovery",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1340,
+        400
+      ],
+      "parameters": {
+        "mode": "append"
+      }
+    },
+    {
+      "id": "dedupe",
+      "name": "Deduplicar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        400
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "let companies = [];\ntry {\n  companies = $('Filtrar e Normalizar').all().map((i) => i.json).filter((j) => j && j.place_id);\n} catch (e) {}\nif (!companies.length) {\n  try {\n    companies = $('Normalizar CSV').all().map((i) => i.json).filter((j) => j && j.place_id);\n  } catch (e) {}\n}\n\nlet existingRows = [];\ntry {\n  existingRows = $('Ler Planilha Existente').all().map((i) => i.json)\n    .filter((r) => r && (r.PLACE_ID || r.place_id || r.EMPRESA));\n} catch (e) {}\n\nconst existing = new Set();\nfor (const row of existingRows) {\n  const pid = String(row.PLACE_ID || row.place_id || '');\n  if (pid) existing.add(pid);\n  const w = String(row.WEBSITE || '');\n  try {\n    if (w && w !== 'não encontrado') existing.add(new URL(w).hostname.replace(/^www\\./,''));\n  } catch (e) {}\n}\n\nconst seen = new Set();\nconst unique = [];\nfor (const c of companies) {\n  const keys = [c.place_id, c.dominio].filter(Boolean);\n  if (keys.some((k) => seen.has(k) || existing.has(k))) continue;\n  keys.forEach((k) => seen.add(k));\n  unique.push(c);\n}\n\nif (!unique.length) {\n  return [{ pairedItem: { item: 0 }, json: { _empty: true, message: 'Nenhuma empresa nova.' } }];\n}\nreturn unique.map((c) => ({ pairedItem: { item: 0 }, json: { ...c, dedupe_ok: true } }));"
+      }
+    },
+    {
+      "id": "filter",
+      "name": "Filtrar Vazios",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        1780,
+        400
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "f1",
+              "leftValue": "={{ $json._empty }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "if-web",
+      "name": "Tem Website?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2000,
+        400
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "w1",
+              "leftValue": "={{ $json.website }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "fetch-web",
+      "name": "Buscar Website",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2220,
+        280
+      ],
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.website }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (compatible; ProspectingBot/4.0)"
+            },
+            {
+              "name": "Accept",
+              "value": "text/html"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 12000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": true,
+              "maxRedirects": 5
+            }
+          },
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text",
+              "neverError": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "analyze",
+      "name": "Analisar Website",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2440,
+        280
+      ],
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "language": "javaScript",
+        "jsCode": "const company = $('Tem Website?').item.json;\nconst resp = $input.item.json;\n\nconst statusCode = resp.statusCode || resp.status || null;\nlet body = '';\nif (typeof resp.body === 'string') body = resp.body;\nelse if (typeof resp.data === 'string') body = resp.data;\n\nconst finalUrl = resp.url || company.website || '';\nconst https = String(finalUrl).startsWith('https://');\nconst ok = statusCode >= 200 && statusCode < 400 && body && body.length > 50;\n\nif (!ok) {\n  return {\n    pairedItem: { item: $itemIndex },\n    json: {\n      ...company,\n      site_status: company.website ? 'UNAVAILABLE' : 'INEXISTENT',\n      site_reason: company.website\n        ? ('URL encontrada na busca, mas inacessível agora (' + (statusCode || 'erro') + ').')\n        : 'Website não encontrado.',\n      https: null,\n      mobile_status: 'UNKNOWN',\n      whatsapp_found: 'unknown',\n      instagram: null,\n      facebook: null,\n      email: null,\n      site_phone: null,\n      opportunities: company.website ? [] : ['NO_WEBSITE'],\n      has_cta: null,\n      has_form: null,\n      has_booking: null,\n      evidence: [\n        company.website ? ('URL na busca: ' + company.website) : 'Sem URL na busca.',\n        company.website ? ('HTTP status: ' + (statusCode || 'desconhecido')) : 'Sem site para analisar.',\n      ],\n      inference: [\n        company.website\n          ? 'Possível problema temporário de acesso; não concluir que o site é ruim.'\n          : 'Possível oportunidade de presença digital — validar manualmente se já existe site fora da busca.',\n      ],\n    },\n  };\n}\n\nconst html = body.slice(0, 1500000);\nconst htmlLower = html.toLowerCase();\nconst hrefs = [];\nconst hrefRe = /href=[\"']([^\"']+)[\"']/gi;\nlet hm;\nwhile ((hm = hrefRe.exec(html)) !== null) hrefs.push(hm[1]);\n\nconst whatsappLinks = hrefs.filter((h) => /wa\\.me\\//i.test(h) || /api\\.whatsapp\\.com/i.test(h) || /whatsapp\\.com\\/send/i.test(h));\nconst instagramLinks = hrefs.filter((h) => /instagram\\.com\\//i.test(h));\nconst emails = [...new Set((html.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}/g) || []))].slice(0, 5);\nconst phones = [...new Set([\n  ...hrefs.filter((h) => /^tel:/i.test(h)).map((h) => h.replace(/^tel:/i, '')),\n  ...(html.match(/(?:\\+?55\\s?)?(?:\\(?\\d{2}\\)?\\s?)?(?:9\\s?\\d{4}|\\d{4})[-\\s]?\\d{4}/g) || []),\n])].slice(0, 5);\n\nconst viewport = /<meta[^>]*name=[\"']viewport[\"']/i.test(html);\nconst hasForm = /<form[\\s>]/i.test(html);\nconst text = htmlLower.replace(/<[^>]+>/g, ' ');\nconst ctaWords = ['agendar','agende','marcar consulta','orçamento','orcamento','fale conosco','whatsapp','solicitar','saiba mais'];\nconst hasCta = ctaWords.some((w) => text.includes(w)) || whatsappLinks.length > 0;\nconst hasBooking = ['agendamento','agendar','calendly','doctoralia','trinks'].some((b) => text.includes(b));\nconst thin = html.length < 5000 && !hasCta && !hasForm;\nconst oldSignals = !viewport || thin || /frameset|guestbook|under construction/i.test(htmlLower);\n\nlet scoreSite = 0;\nif (https) scoreSite += 2;\nif (viewport) scoreSite += 2;\nif (hasCta) scoreSite += 2;\nif (hasForm || hasBooking) scoreSite += 1;\nif (whatsappLinks.length) scoreSite += 1;\nif (emails.length || phones.length) scoreSite += 1;\nif (oldSignals) scoreSite -= 2;\n\nconst flags = company.flags || {};\nconst isGoogleSites = !!flags.google_sites || /sites\\.google\\.com/i.test(finalUrl);\n\n// Google Sites / página pessoal ≠ site comercial maduro\nif (isGoogleSites) scoreSite = Math.min(scoreSite, 3);\n\nlet site_status = 'POOR';\nif (scoreSite >= 6) site_status = 'GOOD';\nelse if (scoreSite >= 3) site_status = 'FAIR';\nif (isGoogleSites && site_status === 'GOOD') site_status = 'FAIR';\n\nconst opportunities = [];\nconst evidence = [\n  'URL acessível: ' + finalUrl,\n  'HTTPS: ' + (https ? 'sim' : 'não'),\n  'Viewport: ' + (viewport ? 'sim' : 'não'),\n  'WhatsApp no HTML: ' + (whatsappLinks.length ? 'sim' : 'não'),\n  'Formulário: ' + (hasForm ? 'sim' : 'não'),\n  'CTA textual: ' + (hasCta ? 'sim' : 'não'),\n];\nif (isGoogleSites) evidence.push('Hospedagem: Google Sites (presença fraca, não site comercial).');\n\nconst inference = [];\n\n// Oportunidades só com evidência — NÃO marcar automação só por ausência de form em site GOOD\nif (site_status === 'POOR' || oldSignals || isGoogleSites) {\n  opportunities.push('OUTDATED_WEBSITE');\n  inference.push(isGoogleSites\n    ? 'Presença em Google Sites; possível oportunidade de site próprio profissional.'\n    : 'Site com sinais de baixa qualidade; possível oportunidade de refazer/melhorar presença digital.');\n}\nif (!viewport) {\n  opportunities.push('POOR_MOBILE');\n  evidence.push('Meta viewport ausente.');\n}\nif (!hasCta && site_status !== 'GOOD') {\n  opportunities.push('NO_CLEAR_CTA');\n  inference.push('CTA pouco evidente; possível oportunidade de melhorar conversão.');\n}\nif (whatsappLinks.length === 0 && site_status !== 'GOOD') {\n  opportunities.push('NO_WHATSAPP');\n}\n// Automação: WhatsApp + pouco fluxo — NÃO em Google Sites (sinal fraco demais)\nif (!isGoogleSites && whatsappLinks.length > 0 && !hasForm && !hasBooking && /whatsapp/i.test(text) && site_status !== 'GOOD') {\n  opportunities.push('AUTOMATION_POTENTIAL');\n  inference.push('Há WhatsApp e pouco fluxo estruturado; possível oportunidade de automação — validar volume de mensagens com o cliente.');\n}\n\nlet site_phone = phones[0] || null;\nif (site_phone && /^[+=]/.test(String(site_phone))) site_phone = \"'\" + site_phone;\n\nreturn {\n  pairedItem: { item: $itemIndex },\n  json: {\n    ...company,\n    site_status,\n    site_reason: 'Análise técnica do HTML. Score interno site=' + scoreSite + '.',\n    https,\n    mobile_status: viewport ? 'UNKNOWN' : 'POOR',\n    whatsapp_found: whatsappLinks.length ? 'true' : 'false',\n    whatsapp_url: whatsappLinks[0] || company.whatsapp_url || null,\n    instagram: instagramLinks[0] || null,\n    facebook: null,\n    email: emails[0] || null,\n    site_phone,\n    telefone: company.telefone || site_phone,\n    opportunities,\n    has_cta: hasCta,\n    has_form: hasForm,\n    has_booking: hasBooking,\n    evidence,\n    inference: inference.length ? inference : ['Sem inferência comercial forte além das evidências acima.'],\n  },\n};"
+      }
+    },
+    {
+      "id": "no-web",
+      "name": "Sem Website",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2220,
+        540
+      ],
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "language": "javaScript",
+        "jsCode": "const company = $input.item.json;\nreturn {\n  pairedItem: { item: $itemIndex },\n  json: {\n    ...company,\n    site_status: 'INEXISTENT',\n    site_reason: 'Nenhuma URL de site próprio na descoberta.',\n    https: null,\n    mobile_status: 'INEXISTENT',\n    whatsapp_found: company.whatsapp_url ? 'true' : 'unknown',\n    instagram: company.instagram || null,\n    facebook: null,\n    email: company.email || null,\n    site_phone: null,\n    opportunities: ['NO_WEBSITE'],\n    has_cta: null,\n    has_form: null,\n    has_booking: null,\n    evidence: ['Nenhuma URL de site próprio informada na descoberta; existência deve ser validada.'],\n    inference: ['Possível oportunidade de criação de presença digital — confirmar se a empresa já tem site com outro domínio.'],\n  },\n};"
+      }
+    },
+    {
+      "id": "score",
+      "name": "Score Final",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2660,
+        400
+      ],
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "language": "javaScript",
+        "jsCode": "const d = $input.item.json;\nconst cfg = $('Configuração').first().json;\nconst aiThreshold = Number.isFinite(Number(cfg.AI_MIN_SCORE)) ? Number(cfg.AI_MIN_SCORE) : 45;\nconst aiEnabled = cfg.AI_ENABLED === true || cfg.AI_ENABLED === 'true';\nconst flags = d.flags || {};\nconst ops = Array.isArray(d.opportunities) ? d.opportunities : [];\nconst evidence = Array.isArray(d.evidence) ? d.evidence : [];\nconst inference = Array.isArray(d.inference) ? d.inference : [];\n\nfunction clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }\n\nlet score = 0;\n\n// Empresa claramente privada/comercial\nif (flags.apparently_private) score += 20;\nif (flags.franchise) score -= 20;\nif (flags.google_sites) score += 0; // neutro: não é lixo, não é prêmio\n\n// Site\nif (d.site_status === 'INEXISTENT') score += 25;\nelse if (d.site_status === 'POOR' || ops.includes('OUTDATED_WEBSITE')) score += 20;\nelse if (d.site_status === 'FAIR') score += 5;\nelse if (d.site_status === 'GOOD') score -= 25;\nelse if (d.site_status === 'UNAVAILABLE') score += 0; // não punir nem premiar\n\nif (ops.includes('NO_CLEAR_CTA')) score += 10;\nif (ops.includes('NO_WHATSAPP')) score += 5;\nif (ops.includes('AUTOMATION_POTENTIAL')) score += 15;\nif (ops.includes('POOR_MOBILE')) score += 8;\nif (d.instagram) score += 5;\n\n// Dados insuficientes\nif (!d.website && !d.telefone && !d.nome) score -= 30;\n\n// Domínios públicos que passaram no filtro por engano\nconst host = String(d.dominio || '');\nif (/gov\\.br|datasus|saude\\.gov/.test(host)) score -= 50;\n\nscore = clamp(Math.round(score), 0, 100);\n\nfunction priority(s) {\n  if (s >= 65) return '🟢 MUITO ALTA';\n  if (s >= 55) return '🔵 ALTA';\n  if (s >= 45) return '🟡 MÉDIA';\n  if (s >= 40) return '🟠 BAIXA';\n  return '🔴 DESCARTAR';\n}\n\nfunction suggestService() {\n  if (ops.includes('NO_WEBSITE') || d.site_status === 'INEXISTENT') return 'SITE';\n  if (ops.includes('OUTDATED_WEBSITE') || d.site_status === 'POOR') return 'SITE';\n  if (ops.includes('AUTOMATION_POTENTIAL')) return 'AUTOMACAO';\n  if (ops.includes('NO_CLEAR_CTA')) return 'LANDING_PAGE';\n  if (ops.includes('NO_WHATSAPP')) return 'WHATSAPP';\n  if (score < 40) return 'NENHUM';\n  return 'DIAGNOSTICO';\n}\n\nconst opportunity = (() => {\n  if (ops.includes('NO_WEBSITE')) {\n    return 'EVIDÊNCIA: site próprio não encontrado na busca. INFERÊNCIA: possível oportunidade de presença digital (validar).';\n  }\n  if (ops.includes('OUTDATED_WEBSITE')) {\n    return 'EVIDÊNCIA: site com sinais técnicos fracos. INFERÊNCIA: possível oportunidade de melhoria do site.';\n  }\n  if (ops.includes('AUTOMATION_POTENTIAL')) {\n    return 'EVIDÊNCIA: WhatsApp presente e pouco fluxo estruturado no site. INFERÊNCIA: possível automação de atendimento — confirmar dor real.';\n  }\n  if (d.site_status === 'GOOD' && score < 50) {\n    return 'EVIDÊNCIA: site aparentemente adequado. INFERÊNCIA: baixa prioridade de abordagem só por “melhoria digital”.';\n  }\n  return 'Sinais mistos; revisar manualmente antes de abordar.';\n})();\n\nlet telefone = d.telefone || d.site_phone || 'não encontrado';\nif (telefone !== 'não encontrado' && /^[+=]/.test(String(telefone))) telefone = \"'\" + telefone;\n\nconst hasContact = Boolean(d.whatsapp_url || d.email || d.telefone || d.site_phone || d.instagram);\nconst qualified = score >= aiThreshold && hasContact;\nconst needsAi = aiEnabled && qualified;\n\nreturn {\n  pairedItem: { item: $itemIndex },\n  json: {\n    'DATA DA DESCOBERTA': String(d.data_descoberta || new Date().toISOString().slice(0, 10)),\n    EMPRESA: d.nome,\n    CATEGORIA: d.categoria || d.nicho,\n    CIDADE: d.cidade,\n    'ENDEREÇO': d.endereco || 'não encontrado',\n    TELEFONE: telefone,\n    WHATSAPP: d.whatsapp_found === 'true' ? 'sim' : (d.whatsapp_found === 'false' ? 'não' : 'não encontrado'),\n    'GOOGLE RATING': 'não encontrado',\n    'GOOGLE AVALIAÇÕES': 'não encontrado',\n    'GOOGLE MAPS': d.google_maps || 'não encontrado',\n    WEBSITE: d.website || 'não encontrado',\n    'SITE STATUS': d.site_status,\n    'SITE REASON': d.site_reason || '',\n    'MOBILE STATUS': d.mobile_status || 'UNKNOWN',\n    OPORTUNIDADES: ops.join(', '),\n    OPORTUNIDADE: opportunity,\n    'SERVIÇO SUGERIDO': suggestService(),\n    'CONFIANÇA IA': 'pendente',\n    'EVIDÊNCIA': evidence.join(' | '),\n    'INFERÊNCIA': inference.join(' | '),\n    RESUMO: opportunity,\n    SCORE: score,\n    PRIORIDADE: priority(score),\n    'STATUS COMERCIAL': 'NOVO',\n    'ÚLTIMO CONTATO': '',\n    'PRÓXIMA AÇÃO': qualified ? 'Validar evidência e preparar abordagem individual' : (hasContact ? 'Revisar aderência da oferta' : 'Localizar canal de contato antes de abordar'),\n    EMAIL: d.email || '',\n    'WHATSAPP URL': d.whatsapp_url || '',\n    INSTAGRAM: d.instagram || '',\n    ORIGEM: d.fonte || '',\n    'SINAL AUTOMAÇÃO': ops.includes('AUTOMATION_POTENTIAL') ? 'Hipótese: confirmar volume e processo com o cliente' : 'Não avaliado; qualidade do site não demonstra eficiência interna',\n    'DATA PRÓXIMA AÇÃO': '',\n    RESPOSTA: '',\n    REUNIÃO: '',\n    PROPOSTA: '',\n    'MOTIVO PERDA': '',\n    OBSERVAÇÕES: flags.franchise ? 'Possível franquia/rede' : '',\n    PLACE_ID: d.place_id,\n    _needs_ai: needsAi,\n    _ai_payload: needsAi ? {\n      empresa: d.nome,\n      cidade: d.cidade,\n      website: d.website,\n      site_status: d.site_status,\n      opportunities: ops,\n      evidence,\n      inference,\n      score,\n    } : null,\n  },\n};"
+      }
+    },
+    {
+      "id": "if-ai",
+      "name": "Qualificado e IA habilitada?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2880,
+        400
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "a1",
+              "leftValue": "={{ $json._needs_ai }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "prep-ai",
+      "name": "Preparar Prompt IA",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3100,
+        280
+      ],
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "language": "javaScript",
+        "jsCode": "const d = $input.item.json;\nif (!d._needs_ai) {\n  return {\n    pairedItem: { item: $itemIndex },\n    json: {\n      ...d,\n      'CONFIANÇA IA': 'desativada ou fora dos critérios de score/contato',\n      skip_ai: true,\n      ai_system: '',\n      ai_user: '',\n    },\n  };\n}\n\nconst system = 'Você analisa leads B2B. Use SÓ o JSON. Separe EVIDÊNCIA e INFERÊNCIA. Nunca diga que a empresa \"precisa\" de algo. Pergunta-guia: vale a pena abordar para site/automação/WhatsApp? JSON: {\"opportunity\":\"\",\"recommended_service\":\"SITE|LANDING_PAGE|AUTOMACAO|WHATSAPP|DIAGNOSTICO|NENHUM\",\"confidence\":0,\"evidence\":[],\"inference\":[],\"summary\":\"\"}';\n\nreturn {\n  pairedItem: { item: $itemIndex },\n  json: {\n    ...d,\n    skip_ai: false,\n    ai_system: system,\n    ai_user: JSON.stringify(d._ai_payload),\n  },\n};"
+      }
+    },
+    {
+      "id": "openai",
+      "name": "IA OpenAI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3320,
+        280
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_ME_OPENAI",
+          "name": "OpenAI API"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"{{ $('Configuração').first().json.AI_MODEL }}\",\n  \"temperature\": 0.2,\n  \"response_format\": { \"type\": \"json_object\" },\n  \"messages\": [\n    { \"role\": \"system\", \"content\": {{ JSON.stringify($json.ai_system) }} },\n    { \"role\": \"user\", \"content\": {{ JSON.stringify($json.ai_user) }} }\n  ]\n}",
+        "options": {
+          "timeout": 30000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "merge-ai",
+      "name": "Aplicar IA",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3540,
+        280
+      ],
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "language": "javaScript",
+        "jsCode": "const prepared = $('Preparar Prompt IA').item.json;\nconst aiResp = $input.item.json;\n\nlet ai = null;\ntry {\n  const content = aiResp.choices && aiResp.choices[0] && aiResp.choices[0].message && aiResp.choices[0].message.content;\n  if (content) {\n    const cleaned = content.trim().replace(/^```json\\s*/i,'').replace(/^```\\s*/i,'').replace(/\\s*```$/i,'');\n    ai = JSON.parse(cleaned);\n  }\n} catch (e) { ai = null; }\n\nconst { _needs_ai, _ai_payload, ai_system, ai_user, skip_ai, ...base } = prepared;\n\nif (!ai) {\n  return {\n    pairedItem: { item: $itemIndex },\n    json: { ...base, 'CONFIANÇA IA': 'falha/fallback' },\n  };\n}\n\nreturn {\n  pairedItem: { item: $itemIndex },\n  json: {\n    ...base,\n    OPORTUNIDADE: ai.opportunity || base.OPORTUNIDADE,\n    'SERVIÇO SUGERIDO': ai.recommended_service || base['SERVIÇO SUGERIDO'],\n    'CONFIANÇA IA': ai.confidence != null ? ai.confidence : 'não encontrado',\n    'EVIDÊNCIA': Array.isArray(ai.evidence) ? ai.evidence.join(' | ') : base['EVIDÊNCIA'],\n    'INFERÊNCIA': Array.isArray(ai.inference) ? ai.inference.join(' | ') : base['INFERÊNCIA'],\n    RESUMO: ai.summary || base.RESUMO,\n  },\n};"
+      }
+    },
+    {
+      "id": "sem-ai",
+      "name": "Sem IA",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3100,
+        540
+      ],
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "language": "javaScript",
+        "jsCode": "const d = $input.item.json;\nconst { _needs_ai, _ai_payload, ...rest } = d;\nreturn {\n  pairedItem: { item: $itemIndex },\n  json: {\n    ...rest,\n    'CONFIANÇA IA': 'desativada ou fora dos critérios de score/contato',\n  },\n};"
+      }
+    },
+    {
+      "id": "upsert",
+      "name": "Google Sheets Append",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        3760,
+        400
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_ME_SHEETS",
+          "name": "Google Sheets account"
+        }
+      },
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Configuração').first().json.SPREADSHEET_ID }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "={{ $('Configuração').first().json.SHEET_NAME }}"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": null,
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "cellFormat": "RAW",
+          "useAppend": true
+        }
+      }
+    },
+    {
+      "id": "resumo",
+      "name": "Resumo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3980,
+        400
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const rows = items.map((i) => i.json).filter((r) => r.EMPRESA);\nrows.sort((a, b) => Number(b.SCORE || 0) - Number(a.SCORE || 0));\nreturn [{\n  pairedItem: { item: 0 },\n  json: {\n    processados: rows.length,\n    acima_corte: rows.filter((r) => Number(r.SCORE) >= Number($('Configuração').first().json.AI_MIN_SCORE || 45)).length,\n    top5: rows.slice(0, 5).map((r) => ({ empresa: r.EMPRESA, score: r.SCORE, prioridade: r.PRIORIDADE, site: r['SITE STATUS'] })),\n    planilha: 'https://docs.google.com/spreadsheets/d/' + $('Configuração').first().json.SPREADSHEET_ID,\n  },\n}];"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Configuração",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Configuração": {
+      "main": [
+        [
+          {
+            "node": "Modo Discovery?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ler Planilha Existente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modo Discovery?": {
+      "main": [
+        [
+          {
+            "node": "Montar Buscas",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ler Aba Entrada CSV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Montar Buscas": {
+      "main": [
+        [
+          {
+            "node": "Buscar DuckDuckGo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar DuckDuckGo": {
+      "main": [
+        [
+          {
+            "node": "Filtrar e Normalizar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtrar e Normalizar": {
+      "main": [
+        [
+          {
+            "node": "Merge Discovery",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ler Aba Entrada CSV": {
+      "main": [
+        [
+          {
+            "node": "Normalizar CSV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar CSV": {
+      "main": [
+        [
+          {
+            "node": "Merge Discovery",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ler Planilha Existente": {
+      "main": [
+        [
+          {
+            "node": "Merge Discovery",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge Discovery": {
+      "main": [
+        [
+          {
+            "node": "Deduplicar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deduplicar": {
+      "main": [
+        [
+          {
+            "node": "Filtrar Vazios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtrar Vazios": {
+      "main": [
+        [
+          {
+            "node": "Tem Website?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tem Website?": {
+      "main": [
+        [
+          {
+            "node": "Buscar Website",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sem Website",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar Website": {
+      "main": [
+        [
+          {
+            "node": "Analisar Website",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisar Website": {
+      "main": [
+        [
+          {
+            "node": "Score Final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sem Website": {
+      "main": [
+        [
+          {
+            "node": "Score Final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Score Final": {
+      "main": [
+        [
+          {
+            "node": "Qualificado e IA habilitada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qualificado e IA habilitada?": {
+      "main": [
+        [
+          {
+            "node": "Preparar Prompt IA",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sem IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar Prompt IA": {
+      "main": [
+        [
+          {
+            "node": "IA OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IA OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Aplicar IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aplicar IA": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets Append",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sem IA": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets Append",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets Append": {
+      "main": [
+        [
+          {
+            "node": "Resumo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

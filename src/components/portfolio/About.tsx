@@ -1,6 +1,6 @@
 import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
-import { SocialLinks, StatCard } from "@/components/shared";
+import { SocialLinks } from "@/components/shared";
 import { spacing, typography, transitions } from "@/constants/design-tokens";
 
 const About = () => {
@@ -13,14 +13,6 @@ const About = () => {
         <p className="mt-3 text-center text-muted-foreground max-w-2xl mx-auto">
           {t.about.subtitle}
         </p>
-      </FadeInSection>
-
-      <FadeInSection delay={0.2}>
-        <div className="mt-6 grid grid-cols-2 lg:grid-cols-3 gap-4 text-center">
-          {t.about.stats.map((stat) => (
-            <StatCard key={stat.label} {...stat} />
-          ))}
-        </div>
       </FadeInSection>
 
       <div className="mt-12 grid gap-8 md:grid-cols-2 md:items-center lg:gap-12">

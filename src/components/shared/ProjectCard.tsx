@@ -1,3 +1,5 @@
+import { useI18n } from "@/i18n";
+import { localizedPath } from "@/lib/paths";
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -74,6 +76,7 @@ export const ProjectCard = ({
   whatsappHref,
   whatsappCta,
 }: ProjectCardProps) => {
+  const { locale } = useI18n();
   const reducedMotion = usePrefersReducedMotion();
   const [imgSrc, setImgSrc] = useState(image || FALLBACK_IMAGE);
   const [showMedia, setShowMedia] = useState(false);
@@ -202,7 +205,7 @@ export const ProjectCard = ({
                 </a>
               )}
               {caseStudyPath && (
-                <Link to={caseStudyPath}>
+                <Link to={localizedPath(caseStudyPath, locale)}>
                   <Badge
                     variant="outline"
                     className={`gap-1 cursor-pointer ${transitions.fast} hover:bg-primary hover:text-primary-foreground`}

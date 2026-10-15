@@ -27,3 +27,9 @@ dist-ssr
 .env
 .vercel
 .env*
+!.env.example
+!prospecting/.env.example
+
+# Prospecting credentials
+prospecting/credentials/*.json
+!prospecting/credentials/.gitkeep

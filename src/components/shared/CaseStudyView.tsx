@@ -1,3 +1,5 @@
+import { useI18n } from "@/i18n";
+import { localizedPath } from "@/lib/paths";
 import { Link } from "react-router-dom";
 import { MainLayout } from "@/layouts/MainLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,6 +18,7 @@ interface CaseStudyViewProps {
 const FALLBACK_IMAGE = "/images/placeholder-project.svg";
 
 export const CaseStudyView = ({ content, highlightTag }: CaseStudyViewProps) => {
+  const { locale } = useI18n();
   const [imgSrc, setImgSrc] = useState(content.image || FALLBACK_IMAGE);
   const cs = content;
 
@@ -127,15 +130,15 @@ export const CaseStudyView = ({ content, highlightTag }: CaseStudyViewProps) => 
           )}
           {!cs.cta.demo && (
             <Button asChild variant="hero">
-              <Link to="/#contato">{cs.cta.contact}</Link>
+              <Link to={localizedPath("/", locale) + "#contato"}>{cs.cta.contact}</Link>
             </Button>
           )}
           <Button asChild variant="outline">
-            <Link to="/#projetos">{cs.cta.backToProjects}</Link>
+            <Link to={localizedPath("/perfil", locale) + "#projetos"}>{cs.cta.backToProjects}</Link>
           </Button>
           {cs.cta.demo && (
             <Button asChild variant="outline">
-              <Link to="/#contato">{cs.cta.contact}</Link>
+              <Link to={localizedPath("/", locale) + "#contato"}>{cs.cta.contact}</Link>
             </Button>
           )}
         </div>

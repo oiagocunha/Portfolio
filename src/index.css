@@ -93,8 +93,8 @@
 
   * { @apply border-border; }
 
-  html { scroll-behavior: smooth; overflow-x: hidden; scrollbar-gutter: stable both-edges; }
-  body { @apply bg-background text-foreground; overflow-x: hidden; }
+  html { scroll-behavior: smooth; overflow-x: clip; scrollbar-gutter: stable both-edges; }
+  body { @apply bg-background text-foreground; overflow-x: clip; }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }

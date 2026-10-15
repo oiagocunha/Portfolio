@@ -1,3 +1,4 @@
+import { localizedPath, withoutLocale } from "@/lib/paths";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useI18n } from "@/i18n";
@@ -14,8 +15,19 @@ export const SeoManager = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const pageKey = routeToPageKey(pathname);
-    const page = t.seo.pages[pageKey];
+    const pageKey = routeToPageKey(withoutLocale(pathname));
+    const page = withoutLocale(pathname) === "/perfil" ? {
+      title: locale === "pt" ? "Iago Cunha | Backend, IA Generativa e Automação" : "Iago Cunha | Backend, Generative AI & Automation",
+      description: locale === "pt" ? "Experiência com Python, FastAPI, Temporal, RAG e Kubernetes. Conheça os projetos, a experiência e o currículo de Iago Cunha." : "Experience with Python, FastAPI, Temporal, RAG and Kubernetes. Explore Iago Cunha's projects, experience and résumé.",
+    } : t.seo.pages[pageKey];
+    for (const lang of ["pt", "en"] as const) {
+      const code = lang === "pt" ? "pt-BR" : "en";
+      let link = document.head.querySelector<HTMLLinkElement>(`link[hreflang="${code}"]`);
+      if (!link) { link = document.createElement("link"); link.rel = "alternate"; link.hreflang = code; document.head.appendChild(link); }
+      link.href = SITE_URL + localizedPath(pathname, lang);
+    }
+    const defaultLink = document.head.querySelector<HTMLLinkElement>('link[hreflang="x-default"]');
+    if (defaultLink) defaultLink.href = SITE_URL + localizedPath(pathname, "pt");
     const canonical = `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
     const htmlLang = locale === "pt" ? "pt-BR" : "en";
 
@@ -25,7 +37,8 @@ export const SeoManager = () => {
     upsertMeta("name", "description", page.description);
     upsertMeta("name", "keywords", t.seo.keywords);
     upsertMeta("name", "author", "Iago Cunha");
-    upsertMeta("name", "robots", "index, follow, max-snippet:-1, max-image-preview:large");
+    const known = ["/", "/perfil", "/case-study/chat-platform", "/case-study/public-data-monitor"].includes(withoutLocale(pathname));
+    upsertMeta("name", "robots", known ? "index, follow, max-snippet:-1, max-image-preview:large" : "noindex, follow");
 
     upsertLink("canonical", canonical);
 

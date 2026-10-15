@@ -1,3 +1,4 @@
+import { isProfessionalPath, localizedPath } from "@/lib/paths";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
@@ -5,26 +6,75 @@ import LanguageToggle from "./LanguageToggle";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/i18n";
 import { zIndex, transitions, iconSizes, borderRadius } from "@/constants/design-tokens";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
+function scrollToSection(id: string) {
+  const target = document.getElementById(id);
+  if (!target) return false;
+  const header = document.querySelector("header");
+  const offset = (header?.getBoundingClientRect().height || 64) + 16;
+  window.scrollTo({
+    top: Math.max(0, window.scrollY + target.getBoundingClientRect().top - offset),
+    behavior: "smooth",
+  });
+  return true;
+}
 
 const Navbar = () => {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleSectionNav = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (!href.startsWith("#")) return;
-    event.preventDefault();
+  const professional = isProfessionalPath(location.pathname);
+  const home = localizedPath("/", locale);
+  const profile = localizedPath("/perfil", locale);
 
-    if (location.pathname !== "/") {
-      window.location.href = `/${href}`;
+  const items = professional
+    ? [
+        { href: "#hero", label: locale === "pt" ? "Perfil" : "Profile" },
+        { href: "#experiencia", label: locale === "pt" ? "Experiência" : "Experience" },
+        { href: "#projetos", label: locale === "pt" ? "Projetos" : "Projects" },
+        { href: home, label: locale === "pt" ? "Serviços para empresas" : "Business services" },
+      ]
+    : [
+        ...t.navbar.items,
+        {
+          href: profile,
+          label: locale === "pt" ? "Perfil profissional" : "Professional profile",
+        },
+      ];
+
+  const destination = (href: string) => {
+    if (!href.startsWith("#")) return href;
+    const base = professional ? profile : home;
+    return `${base}${href}`;
+  };
+
+  const goTo = (href: string) => {
+    setIsOpen(false);
+
+    if (!href.startsWith("#") && !href.includes("#")) {
+      navigate(href);
       return;
     }
 
-    const section = document.querySelector(href);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    const full = destination(href);
+    const [pathPart, hashPart = ""] = full.split("#");
+    const targetPath = pathPart || home;
+    const onTargetPage =
+      (targetPath === home && !professional) ||
+      (targetPath === profile && professional);
+
+    if (onTargetPage && hashPart) {
+      const scrolled = scrollToSection(hashPart);
+      if (scrolled) {
+        navigate(`${targetPath}#${hashPart}`, { replace: true });
+        return;
+      }
     }
+
+    navigate(full);
   };
 
   return (
@@ -32,7 +82,11 @@ const Navbar = () => {
       className={`fixed top-0 left-0 w-full ${zIndex.fixed} border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg`}
     >
       <nav className="container flex h-16 items-center justify-between" aria-label="Primary">
-        <a href="#hero" className="flex items-center space-x-2 font-bold text-xl" onClick={(e) => handleSectionNav(e, "#hero")}>
+        <Link
+          to={home}
+          className="flex items-center space-x-2 font-bold text-xl"
+          onClick={() => setIsOpen(false)}
+        >
           <div
             className={`h-8 w-8 ${borderRadius.full} bg-gradient-to-r from-primary to-accent flex items-center justify-center text-primary-foreground text-sm font-bold`}
           >
@@ -42,18 +96,21 @@ const Navbar = () => {
             <span className="text-base">{t.brand.name}</span>
             <span className="text-[11px] font-medium text-muted-foreground">{t.brand.byline}</span>
           </span>
-        </a>
+        </Link>
 
         <div className="hidden lg:flex items-center space-x-4">
-          {t.navbar.items.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={(event) => handleSectionNav(event, item.href)}
+          {items.map((item) => (
+            <Link
+              key={`${item.href}-${item.label}`}
+              to={destination(item.href)}
+              onClick={(event) => {
+                event.preventDefault();
+                goTo(item.href);
+              }}
               className={`text-sm font-medium ${transitions.colors} hover:text-primary story-link`}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -84,18 +141,18 @@ const Navbar = () => {
             className="lg:hidden border-t bg-background/95 backdrop-blur"
           >
             <div className="container py-4 space-y-3">
-              {t.navbar.items.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
+              {items.map((item) => (
+                <Link
+                  key={`${item.href}-${item.label}-mobile`}
+                  to={destination(item.href)}
                   onClick={(event) => {
-                    handleSectionNav(event, item.href);
-                    setIsOpen(false);
+                    event.preventDefault();
+                    goTo(item.href);
                   }}
                   className={`block py-2 text-sm font-medium ${transitions.colors} hover:text-primary`}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </div>
           </motion.div>

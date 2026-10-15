@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { localizedPath } from "@/lib/paths";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import FadeInSection from "./FadeInSection";
@@ -10,7 +12,7 @@ import { MessageCircle } from "lucide-react";
 const PROFILE_SRC = "/images/Perfil.jpg";
 
 const Hero = () => {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const reducedMotion = usePrefersReducedMotion();
   const [profileFailed, setProfileFailed] = useState(false);
 
@@ -90,6 +92,15 @@ const Hero = () => {
               <a href="#projetos">{t.hero.secondaryCta}</a>
             </Button>
           </motion.div>
+          <p className="mt-5 text-sm text-muted-foreground">
+            {locale === "pt" ? "Perfil para recrutadores: " : "For recruiters: "}
+            <Link
+              className="text-accent underline underline-offset-4"
+              to={localizedPath("/perfil", locale)}
+            >
+              {locale === "pt" ? "experiência e currículo" : "experience and résumé"}
+            </Link>
+          </p>
         </article>
       </FadeInSection>
 
@@ -108,7 +119,6 @@ const Hero = () => {
               src={PROFILE_SRC}
               alt={t.hero.alt}
               loading="eager"
-              fetchPriority="high"
               width={288}
               height={288}
               onError={() => setProfileFailed(true)}

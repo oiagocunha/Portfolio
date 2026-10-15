@@ -9,6 +9,7 @@ interface MermaidDiagramProps {
 
 export const MermaidDiagram = ({ chart, title }: MermaidDiagramProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
   const uniqueId = useId().replace(/:/g, "");
   const theme = useDocumentTheme();
   const { t } = useI18n();
@@ -16,6 +17,17 @@ export const MermaidDiagram = ({ chart, title }: MermaidDiagramProps) => {
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
+    const target = containerRef.current;
+    if (!target) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { setVisible(true); observer.disconnect(); }
+    }, { rootMargin: "200px" });
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
     let mounted = true;
     setFailed(false);
 
@@ -46,7 +58,7 @@ export const MermaidDiagram = ({ chart, title }: MermaidDiagramProps) => {
     return () => {
       mounted = false;
     };
-  }, [chart, uniqueId, theme]);
+  }, [chart, uniqueId, theme, visible]);
 
   return (
     <figure className="rounded-lg border bg-muted/20 p-4">
@@ -67,7 +79,7 @@ export const MermaidDiagram = ({ chart, title }: MermaidDiagramProps) => {
           {t.a11y.diagramError}
         </pre>
       ) : (
-        <div ref={containerRef} className="overflow-x-auto [&_svg]:mx-auto" />
+        <div ref={containerRef} className="min-h-32 overflow-x-auto [&_svg]:mx-auto" />
       )}
       {sourceOpen && (
         <pre className="mt-3 overflow-x-auto rounded-md border bg-background p-3 text-xs text-muted-foreground">

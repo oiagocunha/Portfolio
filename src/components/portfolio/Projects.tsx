@@ -5,8 +5,8 @@ import { projectIcons } from "@/constants/icons";
 import { spacing, typography } from "@/constants/design-tokens";
 import type { ProjectItem, ProjectStatus } from "@/i18n/types";
 
-const Projects = () => {
-  const { t } = useI18n();
+const Projects = ({ audience = "commercial" }: { audience?: "commercial" | "professional" }) => {
+  const { t, locale } = useI18n();
 
   const whatsappHref = `https://wa.me/${t.contact.whatsappNumber}?text=${encodeURIComponent(t.contact.whatsappMessage)}`;
 
@@ -52,25 +52,31 @@ const Projects = () => {
       <FadeInSection>
         <h2 className={`text-center ${typography.h2}`}>{t.projects.title}</h2>
         <p className="mt-3 text-center text-muted-foreground max-w-3xl mx-auto">
-          {t.projects.subtitle}
+          {audience === "professional"
+            ? locale === "pt"
+              ? "Sistemas corporativos e projetos autorais: contexto, contribuição e decisões técnicas."
+              : "Corporate systems and personal projects: context, contribution, and technical decisions."
+            : t.projects.subtitle}
         </p>
       </FadeInSection>
 
-      <FadeInSection delay={0.05}>
+      {audience === "commercial" && <><FadeInSection delay={0.05}>
         <h3 className="mt-10 text-lg font-semibold tracking-wide text-foreground/90">
           {t.projects.featuredLabel}
         </h3>
       </FadeInSection>
-      {renderGrid(t.projects.featured, "commercial", true)}
+      {renderGrid(t.projects.featured, "commercial", true)}</>}
 
-      {t.projects.earlyWork.length > 0 && (
+      {audience === "professional" && t.projects.earlyWork.length > 0 && (
         <>
           <FadeInSection delay={0.05}>
             <h3 className="mt-14 text-lg font-semibold tracking-wide text-foreground/90">
-              {t.projects.earlyWorkLabel}
+              {locale === "pt" ? "Cases e projetos técnicos" : "Technical cases and projects"}
             </h3>
             <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
-              {t.projects.earlyWorkSubtitle}
+              {locale === "pt"
+                ? "Problema, o que eu entreguei e onde dá para ver o resultado."
+                : "The problem, what I delivered, and where you can see the result."}
             </p>
           </FadeInSection>
           {renderGrid(t.projects.earlyWork, "technical", false)}

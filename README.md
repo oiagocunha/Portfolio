@@ -61,6 +61,24 @@ media: "/images/meu-demo.gif", // ou .webp / .mp4
 - `/case-study/chat-platform`
 - `/case-study/public-data-monitor`
 
+## Prospecção comercial (MVP)
+
+**Produto principal:** workflow n8n em [`n8n/`](./n8n/README.md).
+
+```bash
+# Importe no n8n:
+# n8n/workflows/prospeccao-comercial.json
+```
+
+A pasta `prospecting/` (TypeScript) é apenas referência de lógica — não continue expandindo como app.
+
 ## Idiomas
 
 Apenas `pt` e `en`. O seletor está na navbar.
+
+## Conversão e perfil profissional
+
+Home comercial em `/`, perfil profissional em `/perfil` e versões em inglês sob `/en`.
+Veja [implementação, evidências e ativação](docs/CONVERSION_IMPLEMENTATION.md).
+
+Validação: `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`. Testes usam Node 22.18+ ou 24.
