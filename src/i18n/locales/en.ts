@@ -22,6 +22,8 @@ export const en: PortfolioContent = {
   brand: {
     name: "IC Desenvolvimento",
     byline: "by Iago Cunha",
+    professionalName: "Iago Cunha",
+    professionalByline: "Backend · AI & Automation",
   },
 
   hero: {
@@ -29,45 +31,51 @@ export const en: PortfolioContent = {
     headline: "Websites, automation, and custom systems.",
     typewriter: [],
     description:
-      "Web development, routine automation, tool integrations, and first versions of internal systems — under IC Desenvolvimento, by Iago Cunha.",
+      "I build websites, automations, tool integrations, and internal systems. Each project starts from the problem to solve, and scope is locked in the proposal.",
     primaryCta: "Chat on WhatsApp",
     secondaryCta: "See projects",
     alt: "Photo of Iago Cunha",
     role: "by Iago Cunha",
     highlights: [],
+    recruitersLabel: "Recruiters: ",
+    recruitersLink: "experience and résumé",
   },
 
   applications: {
-    title: "Where this shows up",
-    subtitle: "Practical situations. Deliverables are listed under Services.",
+    title: "Examples of use",
     items: [
       {
         title: "Catalog with online orders",
         description:
-          "Show products by category and take orders without relying only on WhatsApp chats.",
+          "When chat-only selling gets messy: customers need clear categories and a simple way to order.",
       },
       {
         title: "Reports that are still manual",
         description:
-          "Pull data from spreadsheets or APIs, generate the report, and notify the team when it is ready.",
+          "When someone still pulls spreadsheets or APIs by hand and the team waits for the file.",
       },
       {
         title: "Moving data between tools",
         description:
-          "Stop copying between CRM, spreadsheets, and email — let information flow from one system to another.",
+          "When the same information is typed again into the CRM, spreadsheet, and email.",
       },
       {
-        title: "Replacing the spreadsheet",
+        title: "Operations beyond the spreadsheet",
         description:
-          "Track orders, status, or inventory in a small tool built for how the business actually works.",
+          "When orders, status, or inventory no longer fit a shared spreadsheet and create rework.",
       },
     ],
   },
 
   services: {
     title: "Services",
-    subtitle: "Three delivery formats. Scope is fixed in the proposal.",
-    whenLabel: "What is included",
+    subtitle:
+      "The scope adjusts to the problem. Timeline, investment, and what is included are set in the proposal.",
+    whenLabel: "What's included",
+    talkCta: "Talk about this service",
+    whatsappPrefix: "Hi Iago, I'd like to talk about: ",
+    footnote:
+      "The proposal covers deliverables, timeline, investment, revisions, and post-delivery support. Hosting, domain, and third-party costs appear in the proposal when the project needs them.",
     items: [
       {
         title: "Website for inquiries",
@@ -88,17 +96,17 @@ export const en: PortfolioContent = {
         examples: [
           "Map the routine and its integrations",
           "Workflow with failure handling",
-          "Operating documentation",
+          "Documentation for running it",
         ],
       },
       {
-        title: "First version of a system",
+        title: "Internal system for operations",
         description:
-          "An internal tool for the main operational flow when off-the-shelf software does not fit.",
+          "An internal tool for the main business flow when off-the-shelf software does not cover the case.",
         when: "",
         examples: [
-          "Main workflow with a defined scope",
-          "Interface and data required for operations",
+          "Main workflow agreed in the scope",
+          "Interface and data the operation needs",
           "Acceptance criteria in the proposal",
         ],
       },
@@ -107,7 +115,7 @@ export const en: PortfolioContent = {
 
   process: {
     title: "How I work",
-    subtitle: "From alignment to delivery.",
+    subtitle: "From the first conversation to launch.",
     steps: [
       {
         title: "Initial conversation",
@@ -132,9 +140,11 @@ export const en: PortfolioContent = {
     title: "ABOUT.",
     subtitle: "IC Desenvolvimento · Iago Cunha",
     paragraphs: [
-      "IC Desenvolvimento is the brand under which I take on business projects: websites, automations, integrations, and systems.",
-      "I work at Sistema FIEC / Industry Observatory on backend, automation, and AI. Independently, I have shipped client projects since June 2024.",
+      "Through IC Desenvolvimento I take on website, automation, integration, and systems projects.",
+      "I work at Sistema FIEC / Observatório da Indústria on backend, automation, and AI. In parallel, I have been taking on independent projects since June 2024.",
     ],
+    imageAlt:
+      "Iago Cunha at an event, in front of a screen showing his name and the text Estagiário em Desenvolvimento de Produto.",
   },
 
   specialties: {
@@ -157,7 +167,7 @@ export const en: PortfolioContent = {
         emoji: "",
         title: "Document search",
         description:
-          "Ingestion, embeddings, and context-aware lookup — including mixing semantic search with SQL when it helps.",
+          "Ingestion, embeddings, and context-aware lookup, including mixing semantic search with SQL when it helps.",
       },
       {
         emoji: "",
@@ -208,14 +218,14 @@ export const en: PortfolioContent = {
   },
 
   workflowShowcase: {
-    title: "How a flow usually runs",
+    title: "How an automation flow is organized",
     subtitle:
-      "The request hits the gateway, enters Temporal, fetches the right context, and handles failure in a controlled way.",
-    cardTitle: "Chat → API → Temporal → search",
+      "A concrete integration example: the event comes in, the workflow orchestrates steps, fetches context, and handles failure without losing the trail.",
+    cardTitle: "Intake → orchestration → integration → recovery",
     inPracticeLabel: "In practice:",
     inPracticeText:
-      "the right agent answers from the right base. If it fails, you get logs and a queue to retry.",
-    cta: "Open the full case",
+      "each stage has a clear job. If something fails, you get logs, a queue, and a path to reprocess. The error doesn't disappear mid-flow.",
+    cta: "View the corporate assistant case",
     diagramTitle: "Stage sketch",
     stages: [
       {
@@ -243,9 +253,9 @@ export const en: PortfolioContent = {
       },
       {
         id: "automation",
-        title: "3. Automation",
+        title: "3. Integration",
         tech: ["n8n", "Integrations", "Notifications"],
-        goal: "Reduce repetitive work and keep the flow visible to the team.",
+        goal: "Connect tools and notify the team without repeating manual work.",
         diagram: `flowchart LR
   T[Trigger] --> N8[n8n]
   N8 --> I[Integrations]
@@ -256,7 +266,7 @@ export const en: PortfolioContent = {
         id: "recovery",
         title: "4. When it fails",
         tech: ["DLQ", "Logs", "Metrics"],
-        goal: "Isolate the failure, investigate, and reprocess without affecting the rest.",
+        goal: "Isolate the failure, investigate, and reprocess without taking down the rest of the flow.",
         diagram: `flowchart LR
   F[Failure] --> DLQ[Dead Letter Queue]
   DLQ --> LOG[Structured logs]
@@ -267,22 +277,27 @@ export const en: PortfolioContent = {
   },
 
   projects: {
-    title: "PROJECTS.",
-    subtitle: "Recent work and what each project solved.",
-    demo: "Demo",
+    title: "Projects",
+    subtitle: "Recent work and what each one solves.",
+    professionalSubtitle:
+      "Corporate systems and personal projects: the problem, what I did, and the technical decisions.",
+    demo: "View project",
     docs: "API",
     code: "Code",
     caseStudy: "Case study",
     complexityLabel: "Complexity",
     problemLabel: "Problem",
     solutionLabel: "Solution",
-    deliveryLabel: "What was delivered",
+    deliveryLabel: "What's included",
     techLabel: "Technologies",
-    featuredLabel: "For your business",
-    earlyWorkLabel: "Technical projects",
-    earlyWorkSubtitle:
-      "Systems and prototypes where you can see backend, AI, and integration decisions.",
-    similarWhatsappCta: "Want something similar? Chat on WhatsApp",
+    featuredLabel: "Projects",
+    earlyWorkLabel: "Technical cases and projects",
+    earlyWorkSubtitle: "The problem, what I built, and where you can see the result.",
+    similarWhatsappCta: "Request something similar",
+    kindLabels: {
+      real: "Real project",
+      demo: "Demo project",
+    },
     statusLabels: {
       internal: "Internal project",
       unavailable: "Demo offline",
@@ -298,23 +313,86 @@ export const en: PortfolioContent = {
       {
         title: "FV Crochê",
         description:
-          "A web app with catalog, categories, and cart to present products and make ordering easier.",
-        problem:
-          "The business needed to show products clearly and take orders without relying only on scattered chats.",
-        solution:
-          "An organized catalog, categories, and a cart designed for the order flow.",
+          "FV Crochê storefront with categories and cart. Orders go to WhatsApp, with a shipping quote at checkout.",
         demo: "https://fv-croche.vercel.app/",
         image: "/images/fv-croche.png",
-        alt: "FV Crochê landing",
+        alt: "FV Crochê hero with crochet scrunchies",
         technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
         complexity: "Medium",
         impact: [
-          "Online catalog with categories",
-          "Cart built for orders",
-          "Home page that leads straight to products",
+          "Catalog with category filters",
+          "Persistent cart in the browser",
+          "WhatsApp checkout",
+          "Shipping quote",
         ],
         iconKey: "croche",
         status: "live",
+        kind: "real",
+        whatsappMessage:
+          "Hi Iago, I saw FV Crochê on your portfolio and want a similar catalog/order flow for my business.",
+      },
+      {
+        title: "LeadPilot",
+        description:
+          "Demo: quote requests become a queue with protocol, status, and history — Casa Norte Serviços scenario (browser-only data).",
+        demo: "https://lead-pilot-ruddy.vercel.app/",
+        image: "/images/lead-pilot.png",
+        alt: "LeadPilot hero with Casa Norte Serviços queue",
+        technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+        complexity: "Medium",
+        impact: [
+          "Validated quote request form",
+          "Queue with filters and search",
+          "Request detail and status history",
+          "Session-scoped browser data",
+        ],
+        iconKey: "leadPilot",
+        status: "live",
+        kind: "demo",
+        whatsappMessage:
+          "Hi Iago, I saw LeadPilot and want a similar quote/request queue.",
+      },
+      {
+        title: "AgendaFlow",
+        description:
+          "Demo barbershop booking: clients pick service, professional, and time; staff confirm, cancel, or reschedule without double-booking.",
+        demo: "https://agenda-flow-three.vercel.app/",
+        image: "/images/agenda-flow.png",
+        alt: "AgendaFlow hero for Corte & Cia with services list",
+        technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+        complexity: "Medium",
+        impact: [
+          "Services and professionals",
+          "Conflict-aware time slots",
+          "Day and week panel",
+          "Confirm, cancel, and reschedule",
+        ],
+        iconKey: "agendaFlow",
+        status: "live",
+        kind: "demo",
+        whatsappMessage:
+          "Hi Iago, I saw AgendaFlow and want similar online booking.",
+      },
+      {
+        title: "AssistIA",
+        description:
+          "Demo document-based support: simulated answers from Atlas docs, with cited sources.",
+        demo: "https://assist-ia.vercel.app/",
+        image: "/images/assist-ia.png",
+        alt: "AssistIA hero for Atlas Serviços Técnicos",
+        technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+        complexity: "Medium",
+        impact: [
+          "Support chat",
+          "Searchable document base",
+          "Answers with sources",
+          "Session history and simulated handoff",
+        ],
+        iconKey: "assistIa",
+        status: "live",
+        kind: "demo",
+        whatsappMessage:
+          "Hi Iago, I saw AssistIA and want similar document-based support.",
       },
     ],
     earlyWork: [
@@ -323,7 +401,7 @@ export const en: PortfolioContent = {
         description:
           "Internal chat with an OpenAI-compatible gateway, Temporal-based agents, and document search by context.",
         problem:
-          "The team needed a stable internal assistant with answers in the right context — and without silent failures.",
+          "The team needed a stable internal assistant with answers in the right context and without silent failures.",
         solution:
           "I worked on the gateway, Temporal orchestration, RAG pipelines, and stabilizing the environment the team uses.",
         caseStudyPath: "/case-study/chat-platform",
@@ -344,7 +422,7 @@ export const en: PortfolioContent = {
         description:
           "Resume-to-job matching with LLMs: PDF upload, URL import, and explainable compatibility ranking.",
         problem:
-          "Assess resume–job fit without reviewing everything by hand.",
+          "Assess resume-to-job fit without reviewing everything by hand.",
         solution:
           "An app with LLM-assisted extraction, explainable scoring, Pytest coverage, and GitHub Actions CI.",
         demo: "https://job-match-alerts.vercel.app/",
@@ -364,7 +442,7 @@ export const en: PortfolioContent = {
       {
         title: "Public data monitor",
         description:
-          "Async public-news pipeline with a paginated API, deduplication, and idempotent persistence.",
+          "Portfolio MVP: async public-news pipeline with a paginated API, deduplication, and idempotent persistence.",
         problem:
           "Collect external data reliably, without duplicate records, and with a documented API.",
         solution:
@@ -373,7 +451,7 @@ export const en: PortfolioContent = {
         repo: "https://github.com/oiagocunha/public-data-monitor",
         caseStudyPath: "/case-study/public-data-monitor",
         image: "/images/public-data-monitor-swagger.png",
-        alt: "Public data monitor",
+        alt: "Public Data Monitor Swagger screen, with the news endpoints and the API schemas.",
         technologies: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "asyncio", "Docker"],
         complexity: "High",
         impact: [
@@ -469,8 +547,8 @@ export const en: PortfolioContent = {
         role: "Full Stack Developer",
         period: "06/2024 - Present",
         description: [
-          "I build MVPs, automations, and API integrations — from technical planning through frontend, backend, and relational and non-relational databases.",
-          "I deliver websites, lean systems, and automated routines based on what each project needs.",
+          "I build websites, automations, and API integrations, from technical planning through frontend, backend, and databases.",
+          "Lean systems and automated routines based on what each project needs.",
         ],
         technologies: [
           "Python",
@@ -489,7 +567,7 @@ export const en: PortfolioContent = {
     title: "CONTACT.",
     subtitle: "WhatsApp, email, or the form below.",
     reassurance:
-      "Share the project context and what you need. If the scope is still open, the first conversation is for that.",
+      "Tell me the project context and what you need. If scope is still open, that is what the first conversation is for.",
     email: "Email",
     whatsapp: "WhatsApp",
     whatsappNumber: "5585989035010",
@@ -515,8 +593,9 @@ export const en: PortfolioContent = {
     errorTitle: "Could not send",
     errorDescription: "Please fill in all required fields.",
     errorGeneric: "Try again in a moment.",
-    errorEndpoint: "Form endpoint is not configured yet.",
-    formSubject: "Contact — IC Desenvolvimento",
+    errorEndpoint: "The form is unavailable. Use WhatsApp or email.",
+    errorNetwork: "Could not send it now. Try again, or use WhatsApp or email.",
+    formSubject: "Contact: IC Desenvolvimento",
   },
 
   navbar: {
@@ -528,6 +607,34 @@ export const en: PortfolioContent = {
       { href: "#sobre", label: "About" },
       { href: "#contato", label: "Contact" },
     ],
+    profileLink: "Professional profile",
+    navLabel: "Primary",
+    professionalItems: [
+      { href: "#hero", label: "Profile" },
+      { href: "#experiencia", label: "Experience" },
+      { href: "#projetos", label: "Projects" },
+      { href: "/", label: "IC Desenvolvimento" },
+    ],
+  },
+
+  professional: {
+    eyebrow: "PROFESSIONAL PROFILE",
+    role: "Backend · Generative AI & Automation",
+    summary:
+      "Backend & AI developer at Sistema FIEC / Observatório da Indústria. APIs, agent orchestration, RAG pipelines, corporate auth, and apps on Kubernetes.",
+    meta: "Fortaleza, Brazil · Native Portuguese · English B2 · Open to remote",
+    resumeLabel: "Download résumé (PDF)",
+    resumeHref: "/resume-iago-cunha.pdf",
+    mailSubject: "Job opportunity",
+    discussCta: "Discuss an opportunity",
+    mailtoLabel: "open in email app",
+    educationTitle: "Education",
+    educationDegree: "Estácio · Systems Analysis and Development",
+    educationExpected: "Expected completion: December 2026.",
+    closing: "For backend, applied AI, or automation roles:",
+    icComplement:
+      "In parallel, I take commercial projects through IC Desenvolvimento (websites, automations, and systems).",
+    icComplementCta: "See business services",
   },
 
   footer: {
@@ -547,7 +654,12 @@ export const en: PortfolioContent = {
       home: {
         title: "IC Desenvolvimento | Websites, Automation & Systems",
         description:
-          "Websites, automations, integrations, and custom systems. IC Desenvolvimento, by Iago Cunha — Fortaleza, Brazil.",
+          "Websites, automations, integrations, and systems. IC Desenvolvimento, by Iago Cunha. Fortaleza, Brazil.",
+      },
+      profile: {
+        title: "Iago Cunha | Backend, Generative AI & Automation",
+        description:
+          "Backend, generative AI, and automation. Projects, experience, and résumé: Python, FastAPI, Temporal, RAG, and Kubernetes.",
       },
       chatCaseStudy: {
         title: "Case: corporate assistant with agents, Temporal, and RAG | Iago Cunha",
@@ -568,7 +680,7 @@ export const en: PortfolioContent = {
       title:
         'Public news API: collection, Postgres, and Swagger',
       subtitle:
-        'Backend MVP to collect G1 Tecnologia news, store them without duplicating URLs in PostgreSQL, and expose a REST contract with OpenAPI. Live demo on Render if you want to try it without cloning the repository.',
+        'MVP that collects G1 news, stores them without duplicating URLs, and keeps the API documented live. Reviewers do not need to clone the repository.',
       tags: [
         'Python',
         'FastAPI',
@@ -583,7 +695,7 @@ export const en: PortfolioContent = {
         {
           title: 'What the MVP solves',
           paragraphs: [
-            'Show public data collection, reliable persistence, and an API people can actually use, with clear docs.',
+            'Demonstrate public data collection, reliable persistence, and a usable API with clear docs.',
             'External sources are unstable: HTML changes, fields disappear, and the same job may run more than once.',
           ],
         },
@@ -703,7 +815,7 @@ flowchart LR
           title: 'Challenges',
           items: [
             'Treat external sources as messy without throwing away partially valid news.',
-            'Keep collection idempotent when triggered manually or run again.',
+            'Keep collection idempotent when it is triggered again.',
             'Document how the API behaves for people who will not open the code.',
             'Keep layers separate so scrapers can evolve without rewriting routes.',
           ],
@@ -766,7 +878,7 @@ flowchart LR
       label: "Case study",
       title: "Corporate assistant: gateway, Temporal, and document search",
       subtitle:
-        "An internal chat where each question can go to a different agent. I worked on the OpenAI-compatible gateway, Temporal orchestration, RAG pipelines, and environment stability — including a bug where the wrong domain answered with generic text.",
+        "An internal chat where each question can go to a different agent. I worked on the OpenAI-compatible gateway, Temporal orchestration, RAG pipelines, and environment stability, including a bug where the wrong domain answered with generic text.",
       tags: [
         "Temporal",
         "FastAPI",
@@ -794,7 +906,7 @@ flowchart LR
         {
           title: "What I did",
           paragraphs: [
-            "Made sure `model` reached vector search, with logs along the way and a warning when the worker was stale.",
+            "I made sure `model` reached vector search, with logs along the way and a warning when the worker was stale.",
             "Adjustments on the gateway, workflows, document ingestion, the queue, and chat access control.",
           ],
         },
@@ -934,6 +1046,7 @@ flowchart TB
           title: "Outcome",
           items: [
             "Right agent on the right base, reliably.",
+            "Pilot telemetry: 47 registered users, 31 with usage. The numbers describe the pilot, not the current active base.",
             "Environment more predictable to debug.",
             "Next: metrics and alerts on DLQ and provider fallback.",
             "Contract tests between API, workflow, and search.",

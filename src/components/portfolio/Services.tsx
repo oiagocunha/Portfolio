@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { spacing, typography } from "@/constants/design-tokens";
 
 const Services = () => {
-  const { t, locale } = useI18n();
+  const { t } = useI18n();
 
   return (
     <section id="servicos" className={`container ${spacing.section}`}>
@@ -40,12 +40,10 @@ const Services = () => {
                   target="_blank"
                   rel="noreferrer"
                   href={`https://wa.me/${t.contact.whatsappNumber}?text=${encodeURIComponent(
-                    (locale === "pt"
-                      ? "Olá, Iago! Quero conversar sobre: "
-                      : "Hi Iago! I would like to discuss: ") + service.title,
+                    t.services.whatsappPrefix + service.title,
                   )}`}
                 >
-                  {locale === "pt" ? "Conversar sobre esta entrega" : "Discuss this delivery"}
+                  {t.services.talkCta}
                 </a>
               </CardContent>
             </Card>
@@ -53,9 +51,7 @@ const Services = () => {
         ))}
       </div>
       <p className="mt-8 max-w-3xl mx-auto text-sm text-muted-foreground text-center">
-        {locale === "pt"
-          ? "A proposta define entregáveis, prazo, investimento, revisões e suporte após a entrega. Hospedagem, domínio e serviços externos entram discriminados quando o projeto exigir."
-          : "The proposal covers deliverables, timeline, investment, revisions, and post-delivery support. Hosting, domain, and third-party costs are listed when the project needs them."}
+        {t.services.footnote}
       </p>
     </section>
   );

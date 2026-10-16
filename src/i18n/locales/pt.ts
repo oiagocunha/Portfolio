@@ -22,6 +22,8 @@ export const pt: PortfolioContent = {
   brand: {
     name: "IC Desenvolvimento",
     byline: "por Iago Cunha",
+    professionalName: "Iago Cunha",
+    professionalByline: "Backend · IA e Automação",
   },
 
   hero: {
@@ -29,45 +31,51 @@ export const pt: PortfolioContent = {
     headline: "Sites, automações e sistemas sob medida.",
     typewriter: [],
     description:
-      "Desenvolvimento web, automação de rotinas, integração entre ferramentas e a primeira versão de sistemas internos — sob a marca IC Desenvolvimento, por Iago Cunha.",
+      "Desenvolvo sites, automações, integrações entre ferramentas e sistemas internos. Cada projeto parte do problema a resolver e fecha escopo na proposta.",
     primaryCta: "Falar pelo WhatsApp",
     secondaryCta: "Ver projetos",
     alt: "Foto de Iago Cunha",
     role: "por Iago Cunha",
     highlights: [],
+    recruitersLabel: "Recrutadores: ",
+    recruitersLink: "experiência e currículo",
   },
 
   applications: {
-    title: "Onde isso se aplica",
-    subtitle: "Exemplos concretos de uso. Os entregáveis estão na seção de serviços.",
+    title: "Exemplos de uso",
     items: [
       {
         title: "Catálogo com pedido online",
         description:
-          "Apresentar produtos com categorias e um fluxo de encomenda, sem depender só de conversa no WhatsApp.",
+          "Quando vender por mensagem solta atrapalha: o cliente precisa ver categorias e pedir com clareza.",
       },
       {
         title: "Relatório que hoje é manual",
         description:
-          "Coletar dados de planilhas ou APIs, gerar o relatório e avisar o time quando estiver pronto.",
+          "Quando alguém ainda junta planilha ou API à mão e o time espera o arquivo pronto.",
       },
       {
         title: "Troca de dados entre ferramentas",
         description:
-          "Evitar copiar e colar entre CRM, planilha e e-mail: a informação passa de um sistema para o outro.",
+          "Quando a mesma informação é digitada de novo no CRM, na planilha e no e-mail.",
       },
       {
-        title: "Controle no lugar da planilha",
+        title: "Operação fora da planilha",
         description:
-          "Registrar pedidos, status ou estoque em uma ferramenta simples, feita para a operação do negócio.",
+          "Quando pedido, status ou estoque já não cabem em planilha compartilhada e viram retrabalho.",
       },
     ],
   },
 
   services: {
     title: "Serviços",
-    subtitle: "Três formatos de entrega, com escopo definido na proposta.",
-    whenLabel: "O que entra na entrega",
+    subtitle:
+      "O escopo se ajusta ao problema. Prazo, investimento e o que entra na entrega ficam na proposta.",
+    whenLabel: "O que está incluso",
+    talkCta: "Conversar sobre este serviço",
+    whatsappPrefix: "Olá, Iago! Quero conversar sobre: ",
+    footnote:
+      "A proposta define entregáveis, prazo, investimento, revisões e suporte após a entrega. Hospedagem, domínio e serviços externos aparecem na proposta quando o projeto precisar deles.",
     items: [
       {
         title: "Site para receber contatos",
@@ -92,13 +100,13 @@ export const pt: PortfolioContent = {
         ],
       },
       {
-        title: "Primeira versão de um sistema",
+        title: "Sistema interno para a operação",
         description:
-          "Ferramenta interna para o fluxo principal da operação, quando o mercado não cobre o caso.",
+          "Ferramenta interna para o fluxo principal do negócio, quando o software de prateleira não cobre o caso.",
         when: "",
         examples: [
-          "Fluxo principal com escopo definido",
-          "Interface e dados necessários à operação",
+          "Fluxo principal acordado no escopo",
+          "Interface e dados que a operação precisa",
           "Critérios de aceite na proposta",
         ],
       },
@@ -107,7 +115,7 @@ export const pt: PortfolioContent = {
 
   process: {
     title: "Como trabalho",
-    subtitle: "Do alinhamento à entrega.",
+    subtitle: "Da conversa inicial até a publicação.",
     steps: [
       {
         title: "Conversa inicial",
@@ -132,9 +140,11 @@ export const pt: PortfolioContent = {
     title: "SOBRE.",
     subtitle: "IC Desenvolvimento · Iago Cunha",
     paragraphs: [
-      "A IC Desenvolvimento é a marca sob a qual atendo projetos para negócios: sites, automações, integrações e sistemas.",
+      "Pela IC Desenvolvimento atendo projetos de sites, automações, integrações e sistemas.",
       "Trabalho no Sistema FIEC / Observatório da Indústria com backend, automação e soluções com IA. Em paralelo, desenvolvo projetos como autônomo desde junho de 2024.",
     ],
+    imageAlt:
+      "Iago Cunha em um evento, diante de um telão com o nome dele e o texto Estagiário em Desenvolvimento de Produto.",
   },
 
   specialties: {
@@ -157,7 +167,7 @@ export const pt: PortfolioContent = {
         emoji: "",
         title: "Busca em documentos",
         description:
-          "Ingestão, embeddings e consulta por contexto — inclusive misturando busca semântica com SQL quando ajuda.",
+          "Ingestão, embeddings e consulta por contexto, inclusive misturando busca semântica com SQL quando ajuda.",
       },
       {
         emoji: "",
@@ -208,25 +218,25 @@ export const pt: PortfolioContent = {
   },
 
   workflowShowcase: {
-    title: "Como um fluxo costuma andar",
+    title: "Como um fluxo de automação se organiza",
     subtitle:
-      "A requisição chega no gateway, entra no Temporal, busca o contexto certo e trata falha de forma controlada.",
-    cardTitle: "Chat → API → Temporal → busca",
+      "Exemplo concreto de integração: o evento entra, o workflow orquestra as etapas, busca contexto e trata falha sem perder o rastro.",
+    cardTitle: "Entrada → orquestração → integração → recuperação",
     inPracticeLabel: "Na prática:",
     inPracticeText:
-      "o agente certo responde com a base certa. Se falhar, ficam log e fila para reprocessar.",
-    cta: "Abrir o case completo",
+      "cada etapa tem responsabilidade clara. Se algo falha, ficam log, fila e caminho para reprocessar. O erro não some no meio do fluxo.",
+    cta: "Ver o case do assistente corporativo",
     diagramTitle: "Esquema da etapa",
     stages: [
       {
         id: "ingestion",
         title: "1. Entrada",
         tech: ["Kafka", "Webhook", "FastAPI"],
-        goal: "Receber o evento sem duplicar e registrar a origem.",
+        goal: "Receber o evento sem duplicar e registrar de onde veio.",
         diagram: `flowchart LR
   P[Produtor] --> K[Kafka / Webhook]
   K --> API[FastAPI]
-  API --> C[Correlacao ID]
+  API --> C[Correlação ID]
   API --> ACK[Ack idempotente]`,
       },
       {
@@ -237,52 +247,57 @@ export const pt: PortfolioContent = {
         diagram: `flowchart LR
   E[Evento] --> W[Temporal Workflow]
   W --> A1[Activity]
-  A1 -->|ok| N[Proxima etapa]
+  A1 -->|ok| N[Próxima etapa]
   A1 -->|falha| R[Retry / Backoff]
   R --> A1`,
       },
       {
         id: "automation",
-        title: "3. Automação",
+        title: "3. Integração",
         tech: ["n8n", "Integrações", "Notificações"],
-        goal: "Reduzir trabalho repetitivo e manter o fluxo visível para o time.",
+        goal: "Conectar ferramentas e avisar o time sem trabalho manual repetido.",
         diagram: `flowchart LR
   T[Trigger] --> N8[n8n]
-  N8 --> I[Integracoes]
-  N8 --> NT[Notificacoes]
-  N8 --> L[Log de execucao]`,
+  N8 --> I[Integrações]
+  N8 --> NT[Notificações]
+  N8 --> L[Log de execução]`,
       },
       {
         id: "recovery",
         title: "4. Quando falha",
         tech: ["DLQ", "Logs", "Métricas"],
-        goal: "Isolar a falha, investigar e reprocessar sem afetar o restante.",
+        goal: "Isolar a falha, investigar e reprocessar sem derrubar o restante do fluxo.",
         diagram: `flowchart LR
   F[Falha] --> DLQ[Dead Letter Queue]
   DLQ --> LOG[Logs estruturados]
-  LOG --> FIX[Investigacao]
+  LOG --> FIX[Investigação]
   FIX --> REP[Reprocessamento]`,
       },
     ],
   },
 
   projects: {
-    title: "PROJETOS.",
-    subtitle: "Entregas recentes e o que cada uma resolveu.",
-    demo: "Demo",
+    title: "Projetos",
+    subtitle: "Trabalho recente e o que cada um resolve.",
+    professionalSubtitle:
+      "Sistemas corporativos e projetos autorais: o problema, o que eu fiz e as decisões técnicas.",
+    demo: "Ver projeto",
     docs: "API",
     code: "Código",
     caseStudy: "Case study",
     complexityLabel: "Complexidade",
     problemLabel: "Problema",
     solutionLabel: "Solução",
-    deliveryLabel: "O que foi entregue",
+    deliveryLabel: "O que inclui",
     techLabel: "Tecnologias",
-    featuredLabel: "Para o seu negócio",
-    earlyWorkLabel: "Projetos técnicos",
-    earlyWorkSubtitle:
-      "Sistemas e protótipos em que dá para ver decisões de backend, IA e integração.",
-    similarWhatsappCta: "Quer algo parecido? Falar pelo WhatsApp",
+    featuredLabel: "Projetos",
+    earlyWorkLabel: "Cases e projetos técnicos",
+    earlyWorkSubtitle: "Problema, o que eu fiz e onde dá para ver o resultado.",
+    similarWhatsappCta: "Solicitar algo semelhante",
+    kindLabels: {
+      real: "Projeto real",
+      demo: "Projeto demonstrativo",
+    },
     statusLabels: {
       internal: "Projeto interno",
       unavailable: "Demo fora do ar",
@@ -298,23 +313,86 @@ export const pt: PortfolioContent = {
       {
         title: "FV Crochê",
         description:
-          "Aplicação web com catálogo, categorias e carrinho para apresentar produtos e facilitar encomendas.",
-        problem:
-          "O negócio precisava mostrar produtos com clareza e receber encomendas sem depender só de conversa solta.",
-        solution:
-          "Catálogo organizado, categorias e carrinho pensado para o fluxo de encomenda.",
+          "Vitrine da FV Crochê com categorias e carrinho. O pedido fecha no WhatsApp, com cotação de frete no checkout.",
         demo: "https://fv-croche.vercel.app/",
         image: "/images/fv-croche.png",
-        alt: "Landing do FV Crochê",
+        alt: "Hero do FV Crochê com xuxinhas de crochê",
         technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
         complexity: "Medium",
         impact: [
-          "Catálogo online com categorias",
-          "Carrinho para encomenda",
-          "Página inicial direta para os produtos",
+          "Catálogo com categorias e filtro",
+          "Carrinho persistente no navegador",
+          "Checkout por WhatsApp",
+          "Cotação de frete",
         ],
         iconKey: "croche",
         status: "live",
+        kind: "real",
+        whatsappMessage:
+          "Olá, Iago! Vi o FV Crochê no portfólio e quero um catálogo/encomenda parecido para o meu negócio.",
+      },
+      {
+        title: "LeadPilot",
+        description:
+          "Demonstração: pedido de orçamento vira fila com protocolo, status e histórico — cenário Casa Norte Serviços (dados só neste navegador).",
+        demo: "https://lead-pilot-ruddy.vercel.app/",
+        image: "/images/lead-pilot.png",
+        alt: "LeadPilot com hero e fila Casa Norte Serviços",
+        technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+        complexity: "Medium",
+        impact: [
+          "Formulário de orçamento com validação",
+          "Fila com filtros e busca",
+          "Detalhe do pedido e histórico de status",
+          "Dados por sessão no navegador",
+        ],
+        iconKey: "leadPilot",
+        status: "live",
+        kind: "demo",
+        whatsappMessage:
+          "Olá, Iago! Vi o LeadPilot e quero uma fila de orçamentos/pedidos parecida.",
+      },
+      {
+        title: "AgendaFlow",
+        description:
+          "Demonstração de agenda para barbearia: cliente escolhe serviço, profissional e horário; a equipe confirma, cancela ou reagenda sem conflito na grade.",
+        demo: "https://agenda-flow-three.vercel.app/",
+        image: "/images/agenda-flow.png",
+        alt: "AgendaFlow com hero Corte & Cia e lista de serviços",
+        technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+        complexity: "Medium",
+        impact: [
+          "Serviços e profissionais",
+          "Horários com regra de conflito",
+          "Painel do dia e da semana",
+          "Confirmar, cancelar e reagendar",
+        ],
+        iconKey: "agendaFlow",
+        status: "live",
+        kind: "demo",
+        whatsappMessage:
+          "Olá, Iago! Vi o AgendaFlow e quero um agendamento online parecido.",
+      },
+      {
+        title: "AssistIA",
+        description:
+          "Demonstração de atendimento com base documental: respostas simuladas a partir dos documentos da Atlas, com fontes citadas.",
+        demo: "https://assist-ia.vercel.app/",
+        image: "/images/assist-ia.png",
+        alt: "AssistIA com hero Atlas Serviços Técnicos",
+        technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+        complexity: "Medium",
+        impact: [
+          "Chat de atendimento",
+          "Base de documentos com busca",
+          "Respostas com fontes",
+          "Histórico na sessão e encaminhamento simulado",
+        ],
+        iconKey: "assistIa",
+        status: "live",
+        kind: "demo",
+        whatsappMessage:
+          "Olá, Iago! Vi o AssistIA e quero um atendimento com base em documentos parecido.",
       },
     ],
     earlyWork: [
@@ -323,7 +401,7 @@ export const pt: PortfolioContent = {
         description:
           "Chat interno com gateway compatível com a API OpenAI, agentes via Temporal e busca em documentos por contexto.",
         problem:
-          "O time precisava de um assistente interno estável, com a resposta no contexto certo — e sem falhar em silêncio.",
+          "O time precisava de um assistente interno estável, com a resposta no contexto certo e sem falhar em silêncio.",
         solution:
           "Participei do gateway, da orquestração no Temporal, dos pipelines de RAG e da estabilização do ambiente usado pelo time.",
         caseStudyPath: "/case-study/chat-platform",
@@ -364,7 +442,7 @@ export const pt: PortfolioContent = {
       {
         title: "Monitor de dados públicos",
         description:
-          "Pipeline assíncrono de notícias públicas com API paginada, deduplicação e persistência idempotente.",
+          "MVP de portfólio: pipeline assíncrono de notícias públicas com API paginada, deduplicação e persistência idempotente.",
         problem:
           "Coletar dados de fonte externa de forma confiável, sem duplicar registros e com a API documentada.",
         solution:
@@ -373,7 +451,7 @@ export const pt: PortfolioContent = {
         repo: "https://github.com/oiagocunha/public-data-monitor",
         caseStudyPath: "/case-study/public-data-monitor",
         image: "/images/public-data-monitor-swagger.png",
-        alt: "Monitor de dados públicos",
+        alt: "Tela do Swagger do Public Data Monitor, com os endpoints de notícias e os schemas da API.",
         technologies: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "asyncio", "Docker"],
         complexity: "High",
         impact: [
@@ -469,8 +547,8 @@ export const pt: PortfolioContent = {
         role: "Desenvolvedor Full Stack",
         period: "06/2024 - Atualmente",
         description: [
-          "Desenvolvo MVPs, automações e integrações com APIs, da definição técnica ao frontend, backend e bancos relacionais e não relacionais.",
-          "Sites, sistemas enxutos e rotinas automatizadas conforme a necessidade de cada projeto.",
+          "Desenvolvo sites, automações e integrações com APIs, da definição técnica ao frontend, backend e bancos de dados.",
+          "Sistemas enxutos e rotinas automatizadas conforme a necessidade de cada projeto.",
         ],
         technologies: [
           "Python",
@@ -489,7 +567,7 @@ export const pt: PortfolioContent = {
     title: "CONTATO.",
     subtitle: "WhatsApp, e-mail ou formulário.",
     reassurance:
-      "Descreva o contexto do projeto e o que precisa. Se ainda não tiver o escopo fechado, a conversa inicial serve para isso.",
+      "Conte o contexto do projeto e o que precisa. Se o escopo ainda não estiver fechado, a conversa inicial resolve isso.",
     email: "Email",
     whatsapp: "WhatsApp",
     whatsappNumber: "5585989035010",
@@ -515,8 +593,9 @@ export const pt: PortfolioContent = {
     errorTitle: "Não foi possível enviar",
     errorDescription: "Preencha todos os campos obrigatórios.",
     errorGeneric: "Tente novamente em instantes.",
-    errorEndpoint: "Formulário ainda sem endpoint configurado.",
-    formSubject: "Contato — IC Desenvolvimento",
+    errorEndpoint: "O formulário não está disponível. Fale pelo WhatsApp ou pelo e-mail.",
+    errorNetwork: "Não foi possível enviar agora. Tente de novo ou fale pelo WhatsApp ou pelo e-mail.",
+    formSubject: "Contato: IC Desenvolvimento",
   },
 
   navbar: {
@@ -528,6 +607,34 @@ export const pt: PortfolioContent = {
       { href: "#sobre", label: "Sobre" },
       { href: "#contato", label: "Contato" },
     ],
+    profileLink: "Perfil profissional",
+    navLabel: "Principal",
+    professionalItems: [
+      { href: "#hero", label: "Perfil" },
+      { href: "#experiencia", label: "Experiência" },
+      { href: "#projetos", label: "Projetos" },
+      { href: "/", label: "IC Desenvolvimento" },
+    ],
+  },
+
+  professional: {
+    eyebrow: "PERFIL PROFISSIONAL",
+    role: "Backend · IA Generativa & Automação",
+    summary:
+      "Desenvolvedor Backend & IA no Sistema FIEC / Observatório da Indústria. APIs, orquestração de agentes, pipelines RAG, autenticação corporativa e apps em Kubernetes.",
+    meta: "Fortaleza, Brasil · Português nativo · Inglês B2 · Disponível para remoto",
+    resumeLabel: "Baixar currículo (PDF)",
+    resumeHref: "/curriculo-iago-cunha.pdf",
+    mailSubject: "Oportunidade profissional",
+    discussCta: "Conversar sobre uma vaga",
+    mailtoLabel: "abrir no app de e-mail",
+    educationTitle: "Formação",
+    educationDegree: "Estácio · Análise e Desenvolvimento de Sistemas",
+    educationExpected: "Conclusão prevista: dezembro de 2026.",
+    closing: "Para oportunidades em backend, IA aplicada ou automação:",
+    icComplement:
+      "Em paralelo, atendo projetos comerciais pela IC Desenvolvimento (sites, automações e sistemas).",
+    icComplementCta: "Ver serviços para empresas",
   },
 
   footer: {
@@ -547,7 +654,12 @@ export const pt: PortfolioContent = {
       home: {
         title: "IC Desenvolvimento | Sites, Automação e Sistemas",
         description:
-          "Sites, automações, integrações e sistemas sob medida. IC Desenvolvimento, por Iago Cunha — Fortaleza/CE.",
+          "Sites, automações, integrações e sistemas. IC Desenvolvimento, por Iago Cunha. Fortaleza/CE.",
+      },
+      profile: {
+        title: "Iago Cunha | Backend, IA Generativa e Automação",
+        description:
+          "Backend, IA generativa e automação. Projetos, experiência e currículo: Python, FastAPI, Temporal, RAG e Kubernetes.",
       },
       chatCaseStudy: {
         title: "Case: assistente corporativo com agentes, Temporal e RAG | Iago Cunha",
@@ -617,7 +729,7 @@ export const pt: PortfolioContent = {
       charts: {
         systemFlow: `
 flowchart LR
-  U[Usuario / Cliente HTTP] --> D[Swagger /docs]
+  U[Usuário / Cliente HTTP] --> D[Swagger /docs]
   U --> A[FastAPI]
   A --> S[Service Layer]
   S --> SC[G1 Scraper]
@@ -644,14 +756,14 @@ flowchart TB
     DEL[delete_news_by_id]
   end
 
-  subgraph integrationLayer [Integracao]
+  subgraph integrationLayer [Integração]
     G1S[scrapers/g1.py]
     HTTP[httpx AsyncClient]
   end
 
   subgraph dataLayer [Data]
     PG[(PostgreSQL)]
-    IDX[Indice unico URL]
+    IDX[Índice único URL]
   end
 
   CURL --> R
@@ -692,7 +804,7 @@ sequenceDiagram
 flowchart LR
   POST[POST /news] --> SCR[Scrape G1]
   SCR --> INS[INSERT news]
-  INS --> UC{URL unica?}
+  INS --> UC{URL única?}
   UC -->|nova| OK[Persistida]
   UC -->|conflito| SKIP[ON CONFLICT DO NOTHING]
 `,
@@ -702,7 +814,7 @@ flowchart LR
           title: "Desafios no caminho",
           items: [
             "Tratar fonte externa como instável sem descartar notícias parcialmente válidas.",
-            "Garantir idempotência quando a coleta é disparada manualmente ou repetida.",
+            "Manter a coleta idempotente quando é disparada de novo.",
             "Documentar o comportamento da API para quem não abre o código.",
             "Manter camadas separadas para evoluir scrapers sem reescrever rotas.",
           ],
@@ -765,7 +877,7 @@ flowchart LR
       label: "Case study",
       title: "Assistente corporativo: gateway, Temporal e busca em documentos",
       subtitle:
-        "Chat interno em que cada pergunta pode ir para um agente diferente. Atuei no gateway compatível com OpenAI, na orquestração Temporal, nos pipelines de RAG e na estabilização do ambiente — inclusive num bug em que o domínio errado respondia de forma genérica.",
+        "Chat interno em que cada pergunta pode ir para um agente diferente. Atuei no gateway compatível com OpenAI, na orquestração Temporal, nos pipelines de RAG e na estabilização do ambiente, inclusive num bug em que o domínio errado respondia de forma genérica.",
       tags: [
         "Temporal",
         "FastAPI",
@@ -793,7 +905,7 @@ flowchart LR
         {
           title: "O que eu fiz",
           paragraphs: [
-            "Garantir que o `model` chegasse até a busca vetorial, com log no caminho e alerta quando o worker estava desatualizado.",
+            "Fiz o `model` chegar até a busca vetorial, com log no caminho e alerta quando o worker estava desatualizado.",
             "Ajustes no gateway, nos workflows, na ingestão de documentos, na fila e no controle de acesso do chat.",
           ],
         },
@@ -810,7 +922,7 @@ flowchart LR
       charts: {
         systemFlow: `
 flowchart LR
-  U[Usuario] --> C[Chat]
+  U[Usuário] --> C[Chat]
   C --> A[API estilo OpenAI]
   A --> W[Temporal]
   W --> T[Activities]
@@ -837,8 +949,8 @@ flowchart TB
     WK[Worker]
   end
 
-  subgraph intelligenceLayer [Inteligencia]
-    RAG[Busca por dominio]
+  subgraph intelligenceLayer [Inteligência]
+    RAG[Busca por domínio]
     HYB[Busca + SQL]
     LLM[Provedores]
   end
@@ -878,7 +990,7 @@ sequenceDiagram
   Chat->>GW: prompt + model
   GW->>WF: start workflow
   WF->>ACT: tarefa de retrieval
-  ACT->>RAG: resolve dominio pelo model
+  ACT->>RAG: resolve domínio pelo model
   RAG->>VS: busca
   VS-->>RAG: chunks
   RAG-->>ACT: contexto
@@ -888,12 +1000,12 @@ sequenceDiagram
 `,
         failureTree: `
 flowchart TB
-  S[Resposta generica no dominio errado] --> H1[model nao chega]
+  S[Resposta genérica no domínio errado] --> H1[model não chega]
   S --> H2[worker com lib velha]
-  S --> H3[busca na funcao errada]
+  S --> H3[busca na função errada]
   H1 --> E1[log sem model]
-  H2 --> E2[versao diferente do repo]
-  H3 --> E3[RPC / funcao por dominio]
+  H2 --> E2[versão diferente do repo]
+  H3 --> E3[RPC / função por domínio]
   E1 --> FIX1[propagar e validar model]
   E2 --> FIX2[rebuild do worker]
   E3 --> FIX3[ajustar contrato da busca]

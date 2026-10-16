@@ -78,8 +78,16 @@ const Contact = () => {
       });
       form.reset();
     } catch (err: unknown) {
-      const message =
-        err instanceof Error && err.message ? err.message : t.contact.errorGeneric;
+      const ownMessage =
+        err instanceof Error &&
+        (err.message === t.contact.errorEndpoint ||
+          err.message === t.contact.errorDescription ||
+          err.message === t.contact.errorGeneric)
+          ? err.message
+          : null;
+      const isAbort = err instanceof Error && err.name === "AbortError";
+      const isNetwork = err instanceof TypeError;
+      const message = isAbort || isNetwork || !ownMessage ? t.contact.errorNetwork : ownMessage;
       toast({
         title: t.contact.errorTitle,
         description: message,

@@ -4,7 +4,7 @@ import { SocialLinks } from "@/components/shared";
 import { spacing, typography, transitions } from "@/constants/design-tokens";
 
 const About = () => {
-  const { t, locale } = useI18n();
+  const { t } = useI18n();
 
   return (
     <section id="sobre" className={`container ${spacing.section}`}>
@@ -20,11 +20,7 @@ const About = () => {
           <div className="order-2 md:order-1">
             <img
               src="/images/Conquista.png"
-              alt={
-                locale === "pt"
-                  ? "Conquista ou certificado de Iago Cunha"
-                  : "Iago Cunha's achievement or certificate"
-              }
+              alt={t.about.imageAlt}
               loading="lazy"
               className={`h-[60dvh] max-w-md mx-auto md:max-w-none rounded-lg shadow-lg ${transitions.default} hover:scale-105`}
             />

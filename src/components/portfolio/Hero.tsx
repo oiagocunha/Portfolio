@@ -93,12 +93,12 @@ const Hero = () => {
             </Button>
           </motion.div>
           <p className="mt-5 text-sm text-muted-foreground">
-            {locale === "pt" ? "Perfil para recrutadores: " : "For recruiters: "}
+            {t.hero.recruitersLabel}
             <Link
               className="text-accent underline underline-offset-4"
               to={localizedPath("/perfil", locale)}
             >
-              {locale === "pt" ? "experiência e currículo" : "experience and résumé"}
+              {t.hero.recruitersLink}
             </Link>
           </p>
         </article>

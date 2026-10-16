@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github, LucideIcon, MessageCircle, Play } from "lucide-react";
 import { iconSizes, typography, transitions, shadows } from "@/constants/design-tokens";
 import { Link } from "react-router-dom";
-import type { ProjectComplexity, ProjectStatus } from "@/i18n/types";
+import type { ProjectComplexity, ProjectKind, ProjectStatus } from "@/i18n/types";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 interface ProjectCardProps {
@@ -28,6 +28,7 @@ interface ProjectCardProps {
   impact: string[];
   caseStudyPath?: string;
   status?: ProjectStatus;
+  kind?: ProjectKind;
   demoLabel: string;
   docsLabel: string;
   codeLabel: string;
@@ -36,6 +37,7 @@ interface ProjectCardProps {
   solutionLabel: string;
   deliveryLabel: string;
   statusLabel?: string;
+  kindLabel?: string;
   mediaPlayLabel: string;
   icon: LucideIcon;
   /** Commercial cards hide complexity and heavy tech badges */
@@ -63,6 +65,7 @@ export const ProjectCard = ({
   impact,
   caseStudyPath,
   status,
+  kind,
   demoLabel,
   codeLabel,
   caseStudyLabel,
@@ -70,6 +73,7 @@ export const ProjectCard = ({
   solutionLabel,
   deliveryLabel,
   statusLabel,
+  kindLabel,
   mediaPlayLabel,
   icon: Icon,
   mode = "commercial",
@@ -85,6 +89,7 @@ export const ProjectCard = ({
   const hasVisual = Boolean(image || media);
   const visibleTech =
     mode === "technical" ? technologies.slice(0, 4) : technologies.slice(0, 3);
+  const showDelivery = impact.length > 0;
 
   return (
     <motion.article
@@ -134,11 +139,21 @@ export const ProjectCard = ({
             </AspectRatio>
           )}
           <div className="p-4 md:p-6">
-            <div className="flex items-center gap-2 md:gap-3">
-              <div className="flex items-center justify-center rounded-full bg-primary/10 p-2.5 md:p-3 text-primary">
+            <div className="flex items-start gap-2 md:gap-3">
+              <div className="flex items-center justify-center rounded-full bg-primary/10 p-2.5 md:p-3 text-primary shrink-0">
                 <Icon className={`${iconSizes.md}`} />
               </div>
-              <h3 className={`${typography.h3}`}>{title}</h3>
+              <div className="min-w-0 space-y-2">
+                <h3 className={`${typography.h3}`}>{title}</h3>
+                <div className="flex flex-wrap gap-1.5">
+                  {kindLabel && kind && (
+                    <Badge variant={kind === "real" ? "default" : "outline"}>{kindLabel}</Badge>
+                  )}
+                  {statusLabel && status && status !== "live" && (
+                    <Badge variant="outline">{statusLabel}</Badge>
+                  )}
+                </div>
+              </div>
             </div>
             <p className={`mt-2 md:mt-3 ${typography.body} text-muted-foreground`}>
               {description}
@@ -159,11 +174,6 @@ export const ProjectCard = ({
                 )}
               </div>
             )}
-            {statusLabel && status && status !== "live" && (
-              <div className="mt-3">
-                <Badge variant="outline">{statusLabel}</Badge>
-              </div>
-            )}
             {mode === "technical" && visibleTech.length > 0 && (
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {visibleTech.map((tech) => (
@@ -173,14 +183,16 @@ export const ProjectCard = ({
                 ))}
               </div>
             )}
-            <div className="mt-3 space-y-1.5">
-              <p className="text-sm font-medium text-foreground">{deliveryLabel}</p>
-              {impact.map((item) => (
-                <p key={item} className="text-sm text-muted-foreground">
-                  - {item}
-                </p>
-              ))}
-            </div>
+            {showDelivery && (
+              <div className="mt-3 space-y-1.5">
+                <p className="text-sm font-medium text-foreground">{deliveryLabel}</p>
+                {impact.map((item) => (
+                  <p key={item} className="text-sm text-muted-foreground">
+                    - {item}
+                  </p>
+                ))}
+              </div>
+            )}
             <div className="mt-3 md:mt-4 flex flex-wrap gap-2">
               {demo && (
                 <a href={demo} target="_blank" rel="noreferrer">

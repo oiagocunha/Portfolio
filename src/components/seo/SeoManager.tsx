@@ -16,10 +16,8 @@ export const SeoManager = () => {
 
   useEffect(() => {
     const pageKey = routeToPageKey(withoutLocale(pathname));
-    const page = withoutLocale(pathname) === "/perfil" ? {
-      title: locale === "pt" ? "Iago Cunha | Backend, IA Generativa e Automação" : "Iago Cunha | Backend, Generative AI & Automation",
-      description: locale === "pt" ? "Experiência com Python, FastAPI, Temporal, RAG e Kubernetes. Conheça os projetos, a experiência e o currículo de Iago Cunha." : "Experience with Python, FastAPI, Temporal, RAG and Kubernetes. Explore Iago Cunha's projects, experience and résumé.",
-    } : t.seo.pages[pageKey];
+    const page =
+      withoutLocale(pathname) === "/perfil" ? t.seo.pages.profile : t.seo.pages[pageKey];
     for (const lang of ["pt", "en"] as const) {
       const code = lang === "pt" ? "pt-BR" : "en";
       let link = document.head.querySelector<HTMLLinkElement>(`link[hreflang="${code}"]`);

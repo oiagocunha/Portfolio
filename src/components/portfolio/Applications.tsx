@@ -10,9 +10,6 @@ const Applications = () => {
     <section id="aplicacoes" className={`container ${spacing.section}`}>
       <FadeInSection>
         <h2 className={`text-center ${typography.h2}`}>{t.applications.title}</h2>
-        <p className="mt-3 text-center text-muted-foreground max-w-3xl mx-auto">
-          {t.applications.subtitle}
-        </p>
       </FadeInSection>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

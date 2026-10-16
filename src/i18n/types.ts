@@ -3,11 +3,15 @@ export type Locale = "pt" | "en";
 
 export type ProjectComplexity = "Low" | "Medium" | "High" | "Very High";
 export type ProjectStatus = "live" | "internal" | "unavailable" | "archived";
+export type ProjectKind = "real" | "demo";
 export type ProjectIconKey =
   | "publicData"
   | "jobMatch"
   | "chatPlatform"
-  | "croche";
+  | "croche"
+  | "leadPilot"
+  | "agendaFlow"
+  | "assistIa";
 
 export interface ProjectItem {
   title: string;
@@ -29,6 +33,10 @@ export interface ProjectItem {
   impact: string[];
   iconKey: ProjectIconKey;
   status?: ProjectStatus;
+  /** Live client work vs demonstrative portfolio app */
+  kind?: ProjectKind;
+  /** Prefill for the per-project WhatsApp CTA */
+  whatsappMessage?: string;
 }
 
 export interface CaseStudyPage {
@@ -97,6 +105,9 @@ export interface PortfolioContent {
   brand: {
     name: string;
     byline: string;
+    /** Nome exibido na navbar/footer de /perfil (identidade pessoal). */
+    professionalName: string;
+    professionalByline: string;
   };
 
   hero: {
@@ -109,11 +120,12 @@ export interface PortfolioContent {
     alt: string;
     role: string;
     highlights: string[];
+    recruitersLabel: string;
+    recruitersLink: string;
   };
 
   applications: {
     title: string;
-    subtitle: string;
     items: Array<{
       title: string;
       description: string;
@@ -124,6 +136,9 @@ export interface PortfolioContent {
     title: string;
     subtitle: string;
     whenLabel: string;
+    talkCta: string;
+    whatsappPrefix: string;
+    footnote: string;
     items: Array<{
       title: string;
       description: string;
@@ -145,6 +160,7 @@ export interface PortfolioContent {
     title: string;
     subtitle: string;
     paragraphs: string[];
+    imageAlt: string;
   };
 
   specialties: {
@@ -186,6 +202,8 @@ export interface PortfolioContent {
   projects: {
     title: string;
     subtitle: string;
+    /** Subtítulo da seção em /perfil (audiência profissional). */
+    professionalSubtitle: string;
     demo: string;
     docs: string;
     code: string;
@@ -199,6 +217,10 @@ export interface PortfolioContent {
     earlyWorkLabel: string;
     earlyWorkSubtitle: string;
     similarWhatsappCta: string;
+    kindLabels: {
+      real: string;
+      demo: string;
+    };
     statusLabels: {
       internal: string;
       unavailable: string;
@@ -264,6 +286,7 @@ export interface PortfolioContent {
     errorDescription: string;
     errorGeneric: string;
     errorEndpoint: string;
+    errorNetwork: string;
     formSubject: string;
   };
 
@@ -272,6 +295,31 @@ export interface PortfolioContent {
       href: string;
       label: string;
     }>;
+    profileLink: string;
+    navLabel: string;
+    professionalItems: Array<{
+      href: string;
+      label: string;
+    }>;
+  };
+
+  /** Conteúdo da página /perfil (identidade profissional). */
+  professional: {
+    eyebrow: string;
+    role: string;
+    summary: string;
+    meta: string;
+    resumeLabel: string;
+    resumeHref: string;
+    mailSubject: string;
+    discussCta: string;
+    mailtoLabel: string;
+    educationTitle: string;
+    educationDegree: string;
+    educationExpected: string;
+    closing: string;
+    icComplement: string;
+    icComplementCta: string;
   };
 
   footer: {
@@ -288,6 +336,10 @@ export interface PortfolioContent {
     keywords: string;
     pages: {
       home: {
+        title: string;
+        description: string;
+      };
+      profile: {
         title: string;
         description: string;
       };

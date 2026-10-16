@@ -16,7 +16,7 @@ Este repositório não é uma vitrine genérica de projetos pessoais. Ele docume
 - Case study de plataforma multi-serviço com Temporal, Kafka, RAG e LDAP
 - Visualização interativa de pipeline assíncrono
 - Cards de projeto com complexidade, impacto e contexto técnico
-- Conteúdo multilíngue (`pt`, `en`, `es`)
+- Conteúdo multilíngue (`pt`, `en`)
 
 ## Rotas
 

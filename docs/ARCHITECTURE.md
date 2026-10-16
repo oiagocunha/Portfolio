@@ -2,7 +2,7 @@
 
 ## 🎯 Visão Geral
 
-Portfólio moderno e trilíngue construído com **React 18.3 + TypeScript 5.7 + Vite 7.3**, focado em performance, manutenibilidade e internacionalização.
+Portfólio moderno e bilíngue construído com **React 18.3 + TypeScript 5.7 + Vite 7.3**, focado em performance, manutenibilidade e internacionalização.
 
 ## 🏗️ Estrutura do Projeto
 
@@ -37,7 +37,7 @@ portfolio/
 │       └── Index.tsx           # Página principal
 ├── public/
 │   ├── images/                 # Assets estáticos
-│   └── *.pdf                   # Currículos (PT/EN/ES)
+│   └── *.pdf                   # Currículos (PT/EN)
 └── package.json
 ```
 
@@ -57,8 +57,8 @@ Implementação customizada sem bibliotecas externas (react-i18next, etc.) para:
 ┌─────────────────────────────────────────────────────────────┐
 │                      I18nProvider                            │
 │  ┌─────────────────────────────────────────────────────┐   │
-│  │  Estado: locale ('pt' | 'en' | 'es')                 │   │
-│  │  Conteúdo: { pt, en, es }[locale]                    │   │
+│  │  Estado: locale ('pt' | 'en')                       │   │
+│  │  Conteúdo: { pt, en }[locale]                       │   │
 │  └─────────────────────────────────────────────────────┘   │
 │                           ▼                                  │
 │              Context API (I18nContext)                       │
@@ -404,13 +404,13 @@ navbar: {
 
 2. **Atualizar tipo:** `src/i18n/types.ts`
    ```typescript
-   export type Locale = 'pt' | 'en' | 'es' | 'fr';
+   export type Locale = 'pt' | 'en' | 'fr';
    ```
 
 3. **Importar no Provider:** `src/i18n/I18nProvider.tsx`
    ```typescript
    import { fr } from './locales/fr';
-   const locales = { pt, en, es, fr };
+   const locales = { pt, en, fr };
    ```
 
 4. **Adicionar no seletor:** `LanguageToggle.tsx`

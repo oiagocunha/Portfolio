@@ -1,4 +1,13 @@
-import { Newspaper, Briefcase, MessageSquare, ShoppingCart, LucideIcon } from "lucide-react";
+import {
+  Newspaper,
+  Briefcase,
+  MessageSquare,
+  ShoppingCart,
+  Inbox,
+  CalendarDays,
+  Bot,
+  LucideIcon,
+} from "lucide-react";
 import type { ProjectIconKey } from "@/i18n/types";
 
 export const projectIcons: Record<ProjectIconKey, LucideIcon> = {
@@ -6,4 +15,7 @@ export const projectIcons: Record<ProjectIconKey, LucideIcon> = {
   jobMatch: Briefcase,
   chatPlatform: MessageSquare,
   croche: ShoppingCart,
+  leadPilot: Inbox,
+  agendaFlow: CalendarDays,
+  assistIa: Bot,
 };

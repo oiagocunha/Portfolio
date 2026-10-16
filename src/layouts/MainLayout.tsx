@@ -16,6 +16,9 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   const professional = isProfessionalPath(useLocation().pathname);
   const { t } = useI18n();
   const whatsappHref = `https://wa.me/${t.contact.whatsappNumber}?text=${encodeURIComponent(t.contact.whatsappMessage)}`;
+  const footerName = professional ? t.brand.professionalName : t.brand.name;
+  const footerByline = professional ? t.brand.professionalByline : t.brand.byline;
+  const footerTagline = professional ? undefined : t.footer.tagline;
 
   const footerLinks = [
     { href: "https://github.com/oiagocunha", label: "GitHub", icon: Github },
@@ -41,9 +44,11 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       <footer className="border-t py-10">
         <div className="container flex flex-col items-center gap-4 text-center">
           <div>
-            <p className="font-semibold text-foreground">{t.brand.name}</p>
-            <p className="text-sm text-muted-foreground">{t.brand.byline}</p>
-            <p className="mt-1 text-sm text-muted-foreground">{t.footer.tagline}</p>
+            <p className="font-semibold text-foreground">{footerName}</p>
+            <p className="text-sm text-muted-foreground">{footerByline}</p>
+            {footerTagline && (
+              <p className="mt-1 text-sm text-muted-foreground">{footerTagline}</p>
+            )}
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3">
             {footerLinks.map(({ href, label, icon: Icon }) => (
@@ -60,7 +65,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
             ))}
           </div>
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} {t.brand.name}. {t.footer.rights}
+            © {new Date().getFullYear()} {footerName}. {t.footer.rights}
           </p>
         </div>
       </footer>

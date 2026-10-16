@@ -31,19 +31,13 @@ const Navbar = () => {
   const profile = localizedPath("/perfil", locale);
 
   const items = professional
-    ? [
-        { href: "#hero", label: locale === "pt" ? "Perfil" : "Profile" },
-        { href: "#experiencia", label: locale === "pt" ? "Experiência" : "Experience" },
-        { href: "#projetos", label: locale === "pt" ? "Projetos" : "Projects" },
-        { href: home, label: locale === "pt" ? "Serviços para empresas" : "Business services" },
-      ]
-    : [
-        ...t.navbar.items,
-        {
-          href: profile,
-          label: locale === "pt" ? "Perfil profissional" : "Professional profile",
-        },
-      ];
+    ? t.navbar.professionalItems.map((item) =>
+        item.href === "/" ? { ...item, href: home } : item,
+      )
+    : [...t.navbar.items, { href: profile, label: t.navbar.profileLink }];
+
+  const brandName = professional ? t.brand.professionalName : t.brand.name;
+  const brandByline = professional ? t.brand.professionalByline : t.brand.byline;
 
   const destination = (href: string) => {
     if (!href.startsWith("#")) return href;
@@ -81,9 +75,9 @@ const Navbar = () => {
     <header
       className={`fixed top-0 left-0 w-full ${zIndex.fixed} border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg`}
     >
-      <nav className="container flex h-16 items-center justify-between" aria-label="Primary">
+      <nav className="container flex h-16 items-center justify-between" aria-label={t.navbar.navLabel}>
         <Link
-          to={home}
+          to={professional ? profile : home}
           className="flex items-center space-x-2 font-bold text-xl"
           onClick={() => setIsOpen(false)}
         >
@@ -93,8 +87,8 @@ const Navbar = () => {
             IC
           </div>
           <span className="hidden sm:flex flex-col leading-tight">
-            <span className="text-base">{t.brand.name}</span>
-            <span className="text-[11px] font-medium text-muted-foreground">{t.brand.byline}</span>
+            <span className="text-base">{brandName}</span>
+            <span className="text-[11px] font-medium text-muted-foreground">{brandByline}</span>
           </span>
         </Link>
 

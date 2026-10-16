@@ -7,9 +7,10 @@ import { MermaidDiagram } from "@/components/shared/MermaidDiagram";
 import { Link } from "react-router-dom";
 import { spacing, typography } from "@/constants/design-tokens";
 import { useI18n } from "@/i18n";
+import { localizedPath } from "@/lib/paths";
 
 const WorkflowShowcase = () => {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const { stages } = t.workflowShowcase;
   const [activeStage, setActiveStage] = useState(stages[0].id);
 
@@ -78,7 +79,9 @@ const WorkflowShowcase = () => {
                 </p>
               </div>
               <Button asChild variant="hero">
-                <Link to="/case-study/chat-platform">{t.workflowShowcase.cta}</Link>
+                <Link to={localizedPath("/case-study/chat-platform", locale)}>
+                  {t.workflowShowcase.cta}
+                </Link>
               </Button>
             </CardContent>
           </Card>

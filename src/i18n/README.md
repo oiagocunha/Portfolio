@@ -9,8 +9,7 @@ src/i18n/
 ├── types.ts              # Contrato TypeScript central
 ├── locales/
 │   ├── pt.ts            # Conteúdo em Português
-│   ├── en.ts            # Conteúdo em Inglês
-│   └── es.ts            # Conteúdo em Espanhol
+│   └── en.ts            # Conteúdo em Inglês
 ├── I18nProvider.tsx     # Context Provider
 ├── index.ts             # Exports públicos
 └── README.md            # Esta documentação
@@ -65,11 +64,10 @@ function MeuComponente() {
 **Antes (com condicionais):**
 
 ```tsx
-const Hero = ({ language }: { language: 'pt' | 'en' | 'es' }) => {
+const Hero = ({ language }: { language: 'pt' | 'en' }) => {
   const content = {
     pt: { greeting: 'Olá!', button: 'Contato' },
     en: { greeting: 'Hello!', button: 'Contact' },
-    es: { greeting: '¡Hola!', button: 'Contacto' },
   };
   
   const c = content[language];
@@ -148,20 +146,6 @@ export const en: PortfolioContent = {
 };
 ```
 
-**`locales/es.ts`:**
-```typescript
-export const es: PortfolioContent = {
-  // ... conteúdo existente
-  
-  novaSecao: {
-    titulo: 'Mi Nueva Sección',
-    items: [
-      { nome: 'Item 1', descricao: 'Descripción en ES' }
-    ]
-  }
-};
-```
-
 ### 3. Usar no Componente
 
 ```tsx
@@ -196,7 +180,6 @@ function LanguageSelector() {
     <div>
       <button onClick={() => setLocale('pt')}>🇧🇷</button>
       <button onClick={() => setLocale('en')}>🇺🇸</button>
-      <button onClick={() => setLocale('es')}>🇪🇸</button>
       
       <p>Idioma atual: {locale}</p>
     </div>
@@ -229,7 +212,7 @@ t.hero.  // <- VS Code mostra: greeting, typewriter, description, button, alt
 ### Manutenção Simples
 
 - **1 tipo**: Define estrutura
-- **3 arquivos**: Um por idioma
+- **2 arquivos**: Um por idioma
 - **0 condicionais**: No JSX
 
 ### Escalabilidade
@@ -247,7 +230,7 @@ Adicionar novo idioma:
 const { t, locale, setLocale } = useI18n();
 
 // t: PortfolioContent - Conteúdo do idioma atual
-// locale: 'pt' | 'en' | 'es' - Idioma atual
+// locale: 'pt' | 'en' - Idioma atual
 // setLocale: (locale: Locale) => void - Trocar idioma
 ```
 
@@ -263,7 +246,7 @@ const { t, locale, setLocale } = useI18n();
 
 | Aspecto | Antes | Depois |
 |---------|-------|--------|
-| Props por componente | `language: 'pt' \| 'en' \| 'es'` | Nenhuma |
+| Props por componente | `language: 'pt' \| 'en'` | Nenhuma |
 | Condicionais no JSX | `{lang === 'pt' ? ... : ...}` | Zero |
 | Linhas por componente | ~80-150 | ~30-50 |
 | Type safety | Parcial | Total |
