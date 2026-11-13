@@ -1,19 +1,20 @@
 import { Github, Linkedin, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { GITHUB_URL, INSTAGRAM_URL, LINKEDIN_URL } from "@/lib/contact";
 
 const socialLinks = [
   {
-    href: "https://github.com/oiagocunha",
+    href: GITHUB_URL,
     icon: Github,
     label: "GitHub",
   },
   {
-    href: "https://linkedin.com/in/oiagocunha",
+    href: LINKEDIN_URL,
     icon: Linkedin,
     label: "LinkedIn",
   },
   {
-    href: "https://instagram.com/oiagocunha",
+    href: INSTAGRAM_URL,
     icon: Instagram,
     label: "Instagram",
   },
@@ -27,7 +28,7 @@ export const SocialLinks = () => {
           key={href}
           asChild
           variant="outline"
-          className="flex-1 sm:flex-none transition-all duration-300 hover:scale-105 hover:shadow-md"
+          className="flex-1 sm:flex-none"
         >
           <a
             href={href}

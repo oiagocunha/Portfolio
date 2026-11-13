@@ -4,12 +4,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    // Apply the saved or system theme before first paint to avoid a light flash.
+    (function () {
+      var theme = null;
+      try { theme = localStorage.getItem("theme"); } catch (e) {}
+      if (theme !== "light" && theme !== "dark") {
+        theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.classList.toggle("dark", theme === "dark");
+    })();
+  </script>
 
-  <title>IC Desenvolvimento | Sites, Automação e Sistemas</title>
+  <title>Iago Cunha | Backend &amp; IA aplicada</title>
   <meta name="description"
-    content="Sites, automações, integrações e sistemas. IC Desenvolvimento, por Iago Cunha. Fortaleza/CE.">
+    content="Desenvolvedor Backend &amp; IA: APIs, agentes com Temporal, RAG e Kubernetes. Também sites, automações e sistemas internos para empresas. Fortaleza/CE.">
   <meta name="keywords"
-    content="IC Desenvolvimento, Iago Cunha, desenvolvimento de sites, automação de processos, integração de sistemas, desenvolvimento sob medida, automação n8n, MVP, Fortaleza, Ceará">
+    content="Iago Cunha, desenvolvedor backend, IA aplicada, FastAPI, Temporal, RAG, Kubernetes, automação n8n, desenvolvimento de sites, IC Desenvolvimento, Fortaleza">
   <meta name="author" content="Iago Cunha">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="geo.region" content="BR-CE">
@@ -17,19 +28,19 @@
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://portfolio-oiagocunha.vercel.app/">
-  <meta property="og:title" content="IC Desenvolvimento | Sites, Automação e Sistemas">
+  <meta property="og:title" content="Iago Cunha | Backend &amp; IA aplicada">
   <meta property="og:description"
-    content="Sites, automações, integrações e sistemas. IC Desenvolvimento, por Iago Cunha. Fortaleza/CE.">
+    content="Desenvolvedor Backend &amp; IA: APIs, agentes com Temporal, RAG e Kubernetes. Também sites, automações e sistemas internos para empresas. Fortaleza/CE.">
   <meta property="og:image" content="https://portfolio-oiagocunha.vercel.app/images/social-card.png">
-  <meta property="og:image:alt" content="IC Desenvolvimento por Iago Cunha">
-  <meta property="og:site_name" content="IC Desenvolvimento | Iago Cunha">
+  <meta property="og:image:alt" content="Iago Cunha · Backend &amp; IA aplicada">
+  <meta property="og:site_name" content="Iago Cunha">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:locale:alternate" content="en_US">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="IC Desenvolvimento | Sites, Automação e Sistemas">
+  <meta name="twitter:title" content="Iago Cunha | Backend &amp; IA aplicada">
   <meta name="twitter:description"
-    content="Sites, automações, integrações e sistemas. IC Desenvolvimento, por Iago Cunha. Fortaleza/CE.">
+    content="Desenvolvedor Backend &amp; IA: APIs, agentes com Temporal, RAG e Kubernetes. Também sites, automações e sistemas internos para empresas. Fortaleza/CE.">
   <meta name="twitter:image" content="https://portfolio-oiagocunha.vercel.app/images/social-card.png">
   <meta name="twitter:creator" content="@oiagocunha">
 
@@ -38,7 +49,8 @@
 
   <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/images/logo.svg">
-  <meta name="theme-color" content="#8E44AD">
+  <meta name="theme-color" content="#0F1114" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
 
   <link rel="alternate" hreflang="pt-BR" href="https://portfolio-oiagocunha.vercel.app/">
   <link rel="alternate" hreflang="en" href="https://portfolio-oiagocunha.vercel.app/en">
@@ -120,10 +132,10 @@
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "IC Desenvolvimento | Iago Cunha",
+      "name": "Iago Cunha",
       "alternateName": "Iago Cunha Portfolio",
       "url": "https://portfolio-oiagocunha.vercel.app/",
-      "description": "IC Desenvolvimento: sites, automações e sistemas sob medida por Iago Cunha.",
+      "description": "Portfólio de Iago Cunha: backend, IA aplicada e projetos para empresas pela IC Desenvolvimento.",
       "inLanguage": ["pt-BR", "en"],
       "author": {
         "@type": "Person",
@@ -134,13 +146,10 @@
 
 </head>
 
-<body class="dark-theme">
+<body>
   <noscript>
-    <h1>IC Desenvolvimento, por Iago Cunha</h1>
-    <p>
-      Sites, automações, integrações e sistemas sob medida em Fortaleza, Brasil.
-      WhatsApp: +55 85 98903-5010. Email: dev.iagocunha@gmail.com.
-    </p>
+    <h1>Iago Cunha, Backend &amp; IA aplicada</h1>
+    <p>APIs, agentes com Temporal, RAG e Kubernetes. Também sites, automações e sistemas internos para empresas. Email: dev.iagocunha@gmail.com.</p>
   </noscript>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>

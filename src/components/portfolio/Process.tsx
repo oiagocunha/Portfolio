@@ -1,37 +1,27 @@
-import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
-import { spacing, typography } from "@/constants/design-tokens";
+import { SectionHeading } from "@/components/shared/SectionHeading";
 
 const Process = () => {
   const { t } = useI18n();
 
   return (
-    <section id="como-trabalho" className={`container ${spacing.section}`}>
-      <FadeInSection>
-        <h2 className={`text-center ${typography.h2}`}>{t.process.title}</h2>
-        <p className="mt-3 text-center text-muted-foreground max-w-3xl mx-auto">
+    <section id="como-trabalho" aria-labelledby="process-title" className="border-t py-16 md:py-20">
+      <div className="container">
+        <SectionHeading id="process-title" title={t.process.title}>
           {t.process.subtitle}
-        </p>
-      </FadeInSection>
-
-      <ol className="mt-10 mx-auto max-w-3xl space-y-6">
-        {t.process.steps.map((step, index) => (
-          <FadeInSection key={step.title} delay={index * 0.06}>
-            <li className="flex gap-4">
-              <div
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent text-sm font-bold text-primary-foreground"
-                aria-hidden
-              >
-                {index + 1}
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold">{step.title}</h3>
-                <p className="mt-1 text-muted-foreground">{step.description}</p>
-              </div>
+        </SectionHeading>
+        <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {t.process.steps.map((step, index) => (
+            <li key={step.title} className="border-t pt-4">
+              <p className="font-mono text-xs text-muted-foreground" aria-hidden>
+                {String(index + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-1 font-semibold">{step.title}</h3>
+              <p className="mt-1 text-muted-foreground">{step.description}</p>
             </li>
-          </FadeInSection>
-        ))}
-      </ol>
+          ))}
+        </ol>
+      </div>
     </section>
   );
 };

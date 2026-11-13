@@ -5,8 +5,8 @@ SPA em React + TypeScript + Vite com i18n (PT/EN), case studies com Mermaid e de
 ## Stack
 
 - React 18, TypeScript, Vite
-- Tailwind CSS + shadcn/ui
-- Framer Motion
+- Tailwind CSS (+ dois componentes shadcn/ui)
+- IBM Plex Sans/Mono via @fontsource
 - Mermaid (diagramas nos case studies e no workflow)
 - React Router
 
@@ -14,46 +14,35 @@ SPA em React + TypeScript + Vite com i18n (PT/EN), case studies com Mermaid e de
 
 ```bash
 npm install
-cp .env.example .env
 npm run dev
 ```
 
-Configure `VITE_FORMSUBMIT_ENDPOINT` no `.env` (já vem no `.env.example` apontando para FormSubmit).
-
-Na primeira submissão, o FormSubmit envia um e-mail de confirmação para `dev.iagocunha@gmail.com`. Confirme o endereço antes de o formulário começar a entregar as mensagens.
-
-Reinicie o `npm run dev` depois de alterar o `.env`.
+Não há variáveis de ambiente. O contato é feito por e-mail, LinkedIn e WhatsApp; o site não tem formulário.
 
 ## Scripts
 
 - `npm run dev` servidor local
-- `npm run build` build de produção
+- `npm run build` build de produção (inclui HTML por rota e sitemap)
 - `npm run preview` preview do build
 - `npm run lint` ESLint
+- `npm run typecheck` TypeScript
+- `npm test` testes (Node 22.18+ ou 24)
 
 ## Estrutura útil
 
 - `src/i18n/locales/` conteúdo PT/EN
-- `src/components/portfolio/` seções da home
+- `src/components/home/` seções da home; `src/components/portfolio/` seções de `/perfil` e `/servicos`
 - `src/pages/CaseStudy*.tsx` case studies (view compartilhada)
 - `public/images/` imagens, logos e GIFs de demo
 
-## Assets que você deve adicionar
+## Imagens dos projetos
 
-Coloque estes arquivos em `public/images/` para máxima fidelidade:
+As imagens ficam em `public/images/`. A imagem social é `social-card.png` (`SITE_IMAGE` em `src/lib/seo.ts`).
 
-| Arquivo | Uso |
-|---|---|
-| `Perfil.jpg` | Foto no Hero e schema SEO |
-| `*.gif` / `*.webp` / `*.mp4` | Demos curtas nos cards (`media` no locale) |
+Nos locales (`pt.ts` / `en.ts`), cada projeto aponta para uma captura com `image: "/images/meu-projeto.png"`. Depois de adicionar ou trocar uma imagem, gere as variantes WebP (precisa de Python com Pillow) e inclua o nome em `TARGETS` no script:
 
-Opcional: substitua `logo.svg` por um PNG social (`1200x630`) e atualize `SITE_IMAGE` em `src/lib/seo.ts`.
-
-Nos locales (`pt.ts` / `en.ts`), cada projeto pode ter:
-
-```ts
-image: "/images/meu-poster.png",
-media: "/images/meu-demo.gif", // ou .webp / .mp4
+```bash
+python scripts/optimize-images.py
 ```
 
 ## Case studies
@@ -78,7 +67,9 @@ Apenas `pt` e `en`. O seletor está na navbar.
 
 ## Conversão e perfil profissional
 
-Home comercial em `/`, perfil profissional em `/perfil` e versões em inglês sob `/en`.
+Home com dois caminhos em `/`, perfil profissional em `/perfil`, serviços para empresas em `/servicos` e versões em inglês sob `/en`.
 Veja [implementação, evidências e ativação](docs/CONVERSION_IMPLEMENTATION.md).
 
-Validação: `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`. Testes usam Node 22.18+ ou 24.
+Arquitetura: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Redesign: [especificação](docs/SPEC_PORTFOLIO_REDESIGN.md).
+
+Validação: `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`.

@@ -1,31 +1,31 @@
 import { useLocation } from "react-router-dom";
-import { isProfessionalPath } from "@/lib/paths";
+import { isServicesPath } from "@/lib/paths";
 import { ReactNode } from "react";
 import Navbar from "@/components/portfolio/Navbar";
 import ScrollTop from "@/components/portfolio/ScrollTop";
-import ScrollProgress from "@/components/portfolio/ScrollProgress";
 import WhatsAppFloat from "@/components/portfolio/WhatsAppFloat";
 import { useI18n } from "@/i18n";
-import { Github, Linkedin, Instagram, Mail, MessageCircle } from "lucide-react";
+import { EMAIL, GITHUB_URL, INSTAGRAM_URL, LINKEDIN_URL, whatsappUrl } from "@/lib/contact";
+import { mutedLinkClass } from "@/lib/styles";
 
 interface MainLayoutProps {
   children: ReactNode;
 }
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
-  const professional = isProfessionalPath(useLocation().pathname);
+  const services = isServicesPath(useLocation().pathname);
   const { t } = useI18n();
-  const whatsappHref = `https://wa.me/${t.contact.whatsappNumber}?text=${encodeURIComponent(t.contact.whatsappMessage)}`;
-  const footerName = professional ? t.brand.professionalName : t.brand.name;
-  const footerByline = professional ? t.brand.professionalByline : t.brand.byline;
-  const footerTagline = professional ? undefined : t.footer.tagline;
+  const whatsappHref = whatsappUrl(t.contact.whatsappNumber, t.contact.whatsappMessage);
+  const footerName = services ? t.brand.name : t.brand.professionalName;
+  const footerByline = services ? t.brand.byline : t.brand.professionalByline;
+  const footerTagline = services ? t.footer.tagline : undefined;
 
   const footerLinks = [
-    { href: "https://github.com/oiagocunha", label: "GitHub", icon: Github },
-    { href: "https://linkedin.com/in/oiagocunha", label: "LinkedIn", icon: Linkedin },
-    { href: "https://instagram.com/oiagocunha", label: "Instagram", icon: Instagram },
-    { href: "mailto:dev.iagocunha@gmail.com", label: "Email", icon: Mail },
-    { href: whatsappHref, label: "WhatsApp", icon: MessageCircle },
+    { href: GITHUB_URL, label: "GitHub" },
+    { href: LINKEDIN_URL, label: "LinkedIn" },
+    { href: INSTAGRAM_URL, label: "Instagram" },
+    { href: `mailto:${EMAIL}`, label: "Email" },
+    { href: whatsappHref, label: "WhatsApp" },
   ];
 
   return (
@@ -36,35 +36,35 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       >
         {t.a11y.skipToContent}
       </a>
-      <ScrollProgress />
       <Navbar />
       <main id="main-content">{children}</main>
-      <ScrollTop />
-      {!professional && <WhatsAppFloat />}
+      <ScrollTop raised={services} />
+      {services && <WhatsAppFloat />}
       <footer className="border-t py-10">
-        <div className="container flex flex-col items-center gap-4 text-center">
+        <div className="container grid gap-6 md:grid-cols-[1fr_auto] md:items-start">
           <div>
             <p className="font-semibold text-foreground">{footerName}</p>
-            <p className="text-sm text-muted-foreground">{footerByline}</p>
-            {footerTagline && (
-              <p className="mt-1 text-sm text-muted-foreground">{footerTagline}</p>
-            )}
+            <p className="font-mono text-xs text-muted-foreground">{footerByline}</p>
+            {footerTagline && <p className="mt-2 text-sm text-muted-foreground">{footerTagline}</p>}
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {footerLinks.map(({ href, label, icon: Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("mailto:") ? undefined : "_blank"}
-                rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
-                className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground hover:border-accent/40"
-              >
-                <Icon className="h-3.5 w-3.5" aria-hidden />
-                {label}
-              </a>
-            ))}
-          </div>
-          <p className="text-sm text-muted-foreground">
+          <ul className="flex flex-wrap gap-x-4 md:justify-end">
+            {footerLinks.map(({ href, label }) => {
+              const external = !href.startsWith("mailto:");
+              return (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noreferrer" : undefined}
+                    className={`${mutedLinkClass} text-sm`}
+                  >
+                    {label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+          <p className="font-mono text-xs text-muted-foreground md:col-span-2">
             © {new Date().getFullYear()} {footerName}. {t.footer.rights}
           </p>
         </div>

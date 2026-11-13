@@ -7,7 +7,6 @@ export const en: PortfolioContent = {
     changeLanguage: "Change language",
     toggleTheme: "Toggle light or dark theme",
     scrollTop: "Back to top",
-    openMedia: "Play demo",
     showDiagramSource: "View Mermaid source",
     hideDiagramSource: "Hide source",
     diagramError: "Could not render the diagram.",
@@ -27,18 +26,48 @@ export const en: PortfolioContent = {
   },
 
   hero: {
-    greeting: "IC Desenvolvimento",
     headline: "Websites, automation, and custom systems.",
-    typewriter: [],
     description:
       "I build websites, automations, tool integrations, and internal systems. Each project starts from the problem to solve, and scope is locked in the proposal.",
     primaryCta: "Chat on WhatsApp",
     secondaryCta: "See projects",
     alt: "Photo of Iago Cunha",
-    role: "by Iago Cunha",
-    highlights: [],
     recruitersLabel: "Recruiters: ",
     recruitersLink: "experience and résumé",
+  },
+
+  home: {
+    status: "Backend & AI at Sistema FIEC · since 03/2025",
+    role: "Backend & Applied AI Developer",
+    lede:
+      "APIs, agent orchestration with Temporal, RAG pipelines, and corporate authentication at Sistema FIEC. I also build websites, automations, and internal systems for businesses.",
+    meta: "Fortaleza, Brazil · English B2 · Open to remote",
+    pathsLabel: "Where to start",
+    paths: {
+      recruiters: {
+        eyebrow: "For recruiters",
+        title: "Experience, technical cases, and résumé",
+        description:
+          "What I built on the corporate assistant, architecture decisions, and open-source projects.",
+        tags: ["Python", "FastAPI", "Temporal", "RAG", "Kubernetes"],
+        cta: "See professional profile",
+      },
+      companies: {
+        eyebrow: "For businesses",
+        title: "Websites, automation, and internal systems",
+        description:
+          "Scope agreed in the proposal, starting from the operation's problem. Real and demo projects to explore before we talk.",
+        tags: ["Websites", "n8n automation", "Internal systems"],
+        cta: "See services",
+      },
+    },
+    workTitle: "Selected work",
+    workSubtitle:
+      "Each item states the kind of project, my role, and where you can check it. Demo projects are labeled as such.",
+    selectedWork: ["chatPlatform", "jobMatch", "croche", "assistIa"],
+    contactTitle: "Contact",
+    contactSubtitle: "Job or project: tell me the context and what you need.",
+    whatsappNote: "Business projects",
   },
 
   applications: {
@@ -137,7 +166,7 @@ export const en: PortfolioContent = {
   },
 
   about: {
-    title: "ABOUT.",
+    title: "About",
     subtitle: "IC Desenvolvimento · Iago Cunha",
     paragraphs: [
       "Through IC Desenvolvimento I take on website, automation, integration, and systems projects.",
@@ -147,52 +176,8 @@ export const en: PortfolioContent = {
       "Iago Cunha at an event, in front of a screen showing his name and the text Estagiário em Desenvolvimento de Produto.",
   },
 
-  specialties: {
-    title: "TECHNICAL",
-    subtitle: "WORK",
-    items: [
-      {
-        emoji: "",
-        title: "Agents and orchestration",
-        description:
-          "From the chat prompt to the workflow: which agent answers, what it queries, and how the response streams back.",
-      },
-      {
-        emoji: "",
-        title: "APIs and backend",
-        description:
-          "FastAPI, REST contracts, SSE streaming, and integration with model providers.",
-      },
-      {
-        emoji: "",
-        title: "Document search",
-        description:
-          "Ingestion, embeddings, and context-aware lookup, including mixing semantic search with SQL when it helps.",
-      },
-      {
-        emoji: "",
-        title: "Queues and failures",
-        description:
-          "Kafka, retries, backoff, and DLQ so errors do not disappear mid-flow.",
-      },
-      {
-        emoji: "",
-        title: "Corporate access",
-        description:
-          "Google Workspace/AD authentication and group-based access control.",
-      },
-      {
-        emoji: "",
-        title: "Environment and deploy",
-        description:
-          "Docker, Kubernetes, and a setup another developer can repeat.",
-      },
-    ],
-  },
-
   technologies: {
-    title: "TECH",
-    subtitle: "STACK",
+    title: "Tech stack",
     categories: [
       {
         title: "Backend",
@@ -282,33 +267,22 @@ export const en: PortfolioContent = {
     professionalSubtitle:
       "Corporate systems and personal projects: the problem, what I did, and the technical decisions.",
     demo: "View project",
-    docs: "API",
     code: "Code",
     caseStudy: "Case study",
-    complexityLabel: "Complexity",
     problemLabel: "Problem",
-    solutionLabel: "Solution",
     deliveryLabel: "What's included",
-    techLabel: "Technologies",
-    featuredLabel: "Projects",
     earlyWorkLabel: "Technical cases and projects",
-    earlyWorkSubtitle: "The problem, what I built, and where you can see the result.",
+    roleLabel: "Role",
+    stackLabel: "Stack",
+    evidenceLabel: "Evidence",
+    limitationLabel: "Limits",
+    tagLabels: {
+      internal: "Corporate · internal",
+      client: "Real client",
+      authored: "Personal · open source",
+      demo: "Demo",
+    },
     similarWhatsappCta: "Request something similar",
-    kindLabels: {
-      real: "Real project",
-      demo: "Demo project",
-    },
-    statusLabels: {
-      internal: "Internal project",
-      unavailable: "Demo offline",
-      archived: "Archived",
-    },
-    complexity: {
-      Low: "Low",
-      Medium: "Medium",
-      High: "High",
-      "Very High": "Very high",
-    },
     featured: [
       {
         title: "FV Crochê",
@@ -318,7 +292,6 @@ export const en: PortfolioContent = {
         image: "/images/fv-croche.png",
         alt: "FV Crochê hero with crochet scrunchies",
         technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-        complexity: "Medium",
         impact: [
           "Catalog with category filters",
           "Persistent cart in the browser",
@@ -326,6 +299,7 @@ export const en: PortfolioContent = {
           "Shipping quote",
         ],
         iconKey: "croche",
+        evidence: "Published website.",
         status: "live",
         kind: "real",
         whatsappMessage:
@@ -339,7 +313,6 @@ export const en: PortfolioContent = {
         image: "/images/lead-pilot.png",
         alt: "LeadPilot hero with Casa Norte Serviços queue",
         technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-        complexity: "Medium",
         impact: [
           "Validated quote request form",
           "Queue with filters and search",
@@ -360,7 +333,6 @@ export const en: PortfolioContent = {
         image: "/images/agenda-flow.png",
         alt: "AgendaFlow hero for Corte & Cia with services list",
         technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-        complexity: "Medium",
         impact: [
           "Services and professionals",
           "Conflict-aware time slots",
@@ -381,7 +353,6 @@ export const en: PortfolioContent = {
         image: "/images/assist-ia.png",
         alt: "AssistIA hero for Atlas Serviços Técnicos",
         technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-        complexity: "Medium",
         impact: [
           "Support chat",
           "Searchable document base",
@@ -389,6 +360,7 @@ export const en: PortfolioContent = {
           "Session history and simulated handoff",
         ],
         iconKey: "assistIa",
+        limitation: "Simulated answers based on documents from a fictional company (Atlas).",
         status: "live",
         kind: "demo",
         whatsappMessage:
@@ -408,13 +380,17 @@ export const en: PortfolioContent = {
         image: "/images/assistente-corporativo.jpg",
         alt: "Corporate assistant screen",
         technologies: ["Temporal", "FastAPI", "RAG", "Kafka", "PostgreSQL", "Docker", "Kubernetes"],
-        complexity: "Very High",
         impact: [
           "OpenAI-compatible gateway with SSE streaming",
           "Context routing with dedicated RAG bases",
           "Retry, backoff, and DLQ in workflows",
         ],
         iconKey: "chatPlatform",
+        role:
+          "SSE streaming gateway, routing between skills with dedicated RAG bases, retry/backoff/DLQ, and environment stabilization.",
+        evidence:
+          "Case study with diagrams. Pilot telemetry: 47 registered users, 31 active.",
+        limitation: "Internal system: no public demo or code.",
         status: "internal",
       },
       {
@@ -430,13 +406,14 @@ export const en: PortfolioContent = {
         image: "/images/job-match-alerts-swagger.png",
         alt: "Job Match Alerts",
         technologies: ["Python", "FastAPI", "PostgreSQL", "React", "TypeScript", "OpenAI", "Docker"],
-        complexity: "High",
         impact: [
           "Resume PDF upload",
           "Job import from URL",
           "Explainable compatibility ranking",
         ],
         iconKey: "jobMatch",
+        role: "Personal project, from backend to frontend.",
+        evidence: "Published demo and code on GitHub, with Pytest tests and GitHub Actions CI.",
         status: "live",
       },
       {
@@ -453,69 +430,20 @@ export const en: PortfolioContent = {
         image: "/images/public-data-monitor-swagger.png",
         alt: "Public Data Monitor Swagger screen, with the news endpoints and the API schemas.",
         technologies: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "asyncio", "Docker"],
-        complexity: "High",
         impact: [
           "Collection without duplicate URLs",
           "API documented in Swagger",
           "Reproducible Docker Compose setup",
         ],
         iconKey: "publicData",
+        demoNote: "The demo runs on a free plan and may take about a minute to wake up on the first visit.",
         status: "live",
       },
     ],
   },
 
-  certifications: {
-    title: "EDUCATION",
-    subtitle: "AND COURSES",
-    viewCert: "View certificate",
-    items: [
-      {
-        title: "Complete Python (Worlds 1, 2, and 3)",
-        issuer: "Curso em Vídeo",
-        date: "2024-2026",
-        credential: "3 modules completed + 4th in progress",
-        link: "",
-        skills: ["Python", "OOP", "Data Structures", "Algorithms"],
-      },
-      {
-        title: "Complete JavaScript",
-        issuer: "Curso em Vídeo",
-        date: "2024",
-        credential: "Full JavaScript course",
-        link: "",
-        skills: ["JavaScript", "DOM", "ES6+", "Async"],
-      },
-      {
-        title: "Programming Logic",
-        issuer: "Curso em Vídeo",
-        date: "2024",
-        credential: "Logic and algorithm fundamentals",
-        link: "",
-        skills: ["Algorithms", "Logic", "Control Structures"],
-      },
-      {
-        title: "Tech Generation Program",
-        issuer: "Ger Tech",
-        date: "2024",
-        credential: "Technology training",
-        link: "",
-        skills: ["Web Development", "Backend", "Frontend"],
-      },
-      {
-        title: "English",
-        issuer: "Self-assessed",
-        date: "2025",
-        credential: "B2 level",
-        link: "",
-        skills: ["Reading", "Writing", "Listening", "Speaking"],
-      },
-    ],
-  },
-
   experience: {
-    title: "EXPERIENCE",
-    subtitle: "WORK",
+    title: "Experience",
     items: [
       {
         company: "Sistema FIEC / Observatório da Indústria",
@@ -564,8 +492,7 @@ export const en: PortfolioContent = {
   },
 
   contact: {
-    title: "CONTACT.",
-    subtitle: "WhatsApp, email, or the form below.",
+    title: "Contact",
     reassurance:
       "Tell me the project context and what you need. If scope is still open, that is what the first conversation is for.",
     email: "Email",
@@ -577,43 +504,29 @@ export const en: PortfolioContent = {
     whatsappCta: "Chat on WhatsApp",
     location: "Location",
     locationText: "Fortaleza, Ceará",
-    formTitle: "Send a message",
-    nameLabel: "Name",
-    emailLabel: "Email",
-    subjectLabel: "Subject",
-    messageLabel: "Message",
-    namePlaceholder: "Your name",
-    emailPlaceholder: "you@email.com",
-    subjectPlaceholder: "Subject (optional)",
-    messagePlaceholder: "Project context and what you need.",
-    sending: "Sending...",
-    sendButton: "Send message",
-    successTitle: "Message sent",
-    successDescription: "I will reply as soon as I can.",
-    errorTitle: "Could not send",
-    errorDescription: "Please fill in all required fields.",
-    errorGeneric: "Try again in a moment.",
-    errorEndpoint: "The form is unavailable. Use WhatsApp or email.",
-    errorNetwork: "Could not send it now. Try again, or use WhatsApp or email.",
-    formSubject: "Contact: IC Desenvolvimento",
   },
 
   navbar: {
     items: [
-      { href: "#hero", label: "Home" },
-      { href: "#servicos", label: "Services" },
-      { href: "#projetos", label: "Projects" },
-      { href: "#como-trabalho", label: "How I work" },
-      { href: "#sobre", label: "About" },
+      { href: "#trabalho", label: "Work" },
+      { href: "/perfil", label: "Recruiters" },
+      { href: "/servicos", label: "Businesses" },
       { href: "#contato", label: "Contact" },
     ],
-    profileLink: "Professional profile",
     navLabel: "Primary",
     professionalItems: [
       { href: "#hero", label: "Profile" },
       { href: "#experiencia", label: "Experience" },
       { href: "#projetos", label: "Projects" },
-      { href: "/", label: "IC Desenvolvimento" },
+      { href: "/servicos", label: "IC Desenvolvimento" },
+    ],
+    servicesItems: [
+      { href: "/", label: "Home" },
+      { href: "#servicos", label: "Services" },
+      { href: "#projetos", label: "Projects" },
+      { href: "#como-trabalho", label: "How I work" },
+      { href: "#sobre", label: "About" },
+      { href: "#contato", label: "Contact" },
     ],
   },
 
@@ -647,19 +560,24 @@ export const en: PortfolioContent = {
   },
 
   seo: {
-    siteName: "IC Desenvolvimento | Iago Cunha",
+    siteName: "Iago Cunha",
     keywords:
-      "IC Desenvolvimento, Iago Cunha, web development, process automation, system integration, custom software, n8n automation, MVP, internal systems, applied AI, FastAPI, React, Fortaleza, Brazil",
+      "Iago Cunha, backend developer, applied AI, FastAPI, Temporal, RAG, Kubernetes, n8n automation, web development, IC Desenvolvimento, Fortaleza, Brazil",
     pages: {
       home: {
-        title: "IC Desenvolvimento | Websites, Automation & Systems",
+        title: "Iago Cunha | Backend & Applied AI",
         description:
-          "Websites, automations, integrations, and systems. IC Desenvolvimento, by Iago Cunha. Fortaleza, Brazil.",
+          "Backend & AI developer: APIs, Temporal agents, RAG, and Kubernetes. Also websites, automation, and internal systems for businesses. Fortaleza, Brazil.",
       },
       profile: {
         title: "Iago Cunha | Backend, Generative AI & Automation",
         description:
           "Backend, generative AI, and automation. Projects, experience, and résumé: Python, FastAPI, Temporal, RAG, and Kubernetes.",
+      },
+      services: {
+        title: "Services | IC Desenvolvimento, by Iago Cunha",
+        description:
+          "Custom websites, automation, integrations, and internal systems. Scope, timeline, and investment defined in the proposal. Fortaleza, Brazil.",
       },
       chatCaseStudy: {
         title: "Case: corporate assistant with agents, Temporal, and RAG | Iago Cunha",
@@ -719,6 +637,7 @@ export const en: PortfolioContent = {
       image: '/images/public-data-monitor-swagger.png',
       imageAlt: 'Public Data Monitor Swagger documentation',
       demoUrl: 'https://public-data-monitor.onrender.com/docs',
+      demoNote: "The demo runs on a free plan and may take about a minute to wake up on the first visit.",
       githubUrl: 'https://github.com/oiagocunha/public-data-monitor',
       architectureTitle: 'Architecture and flow',
       diagramTitles: {

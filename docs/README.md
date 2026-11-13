@@ -15,23 +15,28 @@ Este repositório não é uma vitrine genérica de projetos pessoais. Ele docume
 
 - Case study de plataforma multi-serviço com Temporal, Kafka, RAG e LDAP
 - Visualização interativa de pipeline assíncrono
-- Cards de projeto com complexidade, impacto e contexto técnico
+- Projetos em lista com tipo, papel, stack, evidência e limites
 - Conteúdo multilíngue (`pt`, `en`)
 
 ## Rotas
 
-- Home: `/`
-- Case study Chat com IA: `/case-study/chat-platform`
+- Home: `/` (inglês: `/en`)
+- Serviços para empresas: `/servicos`
+- Perfil profissional: `/perfil`
+- Case study do assistente corporativo: `/case-study/chat-platform`
+- Case study do monitor de dados públicos: `/case-study/public-data-monitor`
 
 ## Documentação
 
-- `docs/CASE_STUDY_CHAT.md` narrativa técnica + diagramas Mermaid
-- `docs/ARCHITECTURE.md` arquitetura do portfólio
+- `docs/CASE_STUDY_AI_AGENTS.md` narrativa técnica do assistente corporativo
+- `docs/CONVERSION_IMPLEMENTATION.md` páginas, evidências e eventos de conversão
+- `docs/SPEC_PORTFOLIO_REDESIGN.md` especificação do redesign
+- `docs/ARCHITECTURE.md` arquitetura do portfólio (anterior ao redesign)
 
-## Currículos oficiais
+## Currículos
 
-- `public/[EN] Resume - Iago Cunha - FullStack Developer.pdf`
-- `public/[PT] Currículo - Dev. Fullstack- Iago Cunha.pdf`
+- `public/curriculo-iago-cunha.pdf`
+- `public/resume-iago-cunha.pdf`
 
 ## Executar localmente
 

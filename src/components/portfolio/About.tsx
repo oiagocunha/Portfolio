@@ -1,43 +1,36 @@
-import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
 import { SocialLinks } from "@/components/shared";
-import { spacing, typography, transitions } from "@/constants/design-tokens";
+import { SectionHeading } from "@/components/shared/SectionHeading";
+import { ResponsiveImage } from "@/components/shared/ResponsiveImage";
 
 const About = () => {
   const { t } = useI18n();
 
   return (
-    <section id="sobre" className={`container ${spacing.section}`}>
-      <FadeInSection>
-        <h2 className={`text-center ${typography.h2}`}>{t.about.title}</h2>
-        <p className="mt-3 text-center text-muted-foreground max-w-2xl mx-auto">
+    <section id="sobre" aria-labelledby="about-title" className="border-t py-16 md:py-20">
+      <div className="container">
+        <SectionHeading id="about-title" title={t.about.title}>
           {t.about.subtitle}
-        </p>
-      </FadeInSection>
-
-      <div className="mt-12 grid gap-8 md:grid-cols-2 md:items-center lg:gap-12">
-        <FadeInSection delay={0.1} direction="left">
-          <div className="order-2 md:order-1">
-            <img
-              src="/images/Conquista.png"
-              alt={t.about.imageAlt}
-              loading="lazy"
-              className={`h-[60dvh] max-w-md mx-auto md:max-w-none rounded-lg shadow-lg ${transitions.default} hover:scale-105`}
-            />
-          </div>
-        </FadeInSection>
-
-        <FadeInSection delay={0.3} direction="right">
-          <article className="space-y-4 order-1 md:order-2">
-            {t.about.paragraphs.map((p, i) => (
-              <p className={`${typography.body} text-muted-foreground`} key={i}>
-                {p}
+        </SectionHeading>
+        <div className="grid gap-8 md:grid-cols-[14rem_1fr] md:gap-8">
+          <ResponsiveImage
+            src="/images/Conquista.png"
+            alt={t.about.imageAlt}
+            sizes="(min-width: 768px) 224px, 320px"
+            loading="lazy"
+            width={780}
+            height={1138}
+            className="w-full max-w-xs rounded-lg border object-cover md:max-w-none"
+          />
+          <div className="space-y-4">
+            {t.about.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="max-w-measure">
+                {paragraph}
               </p>
             ))}
-
             <SocialLinks />
-          </article>
-        </FadeInSection>
+          </div>
+        </div>
       </div>
     </section>
   );

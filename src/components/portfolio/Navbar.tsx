@@ -1,11 +1,9 @@
-import { isProfessionalPath, localizedPath } from "@/lib/paths";
-import { useState } from "react";
+import { ROUTES, isProfessionalPath, isServicesPath, localizedPath } from "@/lib/paths";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
-import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/i18n";
-import { zIndex, transitions, iconSizes, borderRadius } from "@/constants/design-tokens";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function scrollToSection(id: string) {
@@ -20,6 +18,9 @@ function scrollToSection(id: string) {
   return true;
 }
 
+const linkClass =
+  "inline-flex min-h-11 items-center rounded-md px-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground aria-[current=page]:text-foreground";
+
 const Navbar = () => {
   const { t, locale } = useI18n();
   const [isOpen, setIsOpen] = useState(false);
@@ -27,23 +28,36 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const professional = isProfessionalPath(location.pathname);
-  const home = localizedPath("/", locale);
-  const profile = localizedPath("/perfil", locale);
+  const services = isServicesPath(location.pathname);
+  const home = localizedPath(ROUTES.home, locale);
+  const profile = localizedPath(ROUTES.profile, locale);
+  const servicesPage = localizedPath(ROUTES.services, locale);
+  // Page whose sections the "#..." items point to.
+  const base = professional ? profile : services ? servicesPage : home;
 
-  const items = professional
-    ? t.navbar.professionalItems.map((item) =>
-        item.href === "/" ? { ...item, href: home } : item,
-      )
-    : [...t.navbar.items, { href: profile, label: t.navbar.profileLink }];
+  const rawItems = professional
+    ? t.navbar.professionalItems
+    : services
+      ? t.navbar.servicesItems
+      : t.navbar.items;
+  const items = rawItems.map((item) =>
+    item.href.startsWith("/") ? { ...item, href: localizedPath(item.href, locale) } : item,
+  );
 
-  const brandName = professional ? t.brand.professionalName : t.brand.name;
-  const brandByline = professional ? t.brand.professionalByline : t.brand.byline;
+  // The business brand only appears on its own page; everywhere else the site is Iago's.
+  const brandName = services ? t.brand.name : t.brand.professionalName;
+  const brandByline = services ? t.brand.byline : t.brand.professionalByline;
 
-  const destination = (href: string) => {
-    if (!href.startsWith("#")) return href;
-    const base = professional ? profile : home;
-    return `${base}${href}`;
-  };
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
+
+  const destination = (href: string) => (href.startsWith("#") ? `${base}${href}` : href);
 
   const goTo = (href: string) => {
     setIsOpen(false);
@@ -56,11 +70,8 @@ const Navbar = () => {
     const full = destination(href);
     const [pathPart, hashPart = ""] = full.split("#");
     const targetPath = pathPart || home;
-    const onTargetPage =
-      (targetPath === home && !professional) ||
-      (targetPath === profile && professional);
 
-    if (onTargetPage && hashPart) {
+    if (targetPath === base && hashPart) {
       const scrolled = scrollToSection(hashPart);
       if (scrolled) {
         navigate(`${targetPath}#${hashPart}`, { replace: true });
@@ -71,42 +82,45 @@ const Navbar = () => {
     navigate(full);
   };
 
+  const renderLinks = (mobile: boolean, list = items) =>
+    list.map((item) => {
+      const to = destination(item.href);
+      const isCurrentPage = !to.includes("#") && to === location.pathname;
+      return (
+        <Link
+          key={`${item.href}-${item.label}${mobile ? "-mobile" : ""}`}
+          to={to}
+          aria-current={isCurrentPage ? "page" : undefined}
+          onClick={(event) => {
+            event.preventDefault();
+            goTo(item.href);
+          }}
+          className={mobile ? `${linkClass} flex w-full text-base` : linkClass}
+        >
+          {item.label}
+        </Link>
+      );
+    });
+
   return (
     <header
-      className={`fixed top-0 left-0 w-full ${zIndex.fixed} border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg`}
+      className={`fixed top-0 left-0 w-full z-30 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85`}
     >
-      <nav className="container flex h-16 items-center justify-between" aria-label={t.navbar.navLabel}>
+      <nav className="container flex h-16 items-center justify-between gap-4" aria-label={t.navbar.navLabel}>
         <Link
-          to={professional ? profile : home}
-          className="flex items-center space-x-2 font-bold text-xl"
+          to={base}
+          className="flex min-h-11 flex-col justify-center leading-tight"
           onClick={() => setIsOpen(false)}
         >
-          <div
-            className={`h-8 w-8 ${borderRadius.full} bg-gradient-to-r from-primary to-accent flex items-center justify-center text-primary-foreground text-sm font-bold`}
-          >
-            IC
-          </div>
-          <span className="hidden sm:flex flex-col leading-tight">
-            <span className="text-base">{brandName}</span>
-            <span className="text-[11px] font-medium text-muted-foreground">{brandByline}</span>
+          <span className="whitespace-nowrap text-base font-semibold text-foreground">{brandName}</span>
+          <span className="hidden whitespace-nowrap font-mono text-xs text-muted-foreground sm:block">
+            {brandByline}
           </span>
         </Link>
 
-        <div className="hidden lg:flex items-center space-x-4">
-          {items.map((item) => (
-            <Link
-              key={`${item.href}-${item.label}`}
-              to={destination(item.href)}
-              onClick={(event) => {
-                event.preventDefault();
-                goTo(item.href);
-              }}
-              className={`text-sm font-medium ${transitions.colors} hover:text-primary story-link`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
+        <div className="hidden items-center gap-1 lg:flex">{renderLinks(false)}</div>
+        {/* Tablets: the two main destinations of each page (items 2-3) stay visible next to the menu. */}
+        <div className="hidden items-center gap-1 sm:flex lg:hidden">{renderLinks(false, items.slice(1, 3))}</div>
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
@@ -114,44 +128,21 @@ const Navbar = () => {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden inline-flex h-9 w-9 items-center justify-center ${borderRadius.md} border bg-background text-foreground ${transitions.colors} hover:bg-accent hover:text-accent-foreground`}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border bg-background text-foreground transition-colors hover:bg-secondary lg:hidden"
             aria-label={t.a11y.toggleMenu}
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
           >
-            {isOpen ? <X className={iconSizes.sm} /> : <Menu className={iconSizes.sm} />}
+            {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
       </nav>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            id="mobile-navigation"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden border-t bg-background/95 backdrop-blur"
-          >
-            <div className="container py-4 space-y-3">
-              {items.map((item) => (
-                <Link
-                  key={`${item.href}-${item.label}-mobile`}
-                  to={destination(item.href)}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    goTo(item.href);
-                  }}
-                  className={`block py-2 text-sm font-medium ${transitions.colors} hover:text-primary`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isOpen && (
+        <div id="mobile-navigation" className="border-t bg-background lg:hidden">
+          <div className="container flex flex-col py-2">{renderLinks(true)}</div>
+        </div>
+      )}
     </header>
   );
 };

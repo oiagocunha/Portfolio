@@ -1,30 +1,21 @@
-import FadeInSection from "./FadeInSection";
 import { useI18n } from "@/i18n";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { spacing, typography } from "@/constants/design-tokens";
+import { SectionHeading } from "@/components/shared/SectionHeading";
 
 const Applications = () => {
   const { t } = useI18n();
 
   return (
-    <section id="aplicacoes" className={`container ${spacing.section}`}>
-      <FadeInSection>
-        <h2 className={`text-center ${typography.h2}`}>{t.applications.title}</h2>
-      </FadeInSection>
-
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {t.applications.items.map((item, index) => (
-          <FadeInSection key={item.title} delay={index * 0.05}>
-            <Card className="h-full">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg">{item.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground md:text-base">{item.description}</p>
-              </CardContent>
-            </Card>
-          </FadeInSection>
-        ))}
+    <section id="aplicacoes" aria-labelledby="applications-title" className="border-t py-16 md:py-20">
+      <div className="container">
+        <SectionHeading id="applications-title" title={t.applications.title} />
+        <ul className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+          {t.applications.items.map((item) => (
+            <li key={item.title}>
+              <h3 className="font-semibold">{item.title}</h3>
+              <p className="mt-1 text-muted-foreground">{item.description}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

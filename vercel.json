@@ -5,6 +5,14 @@
       "destination": "/perfil/index.html"
     },
     {
+      "source": "/servicos",
+      "destination": "/servicos/index.html"
+    },
+    {
+      "source": "/en/servicos",
+      "destination": "/en/servicos/index.html"
+    },
+    {
       "source": "/en",
       "destination": "/en/index.html"
     },

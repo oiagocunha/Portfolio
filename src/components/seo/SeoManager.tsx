@@ -1,10 +1,12 @@
-import { localizedPath, withoutLocale } from "@/lib/paths";
+import { ROUTES, localizedPath, withoutLocale } from "@/lib/paths";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useI18n } from "@/i18n";
 import { SITE_IMAGE, SITE_URL, upsertLink, upsertMeta } from "@/lib/seo";
 
 const routeToPageKey = (pathname: string) => {
+  if (pathname === ROUTES.profile) return "profile" as const;
+  if (pathname === ROUTES.services) return "services" as const;
   if (pathname === "/case-study/chat-platform") return "chatCaseStudy" as const;
   if (pathname === "/case-study/public-data-monitor") return "publicDataCaseStudy" as const;
   return "home" as const;
@@ -16,8 +18,7 @@ export const SeoManager = () => {
 
   useEffect(() => {
     const pageKey = routeToPageKey(withoutLocale(pathname));
-    const page =
-      withoutLocale(pathname) === "/perfil" ? t.seo.pages.profile : t.seo.pages[pageKey];
+    const page = t.seo.pages[pageKey];
     for (const lang of ["pt", "en"] as const) {
       const code = lang === "pt" ? "pt-BR" : "en";
       let link = document.head.querySelector<HTMLLinkElement>(`link[hreflang="${code}"]`);
@@ -35,7 +36,7 @@ export const SeoManager = () => {
     upsertMeta("name", "description", page.description);
     upsertMeta("name", "keywords", t.seo.keywords);
     upsertMeta("name", "author", "Iago Cunha");
-    const known = ["/", "/perfil", "/case-study/chat-platform", "/case-study/public-data-monitor"].includes(withoutLocale(pathname));
+    const known = [ROUTES.home, ROUTES.profile, ROUTES.services, "/case-study/chat-platform", "/case-study/public-data-monitor"].includes(withoutLocale(pathname));
     upsertMeta("name", "robots", known ? "index, follow, max-snippet:-1, max-image-preview:large" : "noindex, follow");
 
     upsertLink("canonical", canonical);

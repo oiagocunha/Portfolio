@@ -1,33 +1,20 @@
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
 import { useI18n } from "@/i18n";
+import { useDocumentTheme } from "@/hooks/use-document-theme";
 
-const prefersDark = () =>
-  window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-const applyTheme = (theme: "light" | "dark") => {
-  const root = document.documentElement;
-  if (theme === "dark") root.classList.add("dark");
-  else root.classList.remove("dark");
-};
-
+// The initial theme is applied by the inline script in index.html, before first paint.
 const ThemeToggle = () => {
   const { t } = useI18n();
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
-    const saved =
-      (localStorage.getItem("theme") as "light" | "dark") ||
-      (prefersDark() ? "dark" : "light");
-    setTheme(saved);
-    applyTheme(saved);
-  }, []);
+  const theme = useDocumentTheme();
 
   const toggle = () => {
     const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    localStorage.setItem("theme", next);
-    applyTheme(next);
+    document.documentElement.classList.toggle("dark", next === "dark");
+    try {
+      localStorage.setItem("theme", next);
+    } catch {
+      // Storage can be blocked; the choice then lasts for this page view only.
+    }
   };
 
   return (
@@ -35,7 +22,7 @@ const ThemeToggle = () => {
       type="button"
       aria-label={t.a11y.toggleTheme}
       onClick={toggle}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-md border bg-background text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+      className="inline-flex h-11 w-11 items-center justify-center rounded-md border bg-background text-foreground transition-colors hover:bg-secondary lg:h-9 lg:w-9"
     >
       {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
     </button>

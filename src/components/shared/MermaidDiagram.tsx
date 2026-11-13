@@ -67,7 +67,8 @@ export const MermaidDiagram = ({ chart, title }: MermaidDiagramProps) => {
           <span>{title}</span>
           <button
             type="button"
-            className="text-xs font-normal text-muted-foreground underline-offset-2 hover:underline"
+            className="inline-flex min-h-11 items-center text-xs font-normal text-muted-foreground underline-offset-2 hover:underline"
+            aria-expanded={sourceOpen}
             onClick={() => setSourceOpen((open) => !open)}
           >
             {sourceOpen ? t.a11y.hideDiagramSource : t.a11y.showDiagramSource}
