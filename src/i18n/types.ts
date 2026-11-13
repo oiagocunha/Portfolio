@@ -1,7 +1,6 @@
 // Contrato central de tipos para todo o conteúdo do portfólio
 export type Locale = "pt" | "en";
 
-export type ProjectComplexity = "Low" | "Medium" | "High" | "Very High";
 export type ProjectStatus = "live" | "internal" | "unavailable" | "archived";
 export type ProjectKind = "real" | "demo";
 export type ProjectIconKey =
@@ -20,15 +19,11 @@ export interface ProjectItem {
   problem?: string;
   solution?: string;
   demo?: string;
-  docs?: string;
   repo?: string;
   caseStudyPath?: string;
   image?: string;
-  /** GIF/WebP/MP4 opcional; se ausente, usa `image` */
-  media?: string;
   alt: string;
   technologies: string[];
-  complexity: ProjectComplexity;
   /** Delivery / outcome bullets (no invented metrics) */
   impact: string[];
   iconKey: ProjectIconKey;
@@ -37,7 +32,18 @@ export interface ProjectItem {
   kind?: ProjectKind;
   /** Prefill for the per-project WhatsApp CTA */
   whatsappMessage?: string;
+  /** What I did on the project (shown when known). */
+  role?: string;
+  /** Where the work can be checked. */
+  evidence?: string;
+  /** Honest limits: internal, simulated data, etc. */
+  limitation?: string;
+  /** Shown next to the demo link, e.g. a free host that is slow to wake up. */
+  demoNote?: string;
 }
+
+/** Label shown on a work entry, derived from status/kind/repo. */
+export type ProjectTag = "internal" | "client" | "authored" | "demo";
 
 export interface CaseStudyPage {
   label: string;
@@ -52,6 +58,7 @@ export interface CaseStudyPage {
   imageAlt?: string;
   media?: string;
   demoUrl?: string;
+  demoNote?: string;
   githubUrl?: string;
   architectureTitle: string;
   diagramTitles: {
@@ -90,7 +97,6 @@ export interface PortfolioContent {
     changeLanguage: string;
     toggleTheme: string;
     scrollTop: string;
-    openMedia: string;
     showDiagramSource: string;
     hideDiagramSource: string;
     diagramError: string;
@@ -111,17 +117,34 @@ export interface PortfolioContent {
   };
 
   hero: {
-    greeting: string;
     headline: string;
-    typewriter: string[];
     description: string;
     primaryCta: string;
     secondaryCta: string;
     alt: string;
-    role: string;
-    highlights: string[];
     recruitersLabel: string;
     recruitersLink: string;
+  };
+
+  home: {
+    status: string;
+    role: string;
+    lede: string;
+    meta: string;
+    pathsLabel: string;
+    paths: Record<"recruiters" | "companies", {
+      eyebrow: string;
+      title: string;
+      description: string;
+      tags: string[];
+      cta: string;
+    }>;
+    workTitle: string;
+    workSubtitle: string;
+    selectedWork: ProjectIconKey[];
+    contactTitle: string;
+    contactSubtitle: string;
+    whatsappNote: string;
   };
 
   applications: {
@@ -163,19 +186,8 @@ export interface PortfolioContent {
     imageAlt: string;
   };
 
-  specialties: {
-    title: string;
-    subtitle: string;
-    items: Array<{
-      emoji: string;
-      title: string;
-      description: string;
-    }>;
-  };
-
   technologies: {
     title: string;
-    subtitle: string;
     categories: Array<{
       title: string;
       content: string;
@@ -205,49 +217,23 @@ export interface PortfolioContent {
     /** Subtítulo da seção em /perfil (audiência profissional). */
     professionalSubtitle: string;
     demo: string;
-    docs: string;
     code: string;
     caseStudy: string;
-    complexityLabel: string;
     problemLabel: string;
-    solutionLabel: string;
     deliveryLabel: string;
-    techLabel: string;
-    featuredLabel: string;
     earlyWorkLabel: string;
-    earlyWorkSubtitle: string;
+    roleLabel: string;
+    stackLabel: string;
+    evidenceLabel: string;
+    limitationLabel: string;
+    tagLabels: Record<ProjectTag, string>;
     similarWhatsappCta: string;
-    kindLabels: {
-      real: string;
-      demo: string;
-    };
-    statusLabels: {
-      internal: string;
-      unavailable: string;
-      archived: string;
-    };
-    complexity: Record<ProjectComplexity, string>;
     featured: ProjectItem[];
     earlyWork: ProjectItem[];
   };
 
-  certifications: {
-    title: string;
-    subtitle: string;
-    viewCert: string;
-    items: Array<{
-      title: string;
-      issuer: string;
-      date: string;
-      credential: string;
-      link: string;
-      skills: string[];
-    }>;
-  };
-
   experience: {
     title: string;
-    subtitle: string;
     items: Array<{
       company: string;
       role: string;
@@ -259,7 +245,6 @@ export interface PortfolioContent {
 
   contact: {
     title: string;
-    subtitle: string;
     reassurance: string;
     email: string;
     whatsapp: string;
@@ -269,25 +254,6 @@ export interface PortfolioContent {
     whatsappCta: string;
     location: string;
     locationText: string;
-    formTitle: string;
-    nameLabel: string;
-    emailLabel: string;
-    subjectLabel: string;
-    messageLabel: string;
-    namePlaceholder: string;
-    emailPlaceholder: string;
-    subjectPlaceholder: string;
-    messagePlaceholder: string;
-    sending: string;
-    sendButton: string;
-    successTitle: string;
-    successDescription: string;
-    errorTitle: string;
-    errorDescription: string;
-    errorGeneric: string;
-    errorEndpoint: string;
-    errorNetwork: string;
-    formSubject: string;
   };
 
   navbar: {
@@ -295,9 +261,13 @@ export interface PortfolioContent {
       href: string;
       label: string;
     }>;
-    profileLink: string;
     navLabel: string;
     professionalItems: Array<{
+      href: string;
+      label: string;
+    }>;
+    /** Itens da página /servicos. Hrefs com "/" são rotas; com "#", âncoras da página. */
+    servicesItems: Array<{
       href: string;
       label: string;
     }>;
@@ -340,6 +310,10 @@ export interface PortfolioContent {
         description: string;
       };
       profile: {
+        title: string;
+        description: string;
+      };
+      services: {
         title: string;
         description: string;
       };

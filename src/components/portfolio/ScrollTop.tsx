@@ -4,7 +4,8 @@ import { ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/i18n";
 
-const ScrollTop = () => {
+/** `raised` keeps the button above the floating WhatsApp link. */
+const ScrollTop = ({ raised = false }: { raised?: boolean }) => {
   const { t } = useI18n();
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -30,14 +31,14 @@ const ScrollTop = () => {
 
   return createPortal(
     <div
-      className={`fixed bottom-24 right-5 md:bottom-28 md:right-6 z-50 ${visible ? "opacity-100" : "opacity-0 pointer-events-none"} transition-opacity`}
+      className={`fixed right-5 md:right-6 z-50 ${raised ? "bottom-20 md:bottom-24" : "bottom-5 md:bottom-6"} ${visible ? "opacity-100" : "opacity-0 pointer-events-none"} transition-opacity`}
     >
       <Button
         onClick={toTop}
         size="icon"
-        variant="secondary"
+        variant="outline"
         aria-label={t.a11y.scrollTop}
-        className="rounded-full shadow-[0_8px_24px_hsl(var(--accent)/0.35)]"
+        className="h-11 w-11 rounded-full shadow-sm"
       >
         <ArrowUp className="h-4 w-4" />
       </Button>

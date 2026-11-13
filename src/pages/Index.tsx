@@ -1,47 +1,26 @@
-import { lazy, Suspense } from "react";
-import Hero from "@/components/portfolio/Hero";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { MainLayout } from "@/layouts/MainLayout";
-
-const Applications = lazy(() => import("@/components/portfolio/Applications"));
-const Services = lazy(() => import("@/components/portfolio/Services"));
-const Projects = lazy(() => import("@/components/portfolio/Projects"));
-const Process = lazy(() => import("@/components/portfolio/Process"));
-const About = lazy(() => import("@/components/portfolio/About"));
-const Contact = lazy(() => import("@/components/portfolio/Contact"));
-
-const SectionSkeleton = () => (
-  <div className="container py-16 md:py-24">
-    <div className="h-8 w-48 mx-auto bg-muted animate-pulse rounded" />
-    <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {[1, 2, 3].map((i) => (
-        <div key={i} className="h-64 bg-muted animate-pulse rounded-lg" />
-      ))}
-    </div>
-  </div>
-);
+import HomeHero from "@/components/home/HomeHero";
+import SelectedWork from "@/components/home/SelectedWork";
+import HomeContact from "@/components/home/HomeContact";
+import { legacyHomeAnchorTarget } from "@/lib/paths";
 
 const Index = () => {
+  const { pathname, hash } = useLocation();
+  const navigate = useNavigate();
+
+  // Links shared before the redesign (e.g. /#servicos) point to sections now on /servicos.
+  useEffect(() => {
+    const target = legacyHomeAnchorTarget(pathname, hash);
+    if (target) navigate(target, { replace: true });
+  }, [pathname, hash, navigate]);
+
   return (
     <MainLayout>
-      <Hero />
-      <Suspense fallback={<SectionSkeleton />}>
-        <Services />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <Applications />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <Projects />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <Process />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <About />
-      </Suspense>
-      <Suspense fallback={<SectionSkeleton />}>
-        <Contact />
-      </Suspense>
+      <HomeHero />
+      <SelectedWork />
+      <HomeContact />
     </MainLayout>
   );
 };

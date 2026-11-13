@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protótipo · Home com dois caminhos</title>
+<!-- Protótipo isolado (SPEC_PORTFOLIO_REDESIGN.md). Não é código de produção. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F6F2; --surface: #FFFFFF; --ink: #15171C; --muted: #565B66;
+    --line: #DEDBD3; --accent: #0B6E5F; --on-accent: #FFFFFF; --warn: #8A5A00;
+    --sans: "IBM Plex Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --s1: .25rem; --s2: .5rem; --s3: .75rem; --s4: 1rem; --s6: 1.5rem; --s8: 2rem; --s12: 3rem; --s16: 4rem; --s24: 6rem;
+    --t-xs: .8125rem; --t-sm: .875rem; --t-md: 1rem; --t-lg: 1.25rem; --t-xl: 1.5625rem; --t-2xl: 1.953rem;
+    --t-display: clamp(2.441rem, 1.6rem + 3.6vw, 3.815rem);
+    --wrap: 70rem; --measure: 40rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F1114; --surface: #16191E; --ink: #ECEDEE; --muted: #9BA1AC;
+      --line: #262A31; --accent: #4FD1B4; --on-accent: #0F1114; --warn: #E5B45A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F1114; --surface: #16191E; --ink: #ECEDEE; --muted: #9BA1AC;
+    --line: #262A31; --accent: #4FD1B4; --on-accent: #0F1114; --warn: #E5B45A;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 var(--t-md)/1.6 var(--sans); }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--s4); }
+  @media (min-width: 48rem) { .wrap { padding: 0 var(--s8); } }
+  .mono { font-family: var(--mono); font-size: var(--t-xs); letter-spacing: .02em; }
+  .muted { color: var(--muted); }
+
+  /* Header */
+  header { border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; min-height: 3.5rem; gap: var(--s4); }
+  .brand { font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .bar nav { display: flex; gap: var(--s3); align-items: center; white-space: nowrap; }
+  @media (min-width: 40rem) { .bar nav { gap: var(--s4); } }
+  .bar nav a { text-decoration: none; font-size: var(--t-sm); padding: var(--s2) 0; }
+  .bar nav a:hover { color: var(--accent); }
+  .bar .hide-sm { display: none; }
+  @media (min-width: 40rem) { .bar .hide-sm { display: inline; } }
+  .chip { border: 1px solid var(--line); background: transparent; color: var(--ink); font: 500 var(--t-xs) var(--mono); padding: var(--s2) var(--s3); border-radius: 6px; cursor: pointer; min-height: 2.25rem; }
+
+  /* Hero */
+  .hero { padding: var(--s16) 0 var(--s12); }
+  .status { display: inline-flex; gap: var(--s2); align-items: center; }
+  .status::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); }
+  h1 { font-size: var(--t-display); line-height: 1.05; letter-spacing: -.02em; font-weight: 600; margin: var(--s4) 0 var(--s3); }
+  .role { font-size: var(--t-xl); line-height: 1.3; font-weight: 500; margin: 0; }
+  .lede { max-width: var(--measure); color: var(--muted); font-size: var(--t-lg); line-height: 1.55; margin: var(--s6) 0 0; }
+  .meta { margin-top: var(--s4); }
+
+  /* Two paths */
+  .paths { display: grid; gap: var(--s4); margin-top: var(--s12); }
+  @media (min-width: 48rem) { .paths { grid-template-columns: 1fr 1fr; } }
+  .path { display: flex; flex-direction: column; gap: var(--s3); padding: var(--s6); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; transition: border-color .15s; }
+  .path:hover { border-color: var(--accent); }
+  .path h2 { margin: 0; font-size: var(--t-xl); font-weight: 600; line-height: 1.25; }
+  .path p { margin: 0; color: var(--muted); }
+  .path .go { margin-top: auto; padding-top: var(--s2); color: var(--accent); font-weight: 500; }
+  .path ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: var(--s2); }
+  .path li { font: 400 var(--t-xs) var(--mono); border: 1px solid var(--line); border-radius: 4px; padding: 2px var(--s2); color: var(--muted); }
+
+  /* Sections */
+  section.block { padding: var(--s16) 0; border-top: 1px solid var(--line); }
+  .head { display: grid; gap: var(--s2); margin-bottom: var(--s8); }
+  @media (min-width: 48rem) { .head { grid-template-columns: 14rem 1fr; gap: var(--s8); align-items: baseline; } }
+  .head h2 { margin: 0; font-size: var(--t-2xl); line-height: 1.2; font-weight: 600; letter-spacing: -.01em; }
+  .head p { margin: 0; max-width: var(--measure); color: var(--muted); }
+
+  /* Work list */
+  .work { list-style: none; margin: 0; padding: 0; }
+  .item { display: grid; gap: var(--s3); padding: var(--s6) 0; border-top: 1px solid var(--line); }
+  .item:last-child { border-bottom: 1px solid var(--line); }
+  @media (min-width: 48rem) { .item { grid-template-columns: 14rem 1fr; gap: var(--s8); } }
+  .tag { display: inline-block; font: 500 var(--t-xs) var(--mono); padding: 2px var(--s2); border-radius: 4px; border: 1px solid currentColor; }
+  .tag.real { color: var(--accent); }
+  .tag.internal { color: var(--ink); }
+  .tag.demo { color: var(--warn); }
+  .item h3 { margin: 0 0 var(--s2); font-size: var(--t-lg); font-weight: 600; line-height: 1.3; }
+  .item p { margin: 0 0 var(--s3); max-width: 44rem; }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: var(--s1) var(--s4); margin: 0 0 var(--s3); font-size: var(--t-sm); }
+  dt { font-family: var(--mono); font-size: var(--t-xs); color: var(--muted); padding-top: 2px; }
+  dd { margin: 0; max-width: 40rem; }
+  .links { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); font-size: var(--t-sm); }
+  .links a { color: var(--accent); text-underline-offset: 3px; padding: var(--s2) 0; font-weight: 500; }
+
+  /* Contact */
+  .contact { display: grid; gap: var(--s4); }
+  @media (min-width: 48rem) { .contact { grid-template-columns: repeat(3, 1fr); } }
+  .contact a { display: block; padding: var(--s4); border: 1px solid var(--line); border-radius: 10px; text-decoration: none; background: var(--surface); }
+  .contact a:hover { border-color: var(--accent); }
+  .contact strong { display: block; font-weight: 600; }
+  .btn { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 var(--s6); border-radius: 8px; background: var(--accent); color: var(--on-accent); font-weight: 600; text-decoration: none; }
+
+  footer { padding: var(--s8) 0 var(--s12); border-top: 1px solid var(--line); font-size: var(--t-sm); }
+  .note { margin: var(--s4) auto 0; max-width: var(--wrap); padding: var(--s3) var(--s4); font: 400 var(--t-xs) var(--mono); color: var(--muted); border: 1px dashed var(--line); border-radius: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#">Iago Cunha</a>
+    <nav aria-label="Principal">
+      <a class="hide-sm" href="#trabalho">Trabalho</a>
+      <a href="#perfil">Recrutadores</a>
+      <a href="#servicos">Empresas</a>
+      <a class="hide-sm" href="#contato">Contato</a>
+      <button class="chip" type="button" id="theme" aria-label="Alternar tema claro ou escuro">◐</button>
+      <a class="chip" href="#" lang="en" aria-label="English version" style="text-decoration:none">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="note">Protótipo isolado para aprovação. Conteúdo retirado dos locales atuais; links são ilustrativos.</p>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <span class="mono muted status">Backend &amp; IA no Sistema FIEC · desde 03/2025</span>
+      <h1 id="hero-title">Iago Cunha</h1>
+      <p class="role">Desenvolvedor Backend &amp; IA aplicada</p>
+      <p class="lede">APIs, orquestração de agentes com Temporal, pipelines RAG e autenticação corporativa em produção. Também construo sites, automações e sistemas internos para empresas.</p>
+      <p class="mono muted meta">Fortaleza, Brasil · Inglês B2 · Disponível para remoto</p>
+
+      <div class="paths">
+        <a class="path" href="#perfil" id="perfil">
+          <span class="mono muted">Para recrutadores</span>
+          <h2>Experiência, cases técnicos e currículo</h2>
+          <p>O que construí no assistente corporativo, decisões de arquitetura e projetos com código aberto.</p>
+          <ul aria-label="Tecnologias principais"><li>Python</li><li>FastAPI</li><li>Temporal</li><li>RAG</li><li>Kubernetes</li></ul>
+          <span class="go">Ver perfil profissional →</span>
+        </a>
+        <a class="path" href="#servicos" id="servicos">
+          <span class="mono muted">Para empresas</span>
+          <h2>Sites, automações e sistemas internos</h2>
+          <p>Escopo fechado na proposta, a partir do problema da operação. Projetos reais e demonstrativos para ver antes de conversar.</p>
+          <ul aria-label="Tipos de entrega"><li>Site</li><li>Automação n8n</li><li>Sistema interno</li></ul>
+          <span class="go">Ver serviços →</span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <section class="block" id="trabalho" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="work-title">Trabalho selecionado</h2>
+        <p>Cada item diz o tipo de projeto, o meu papel e onde dá para verificar. Demonstrativos estão marcados como tal.</p>
+      </div>
+      <ol class="work">
+        <li class="item">
+          <div><span class="tag internal">Corporativo · interno</span><p class="mono muted" style="margin-top:.5rem">2025 – atual</p></div>
+          <div>
+            <h3>Assistente corporativo com agentes</h3>
+            <p>Chat interno com gateway compatível com a API OpenAI, agentes orquestrados no Temporal e busca em documentos por contexto.</p>
+            <dl>
+              <dt>Papel</dt><dd>Gateway com streaming SSE, roteamento entre habilidades com bases RAG próprias, retry/backoff/DLQ e estabilização do ambiente.</dd>
+              <dt>Stack</dt><dd>Python · FastAPI · Temporal · Kafka · PostgreSQL/pgvector · Kubernetes</dd>
+              <dt>Evidência</dt><dd>Case study com diagramas. Telemetria do piloto: 47 usuários cadastrados, 31 com uso.</dd>
+              <dt>Limite</dt><dd>Sistema interno: sem demo pública nem código.</dd>
+            </dl>
+            <div class="links"><a href="#">Ler o case</a></div>
+          </div>
+        </li>
+        <li class="item">
+          <div><span class="tag real">Autoral · código aberto</span></div>
+          <div>
+            <h3>Job Match Alerts</h3>
+            <p>Compara currículo e vaga com LLMs: upload de PDF, importação de vaga por URL e ranking explicável de compatibilidade.</p>
+            <dl>
+              <dt>Stack</dt><dd>Python · FastAPI · PostgreSQL · React · OpenAI · Pytest · GitHub Actions</dd>
+            </dl>
+            <div class="links"><a href="#">Demo</a><a href="#">Código</a></div>
+          </div>
+        </li>
+        <li class="item">
+          <div><span class="tag real">Cliente real</span></div>
+          <div>
+            <h3>FV Crochê</h3>
+            <p>Vitrine com categorias e carrinho; o pedido fecha no WhatsApp com cotação de frete no checkout.</p>
+            <dl><dt>Stack</dt><dd>React · TypeScript · Tailwind CSS · Vite</dd></dl>
+            <div class="links"><a href="#">Ver site</a></div>
+          </div>
+        </li>
+        <li class="item">
+          <div><span class="tag demo">Demonstrativo</span></div>
+          <div>
+            <h3>AssistIA</h3>
+            <p>Atendimento com base documental: respostas simuladas a partir dos documentos de uma empresa fictícia, com fontes citadas.</p>
+            <dl><dt>Stack</dt><dd>Next.js · TypeScript · Tailwind CSS</dd></dl>
+            <div class="links"><a href="#">Ver demonstração</a></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="contato" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="contact-title">Contato</h2>
+        <p>Vaga ou projeto: diga o contexto e o que precisa.</p>
+      </div>
+      <div class="contact">
+        <a href="#"><strong>E-mail</strong><span class="muted mono">dev.iagocunha@gmail.com</span></a>
+        <a href="#"><strong>LinkedIn</strong><span class="muted mono">/in/oiagocunha</span></a>
+        <a href="#"><strong>WhatsApp</strong><span class="muted mono">projetos para empresas</span></a>
+      </div>
+      <p style="margin-top:2rem"><a class="btn" href="#">Baixar currículo (PDF)</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap muted">Iago Cunha · Backend &amp; IA · IC Desenvolvimento para projetos de empresas</div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement, btn = document.getElementById("theme");
+    try { var s = localStorage.getItem("proto-theme"); if (s) root.dataset.theme = s; } catch (e) {}
+    btn.addEventListener("click", function () {
+      var dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+      root.dataset.theme = dark ? "light" : "dark";
+      try { localStorage.setItem("proto-theme", root.dataset.theme); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>

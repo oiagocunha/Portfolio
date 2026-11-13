@@ -1,10 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Iago Cunha">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#8E44AD"/>
-      <stop offset="100%" stop-color="#6C3483"/>
-    </linearGradient>
-  </defs>
-  <rect width="512" height="512" rx="96" fill="url(#g)"/>
-  <text x="50%" y="54%" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="200" font-weight="700" fill="#ffffff">IC</text>
+  <rect width="512" height="512" rx="96" fill="#0F1114"/>
+  <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-family="IBM Plex Mono, Consolas, monospace" font-size="210" font-weight="600" fill="#ECEDEE">IC</text>
+  <rect x="136" y="392" width="240" height="20" rx="10" fill="#4FD1B4"/>
 </svg>

@@ -1,17 +1,17 @@
 import { MessageCircle } from "lucide-react";
 import { useI18n } from "@/i18n";
-import { zIndex } from "@/constants/design-tokens";
+import { whatsappUrl } from "@/lib/contact";
 
 const WhatsAppFloat = () => {
   const { t } = useI18n();
-  const href = `https://wa.me/${t.contact.whatsappNumber}?text=${encodeURIComponent(t.contact.whatsappMessage)}`;
+  const href = whatsappUrl(t.contact.whatsappNumber, t.contact.whatsappMessage);
 
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer"
-      className={`fixed bottom-5 right-5 md:bottom-6 md:right-6 ${zIndex.fixed} inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-lg transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#25D366]`}
+      className={`fixed bottom-5 right-5 md:bottom-6 md:right-6 z-30 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#25D366] px-4 text-sm font-semibold text-[#0F1114] shadow-md transition-colors hover:bg-[#1FBF5B]`}
       aria-label={t.whatsappFloat.label}
     >
       <MessageCircle className="h-5 w-5 shrink-0" aria-hidden />

@@ -1,241 +1,60 @@
-import { recordConversion } from "@/lib/conversions";
-import { isContactAccepted } from "@/lib/contact-response";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { toast } from "@/hooks/use-toast";
-import { Send, Mail, MapPin, MessageCircle } from "lucide-react";
-import FadeInSection from "./FadeInSection";
+import { MessageCircle } from "lucide-react";
 import { useI18n } from "@/i18n";
-import { spacing, typography, iconSizes, borderRadius } from "@/constants/design-tokens";
+import { SectionHeading } from "@/components/shared/SectionHeading";
+import { EMAIL, LINKEDIN_URL, whatsappUrl } from "@/lib/contact";
+import { mutedLinkClass } from "@/lib/styles";
 
+/** Contact block of /servicos: WhatsApp first, then the other channels. */
 const Contact = () => {
   const { t } = useI18n();
-  const [loading, setLoading] = useState(false);
+  const whatsappHref = whatsappUrl(t.contact.whatsappNumber, t.contact.whatsappMessage);
 
-  const whatsappHref = `https://wa.me/${t.contact.whatsappNumber}?text=${encodeURIComponent(t.contact.whatsappMessage)}`;
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    const form = e.target as HTMLFormElement;
-    const controller = new AbortController();
-    const timeout = window.setTimeout(() => controller.abort(), 15000);
-
-    try {
-      const endpoint = import.meta.env.VITE_FORMSUBMIT_ENDPOINT;
-      if (!endpoint) throw new Error(t.contact.errorEndpoint);
-
-      const data = new FormData(form);
-      const name = String(data.get("name") || "").trim();
-      const email = String(data.get("email") || "").trim();
-      const subject = String(data.get("subject") || "").trim();
-      const message = String(data.get("message") || "").trim();
-      const honeypot = String(data.get("company") || "").trim();
-
-      if (honeypot) {
-        toast({
-          title: t.contact.successTitle,
-          description: t.contact.successDescription,
-        });
-        form.reset();
-        return;
-      }
-
-      if (!name || !email || !message) throw new Error(t.contact.errorDescription);
-
-      const formDataToSend = new FormData();
-      formDataToSend.append("name", name);
-      formDataToSend.append("email", email);
-      formDataToSend.append("_replyto", email);
-      if (subject) formDataToSend.append("subject", subject);
-      formDataToSend.append("message", message);
-      formDataToSend.append("_captcha", "false");
-      formDataToSend.append(
-        "_subject",
-        subject ? `${t.contact.formSubject}: ${subject}` : t.contact.formSubject,
-      );
-
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: formDataToSend,
-        signal: controller.signal,
-      });
-
-      if (!response.ok) throw new Error(t.contact.errorGeneric);
-
-      const result: unknown = await response.json().catch(() => null);
-      if (!isContactAccepted(result)) throw new Error(t.contact.errorGeneric);
-      recordConversion("contact_accepted", { page: window.location.pathname });
-
-      toast({
-        title: t.contact.successTitle,
-        description: t.contact.successDescription,
-      });
-      form.reset();
-    } catch (err: unknown) {
-      const ownMessage =
-        err instanceof Error &&
-        (err.message === t.contact.errorEndpoint ||
-          err.message === t.contact.errorDescription ||
-          err.message === t.contact.errorGeneric)
-          ? err.message
-          : null;
-      const isAbort = err instanceof Error && err.name === "AbortError";
-      const isNetwork = err instanceof TypeError;
-      const message = isAbort || isNetwork || !ownMessage ? t.contact.errorNetwork : ownMessage;
-      toast({
-        title: t.contact.errorTitle,
-        description: message,
-      });
-    } finally {
-      window.clearTimeout(timeout);
-      setLoading(false);
-    }
-  };
+  const channels = [
+    { label: t.contact.whatsapp, value: t.contact.whatsappDisplay, href: whatsappHref },
+    { label: t.contact.email, value: EMAIL, href: `mailto:${EMAIL}` },
+    { label: "LinkedIn", value: "/in/oiagocunha", href: LINKEDIN_URL },
+    { label: t.contact.location, value: t.contact.locationText },
+  ];
 
   return (
-    <section id="contato" className={`container ${spacing.section}`}>
-      <FadeInSection>
-        <h2 className={`text-center ${typography.h2}`}>{t.contact.title}</h2>
-        <p className="mt-4 text-center text-muted-foreground max-w-2xl mx-auto">
-          {t.contact.subtitle}
-        </p>
-        <p className="mt-3 text-center text-sm text-muted-foreground max-w-2xl mx-auto">
+    <section id="contato" aria-labelledby="services-contact-title" className="border-t py-16 md:py-20">
+      <div className="container">
+        <SectionHeading id="services-contact-title" title={t.contact.title}>
           {t.contact.reassurance}
-        </p>
-        <div className="mt-6 flex justify-center">
-          <Button asChild variant="hero" size="lg" className="w-full max-w-sm sm:w-auto">
+        </SectionHeading>
+        <div className="md:ml-[16rem]">
+          <Button asChild variant="hero" size="lg">
             <a href={whatsappHref} target="_blank" rel="noreferrer">
-              <MessageCircle className="mr-2 h-4 w-4" />
+              <MessageCircle aria-hidden />
               {t.contact.whatsappCta}
             </a>
           </Button>
+          <dl className="mt-8 grid gap-x-6 gap-y-4 sm:grid-cols-2">
+            {channels.map(({ label, value, href }) => {
+              const external = href && !href.startsWith("mailto:");
+              return (
+                <div key={label}>
+                  <dt className="font-mono text-xs text-muted-foreground">{label}</dt>
+                  <dd>
+                    {href ? (
+                      <a
+                        href={href}
+                        target={external ? "_blank" : undefined}
+                        rel={external ? "noreferrer" : undefined}
+                        className={`${mutedLinkClass} break-all text-foreground`}
+                      >
+                        {value}
+                      </a>
+                    ) : (
+                      <span className="inline-flex min-h-11 items-center">{value}</span>
+                    )}
+                  </dd>
+                </div>
+              );
+            })}
+          </dl>
         </div>
-      </FadeInSection>
-
-      <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-12">
-        <FadeInSection delay={0.1} direction="left">
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className={`${borderRadius.md} border p-2 text-accent`}>
-                <MessageCircle className={iconSizes.md} />
-              </div>
-              <div>
-                <p className="font-medium">{t.contact.whatsapp}</p>
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-muted-foreground hover:text-foreground underline-offset-2 hover:underline"
-                >
-                  {t.contact.whatsappDisplay}
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <div className={`${borderRadius.md} border p-2 text-accent`}>
-                <Mail className={iconSizes.md} />
-              </div>
-              <div>
-                <p className="font-medium">{t.contact.email}</p>
-                <a
-                  href="mailto:dev.iagocunha@gmail.com"
-                  className="text-sm text-muted-foreground hover:text-foreground underline-offset-2 hover:underline"
-                >
-                  dev.iagocunha@gmail.com
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <div className={`${borderRadius.md} border p-2 text-accent`}>
-                <MapPin className={iconSizes.md} />
-              </div>
-              <div>
-                <p className="font-medium">{t.contact.location}</p>
-                <p className="text-sm text-muted-foreground">{t.contact.locationText}</p>
-              </div>
-            </div>
-          </div>
-        </FadeInSection>
-
-        <FadeInSection delay={0.2} direction="right">
-          <Card>
-            <CardHeader>
-              <CardTitle>{t.contact.formTitle}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="hidden" aria-hidden="true">
-                  <Label htmlFor="company">Company</Label>
-                  <Input id="company" name="company" tabIndex={-1} autoComplete="off" />
-                </div>
-
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">{t.contact.nameLabel}</Label>
-                    <Input
-                      id="name"
-                      placeholder={t.contact.namePlaceholder}
-                      required
-                      name="name"
-                      autoComplete="name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">{t.contact.emailLabel}</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder={t.contact.emailPlaceholder}
-                      required
-                      name="email"
-                      autoComplete="email"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="subject">{t.contact.subjectLabel}</Label>
-                  <Input
-                    id="subject"
-                    placeholder={t.contact.subjectPlaceholder}
-                    name="subject"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">{t.contact.messageLabel}</Label>
-                  <Textarea
-                    id="message"
-                    placeholder={t.contact.messagePlaceholder}
-                    required
-                    rows={5}
-                    className="resize-none"
-                    name="message"
-                  />
-                </div>
-
-                <Button type="submit" className="w-full" disabled={loading} variant="outline">
-                  {loading ? (
-                    t.contact.sending
-                  ) : (
-                    <>
-                      <Send className="h-4 w-4 mr-2" />
-                      {t.contact.sendButton}
-                    </>
-                  )}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </FadeInSection>
       </div>
     </section>
   );

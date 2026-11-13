@@ -1,18 +1,23 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { isContactAccepted } from '../src/lib/contact-response.ts';
-import { localizedPath, withoutLocale } from '../src/lib/paths.ts';
+import { legacyHomeAnchorTarget, localizedPath, withoutLocale } from '../src/lib/paths.ts';
 
-test('contact clears only for explicit boolean/string success', () => {
-  for (const response of [null, {}, {success:false}, {success:'false'}, {success:1}, 'ok']) assert.equal(isContactAccepted(response), false);
-  for (const response of [{success:true}, {success:'true'}]) assert.equal(isContactAccepted(response), true);
-});
 test('language paths preserve destination without doubling prefixes', () => {
   assert.equal(localizedPath('/perfil', 'en'), '/en/perfil');
   assert.equal(localizedPath('/en/perfil', 'pt'), '/perfil');
   assert.equal(localizedPath('/en', 'en'), '/en');
   assert.equal(withoutLocale('/enterprise'), '/enterprise');
+});
+test('old home anchors for business sections move to the services page', () => {
+  assert.equal(legacyHomeAnchorTarget('/', '#servicos'), '/servicos#servicos');
+  assert.equal(legacyHomeAnchorTarget('/en', '#como-trabalho'), '/en/servicos#como-trabalho');
+  assert.equal(legacyHomeAnchorTarget('/', '#projetos'), '/servicos#projetos');
+  assert.equal(legacyHomeAnchorTarget('/', '#sobre'), '/servicos#sobre');
+  // Sections that still exist on the home, other pages and plain visits stay put.
+  assert.equal(legacyHomeAnchorTarget('/', '#contato'), null);
+  assert.equal(legacyHomeAnchorTarget('/', ''), null);
+  assert.equal(legacyHomeAnchorTarget('/perfil', '#projetos'), null);
 });
 const workflow = JSON.parse(readFileSync(new URL('../n8n/workflows/prospeccao-comercial.json', import.meta.url)));
 const code = name => workflow.nodes.find(n => n.name === name).parameters.jsCode;

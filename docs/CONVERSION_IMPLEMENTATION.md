@@ -2,11 +2,12 @@
 
 ## Páginas
 
-- `/`: serviços, projeto comercial, processo e contato.
+- `/`: apresentação, caminhos para recrutadores e empresas, trabalho selecionado e contato.
+- `/servicos`: serviços, projetos comerciais e demonstrativos, processo e contato.
 - `/perfil`: experiência, cases técnicos, formação e currículo atualizado.
-- `/en` e `/en/perfil`: versões em inglês. O PDF é identificado como português também na página inglesa; não reutilizamos a tradução antiga como se estivesse atualizada.
+- `/en`, `/en/perfil` e `/en/servicos`: versões em inglês. O PDF é identificado como português também na página inglesa; não reutilizamos a tradução antiga como se estivesse atualizada.
 - Cases disponíveis nos dois idiomas por URLs próprias.
-- O build gera HTML com metadados específicos e sitemap em oito URLs. O conteúdo interativo continua sendo uma SPA; isso não é renderização completa no servidor.
+- O build gera HTML com metadados específicos e sitemap com dez URLs. O conteúdo interativo continua sendo uma SPA; isso não é renderização completa no servidor.
 - A nova imagem social está em `public/images/social-card.png`.
 
 ## Conteúdo e evidências
@@ -19,11 +20,11 @@ O histórico FIEC mantém a separação anterior entre estágio e desenvolviment
 
 ## Eventos de conversão
 
-`page_view`, `whatsapp_click`, `email_click`, `case_open`, `resume_download` e `contact_accepted` são publicados em `window.dataLayer` e no evento DOM `portfolio:conversion`.
+`page_view`, `whatsapp_click`, `email_click`, `case_open`, e `resume_download` são publicados em `window.dataLayer` e no evento DOM `portfolio:conversion`.
 
 **Instrumentação pronta, sem coleta remota configurada.** Conectar a uma ferramenta de analytics para histórico e relatórios. Não existe painel de conversões ativo nesta entrega. Nenhum texto de mensagem, e-mail, telefone ou URL externa completa é enviado pelos eventos. `utm_source` é limitado a um identificador de campanha; não usar dados pessoais nesse parâmetro.
 
-`contact_accepted` significa confirmação explícita do FormSubmit, não leitura pelo destinatário nem entrega comprovada na caixa de entrada. Cliques em WhatsApp não equivalem a conversas iniciadas.
+O formulário de contato (FormSubmit) foi removido: o endpoint não estava configurado no build publicado. Cliques em WhatsApp e e-mail não equivalem a conversas iniciadas.
 
 ## Validação
 

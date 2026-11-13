@@ -1,91 +1,67 @@
-import { useMemo, useState } from "react";
-import FadeInSection from "./FadeInSection";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { MermaidDiagram } from "@/components/shared/MermaidDiagram";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { spacing, typography } from "@/constants/design-tokens";
+import { MermaidDiagram } from "@/components/shared/MermaidDiagram";
+import { SectionHeading } from "@/components/shared/SectionHeading";
 import { useI18n } from "@/i18n";
 import { localizedPath } from "@/lib/paths";
+import { accentLinkClass } from "@/lib/styles";
 
 const WorkflowShowcase = () => {
   const { t, locale } = useI18n();
-  const { stages } = t.workflowShowcase;
-  const [activeStage, setActiveStage] = useState(stages[0].id);
-
-  const selected = useMemo(
-    () => stages.find((stage) => stage.id === activeStage) ?? stages[0],
-    [activeStage, stages],
-  );
+  const w = t.workflowShowcase;
+  const [activeId, setActiveId] = useState(w.stages[0].id);
+  const selected = w.stages.find((stage) => stage.id === activeId) ?? w.stages[0];
 
   return (
-    <section className={`container ${spacing.section}`}>
-      <FadeInSection>
-        <h2 className={`text-center ${typography.h2}`}>{t.workflowShowcase.title}</h2>
-        <p className="mt-3 text-center text-muted-foreground max-w-3xl mx-auto">
-          {t.workflowShowcase.subtitle}
-        </p>
-      </FadeInSection>
+    <section id="fluxo" aria-labelledby="workflow-title" className="border-t py-16 md:py-20">
+      <div className="container">
+        <SectionHeading id="workflow-title" title={w.title}>
+          {w.subtitle}
+        </SectionHeading>
 
-      <div className="mt-8 grid gap-5 lg:grid-cols-2">
-        <FadeInSection delay={0.1}>
-          <Card>
-            <CardHeader>
-              <CardTitle>{t.workflowShowcase.cardTitle}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3" role="tablist" aria-label={t.workflowShowcase.cardTitle}>
-              {stages.map((stage) => {
-                const isActive = stage.id === activeStage;
+        <div className="grid gap-6 md:grid-cols-[14rem_1fr] md:gap-8">
+          <div>
+            <p className="mb-2 font-mono text-xs text-muted-foreground">{w.cardTitle}</p>
+            <ul className="space-y-2">
+              {w.stages.map((stage) => {
+                const active = stage.id === activeId;
                 return (
-                  <button
-                    key={stage.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    onClick={() => setActiveStage(stage.id)}
-                    className={`w-full rounded-lg border p-3 text-left transition ${
-                      isActive ? "border-primary bg-primary/10" : "hover:bg-muted/40"
-                    }`}
-                  >
-                    <p className="font-medium">{stage.title}</p>
-                    <p className="mt-1 text-sm text-muted-foreground">{stage.goal}</p>
-                  </button>
+                  <li key={stage.id}>
+                    <button
+                      type="button"
+                      aria-pressed={active}
+                      onClick={() => setActiveId(stage.id)}
+                      className={`min-h-11 w-full rounded-md border px-3 py-2 text-left text-sm font-medium transition-colors ${
+                        active ? "border-accent bg-card" : "hover:bg-secondary"
+                      }`}
+                    >
+                      {stage.title}
+                    </button>
+                  </li>
                 );
               })}
-            </CardContent>
-          </Card>
-        </FadeInSection>
+            </ul>
+          </div>
 
-        <FadeInSection delay={0.2}>
-          <Card className="h-full">
-            <CardHeader>
-              <CardTitle>{selected.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">{selected.goal}</p>
-              <div className="flex flex-wrap gap-2">
-                {selected.tech.map((item) => (
-                  <Badge key={item} variant="secondary">
-                    {item}
-                  </Badge>
-                ))}
-              </div>
-              <MermaidDiagram title={t.workflowShowcase.diagramTitle} chart={selected.diagram} />
-              <div className="rounded-lg border bg-muted/30 p-4 text-sm text-muted-foreground">
-                <p>
-                  <strong>{t.workflowShowcase.inPracticeLabel}</strong>{" "}
-                  {t.workflowShowcase.inPracticeText}
-                </p>
-              </div>
-              <Button asChild variant="hero">
-                <Link to={localizedPath("/case-study/chat-platform", locale)}>
-                  {t.workflowShowcase.cta}
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
-        </FadeInSection>
+          <div className="min-w-0">
+            <h3 className="text-lg font-semibold">{selected.title}</h3>
+            <p className="mt-1 max-w-2xl text-muted-foreground">{selected.goal}</p>
+            <p className="mt-2 font-mono text-xs text-muted-foreground">{selected.tech.join(" · ")}</p>
+            <div className="mt-4">
+              <MermaidDiagram title={w.diagramTitle} chart={selected.diagram} />
+            </div>
+            <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
+              <strong className="font-semibold text-foreground">{w.inPracticeLabel}</strong>{" "}
+              {w.inPracticeText}
+            </p>
+            <Link
+              to={localizedPath("/case-study/chat-platform", locale)}
+              className={`${accentLinkClass} mt-4 text-sm`}
+            >
+              {w.cta}
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

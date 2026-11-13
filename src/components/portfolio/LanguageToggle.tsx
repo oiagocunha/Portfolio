@@ -1,4 +1,4 @@
-import { Globe, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,8 +11,8 @@ const LanguageToggle = () => {
   const { locale, setLocale, t } = useI18n();
 
   const languages = [
-    { code: "pt" as Locale, label: "Português", flag: "🇧🇷" },
-    { code: "en" as Locale, label: "English", flag: "🇺🇸" },
+    { code: "pt" as Locale, label: "Português", short: "PT" },
+    { code: "en" as Locale, label: "English", short: "EN" },
   ];
 
   const currentLanguage = languages.find((lang) => lang.code === locale);
@@ -23,11 +23,9 @@ const LanguageToggle = () => {
         <button
           type="button"
           aria-label={t.a11y.changeLanguage}
-          className="inline-flex h-9 items-center gap-2 rounded-md border bg-background px-3 text-foreground transition-colors hover:bg-accent hover:text-accent-foreground text-sm font-medium"
+          className="inline-flex h-11 min-w-11 items-center justify-center rounded-md border bg-background px-2 font-mono text-xs font-medium text-foreground transition-colors hover:bg-secondary lg:h-9 lg:min-w-9"
         >
-          <Globe className="h-4 w-4" />
-          <span className="hidden sm:inline">{currentLanguage?.label}</span>
-          <span className="sm:hidden">{currentLanguage?.flag}</span>
+          {currentLanguage?.short}
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[180px]">
@@ -35,13 +33,14 @@ const LanguageToggle = () => {
           <DropdownMenuItem
             key={lang.code}
             onClick={() => setLocale(lang.code)}
-            className="flex items-center justify-between cursor-pointer"
+            lang={lang.code === "pt" ? "pt-BR" : "en"}
+            className="flex min-h-11 cursor-pointer items-center justify-between"
           >
-            <span className="flex items-center gap-2">
-              <span>{lang.flag}</span>
+            <span className="flex items-center gap-3">
+              <span className="font-mono text-xs text-muted-foreground">{lang.short}</span>
               <span>{lang.label}</span>
             </span>
-            {locale === lang.code && <Check className="h-4 w-4 text-primary" />}
+            {locale === lang.code && <Check className="h-4 w-4 text-accent" aria-hidden />}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

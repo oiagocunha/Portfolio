@@ -2,8 +2,12 @@ import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { MainLayout } from "@/layouts/MainLayout";
 import { useI18n } from "@/i18n";
-import { localizedPath } from "@/lib/paths";
+import { ROUTES, localizedPath } from "@/lib/paths";
+import { EMAIL, LINKEDIN_URL } from "@/lib/contact";
+import { accentLinkClass } from "@/lib/styles";
 import { Button } from "@/components/ui/button";
+import { SectionHeading } from "@/components/shared/SectionHeading";
+import { ResponsiveImage } from "@/components/shared/ResponsiveImage";
 import Experience from "@/components/portfolio/Experience";
 import Projects from "@/components/portfolio/Projects";
 import Technologies from "@/components/portfolio/Technologies";
@@ -11,59 +15,65 @@ import { Download, Mail, ArrowUpRight } from "lucide-react";
 
 const WorkflowShowcase = lazy(() => import("@/components/portfolio/WorkflowShowcase"));
 
+const textLink = accentLinkClass;
+
 export default function Professional() {
   const { t, locale } = useI18n();
   const p = t.professional;
-  const email = "dev.iagocunha@gmail.com";
+  const email = EMAIL;
   const mailSubject = encodeURIComponent(p.mailSubject);
   // mailto often does nothing when no desktop mail client is set; Gmail compose works in the browser.
   const mailHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${mailSubject}`;
 
   return (
     <MainLayout>
-      <section id="hero" className="container pt-28 pb-12 grid gap-10 md:grid-cols-[1fr_240px] items-center">
+      <section
+        id="hero"
+        aria-labelledby="profile-title"
+        className="container grid gap-8 pb-12 pt-24 md:grid-cols-[1fr_12rem] md:items-start md:gap-12 md:pb-16 md:pt-32"
+      >
         <div>
-          <p className="text-sm font-medium text-accent">{p.eyebrow}</p>
-          <h1 className="mt-3 text-4xl md:text-6xl font-bold">Iago Cunha</h1>
-          <p className="mt-4 text-2xl font-semibold">{p.role}</p>
-          <p className="mt-5 max-w-2xl text-muted-foreground text-lg">{p.summary}</p>
-          <p className="mt-4 text-sm text-muted-foreground">{p.meta}</p>
+          <p className="font-mono text-xs text-muted-foreground">{p.eyebrow}</p>
+          <h1 id="profile-title" className="mt-3 text-display font-semibold">
+            Iago Cunha
+          </h1>
+          <p className="mt-2 text-xl font-medium leading-snug md:text-2xl">{p.role}</p>
+          <p className="mt-5 max-w-measure text-lg leading-relaxed text-muted-foreground">{p.summary}</p>
+          <p className="mt-4 font-mono text-xs text-muted-foreground">{p.meta}</p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <Button asChild variant="hero">
+            <Button asChild variant="hero" size="lg">
               <a href={p.resumeHref} download data-event="resume_download">
-                <Download className="mr-2 h-4 w-4" />
+                <Download aria-hidden />
                 {p.resumeLabel}
               </a>
             </Button>
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" size="lg">
               <a href={mailHref} target="_blank" rel="noreferrer" data-event="email_click">
-                <Mail className="mr-2 h-4 w-4" />
+                <Mail aria-hidden />
                 {p.discussCta}
               </a>
             </Button>
-            <Button asChild variant="outline">
-              <a href="https://www.linkedin.com/in/oiagocunha" target="_blank" rel="noreferrer">
-                LinkedIn <ArrowUpRight className="ml-2 h-4 w-4" />
+            <Button asChild variant="outline" size="lg">
+              <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">
+                LinkedIn <ArrowUpRight aria-hidden />
               </a>
             </Button>
           </div>
-          <p className="mt-3 text-sm text-muted-foreground">
-            {email}
-            {" · "}
-            <a
-              className="underline underline-offset-4 hover:text-foreground"
-              href={`mailto:${email}?subject=${mailSubject}`}
-            >
+          <p className="mt-3 flex flex-wrap items-center gap-x-2 font-mono text-xs text-muted-foreground">
+            <span>{email}</span>
+            <span aria-hidden>·</span>
+            <a className={textLink} href={`mailto:${email}?subject=${mailSubject}`}>
               {p.mailtoLabel}
             </a>
           </p>
         </div>
-        <img
+        <ResponsiveImage
           src="/images/Perfil.jpg"
-          width="240"
-          height="240"
-          alt="Iago Cunha"
-          className="rounded-3xl w-48 md:w-60 justify-self-center"
+          sizes="(min-width: 768px) 192px, 128px"
+          width="192"
+          height="192"
+          alt={t.hero.alt}
+          className="aspect-square w-32 rounded-lg border object-cover md:w-48"
         />
       </section>
 
@@ -74,21 +84,25 @@ export default function Professional() {
       </Suspense>
       <Technologies />
 
-      <section className="container py-16" id="formacao">
-        <h2 className="text-3xl font-bold">{p.educationTitle}</h2>
-        <p className="mt-5 font-semibold">{p.educationDegree}</p>
-        <p className="mt-2 text-muted-foreground">{p.educationExpected}</p>
-        <p className="mt-8 text-muted-foreground">{p.closing}</p>
-        <a className="inline-block mt-3 text-accent underline" href={`mailto:${email}`}>
-          {email}
-        </a>
-        <p className="mt-10 max-w-2xl text-sm text-muted-foreground">{p.icComplement}</p>
-        <Link
-          className="inline-block mt-2 text-sm text-accent underline underline-offset-4"
-          to={localizedPath("/", locale)}
-        >
-          {p.icComplementCta}
-        </Link>
+      <section id="formacao" aria-labelledby="education-title" className="border-t py-16 md:py-20">
+        <div className="container">
+          <SectionHeading id="education-title" title={p.educationTitle} />
+          {/* Aligns with the content column of the other sections (14rem + 2rem gap). */}
+          <div className="md:ml-[16rem]">
+            <div>
+              <p className="font-semibold">{p.educationDegree}</p>
+              <p className="mt-1 text-muted-foreground">{p.educationExpected}</p>
+              <p className="mt-8">{p.closing}</p>
+              <a className={textLink} href={`mailto:${email}`}>
+                {email}
+              </a>
+              <p className="mt-8 max-w-measure text-sm text-muted-foreground">{p.icComplement}</p>
+              <Link className={`${textLink} text-sm`} to={localizedPath(ROUTES.services, locale)}>
+                {p.icComplementCta}
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
     </MainLayout>
   );
